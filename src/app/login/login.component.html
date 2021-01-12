@@ -1,0 +1,19 @@
+<div class="container" >
+  <div class="w-50 box-container">
+    <h5 class="text-center">Login</h5>
+<form  autocomplete="off">
+  <div class="form-group">
+    <label for="email">Email address:</label>
+    <input type="email" class="form-control" placeholder="Enter email" id="email" required [(ngModel)]="login.email" [ngModelOptions]="{standalone: true}">
+  </div>
+  <div class="form-group">
+    <label for="pwd">Password:</label>
+    <input type="password" class="form-control" placeholder="Enter password" id="pwd" required [(ngModel)]="login.Password" [ngModelOptions]="{standalone: true}">
+  </div>
+  <button type="submit" class="btn btn-primary login" (click)="Login()">Login</button>
+  <div class="form-group mt-2">
+      <span>Don't have an account ? </span><a class="registerlink" style="color:blue" [routerLink]="['/register']" routerLinkActive="router-link-active" > Click here to register</a>
+    </div>
+</form>
+</div>
+</div>

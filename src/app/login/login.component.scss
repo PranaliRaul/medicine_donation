@@ -1,0 +1,26 @@
+.box-container{
+    background-color: lightblue;
+    padding: 20px;
+    position: absolute;
+    top:40%;
+    left: 50%;
+    transform: translate(-50%,-50%)
+}
+.registerlink{
+    cursor: pointer;
+    text-decoration: none;
+    color: red
+}
+.registerlink:hover{
+    color: blue;
+}
+.login{
+    padding: 5px 50px
+}
+
+
+.container   {
+    background: url('../../assets/bg.jpg');
+    background-repeat: no-repeat;
+    background-size: cover
+}
