@@ -13,6 +13,7 @@ const routes: Routes = [
     path:'login',
     component:LoginComponent
   },
+  
   {
     path:'home',
     loadChildren:'./dash-board/dash-board.module#DashBoardModule'
