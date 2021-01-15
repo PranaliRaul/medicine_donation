@@ -1,5 +1,5 @@
 <nav class="navbar navbar-expand-lg navbar-light bg-light">
-  <a class="navbar-brand" [routerLink]="['/home']">Navbar</a>
+  <a class="navbar-brand" [routerLink]="['/home']">Medicine Donation</a>
   <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
     <span class="navbar-toggler-icon"></span>
   </button>
@@ -9,10 +9,19 @@
         <a class="nav-link" [routerLink]="['/home']" routerLinkActive="router-link-active" >Home <span class="sr-only">(current)</span></a>
       </li>
       <li class="nav-item">
-        <a class="nav-link" [routerLink]="['/home']">Features</a>
+        <a class="nav-link"[routerLink]="['/home/addngo']">Add NGO</a>
       </li>
       <li class="nav-item">
-        <a class="nav-link"[routerLink]="['/home/addngo']">Add NGO</a>
+        <a class="nav-link" [routerLink]="['/home']">NGO Reguests</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/home']">View NGO's Detail</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/home']">View Donator's Detail</a>
+      </li>
+      <li class="nav-item">
+        <a class="nav-link" [routerLink]="['/home']">View Recepient's Detail</a>
       </li>
     </ul>
   </div>
