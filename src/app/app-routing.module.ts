@@ -29,6 +29,10 @@ const routes: Routes = [
   {
     path:'ngo',
     loadChildren:'./ngo/ngo.module#NgoModule'
+  },
+  {
+    path:'executor',
+    loadChildren:'./executor/executor.module#ExecutorModule'
   }
 
 ];

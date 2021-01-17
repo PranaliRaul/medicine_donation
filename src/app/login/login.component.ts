@@ -34,6 +34,8 @@ export class LoginComponent implements OnInit {
       this.router.navigate(['/ngo/medicine-donation']);
     }else if(data[0].roleId === 3){
       this.router.navigate(['/donator/my-donation']);
+    } else if(data[0].roleId === 5){
+      this.router.navigate(['/executor/assign-request']);
     }
     else{
       this.router.navigate(['/Recepient/my-request']);       

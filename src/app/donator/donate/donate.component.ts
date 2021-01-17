@@ -10,9 +10,9 @@ import { RegisterService } from 'src/app/register/register.service';
 })
 export class DonateComponent implements OnInit {
   registrationForm: FormGroup;
+  list = [];
   constructor(private router:Router,private formBuilder: FormBuilder, private registerService:RegisterService) { }
-  ngOnInit() {
-     
+  ngOnInit() { 
     this.registrationForm = this.formBuilder.group({
           brand_name: ["", Validators.required], 
           generic_name: ["",Validators.required], 
@@ -21,21 +21,18 @@ export class DonateComponent implements OnInit {
            quantity : ["",  Validators.required],
            expire_date:['', Validators.required]
           });
+          this.getngolist();
   }
-  // public register():void{
-  //   if (this.registrationForm.valid) { 
-  //           console.log(this.registrationForm.value);
-  //           this.registerService.postdata('register', this.registrationForm.value).subscribe(data =>{
-  //             console.log(data);
-             
-  //             this.router.navigate(['/login']);
-  //           },err =>{
-  //             console.log(err);
-  //             alert(err.error.err);
-  //           })
+  public getngolist():void{
+   
+            this.registerService.getData('ngolist?id=2').subscribe(data =>{
+               this.list = data
+            },err =>{ 
+              alert(err.error.err);
+            })
           
-  //         }
-  // }
+          
+  }
   donate(){
 
   }
