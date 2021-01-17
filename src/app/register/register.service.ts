@@ -8,12 +8,13 @@ export class RegisterService {
 
   constructor(private http:HttpClient) { }
 
-  public postdata(url,data){
+  public postdata(url,data):any{
     const url1 = `${environment.API_URL}${url}`;
     return this.http.post(url1,data);
   }
 
-  public getData(){
-
+  public getData(url):any{
+    const url1 = `${environment.API_URL}${url}`;
+    return this.http.get(url1);
   }
 }

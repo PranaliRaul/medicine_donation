@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RegisterService } from '../register/register.service';
 
 @Component({
   selector: 'app-recepient-detail',
@@ -6,10 +7,18 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./recepient-detail.component.scss']
 })
 export class RecepientDetailComponent implements OnInit {
-
-  constructor() { }
+list =[]
+  
+  constructor(private service:RegisterService) { }
 
   ngOnInit() {
+    this.getList();
   }
 
+  getList(){
+    const url = `ngolist?id=4`;
+    this.service.getData(url).subscribe(data =>{
+     this.list = data;
+    })
+  }
 }

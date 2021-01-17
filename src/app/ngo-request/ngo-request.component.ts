@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RegisterService } from '../register/register.service';
 
 @Component({
   selector: 'app-ngo-request',
@@ -7,9 +8,20 @@ import { Component, OnInit } from '@angular/core';
 })
 export class NgoRequestComponent implements OnInit {
 
-  constructor() { }
-
+  constructor(private service:RegisterService) { }
+  list = []
   ngOnInit() {
+    this.getNgoList();
   }
 
+  getNgoList(){
+    const url = `ngolist?id=2`;
+    this.service.getData(url).subscribe(data =>{
+      console.log(data);
+      this.list = data;
+    })
+  }
+  details(data){
+    console.log(data)
+  }
 }

@@ -17,6 +17,14 @@ const routes: Routes = [
   {
     path:'home',
     loadChildren:'./dash-board/dash-board.module#DashBoardModule'
+  },
+  {
+    path:'Recepient',
+    loadChildren:'./recepient/recepient.module#RecepientModule'
+  },
+  {
+    path:'donation',
+    loadChildren:'./donator/donator.module#DonatorModule'
   }
 
 ];
