@@ -48,14 +48,14 @@ const sql1 = "INSERT INTO register(personId,fullName, pass,email,roleId,ngo_name
 
  function sendemail(data){
     var mailOptions = {
-        from: 'narendra21399@gmail.com',
+        from: 'onlinemeddonation@gmail.com',
         to:  data.email,
-        subject: 'Register sucessfully',
+        subject: 'Registered sucessfully',
         html:   `<h1>Welcome ${data.fullName}</h1>
         <p>Register sucessfully on online donation app</p>
         <p>Here is user credential to login into app</p>
-        <h5>email: ${data.email}</h5>
-        <h5>Password: ${data.pass}</h5>
+        <h3>Email: ${data.email}</h3>
+        <h3>Password: ${data.pass}</h3>
         `
       };
     transporter.sendMail(mailOptions, function(error, info){

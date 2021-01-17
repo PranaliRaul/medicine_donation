@@ -23,8 +23,12 @@ const routes: Routes = [
     loadChildren:'./recepient/recepient.module#RecepientModule'
   },
   {
-    path:'donation',
+    path:'donator',
     loadChildren:'./donator/donator.module#DonatorModule'
+  },
+  {
+    path:'ngo',
+    loadChildren:'./ngo/ngo.module#NgoModule'
   }
 
 ];

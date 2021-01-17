@@ -4,7 +4,6 @@ import { DonateComponent } from './donate/donate.component';
 import { MyDonationsComponent } from './my-donations/my-donations.component';
  
 const routes: Routes = [
-  {path:'',redirectTo:'login' , pathMatch:'full'},
   {
     path:'my-donation',
     component:MyDonationsComponent 

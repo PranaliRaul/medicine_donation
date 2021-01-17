@@ -1,3 +1,30 @@
-<p>
-  medicine-request works!
-</p>
+
+<app-recepient-navigation></app-recepient-navigation>
+
+<div class="container" >
+    <div class="w-50 box-container">
+       
+  <form  autocomplete="off"  [formGroup]="registrationForm">
+       
+      <div class="form-group"  >
+          <label for="email">Brand Name:</label>
+          <input type="text" class="form-control"  formControlName="brand_name" placeholder="Enter Brand Name"  required>
+        </div>
+        <div class="form-group" >
+            <label for="email">Generic Name:</label>
+            <input type="text" class="form-control"  formControlName="generic_name" placeholder="Generic Name" required>
+          </div>
+          <div class="form-group">
+              <label for="sel1">Ngo Name:</label>
+              <select class="form-control"    formControlName="ngo_name"  > 
+              </select>
+            </div>
+    <div class="form-group">
+        <label for="pwd">quantity:</label>
+        <input type="text" class="form-control"   formControlName="quantity" placeholder="Enter quantity" id="pwd" maxlength="10" required>
+      </div> 
+    <button type="submit" class="btn btn-primary login" (click)="donate()">Request</button>
+     
+  </form>
+  </div>
+  </div>
