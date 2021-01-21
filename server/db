@@ -1,12 +1,31 @@
 CREATE TABLE register (
 	personId int   NOT NULL AUTO_INCREMENT,
     fullName varchar(40) NOT NULL,
-    pass varchar(30),
+    pass varchar(50),
     email varchar(40),
-    roleId INT,register
+    roleId INT,
     ngo_name varchar(40) ,
     mobile_no varchar(15) ,
     address varchar(100),
     year_establishment INT,
      PRIMARY KEY (personId)
+);
+
+
+ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
+flush privileges;
+CREATE TABLE donator (
+	personId int   NOT NULL AUTO_INCREMENT,
+    brand_name varchar(40) NOT NULL,
+    generic_name varchar(50),
+    ngo_name varchar(40),
+    medicine_type int,
+    exp_date  date ,
+    mobile_no varchar(15) ,
+    quentity int(2),
+    year_establishment INT,
+    assign varchar(40),
+    allow_status boolean,
+    assign_executor varchar(40)
+     
 );

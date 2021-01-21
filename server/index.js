@@ -30,7 +30,7 @@ const haspass = await bycrt.hash(data.pass,10)
 const d =Object.values(data);
 console.log(d);
 try{
-const sql1 = "INSERT INTO register(personId,fullName, pass,email,roleId,ngo_name,mobile_no,address,year_establishment) VALUES ( null  ,'"+data.fullName+"','"+haspass+"','"+data.email+"','"+data.roleId+"','"+data.ngo_name+"','"+data.mobile_no+"','"+data.address+"','"+data.year_establishment+"')";
+const sql1 = "INSERT INTO register(personId,fullName, pass,email,roleId,ngo_name,mobile_no,address,year_establishment) VALUES ( null  ,'"+data.fullName+"','"+data.pass+"','"+data.email+"','"+data.roleId+"','"+data.ngo_name+"','"+data.mobile_no+"','"+data.address+"','"+data.year_establishment+"')";
   connection.query( sql1 ,function (err, result) {
     if (err) {
         res.status(500).send({err:'email id already use'});
@@ -75,7 +75,8 @@ app.post('/login',  function (req, res) {
             res.status(500).send({err:'email id already use'});
         };
         if(result.length){ 
-            if(await bycrt.compare(response.Password,result[0].pass)){
+            if(response.Password,result[0].pass === response.Password ){
+              await bycrt.compare(response.Password,result[0].pass)
                 delete result[0].pass;
                 res.send(result);
             }else{
@@ -106,9 +107,49 @@ app.get('/ngolist',    (req, res) =>{
     
     });
 })
+
+app.post('/donator',  async function (req, res) {
+  // Prepare output in JSON format
+  response = req.body;
+ 
+ 
+try{
+const sql1 = "INSERT INTO donator (personId,brand_name, generic_name,ngo_name, medicine_type, exp_date,mobile_no,quantity,assign,allow_status,assign_executor) VALUES ( '"+response.personId+"' ,'"+response.brand_name+"','"+response.generic_name+"','"+response.ngo_name+"','"+response.medicine_type+"','"+response.exp_date+"','"+response.mobile_no+"','"+response.quantity+"','"+response.assign+"','"+response.allow_status+"','"+response.assign_executor+"')";
+ connection.query( sql1 ,function (err, result) {
+   if (err) {
+       res.status(500).send({err:'donation fail'});
+       return;
+   };
+   console.log("Number of records inserted: " + result.affectedRows);
+   res.send({msg:'donation sucessfull'});
+   // sendemail(data);
+ });
+}catch{
+  res.status(500).send({err:'donation fail'});
+
+}
+})
 var server = app.listen(8081, function () {
    var host = server.address().address
    var port = server.address().port
    
    console.log("Example app listening at http://%s:%s", host, port)
+})
+
+
+app.get('/mydonator',    (req, res) =>{
+  const id = +req.query.id;
+  const sql4 = 'SELECT * FROM donator WHERE personId="'+id+'"';
+  connection.query( sql4 ,async function (err, result) {
+      try{
+      if (err) {
+          res.status(500).send({err:'fail to load your donation'});
+      };
+      res.send(result);
+      
+  }catch{
+      res.status(500).send({err:'Server error'});
+  }
+    
+    });
 })

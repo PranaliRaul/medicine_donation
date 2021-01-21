@@ -17,12 +17,12 @@
           <div class="form-group">
               <label for="sel1">Ngo Name:</label>
               <select class="form-control"    formControlName="ngo_name"  > 
-                  <option *ngFor="let ngo of list" [value]="ngo">{{ngo?.ngo_name}}</option>
+                  <option *ngFor="let ngo of list" [value]="ngo.email">{{ngo?.ngo_name}}</option>
               </select>
             </div>
             <div class="form-group">
                 <label for="sel1">Type:</label>
-                <select class="form-control"    formControlName="type"  >
+                <select class="form-control"    formControlName="medicine_type"  >
                     <option [value]="1">Tablet</option>
                      <option [value]="2">Capsule</option>
                       <option [value]="3">Syrup</option>
@@ -30,7 +30,7 @@
               </div>
               <div class="form-group" >
                   <label for="email">Expire Date:</label>
-                  <input type="date" class="form-control"  formControlName="expire_date" placeholder="Generic Name" required>
+                  <input type="date" class="form-control"  formControlName="exp_date" placeholder="Generic Name" required>
                 </div>
     <div class="form-group">
         <label for="pwd">quantity:</label>

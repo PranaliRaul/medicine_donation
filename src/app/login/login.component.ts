@@ -28,6 +28,7 @@ export class LoginComponent implements OnInit {
   public Login():void{
   if(this.loginForm.valid){
    this.registerService.postdata('login', this.loginForm.value).subscribe(data =>{
+     localStorage.setItem('userdata',JSON.stringify(data));
     if(data[0].roleId === 1){
     this.router.navigate(['/home']);
     }else if (data[0].roleId === 2){

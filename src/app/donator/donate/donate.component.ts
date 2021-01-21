@@ -11,18 +11,29 @@ import { RegisterService } from 'src/app/register/register.service';
 export class DonateComponent implements OnInit {
   registrationForm: FormGroup;
   list = [];
-  constructor(private router:Router,private formBuilder: FormBuilder, private registerService:RegisterService) { }
+  userId:any;
+  constructor(private router:Router,private formBuilder: FormBuilder, private registerService:RegisterService) { 
+    this.userId = JSON.parse(localStorage.getItem('userdata'));
+  }
   ngOnInit() { 
     this.registrationForm = this.formBuilder.group({
           brand_name: ["", Validators.required], 
           generic_name: ["",Validators.required], 
           ngo_name: ["", [Validators.required, ]], 
-          type: ["", [Validators.required]],
+          medicine_type: ["", [Validators.required]],
            quantity : ["",  Validators.required],
-           expire_date:['', Validators.required]
+           exp_date:['', Validators.required],
+           assign:['',  ''],
+           allow_status:[0  ,''],
+           assign_executor:['',  ''],
+           personId:[this.userId[0].personId,  ''],
+           mobile_no:[this.userId[0].mobile_no,'']
+          
           });
           this.getngolist();
   }
+
+ 
   public getngolist():void{
    
             this.registerService.getData('ngolist?id=2').subscribe(data =>{
@@ -34,6 +45,12 @@ export class DonateComponent implements OnInit {
           
   }
   donate(){
-
+    console.log( this.registrationForm.value)
+    this.registerService.postdata('donator',this.registrationForm.value).subscribe(data =>{
+      // this.list = data
+      console.log(data)
+    },err =>{ 
+      alert(err.error.err);
+    })
   }
 }
