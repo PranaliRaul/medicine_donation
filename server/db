@@ -29,3 +29,12 @@ CREATE TABLE donator (
     assign_executor varchar(40)
      
 );
+
+
+donator
+
+personId, brand_name, generic_name, ngo_name, medicine_type, quantity, mobile_no, assign, allow_status, assign_executor, is_collected, donator_name, excutor_email, donator_address, donation_id, exp_date, ngo_email, donator_email
+
+
+request
+personId, brand_name, generic_name, ngo_name, quantity, mobile_no, assign, allow_status, assign_executor, recepient_name, excutor_email, recepient_adress, request_id, ngo_email, recepient_email
