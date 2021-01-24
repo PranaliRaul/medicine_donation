@@ -2,7 +2,7 @@ CREATE TABLE register (
 	personId int   NOT NULL AUTO_INCREMENT,
     fullName varchar(40) NOT NULL,
     pass varchar(50),
-    email varchar(40),
+    email varchar(40) ,
     roleId INT,
     ngo_name varchar(40) ,
     mobile_no varchar(15) ,

@@ -10,8 +10,11 @@ import { RegisterService } from 'src/app/register/register.service';
 })
 export class AddExecutiveComponent implements OnInit {
   registrationForm: FormGroup;
-  role= '5'
-  constructor(private router:Router,private formBuilder: FormBuilder, private registerService:RegisterService) { }
+  role= '5';
+  userId:string;
+  constructor(private router:Router,private formBuilder: FormBuilder, private registerService:RegisterService) { 
+    this.userId = JSON.parse(localStorage.getItem('userdata'))[0].email;
+  }
   ngOnInit() {
    
     this.registrationForm = this.formBuilder.group({
@@ -22,7 +25,9 @@ export class AddExecutiveComponent implements OnInit {
            ngo_name : ["",  ],
             mobile_no : ["", [Validators.required, Validators.minLength(4)]],
             address : ["", [Validators.required]],
-            year_establishment: ["", [ Validators.minLength(4)]]
+            year_establishment: ["", [ Validators.minLength(4)]],
+            active_acc: [true, ],
+            ngo_executor: [this.userId,'']
           });
   }
   public register():void{
@@ -31,7 +36,7 @@ export class AddExecutiveComponent implements OnInit {
             this.registerService.postdata('register', this.registrationForm.value).subscribe(data =>{
               console.log(data);
              
-              this.router.navigate(['/login']);
+             alert(data.msg)
             },err =>{
               console.log(err);
               alert(err.error.err);

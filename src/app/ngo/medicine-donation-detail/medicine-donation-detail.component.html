@@ -1,0 +1,70 @@
+<app-ngonavigation></app-ngonavigation>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      Donator Name:
+    </div>
+    <div class="col">
+      {{donation_details?.donator_name}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Brand Name:
+    </div>
+    <div class="col">
+      {{donation_details?.brand_name}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Generic Name:
+    </div>
+    <div class="col">
+      {{donation_details?.generic_name}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Expiry Date:
+    </div>
+    <div class="col">
+      {{donation_details?.exp_date | date}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Medicine Type:
+    </div>
+    <div class="col">
+      {{type[donation_details?.medicine_type]}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Mobile Number:
+    </div>
+    <div class="col">
+      {{donation_details?.mobile_no}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+       assign Executor:
+    </div>
+    <div class="col-3">
+      <select class="form-control"    [(ngModel)]="email"    (change)="assignexe($event.target.value)">
+        <option *ngFor="let executor of list" [value]="executor.email"> {{executor?.fullName}}</option>
+    </select>
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+       <div class="ml-auto">
+        <button type="button" class="btn btn-primary " (click)="assignexecutor()">Update</button>
+       </div>
+    </div>
+     
+  </div>
+   
+</div>

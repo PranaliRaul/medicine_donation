@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RegisterService } from 'src/app/register/register.service';
 
 @Component({
   selector: 'app-donator-navigation',
@@ -7,9 +8,11 @@ import { Component, OnInit } from '@angular/core';
 })
 export class DonatorNavigationComponent implements OnInit {
 
-  constructor() { }
+  constructor(private service:RegisterService) { }
 
   ngOnInit() {
   }
-
+  logout(){
+    this.service.logout();
+  }
 }

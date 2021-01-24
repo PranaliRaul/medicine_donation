@@ -9,9 +9,11 @@ import { RequestComponent } from './request/request.component';
 import { SucessfullDonationComponent } from './sucessfull-donation/sucessfull-donation.component';
 import { UnsucessfullDonationComponent } from './unsucessfull-donation/unsucessfull-donation.component';
 import { NgonavigationComponent } from './ngonavigation/ngonavigation.component';
+import { MedicineDonationDetailComponent } from './medicine-donation-detail/medicine-donation-detail.component';
+import { MedicineRequestDetailComponent } from './medicine-request-detail/medicine-request-detail.component';
  
 @NgModule({
-  declarations: [AddExecutiveComponent,DonationComponent,RequestComponent,SucessfullDonationComponent,UnsucessfullDonationComponent, NgonavigationComponent],
+  declarations: [AddExecutiveComponent,DonationComponent,RequestComponent,SucessfullDonationComponent,UnsucessfullDonationComponent, NgonavigationComponent, MedicineDonationDetailComponent, MedicineRequestDetailComponent],
 
   imports: [
     CommonModule,

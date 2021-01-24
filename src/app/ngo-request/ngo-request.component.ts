@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RegisterService } from '../register/register.service';
 
 @Component({
@@ -8,20 +9,22 @@ import { RegisterService } from '../register/register.service';
 })
 export class NgoRequestComponent implements OnInit {
 
-  constructor(private service:RegisterService) { }
+  constructor(private service:RegisterService,private route:Router) { }
   list = []
   ngOnInit() {
     this.getNgoList();
   }
 
   getNgoList(){
-    const url = `ngolist?id=2`;
+    const url = `ngo-requestactivate?id=2`;
     this.service.getData(url).subscribe(data =>{
       console.log(data);
       this.list = data;
     })
   }
   details(data){
-    console.log(data)
+   
+    this.service.ngo_details = data;
+    this.route.navigate(['/home/ngo-activate'])
   }
 }

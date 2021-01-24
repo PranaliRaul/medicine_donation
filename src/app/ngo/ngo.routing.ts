@@ -5,6 +5,8 @@ import { SucessfullDonationComponent } from './sucessfull-donation/sucessfull-do
 import { AddExecutiveComponent } from './add-executive/add-executive.component';
 import { RequestComponent } from './request/request.component';
 import { DonationComponent } from './donation/donation.component';
+import { MedicineDonationDetailComponent } from './medicine-donation-detail/medicine-donation-detail.component';
+import { MedicineRequestDetailComponent } from './medicine-request-detail/medicine-request-detail.component';
 const routes: Routes = [
     {
         path:'',
@@ -29,6 +31,14 @@ const routes: Routes = [
   {
     path:'unsucessful-donation',
     component: UnsucessfullDonationComponent
+  },
+  {
+    path:'medicine-donation-details',
+    component: MedicineDonationDetailComponent
+  },
+  {
+    path:'medicine-request-detail',
+    component: MedicineRequestDetailComponent
   }
   ];
   

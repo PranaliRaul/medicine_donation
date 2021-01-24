@@ -1,1 +1,42 @@
 <app-executor-navigation></app-executor-navigation>
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col"> Name</th>
+
+        <th scope="col">Brand Name</th>
+        <th scope="col"> generic_name</th>
+        <th scope="col">medicine_type</th>
+        <th scope="col">exp_date </th>
+        <th scope="col">quantity</th>
+        <th scope="col">Mobile Number</th>
+
+        <th scope="col">status</th>
+
+        <th scope="col">Address</th>
+        <th scope="col"></th>
+        
+        
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let receipt of list; let i = index">
+        <th scope="row">{{i+1 }}</th>
+        <td>{{receipt?.donator_name}}</td>
+
+        <td>{{receipt?.brand_name}}</td>
+        <td>{{receipt?.generic_name}}</td>
+        <td>{{type[receipt.medicine_type] }}</td>
+        <td>{{receipt?.exp_date | date}}</td>
+        <td>{{receipt?.quantity}}</td>
+        <td>{{receipt?.mobile_no}}</td>
+        <td>{{receipt?.allow_status}}</td>
+        <td>{{receipt?.donator_address}}</td>
+        <th ><button type="button" class="btn btn-primary" (click)="details(receipt)">Details</button></th>
+
+      </tr>
+      
+    </tbody>
+  </table>
+  

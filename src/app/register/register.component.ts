@@ -22,15 +22,18 @@ export class RegisterComponent implements OnInit {
            ngo_name : ["",  ],
             mobile_no : ["", [Validators.required, Validators.minLength(4)]],
             address : ["", [Validators.required]],
-            year_establishment: ["", [ Validators.minLength(4)]]
+            year_establishment: ["", [ Validators.minLength(4)]],
+            active_acc: [true, ],
+            ngo_executor: ['','']
           });
   }
   public register():void{
-    if (this.registrationForm.valid) { 
-            console.log(this.registrationForm.value);
+    if (this.registrationForm.valid) {
+            if(this.role == '2'){
+                this.registrationForm.value.active_acc = false;
+              }
             this.registerService.postdata('register', this.registrationForm.value).subscribe(data =>{
-              console.log(data);
-             
+              alert(data.msg);
               this.router.navigate(['/login']);
             },err =>{
               console.log(err);
@@ -39,4 +42,6 @@ export class RegisterComponent implements OnInit {
           
           }
   }
+
+  
 }

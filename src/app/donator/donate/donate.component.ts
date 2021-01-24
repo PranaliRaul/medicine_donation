@@ -27,8 +27,9 @@ export class DonateComponent implements OnInit {
            allow_status:[0  ,''],
            assign_executor:['',  ''],
            personId:[this.userId[0].personId,  ''],
-           mobile_no:[this.userId[0].mobile_no,'']
-          
+           mobile_no:[this.userId[0].mobile_no,''],
+           donator_name:[this.userId[0].fullName,''],
+           donator_address:[this.userId[0].address,'']
           });
           this.getngolist();
   }

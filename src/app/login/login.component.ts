@@ -24,28 +24,37 @@ export class LoginComponent implements OnInit {
       Password: ["", [Validators.required]],
     
     })
+    const data =  JSON.parse(localStorage.getItem('userdata'));
+    if(data){
+       this.islogin(data);
+    }
   }
   public Login():void{
   if(this.loginForm.valid){
    this.registerService.postdata('login', this.loginForm.value).subscribe(data =>{
      localStorage.setItem('userdata',JSON.stringify(data));
-    if(data[0].roleId === 1){
-    this.router.navigate(['/home']);
-    }else if (data[0].roleId === 2){
-      this.router.navigate(['/ngo/medicine-donation']);
-    }else if(data[0].roleId === 3){
-      this.router.navigate(['/donator/my-donation']);
-    } else if(data[0].roleId === 5){
-      this.router.navigate(['/executor/assign-request']);
-    }
-    else{
-      this.router.navigate(['/Recepient/my-request']);       
-    }
+    this.islogin(data);
    },err =>{
      console.log(err.error.errr);
     alert(err.error.errr);
    })
   }
   }
+
+  public islogin(data){
+    if(data[0].roleId === 1){
+      this.router.navigate(['/home']);
+      }else if (data[0].roleId === 2){
+        this.router.navigate(['/ngo/medicine-donation']);
+      }else if(data[0].roleId === 3){
+        this.router.navigate(['/donator/my-donation']);
+      } else if(data[0].roleId === 5){
+        this.router.navigate(['/executor/assign-request']);
+      }
+      else{
+        this.router.navigate(['/Recepient/my-request']);       
+      }
+  }
+
 
 }

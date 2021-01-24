@@ -1,1 +1,27 @@
 <app-recepient-navigation></app-recepient-navigation>
+
+<table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col">Brand Name</th>
+        <th scope="col">Generic Name</th>
+        <th scope="col">NGO Name</th>
+        <th scope="col">Quantity</th> 
+        <th scope="col">Status</th>
+        <th scope="col">Assign Executor</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr *ngFor="let receipt of list; let i = index">
+        <th scope="row">{{i+1 }}</th>
+        <td>{{receipt?.brand_name}}</td>
+        <td>{{receipt?.generic_name}}</td>
+        <td>{{receipt?.ngo_name}}</td>
+        <td>{{receipt?.quantity}}</td>
+        <td>{{receipt?.assign_executor}}</td>
+      </tr>
+      
+    </tbody>
+  </table>
+  

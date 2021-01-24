@@ -6,6 +6,8 @@ import { NgoRequestComponent } from '../ngo-request/ngo-request.component';
 import { NgoDetailComponent } from '../ngo-detail/ngo-detail.component';
 import { DonatorDetailComponent } from '../donator-detail/donator-detail.component';
 import { RecepientDetailComponent } from '../recepient-detail/recepient-detail.component';
+import { NgoIndetailsComponent } from './ngo-indetails/ngo-indetails.component';
+import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 
 const routes: Routes = [
   {
@@ -31,6 +33,10 @@ const routes: Routes = [
   {
     path:'recepient-detail',
     component:RecepientDetailComponent
+  },
+  {
+    path:'ngo-activate',
+    component:NgoIndetailsComponent
   }
 ];
 

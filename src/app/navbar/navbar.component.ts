@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { RegisterService } from '../register/register.service';
 
 @Component({
   selector: 'app-navbar',
@@ -6,10 +7,11 @@ import { Component, OnInit } from '@angular/core';
   styleUrls: ['./navbar.component.scss']
 })
 export class NavbarComponent implements OnInit {
-
-  constructor() { }
+  constructor(private service:RegisterService) { }
 
   ngOnInit() {
   }
-
+  logout(){
+    this.service.logout();
+  }
 }
