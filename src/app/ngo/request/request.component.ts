@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/register/register.service';
 
 @Component({
@@ -10,7 +11,7 @@ export class RequestComponent implements OnInit {
 
   list =[];
   userId:number;
-  constructor(private registerService:RegisterService) { }
+  constructor(private registerService:RegisterService, private route:Router) { }
 
  
   ngOnInit() {
@@ -25,7 +26,8 @@ export class RequestComponent implements OnInit {
     })
   
   }
-  details(){
-  
+  details(data){
+    this.registerService.donator_details = data;
+    this.route.navigate(['/ngo/medicine-donation-details'])
   }
 }

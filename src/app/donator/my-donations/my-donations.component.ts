@@ -1,4 +1,5 @@
 import { Component, OnInit } from '@angular/core';
+import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/register/register.service';
 
 @Component({
@@ -10,7 +11,9 @@ export class MyDonationsComponent implements OnInit {
   
   list =[];
   userId:number;
-  constructor(private registerService:RegisterService) { }
+  type = ['',"Tablet",'Capsule','Syrup']
+
+  constructor(private registerService:RegisterService,private route:Router) { }
 
   ngOnInit() {
     this.getngolist();
@@ -25,4 +28,5 @@ export class MyDonationsComponent implements OnInit {
   
   
 }
+
 }

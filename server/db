@@ -14,27 +14,53 @@ CREATE TABLE register (
 
 ALTER USER 'root'@'localhost' IDENTIFIED WITH mysql_native_password BY 'root';
 flush privileges;
-CREATE TABLE donator (
-	personId int   NOT NULL AUTO_INCREMENT,
-    brand_name varchar(40) NOT NULL,
-    generic_name varchar(50),
-    ngo_name varchar(40),
-    medicine_type int,
-    exp_date  date ,
-    mobile_no varchar(15) ,
-    quentity int(2),
-    year_establishment INT,
-    assign varchar(40),
-    allow_status boolean,
-    assign_executor varchar(40)
-     
+
+
+CREATE TABLE donator(
+personId int,
+brand_name varchar(40) NOT NULL,
+generic_name varchar(50),
+ngo_name  varchar(40),
+medicine_type int,
+quantity int(2),
+mobile_no varchar(15),
+assign varchar(40),
+allow_status boolean,
+assign_executor  varchar(40),
+is_collected boolean,
+donator_name varchar(40), 
+excutor_email varchar(40),
+donator_address varchar(100),
+donation_id int   NOT NULL AUTO_INCREMENT,
+exp_date date ,
+ngo_email varchar(40),
+donator_email varchar(40)
 );
 
 
-donator
+                
 
-personId, brand_name, generic_name, ngo_name, medicine_type, quantity, mobile_no, assign, allow_status, assign_executor, is_collected, donator_name, excutor_email, donator_address, donation_id, exp_date, ngo_email, donator_email
+CREATE TABLE request(
+personId int,
+brand_name varchar(40) NOT NULL,
+generic_name varchar(50),
+ngo_name  varchar(40),
+quantity int(2),
+mobile_no varchar(15),
+assign varchar(40),
+allow_status boolean,
+assign_executor  varchar(40),
+recepient_name varchar(40), 
+excutor_email varchar(40),
+recepient_adress varchar(100),
+request_id int   NOT NULL AUTO_INCREMENT,
+exp_date date ,
+ngo_email varchar(40),
+recepient_email varchar(40)
+);
 
-
-request
-personId, brand_name, generic_name, ngo_name, quantity, mobile_no, assign, allow_status, assign_executor, recepient_name, excutor_email, recepient_adress, request_id, ngo_email, recepient_email
+CREATE TABLE ngo_certificate (
+	certificate BLOB  NOT NULL,
+	email varchar(40) NOT NULL ,
+    ngo_name varchar(40) 
+);
