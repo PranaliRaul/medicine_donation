@@ -19,7 +19,7 @@ ngo_details:any;
     console.log(this.ngo_details );
   }
   activeAcc(){
-   
+
     this.servive.postdata('update-ngo', this.ngo_details ).subscribe(data =>{
       alert(data.msg);
       this.route.navigate(['/home/ngo-request']);

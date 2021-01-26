@@ -12,14 +12,14 @@ export class DonateComponent implements OnInit {
   registrationForm: FormGroup;
   list = [];
   userId:any;
-  constructor(private router:Router,private formBuilder: FormBuilder, private registerService:RegisterService) { 
+  constructor(private router:Router,private formBuilder: FormBuilder, private registerService:RegisterService) {
     this.userId = JSON.parse(localStorage.getItem('userdata'));
   }
-  ngOnInit() { 
+  ngOnInit() {
     this.registrationForm = this.formBuilder.group({
-          brand_name: ["", Validators.required], 
-          generic_name: ["",Validators.required], 
-          ngo_name: ["", [Validators.required, ]], 
+          brand_name: ["", Validators.required],
+          generic_name: ["",Validators.required],
+          ngo_name: ["", [Validators.required, ]],
           medicine_type: ["", [Validators.required]],
            quantity : ["",  Validators.required],
            exp_date:['', Validators.required],
@@ -34,23 +34,24 @@ export class DonateComponent implements OnInit {
           this.getngolist();
   }
 
- 
+
   public getngolist():void{
-   
+
             this.registerService.getData('ngolist?id=2').subscribe(data =>{
                this.list = data
-            },err =>{ 
+            },err =>{
               alert(err.error.err);
             })
-          
-          
+
+
   }
   donate(){
     console.log( this.registrationForm.value)
     this.registerService.postdata('donator',this.registrationForm.value).subscribe(data =>{
       // this.list = data
-      console.log(data)
-    },err =>{ 
+      console.log(data);
+      alert(data.msg);
+    },err =>{
       alert(err.error.err);
     })
   }

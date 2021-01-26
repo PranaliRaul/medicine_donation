@@ -1,0 +1,77 @@
+<app-executor-navigation></app-executor-navigation>
+<div class="container">
+  <div class="row">
+    <div class="col-2">
+      Donator Name:
+    </div>
+    <div class="col">
+      {{donation_details?.donator_name}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Brand Name:
+    </div>
+    <div class="col">
+      {{donation_details?.brand_name}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Generic Name:
+    </div>
+    <div class="col">
+      {{donation_details?.generic_name}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Expiry Date:
+    </div>
+    <div class="col">
+      {{donation_details?.exp_date | date}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Medicine Type:
+    </div>
+    <div class="col">
+      {{type[donation_details?.medicine_type]}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+      Mobile Number:
+    </div>
+    <div class="col">
+      {{donation_details?.mobile_no}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+        Address:
+    </div>
+    <div class="col-3">
+       {{donation_details?.donator_address}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+        collected:
+    </div>
+    <div class="col-3">
+      <button type="button" class="btn btn-primary " (click)="collecte()" *ngIf="!donation_details?.is_collected">Yes</button>
+      <div  *ngIf="donation_details?.is_collected">yes</div>
+    </div>
+  </div>
+  <div class="row" *ngIf="!donation_details?.is_collected">
+    <div class="col-3">
+       <div class="ml-auto">
+        <button type="button" class="btn btn-primary " (click)="assignexecutor()">Update</button>
+       </div>
+    </div>
+
+  </div>
+
+</div>

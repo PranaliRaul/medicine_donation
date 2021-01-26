@@ -15,7 +15,7 @@ export class AssigndonationsComponent implements OnInit {
 
   constructor(private registerService:RegisterService,private route:Router) { }
 
- 
+
   ngOnInit() {
     this.getngolist();
   }
@@ -23,14 +23,15 @@ export class AssigndonationsComponent implements OnInit {
     this.userId = JSON.parse(localStorage.getItem('userdata'))[0].email;
     this.registerService.getData(`assign-donation?id=${this.userId}`).subscribe(data =>{
        this.list = data;
-    },err =>{ 
+    },err =>{
       alert(err.error.err);
     })
-  
-  
+
+
 }
 details(data){
   this.registerService.donator_details = data;
-   
+  this.route.navigate(['/executor/donation-details'])
+
 }
 }

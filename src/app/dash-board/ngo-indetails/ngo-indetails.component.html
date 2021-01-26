@@ -39,7 +39,7 @@
     </div>
     <div class="col">
       <button type="button" class="btn btn-danger" *ngIf="!ngo_details?.active_acc" (click)="activeAcc()">Inactive</button>
-      <button type="button" class="btn btn-success" *ngIf="ngo_details?.active_acc" (click)="delete()">Delete</button>
+      <button type="button" class="btn btn-danger" *ngIf="ngo_details?.active_acc" (click)="delete()">Delete</button>
     </div>
   </div>
   <div class="row">

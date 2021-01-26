@@ -7,9 +7,10 @@ import { AssignrequestsComponent } from './assignrequests/assignrequests.compone
 import { TransationComponent } from './transation/transation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExecutorNavigationComponent } from './executor-navigation/executor-navigation.component';
+import { DonateDetailsComponent } from './donate-details/donate-details.component';
 
 @NgModule({
-  declarations: [AssigndonationsComponent, AssignrequestsComponent, TransationComponent, ExecutorNavigationComponent],
+  declarations: [AssigndonationsComponent, AssignrequestsComponent, TransationComponent, ExecutorNavigationComponent,DonateDetailsComponent],
   imports: [
     CommonModule,
     ExecutorRoutingModule,
