@@ -8,9 +8,11 @@ import { TransationComponent } from './transation/transation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { ExecutorNavigationComponent } from './executor-navigation/executor-navigation.component';
 import { DonateDetailsComponent } from './donate-details/donate-details.component';
+import { RequestDetailsComponent } from './request-details/request-details.component';
+import { RequestTransationComponent } from './request-transation/request-transation.component';
 
 @NgModule({
-  declarations: [AssigndonationsComponent, AssignrequestsComponent, TransationComponent, ExecutorNavigationComponent,DonateDetailsComponent],
+  declarations: [AssigndonationsComponent, AssignrequestsComponent, TransationComponent, ExecutorNavigationComponent,DonateDetailsComponent, RequestDetailsComponent, RequestTransationComponent],
   imports: [
     CommonModule,
     ExecutorRoutingModule,

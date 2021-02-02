@@ -23,7 +23,6 @@ list =[]
     })
   }
   details(data){
-
     this.service.donator_details = data;
     this.route.navigate(['/home/recepient-in-detail'])
   }

@@ -8,22 +8,24 @@
         <li class="nav-item active">
           <a class="nav-link" >Home <span class="sr-only">(current)</span></a>
         </li>
-         
-        
+
+
         <li class="nav-item">
-          <a class="nav-link" [routerLink]="['/executor/assign-donation']">Assign Donations</a>
+          <a class="nav-link" [routerLink]="['/executor/assign-donation']" routerLinkActive="active-link" routerLinkActiveOptions="{exact:true}">Assign Donations</a>
         </li>
         <li class="nav-item">
-            <a class="nav-link" [routerLink]="['/executor/assign-request']">Assign Requests</a>
+            <a class="nav-link" [routerLink]="['/executor/assign-request']" routerLinkActive="active-link" routerLinkActiveOptions="{exact:true}">Assign Requests</a>
           </li>
           <li class="nav-item">
-              <a class="nav-link" [routerLink]="['/executor/transaction']"> Transaction</a>
+              <a class="nav-link" [routerLink]="['/executor/transaction']" routerLinkActive="active-link" routerLinkActiveOptions="{exact:true}"> Transaction</a>
             </li>
-            
+            <li class="nav-item">
+              <a class="nav-link" [routerLink]="['/executor/request-transation']" routerLinkActive="active-link" routerLinkActiveOptions="{exact:true}"> request Transaction</a>
+            </li>
       </ul>
       <div class="ml-auto">
         <button type="button" class="btn btn-danger"  (click)="logout()">logout</button>
-        
-      </div> 
+
+      </div>
     </div>
   </nav>

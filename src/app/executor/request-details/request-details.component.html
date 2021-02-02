@@ -1,4 +1,4 @@
-<app-ngonavigation></app-ngonavigation>
+<app-executor-navigation></app-executor-navigation>
 <div class="container">
   <div class="row">
     <div class="col-2">
@@ -50,31 +50,31 @@
   </div>
   <div class="row">
     <div class="col-2">
-       select medicine:
+         medicine:
     </div>
     <div class="col-3">
-      <select class="form-control"    [(ngModel)]="selected_medicine"   (change)="setmedicine()">
+      {{donation_details?.generic_name}}
+      <!-- <select class="form-control"    [(ngModel)]="selected_medicine"   (change)="setmedicine()">
         <option *ngFor="let medicine of medicinelist" [value]="medicine.donation_id"> {{medicine?.generic_name}}</option>
-    </select>
+    </select> -->
     </div>
   </div>
   <div class="row">
     <div class="col-2">
-       assign Executor:
+        Deliver:
     </div>
     <div class="col-3">
-      <select class="form-control"    [(ngModel)]="email"    (change)="assignexe($event.target.value)">
-        <option *ngFor="let executor of list" [value]="executor.email"> {{executor?.fullName}}</option>
-    </select>
+      <button type="button" class="btn btn-primary " (click)="deliver()" *ngIf="!donation_details?.is_deliver">Yes</button>
+      <div  *ngIf="donation_details?.is_deliver">yes</div>
     </div>
   </div>
-  <div class="row">
+  <!-- <div class="row">
     <div class="col-3">
        <div class="ml-auto">
-        <button type="button" class="btn btn-primary " (click)="assignexecutor()">Update</button>
+        <button type="button" class="btn btn-primary " (click)="deliver()">Update</button>
        </div>
     </div>
 
-  </div>
+  </div> -->
 
 </div>

@@ -22,7 +22,7 @@
     </thead>
     <tbody>
       <ng-container *ngFor="let receipt of list; let i = index" >
-      <tr    *ngIf="!receipt?.is_deliver">
+      <tr    *ngIf="receipt?.is_deliver">
         <th scope="row">{{i+1 }}</th>
         <td>{{receipt?.donator_name}}</td>
 

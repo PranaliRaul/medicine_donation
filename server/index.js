@@ -372,3 +372,51 @@ app.get('/assign-donation',    (req, res) =>{
 
     });
 })
+
+app.post('/assign-executor-request',    (req, res) =>{
+  console.log(req.body)
+  const sql4 = 'UPDATE request SET excutor_email = "'+req.body.excutor_email+'" , assign_executor="'+req.body.assign_executor+'" , is_deliver="'+req.body.is_deliver+'", assign="'+req.body.assign+'", donation_id="'+req.body.donation_id+'",allow_status="'+req.body.allow_status+'" WHERE request_id="'+req.body.request_id+'" ';
+  const sql5 = 'UPDATE donator SET quantity = "'+req.body.remaining_quantity+'" , assign="'+req.body.recepient_name+'" , request_id="'+req.body.request_id+'" WHERE donation_id="'+req.body.donation_id+'" ';
+
+  connection.query( sql4 ,  function (err, result) {
+      try{
+      if (err) {
+          res.status(500).send({err:'fail to load ngo list'});
+      };
+      res.send({msg:'executor assigned sucessfully'});
+      connection.query( sql5 ,  function (err, result) {
+        if (err) {
+
+      };
+      })
+      if(req.body.is_deliver ){
+       const text =  `<h4>Hi ${ req.body.recepient_name }</h4>
+                    <p>Greeting from ${req.body.ngo_name}, Your requested medicine has been sucessfully delivered by our executor ${req.body.assign_executor}</p>
+                    <p>Thanks & Regards</p>
+                    <p>Email: ${req.body.ngo_email}</p>`
+        sendemail(req.body.recepient_email,'Medicine donation',text)
+      }
+
+  }catch{
+      res.status(500).send({err:'Server error'});
+  }
+
+    });
+})
+
+app.get('/assign-request',    (req, res) =>{
+  const id =  req.query.id
+  const sql4 = 'SELECT * FROM request WHERE excutor_email="'+id+'" ';
+  connection.query( sql4 ,async function (err, result) {
+      try{
+      if (err) {
+          res.status(500).send({err:'fail to load ngo list'});
+      };
+      res.send(result);
+
+  }catch{
+      res.status(500).send({err:'Server error'});
+  }
+
+    });
+})
