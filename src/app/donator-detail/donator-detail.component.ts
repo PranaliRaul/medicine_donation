@@ -9,7 +9,7 @@ import { RegisterService } from '../register/register.service';
 })
 export class DonatorDetailComponent implements OnInit {
   list =[]
-  
+
   constructor(private service:RegisterService, private route: Router) { }
 
   ngOnInit() {
@@ -23,8 +23,8 @@ export class DonatorDetailComponent implements OnInit {
     })
   }
   details(data){
-   
-    this.service.ngo_details = data;
-    this.route.navigate(['/home/donor-detail'])
+
+    this.service.donator_details = data;
+    this.route.navigate(['/home/donor-in-detail'])
   }
 }

@@ -58,6 +58,7 @@ export class DonateDetailsComponent implements OnInit {
   collecte(){
     if(confirm('Are You Sure')){
     this.donation_details.is_collected = true;
+    this.assignexecutor()
     }
   }
 }

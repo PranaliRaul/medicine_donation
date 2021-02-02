@@ -12,6 +12,7 @@ export class DonateComponent implements OnInit {
   registrationForm: FormGroup;
   list = [];
   userId:any;
+  name: any;
   constructor(private router:Router,private formBuilder: FormBuilder, private registerService:RegisterService) {
     this.userId = JSON.parse(localStorage.getItem('userdata'));
   }
@@ -19,7 +20,7 @@ export class DonateComponent implements OnInit {
     this.registrationForm = this.formBuilder.group({
           brand_name: ["", Validators.required],
           generic_name: ["",Validators.required],
-          ngo_name: ["", [Validators.required, ]],
+          ngo_email: ["", [Validators.required, ]],
           medicine_type: ["", [Validators.required]],
            quantity : ["",  Validators.required],
            exp_date:['', Validators.required],
@@ -29,7 +30,9 @@ export class DonateComponent implements OnInit {
            personId:[this.userId[0].personId,  ''],
            mobile_no:[this.userId[0].mobile_no,''],
            donator_name:[this.userId[0].fullName,''],
-           donator_address:[this.userId[0].address,'']
+           donator_address:[this.userId[0].address,''],
+           donator_email:[this.userId[0].email,''],
+           ngo_name: ["", ],
           });
           this.getngolist();
   }
@@ -46,13 +49,25 @@ export class DonateComponent implements OnInit {
 
   }
   donate(){
-    console.log( this.registrationForm.value)
+    console.log( this.registrationForm.value);
+    this.registrationForm.value.ngo_name = this.name;
+    if(this.registrationForm.valid){
     this.registerService.postdata('donator',this.registrationForm.value).subscribe(data =>{
       // this.list = data
       console.log(data);
       alert(data.msg);
     },err =>{
       alert(err.error.err);
-    })
+    })}else{
+      alert('please fill all field')
+    }
+
+  }
+  selctngo(value){
+    const ngo = this.list.find(ele =>ele.email === value);
+    this.name = ngo.ngo_name;
+    alert(this.name )
+    this.registrationForm.value.ngo_name = ngo.ngo_name;
+
   }
 }

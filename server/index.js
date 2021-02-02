@@ -105,7 +105,7 @@ app.post('/login',  function (req, res) {
 })
 app.get('/ngolist',    (req, res) =>{
   const id = +req.query.id
-  const sql4 = 'SELECT * FROM register WHERE roleId="'+id+'" && active_acc="'+1+'"';
+  const sql4 = 'SELECT * FROM register WHERE roleId="'+id+'"';
   connection.query( sql4 ,async function (err, result) {
       try{
       if (err) {
@@ -126,7 +126,7 @@ app.post('/donator',  async function (req, res) {
 
 
 try{
-const sql1 = "INSERT INTO donator (personId,brand_name, generic_name,ngo_name, medicine_type, exp_date,mobile_no,quantity,assign,allow_status,assign_executor,donator_name,donator_address,donation_id) VALUES ( '"+response.personId+"' ,'"+response.brand_name+"','"+response.generic_name+"','"+response.ngo_name+"','"+response.medicine_type+"','"+response.exp_date+"','"+response.mobile_no+"','"+response.quantity+"','"+response.assign+"','"+response.allow_status+"','"+response.assign_executor+"','"+response.donator_name+"','"+response.donator_address+"' , null)";
+const sql1 = "INSERT INTO donator (personId,brand_name, generic_name,ngo_name, medicine_type, exp_date,mobile_no,quantity,assign,allow_status,assign_executor,donator_name,donator_address,donation_id,donator_email,ngo_email) VALUES ( '"+response.personId+"' ,'"+response.brand_name+"','"+response.generic_name+"','"+response.ngo_name+"','"+response.medicine_type+"','"+response.exp_date+"','"+response.mobile_no+"','"+response.quantity+"','"+response.assign+"','"+response.allow_status+"','"+response.assign_executor+"','"+response.donator_name+"','"+response.donator_address+"' , null,'"+response.donator_email+"','"+response.ngo_email+"')";
  connection.query( sql1 ,function (err, result) {
    if (err) {
        res.status(500).send({err:'donation fail'});
@@ -173,8 +173,8 @@ app.post('/recepient',  async function (req, res) {
 
 
 try{
-const sql1 = "INSERT INTO request (personId,brand_name, generic_name,ngo_name,mobile_no,quantity,assign,allow_status,assign_executor,recepient_adress,recepient_name) VALUES ( '"+response.personId+"' ,'"+response.brand_name+"','"+response.generic_name+"','"+response.ngo_name+"','"+response.mobile_no+"','"+response.quantity+"','"+response.assign+"','"+response.allow_status+"','"+response.assign_executor+"','"+response.recepient_adress+"','"+response.name
-+"')";
+const sql1 = "INSERT INTO request (personId,brand_name, generic_name,ngo_name,mobile_no,quantity,assign,allow_status,assign_executor,recepient_adress,recepient_name,ngo_email) VALUES ( '"+response.personId+"' ,'"+response.brand_name+"','"+response.generic_name+"','"+response.ngo_name+"','"+response.mobile_no+"','"+response.quantity+"','"+response.assign+"','"+response.allow_status+"','"+response.assign_executor+"','"+response.recepient_adress+"','"+response.name
++"' ,'"+response.ngo_email+"' )";
  connection.query( sql1 ,function (err, result) {
    if (err) {
        res.status(500).send({err:'donation fail'});
@@ -226,7 +226,7 @@ app.get('/ngo-request',    (req, res) =>{
 })
 app.get('/ngo-donation',    (req, res) =>{
   const id = req.query.id
-  const sql4 = 'SELECT * FROM  donator WHERE ngo_name="'+id+'"';
+  const sql4 = 'SELECT * FROM  donator WHERE ngo_email="'+id+'"';
   connection.query( sql4 ,async function (err, result) {
       try{
       if (err) {
@@ -254,26 +254,44 @@ app.post('/upload',  function (req, res) {
 app.post('/update-ngo',  async function (req, res) {
   // Prepare output in JSON format
   response = req.body;
-  response.status = 1
+  response.status = response.active_acc ? 1:0;
 //const haspass = await bycrt.hash(data.pass,10)
 //const d =Object.values(data);
 // console.log(d);
 try{
 const sql1 = "UPDATE register SET active_acc= '"+response.status+"'  WHERE email= '"+response.email+"' ";
+const sql2 = "UPDATE register SET active_acc= '"+response.status+"'  WHERE ngo_executor= '"+response.email+"' "
  connection.query( sql1 ,function (err, result) {
+   console.log(result)
    if (err) {
        res.status(500).send({err:'email id already use'});
        return;
    };
-   res.send({msg:'register sucessfully'});
-   const subject =  'Registered sucessfully';
-   const html2 =    `<h1>Welcome ${response.fullName ? response.fullName:response.ngo_name}</h1>
+
+   res.send({msg:'Updated sucessfully'});
+   connection.query( sql2 ,function (err, result) {
+    if (err) {
+
+  };
+   })
+   let subject
+   let html2
+   if(response.active_acc ){
+     subject =  'Updated sucessfully';
+     html2 =    `<h1>Welcome ${response.fullName ? response.fullName:response.ngo_name}</h1>
                     <p>Registered sucessfully on online donation app</p>
                     <p>Here is user credential to login into app</p>
                     <h3>Email: ${response.email}</h3>
                     <h3>Password: ${response.pass}</h3>`
+   }else{
+    subject =  'Online Donation account has been deactivated';
+    html2 =    `<h1>Hi ${response.fullName ? response.fullName:response.ngo_name}</h1>
+                   <p>Your Account has been  deactivated by admin</p>
+                   <p>Please conatct Admin for further details</p>`
+   }
      sendemail(response.email,subject,html2);
  });
+
 }catch{
    res.status(500).send({err:'Internal server error'});
 }
@@ -326,8 +344,8 @@ app.post('/assign-executor',    (req, res) =>{
        const text =  `<h4>Hi ${ req.body.donator_name }</h4>
                     <p>Greeting from ${req.body.ngo_name}, Your medicine donation has been sucessfully collected from our executor ${req.body.assign_executor}</p>
                     <p>Thanks & Regards</p>
-                    <p>Email: ${req.body.ngo_name}</p>`
-        sendemail(req.body.excutor_email,'Medicine donation',text)
+                    <p>Email: ${req.body.ngo_email}</p>`
+        sendemail(req.body.donator_email,'Medicine donation',text)
       }
 
   }catch{

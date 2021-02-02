@@ -11,9 +11,11 @@ import { NgoDetailComponent } from '../ngo-detail/ngo-detail.component';
 import { DonatorDetailComponent } from '../donator-detail/donator-detail.component';
 import { RecepientDetailComponent } from '../recepient-detail/recepient-detail.component';
 import { NgoIndetailsComponent } from './ngo-indetails/ngo-indetails.component';
+import { DonatorIndetailsComponent } from './donator-indetails/donator-indetails.component';
+import { RecepientIndetailsComponent } from './recepient-indetails/recepient-indetails.component';
 
 @NgModule({
-  declarations: [DashBoardComponent,NavbarComponent,AddNgoComponent,NgoRequestComponent,NgoDetailComponent,DonatorDetailComponent,RecepientDetailComponent, NgoIndetailsComponent],
+  declarations: [DashBoardComponent,NavbarComponent,AddNgoComponent,NgoRequestComponent,NgoDetailComponent,DonatorDetailComponent,RecepientDetailComponent, NgoIndetailsComponent, DonatorIndetailsComponent, RecepientIndetailsComponent],
   imports: [
     CommonModule,
     DashBoardRoutingModule,

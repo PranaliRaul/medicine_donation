@@ -9,28 +9,39 @@ import { RegisterService } from 'src/app/register/register.service';
 })
 export class NgoIndetailsComponent implements OnInit {
 ngo_details:any;
+list = []
   constructor(private servive:RegisterService, private route:Router) { }
 
   ngOnInit() {
     this.ngo_details = this.servive.ngo_details;
     if(!this.ngo_details){
       this.route.navigate(['/home/ngo-request']);
+      return;
     }
+    this.listofexecutive()
     console.log(this.ngo_details );
   }
-  activeAcc(){
 
+    activeAcc(active){
+    if(confirm("Are You Sure ")){
+    this.ngo_details.active_acc = active;
     this.servive.postdata('update-ngo', this.ngo_details ).subscribe(data =>{
-      alert(data.msg);
+      alert("Updated Sucessfully");
       this.route.navigate(['/home/ngo-request']);
     },err =>{
       console.log(err);
       alert(err.error.err);
     })
   }
-  delete(){
-    if(confirm("Are you sure")){
-
-    }
   }
+  listofexecutive(){
+    this.servive.getData(`executor-list?id=${this.ngo_details.email}`).subscribe(data =>{
+      this.list = data;
+    },err =>{
+      console.log(err);
+      alert(err.error.err);
+    })
+  }
+
+
 }
