@@ -19,7 +19,7 @@ const routes: Routes = [
     component:LoginComponent,
     // canActivate:[AuthGuard],
   },
-  
+
   {
     path:'home',
     loadChildren:'./dash-board/dash-board.module#DashBoardModule',
@@ -62,8 +62,11 @@ const routes: Routes = [
     data:{
       roleId :5
     }
-  }
-
+  },
+  {
+    path:'**',
+    component: LoginComponent
+  },
 ];
 
 @NgModule({

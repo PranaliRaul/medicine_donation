@@ -34,11 +34,11 @@ const routes: Routes = [
     component:NgoDetailComponent
   },
   {
-    path:'donor-detail',
+    path:'donor',
     component:DonatorDetailComponent
   },
   {
-    path:'recepient-detail',
+    path:'recepient',
     component:RecepientDetailComponent
   },
   {
@@ -46,11 +46,11 @@ const routes: Routes = [
     component:NgoIndetailsComponent
   },
   {
-    path:'donor-in-detail',
+    path:'donor/donor-detail',
     component:DonatorIndetailsComponent
   },
   {
-    path:'recepient-in-detail',
+    path:'recepient/recepient-detail',
     component:RecepientIndetailsComponent
   },
   {
@@ -66,15 +66,15 @@ const routes: Routes = [
     component:NgoMedRequestComponent
   },
   {
-    path:'benefited-person',
+    path:'donor/benefited-person',
     component:BefPersonComponent
   },
   {
-    path:'donation-made',
+    path:'donor/donation-made',
     component:DonationMadeComponent
   },
   {
-    path:'request-made',
+    path:'recepient/request-made',
     component:RequestMadeComponent
   }
 

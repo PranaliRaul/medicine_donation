@@ -15,7 +15,7 @@ export class DonatorIndetailsComponent implements OnInit {
   ngOnInit() {
     this.ngo_details = this.servive.donator_details;
     if(!this.ngo_details){
-      this.route.navigate(['/home/donor-detail']);
+      this.route.navigate(['/home/donor']);
     }
     console.log(this.ngo_details );
   }
@@ -24,7 +24,7 @@ export class DonatorIndetailsComponent implements OnInit {
     this.ngo_details.active_acc = active;
     this.servive.postdata('update-ngo', this.ngo_details ).subscribe(data =>{
       alert("Updated Sucessfully");
-      this.route.navigate(['/home/donor-detail']);
+      this.route.navigate(['/home/donor']);
     },err =>{
       console.log(err);
       alert(err.error.err);

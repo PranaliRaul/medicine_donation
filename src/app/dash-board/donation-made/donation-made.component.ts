@@ -17,7 +17,7 @@ export class DonationMadeComponent implements OnInit {
 
   ngOnInit() {
     if(!this.registerService.donator_details){
-      this.route.navigate(['/home/donor-detail']);
+      this.route.navigate(['/home/donor']);
       return;
     }
     this.getngolist();

@@ -25,6 +25,6 @@ export class DonatorDetailComponent implements OnInit {
   details(data){
 
     this.service.donator_details = data;
-    this.route.navigate(['/home/donor-in-detail'])
+    this.route.navigate(['/home/donor/donor-detail'])
   }
 }

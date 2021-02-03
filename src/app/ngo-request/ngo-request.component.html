@@ -1,4 +1,6 @@
-<app-navbar  ></app-navbar>
+<div class="page-wrapager">
+  <app-navbar></app-navbar>
+  <div class="container-fluid mt-4" >
 <table class="table table-bordered">
   <thead>
     <tr>
@@ -21,6 +23,8 @@
       <td>{{receipt?.year_establishment}}</td>
       <td><button type="button" class="btn btn-primary" (click)="details(receipt)">Details</button></td>
     </tr>
-    
+
   </tbody>
 </table>
+</div>
+</div>

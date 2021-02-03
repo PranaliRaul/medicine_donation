@@ -14,11 +14,12 @@ export class RequestMadeComponent implements OnInit {
   constructor( public registerService:RegisterService,private route:Router) { }
 
   ngOnInit() {
-    this.getngolist();
     if(!this.registerService.donator_details){
-      this.route.navigate(['/home/recepient-detail']);
+      this.route.navigate(['/home/recepient']);
       return;
     }
+    this.getngolist();
+
   }
   public getngolist():void{
     this.userId = this.registerService.donator_details.personId;
