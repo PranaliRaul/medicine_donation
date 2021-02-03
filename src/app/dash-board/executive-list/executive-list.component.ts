@@ -15,7 +15,7 @@ export class ExecutiveListComponent implements OnInit {
   ngOnInit() {
     this.ngo_details = this.servive.ngo_details;
     if(!this.ngo_details){
-      this.route.navigate(['/home/ngo-request']);
+      this.route.navigate(['/home/ngo']);
       return;
     }
     this.listofexecutive();

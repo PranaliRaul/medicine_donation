@@ -14,20 +14,20 @@ export class NgoDetailComponent implements OnInit {
   ngOnInit() {
     this.getngolist(  )
   }
- 
+
   public getngolist():void{
-   
+
     this.service.getData('ngolist?id=2').subscribe(data =>{
        this.list = data
-    },err =>{ 
+    },err =>{
       alert(err.error.err);
     })
-  
-  
+
+
 }
 details(data){
-   
+
   this.service.ngo_details = data;
-  this.route.navigate(['/home/ngo-activate'])
+  this.route.navigate(['/home/ngo/ngo-detail'])
 }
 }

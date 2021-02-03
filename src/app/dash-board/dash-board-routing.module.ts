@@ -30,7 +30,7 @@ const routes: Routes = [
     component:NgoRequestComponent
   },
   {
-    path:'ngo-detail',
+    path:'ngo',
     component:NgoDetailComponent
   },
   {
@@ -42,7 +42,11 @@ const routes: Routes = [
     component:RecepientDetailComponent
   },
   {
-    path:'ngo-activate',
+    path:'ngo/ngo-detail',
+    component:NgoIndetailsComponent
+  },
+  {
+    path:'ngo-request/ngo-detail',
     component:NgoIndetailsComponent
   },
   {
@@ -54,15 +58,15 @@ const routes: Routes = [
     component:RecepientIndetailsComponent
   },
   {
-    path:'ngo-executive-list',
+    path:'ngo/ngo-executive-list',
     component:ExecutiveListComponent
   },
   {
-    path:'ngo-medicine-donation',
+    path:'ngo/ngo-medicine-donation',
     component: NgoDonationComponent
   },
   {
-    path:'ngo-medicine-request',
+    path:'ngo/ngo-medicine-request',
     component:NgoMedRequestComponent
   },
   {

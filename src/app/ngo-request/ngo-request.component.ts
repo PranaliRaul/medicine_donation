@@ -23,8 +23,8 @@ export class NgoRequestComponent implements OnInit {
     })
   }
   details(data){
-   
+
     this.service.ngo_details = data;
-    this.route.navigate(['/home/ngo-activate'])
+    this.route.navigate(['/home/ngo-request/ngo-detail'])
   }
 }

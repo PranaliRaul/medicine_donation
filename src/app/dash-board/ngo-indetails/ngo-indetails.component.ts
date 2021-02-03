@@ -15,7 +15,7 @@ list = []
   ngOnInit() {
     this.ngo_details = this.servive.ngo_details;
     if(!this.ngo_details){
-      this.route.navigate(['/home/ngo-request']);
+      this.route.navigate(['/home/ngo']);
       return;
     }
 
@@ -27,7 +27,11 @@ list = []
     this.ngo_details.active_acc = active;
     this.servive.postdata('update-ngo', this.ngo_details ).subscribe(data =>{
       alert("Updated Sucessfully");
-      this.route.navigate(['/home/ngo-request']);
+       if(this.route.url.includes('ngo-request')){
+        this.route.navigate(['/home/ngo-request']);
+       }else{
+        this.route.navigate(['/home/ngo']);
+       }
     },err =>{
       console.log(err);
       alert(err.error.err);
