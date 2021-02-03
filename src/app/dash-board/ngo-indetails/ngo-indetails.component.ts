@@ -18,7 +18,7 @@ list = []
       this.route.navigate(['/home/ngo-request']);
       return;
     }
-    this.listofexecutive()
+
     console.log(this.ngo_details );
   }
 
@@ -34,14 +34,9 @@ list = []
     })
   }
   }
-  listofexecutive(){
-    this.servive.getData(`executor-list?id=${this.ngo_details.email}`).subscribe(data =>{
-      this.list = data;
-    },err =>{
-      console.log(err);
-      alert(err.error.err);
-    })
-  }
 
+public navigate(url){
+  this.route.navigate([url]);
+}
 
 }

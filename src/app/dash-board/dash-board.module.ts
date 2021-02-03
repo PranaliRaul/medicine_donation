@@ -13,9 +13,15 @@ import { RecepientDetailComponent } from '../recepient-detail/recepient-detail.c
 import { NgoIndetailsComponent } from './ngo-indetails/ngo-indetails.component';
 import { DonatorIndetailsComponent } from './donator-indetails/donator-indetails.component';
 import { RecepientIndetailsComponent } from './recepient-indetails/recepient-indetails.component';
+import { ExecutiveListComponent } from './executive-list/executive-list.component';
+import { NgoDonationComponent } from './ngo-donation/ngo-donation.component';
+import { NgoMedRequestComponent } from './ngo-med-request/ngo-med-request.component';
+import { BefPersonComponent } from './bef-person/bef-person.component';
+import { DonationMadeComponent } from './donation-made/donation-made.component';
+import { RequestMadeComponent } from './request-made/request-made.component';
 
 @NgModule({
-  declarations: [DashBoardComponent,NavbarComponent,AddNgoComponent,NgoRequestComponent,NgoDetailComponent,DonatorDetailComponent,RecepientDetailComponent, NgoIndetailsComponent, DonatorIndetailsComponent, RecepientIndetailsComponent],
+  declarations: [DashBoardComponent,NavbarComponent,AddNgoComponent,NgoRequestComponent,NgoDetailComponent,DonatorDetailComponent,RecepientDetailComponent, NgoIndetailsComponent, DonatorIndetailsComponent, RecepientIndetailsComponent, ExecutiveListComponent, NgoDonationComponent, NgoMedRequestComponent, BefPersonComponent, DonationMadeComponent, RequestMadeComponent],
   imports: [
     CommonModule,
     DashBoardRoutingModule,

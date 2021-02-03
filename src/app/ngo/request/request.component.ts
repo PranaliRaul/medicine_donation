@@ -9,7 +9,8 @@ import { RegisterService } from 'src/app/register/register.service';
 })
 export class RequestComponent implements OnInit {
 
-  list =[];
+  public list =[];
+
   userId:number;
   constructor(private registerService:RegisterService, private route:Router) { }
 

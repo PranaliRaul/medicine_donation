@@ -31,5 +31,7 @@ export class RecepientIndetailsComponent implements OnInit {
     })
   }
   }
-
+public navigate(url){
+  this.route.navigate([url])
+}
 }

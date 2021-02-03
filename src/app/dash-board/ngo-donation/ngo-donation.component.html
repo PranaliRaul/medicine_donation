@@ -1,18 +1,22 @@
-<app-donator-navigation></app-donator-navigation>
-
+<app-navbar  ></app-navbar>
+<div class="container">
+  <div class="row d-flex justify-content-center mt-3"  >
+    <h5>Donations to NGO " {{registerService?.ngo_details?.ngo_name}}"</h5>
 <table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">ID</th>
       <th scope="col">Brand Name</th>
       <th scope="col"> generic_name</th>
-      <th scope="col">ngo_name</th>
       <th scope="col">medicine_type</th>
       <th scope="col">exp_date </th>
       <th scope="col">quantity</th>
       <th scope="col">benefited person</th>
       <th scope="col">status</th>
       <th scope="col">assign Executor</th>
+
+
+
     </tr>
   </thead>
   <tbody>
@@ -20,15 +24,16 @@
       <th scope="row">{{i+1 }}</th>
       <td>{{receipt?.brand_name}}</td>
       <td>{{receipt?.generic_name}}</td>
-      <td>{{receipt?.ngo_name}}</td>
-      <td>{{type[receipt?.medicine_type]}}</td>
-
+      <td>{{type[receipt.medicine_type] }}</td>
       <td>{{receipt?.exp_date | date}}</td>
       <td>{{receipt?.quantity}}</td>
       <td>{{receipt?.assign}}</td>
-      <td>{{receipt?.is_collected ? "Yes":"No"}}</td>
+      <td>{{receipt?.is_collected ? "Collected":"Not Collected"}}</td>
       <td>{{receipt?.assign_executor}}</td>
+
     </tr>
 
   </tbody>
 </table>
+</div>
+</div>

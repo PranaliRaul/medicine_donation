@@ -56,17 +56,17 @@ export class DonateComponent implements OnInit {
       // this.list = data
       console.log(data);
       alert(data.msg);
+      this.router.navigate(['/donator/my-donation'])
     },err =>{
       alert(err.error.err);
     })}else{
-      alert('please fill all field')
+      alert('please fill all required field')
     }
 
   }
   selctngo(value){
     const ngo = this.list.find(ele =>ele.email === value);
     this.name = ngo.ngo_name;
-    alert(this.name )
     this.registrationForm.value.ngo_name = ngo.ngo_name;
 
   }

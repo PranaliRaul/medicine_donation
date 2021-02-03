@@ -32,4 +32,8 @@ export class DonatorIndetailsComponent implements OnInit {
   }
   }
 
+  public navigate(url){
+    this.route.navigate([url]);
+  }
+
 }

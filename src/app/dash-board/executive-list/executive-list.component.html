@@ -1,0 +1,39 @@
+
+<app-navbar  ></app-navbar>
+
+<div class="container">
+  <div class="row d-flex justify-content-center mt-3"  >
+   <h5  > List of Executives</h5>
+
+  <table class="table table-bordered">
+    <thead>
+      <tr>
+        <th scope="col">ID</th>
+        <th scope="col"> Name</th>
+
+        <th scope="col">Email</th>
+
+        <th scope="col">Mobile Number</th>
+        <th scope="col">Address</th>
+        <th scope="col">status</th>
+      </tr>
+    </thead>
+    <tbody>
+      <ng-container *ngFor="let receipt of list; let i = index" >
+      <tr *ngIf="!receipt?.is_collected">
+        <th scope="row">{{i+1 }}</th>
+        <td>{{receipt?.fullName}}</td>
+
+        <td>{{receipt?.email}}</td>
+        <td>{{receipt?.mobile_no}}</td>
+        <td>{{receipt?.address }}</td>
+
+        <td>{{receipt?.active_acc ? "Active":"Inactive"}}</td>
+
+      </tr>
+      </ng-container>
+
+    </tbody>
+  </table>
+  </div>
+  </div>
