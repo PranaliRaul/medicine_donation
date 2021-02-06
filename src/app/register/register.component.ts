@@ -20,10 +20,10 @@ export class RegisterComponent implements OnInit {
             email: ["", [Validators.required, Validators.email]], 
             password: ["", [Validators.required]],
            ngo_name : ["",  ],
-            mobile_no : ["", [Validators.required, Validators.minLength(4)]],
+            mobile_no : ["", [Validators.required, Validators.minLength(10)]],
             address : ["", [Validators.required]],
             year_establishment: ["", [ Validators.minLength(4)]],
-            active_acc: [true, ],
+            active_acc: [true, ''],
             ngo_executor: ['','']
           });
   }
