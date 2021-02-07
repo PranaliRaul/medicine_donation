@@ -1,18 +1,23 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
-import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+import { Validators, FormBuilder, FormGroup } from '@angular/forms';
 import { RegisterService } from 'src/app/register/register.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-medicine-request',
-  templateUrl: './medicine-request.component.html',
-  styleUrls: ['./medicine-request.component.scss']
+  selector: 'app-ngo-medicine-request',
+  templateUrl: './ngo-medicine-request.component.html',
+  styleUrls: ['./ngo-medicine-request.component.scss']
 })
-export class MedicineRequestComponent implements OnInit {
+export class NgoMedicineRequestComponent implements OnInit {
+
   public registrationForm:FormGroup
   public list = [];
   private userId:any;
   private name:string;
+  public medicinelist = [];
+  public selecedmedicine:any;
+  public disabled = true;
+  type = ['',"Tablet",'Capsule','Syrup']
   constructor(private router:Router,private formBuilder: FormBuilder, private registerService:RegisterService) {
     this.userId = JSON.parse(localStorage.getItem('userdata'));
   }
@@ -35,20 +40,7 @@ export class MedicineRequestComponent implements OnInit {
 
            this.getngolist();
           }
- // public register():void{
-  //   if (this.registrationForm.valid) {
-  //           console.log(this.registrationForm.value);
-  //           this.registerService.postdata('register', this.registrationForm.value).subscribe(data =>{
-  //             console.log(data);
-
-  //             this.router.navigate(['/login']);
-  //           },err =>{
-  //             console.log(err);
-  //             alert(err.error.err);
-  //           })
-
-  //         }
-  // }
+ 
   public getngolist():void{
 
     this.registerService.getData('ngolist?id=2').subscribe(data =>{
@@ -77,8 +69,24 @@ export class MedicineRequestComponent implements OnInit {
     const ngo = this.list.find(ele =>ele.email === value);
     this.name = ngo.ngo_name;
     this.registrationForm.value.ngo_name = ngo.ngo_name;
+    this.getmedicine(ngo.email);
+    this.disabled =false; 
+  }
+  public getmedicine(email):void{
+    this.registerService.getData(`ngo-donation?id=${email}`).subscribe(data =>{
+       this.medicinelist = data;
+    },err =>{
+      alert(err.error.err);
+    })
+  }
 
+  seletedmedicine(i){
+    this.selecedmedicine = this.medicinelist[i];
+  }
+  checkqwt(value){
+    const v = +value 
+    if(v && v >  this.selecedmedicine.quantity){
+      alert('quantity should not be greater than selected medicine  available quantity')
+    }
   }
 }
-
-

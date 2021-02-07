@@ -2,6 +2,7 @@ import { NgModule } from '@angular/core';
 import { Routes, RouterModule } from '@angular/router';
 import { MedicineRequestComponent } from './medicine-request/medicine-request.component';
 import { MyRequestsComponent } from './my-requests/my-requests.component';
+import { NgoMedicineRequestComponent } from './ngo-medicine-request/ngo-medicine-request.component';
  
 const routes: Routes = [
   
@@ -12,6 +13,10 @@ const routes: Routes = [
   {
     path:'medicine-request',
     component:MedicineRequestComponent
+  },
+  {
+    path:'ngo-medicine-request',
+    component:NgoMedicineRequestComponent
   }
 ];
 
