@@ -12,14 +12,14 @@
     </div>
     <div class="form-group">
       <label for="sel1">Medicine:</label>
-      <select class="form-control"     (change)="seletedmedicine($event.target.value)"  [disabled]="disabled">
+      <select class="form-control"     (change)="seletedmedicine($event.target.value)"  [disabled]="disabled" >
           <option disabled>select medicine</option>
           <option *ngFor="let med of medicinelist;let i=index" [value]="i">{{med?.brand_name}}</option>
       </select>
     </div>  
     <div class="form-group">
         <label for="pwd">Quantity:</label>
-        <input type="number" class="form-control"   formControlName="quantity" placeholder="Enter quantity" id="pwd" maxlength="2" required (blur)="checkqwt($event.target.value)"  [readOnly]="disabled">
+        <input type="number" class="form-control"   formControlName="quantity" placeholder="Enter quantity" id="pwd"  required (blur)="checkqwt($event.target.value)"  [readOnly]="disabled">
       </div>
     <button type="submit" class="btn btn-primary login" (click)="request()">Request</button>
 

@@ -9,8 +9,6 @@
 
         <th scope="col">Brand Name</th>
         <th scope="col"> Generic Name</th>
-        <th scope="col">Medicine Type</th>
-        <th scope="col">Expiry Date </th>
         <th scope="col">Quantity</th>
         <th scope="col">Mobile Number</th>
 
@@ -26,16 +24,14 @@
       <ng-container *ngFor="let receipt of list; let i = index" >
       <tr    *ngIf="!receipt?.is_deliver">
         <th scope="row">{{i+1 }}</th>
-        <td>{{receipt?.donator_name}}</td>
+        <td>{{receipt?.recepient_name}}</td>
 
         <td>{{receipt?.brand_name}}</td>
         <td>{{receipt?.generic_name}}</td>
-        <td>{{type[receipt.medicine_type] }}</td>
-        <td>{{receipt?.exp_date | date}}</td>
         <td>{{receipt?.quantity}}</td>
         <td>{{receipt?.mobile_no}}</td>
-        <td>{{receipt?.allow_status}}</td>
-        <td>{{receipt?.donator_address}}</td>
+        <td>Not Delivered</td>
+        <td>{{receipt?.recepient_adress}}</td>
         <th ><button type="button" class="btn btn-primary" (click)="details(receipt)">Details</button></th>
 
       </tr>

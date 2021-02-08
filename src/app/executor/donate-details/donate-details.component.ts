@@ -45,7 +45,7 @@ export class DonateDetailsComponent implements OnInit {
     this.servive.postdata(`assign-executor`, this.donation_details).subscribe(data =>{
        // this.list = data;
        this.route.navigate(['/ngo/medicine-donation']);
-       alert('collected sucessfully');
+       alert('Medicine collected sucessfully');
     },err =>{
       alert(err.error.err);
     })

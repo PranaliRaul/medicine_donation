@@ -38,11 +38,13 @@ export class RequestDetailsComponent implements OnInit {
     this.servive.postdata(`assign-executor-request`, this.donation_details).subscribe(data =>{
       // this.list = data;
       this.route.navigate(['/ngo/medicine-donation']);
-      alert(data.msg);
+      alert('Medicine  delivered successfully');
    },err =>{
      alert(err.error.err);
    })
   }
   }
-
+  setmedicine() {
+    this.assignmedicine = this.medicinelist.find(ele => ele.donation_id == this.selected_medicine)
+  }
 }

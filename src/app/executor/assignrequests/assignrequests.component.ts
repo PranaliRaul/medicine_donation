@@ -11,7 +11,6 @@ export class AssignrequestsComponent implements OnInit {
 
   list =[];
   userId:number;
-  type = ['',"Tablet",'Capsule','Syrup']
 
   constructor(private registerService:RegisterService,private route:Router) { }
 

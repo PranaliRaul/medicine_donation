@@ -24,9 +24,9 @@ export class NgoMedicineRequestComponent implements OnInit {
   ngOnInit() {
 
     this.registrationForm = this.formBuilder.group({
-          brand_name: ["", Validators.required],
-          generic_name: ["",Validators.required],
-          ngo_email: ["", [Validators.required ]],
+          brand_name: ["", ''],
+          /// generic_name: ["",Validators.required],
+           ngo_email: ["",  ''],
           quantity : ["",  Validators.required],
           personId:[this.userId[0].personId,  ''],
           mobile_no:[this.userId[0].mobile_no,''],
@@ -34,8 +34,11 @@ export class NgoMedicineRequestComponent implements OnInit {
           allow_status:[0  ,''],
           assign_executor:['',  ''],
           recepient_adress:[this.userId[0].address,''],
-          name:[this.userId[0].fullName,''],
-          recepient_email:[this.userId[0].email,'']
+          recepient_name:[this.userId[0].fullName,''],
+          recepient_email:[this.userId[0].email,''],
+          ngo_name:['',''],
+          is_deliver:[0,''],
+          excutor_email:['','']
            });
 
            this.getngolist();
@@ -54,8 +57,19 @@ export class NgoMedicineRequestComponent implements OnInit {
 
   request(){
     this.registrationForm.value.ngo_name = this.name;
+    
     if(this.registrationForm.valid){
-    this.registerService.postdata('recepient',this.registrationForm.value).subscribe(data =>{
+      const qwt= this.selecedmedicine.quantity - this.registrationForm.value.quantity 
+      const data = {
+        ...this.registrationForm.value,
+        donation_id:this.selecedmedicine.donation_id,
+        assign:this.selecedmedicine.donator_name,
+        generic_name:this.selecedmedicine.generic_name,
+        brand_name:this.selecedmedicine.brand_name,
+        remaining_quantity:qwt >0 ? qwt:0
+      }
+     console.log(data);
+    this.registerService.postdata('recepient-request',data).subscribe(data =>{
       alert('Your medicine request has been sucessfully recorded');
       this.router.navigate(['/Recepient/my-request'])
     },err =>{
@@ -69,12 +83,18 @@ export class NgoMedicineRequestComponent implements OnInit {
     const ngo = this.list.find(ele =>ele.email === value);
     this.name = ngo.ngo_name;
     this.registrationForm.value.ngo_name = ngo.ngo_name;
+    this.registrationForm.value.ngo_email = ngo.email;
+
     this.getmedicine(ngo.email);
     this.disabled =false; 
   }
   public getmedicine(email):void{
     this.registerService.getData(`ngo-donation?id=${email}`).subscribe(data =>{
-       this.medicinelist = data;
+       this.medicinelist = data.filter(ele => ele.is_collected && ele.quantity > 0);
+       if(this.medicinelist.length === 0) {
+        this.disabled =true;
+        alert('selected ngo doesn\'t have any donated medicine')
+       } 
     },err =>{
       alert(err.error.err);
     })
@@ -82,6 +102,7 @@ export class NgoMedicineRequestComponent implements OnInit {
 
   seletedmedicine(i){
     this.selecedmedicine = this.medicinelist[i];
+    this.registrationForm.value.brand_name = this.medicinelist[i].brand_name
   }
   checkqwt(value){
     const v = +value 
