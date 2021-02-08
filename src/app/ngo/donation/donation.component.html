@@ -28,7 +28,7 @@
         <td>{{receipt?.exp_date | date}}</td>
         <td>{{receipt?.quantity}}</td>
         <td>{{receipt?.assign}}</td>
-        <td>{{receipt?.allow_status}}</td>
+        <td>{{receipt?.is_collected ? "Collected":"Not Collected"}}</td>
         <td>{{receipt?.assign_executor}}</td>
         <th ><button type="button" class="btn btn-primary" (click)="details(receipt)">Details</button></th>
 
