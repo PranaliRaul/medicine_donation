@@ -1,5 +1,6 @@
 import { NgModule } from '@angular/core';
 import { CommonModule } from '@angular/common';
+import { AgGridModule } from "ag-grid-angular";
 
 import { DashBoardRoutingModule } from './dash-board-routing.module';
 import { DashBoardComponent } from './dash-board.component';
@@ -27,7 +28,8 @@ import { RequestMadeComponent } from './request-made/request-made.component';
     DashBoardRoutingModule,
     FormsModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgGridModule.withComponents([]),
   ]
 })
 export class DashBoardModule { 

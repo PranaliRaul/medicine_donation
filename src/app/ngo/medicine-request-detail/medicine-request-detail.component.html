@@ -53,7 +53,8 @@
        Select Medicine:
     </div>
     <div class="col-3">
-      <select class="form-control"    [(ngModel)]="selected_medicine"   (change)="setmedicine()">
+      <select class="form-control"    [(ngModel)]="selected_medicine"   (change)="setmedicine()"  [disabled]="disabled" >
+          <option disabled>select medicine</option>
         <option *ngFor="let medicine of medicinelist" [value]="medicine.donation_id"> {{medicine?.generic_name}}</option>
     </select>
     </div>
