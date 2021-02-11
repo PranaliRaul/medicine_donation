@@ -20,6 +20,8 @@ import { NgoMedRequestComponent } from './ngo-med-request/ngo-med-request.compon
 import { BefPersonComponent } from './bef-person/bef-person.component';
 import { DonationMadeComponent } from './donation-made/donation-made.component';
 import { RequestMadeComponent } from './request-made/request-made.component';
+import { SharemoduleModule } from '../share/sharemodule.module';
+import { BtnComponent } from '../share/components/btn/btn.component';
 
 @NgModule({
   declarations: [DashBoardComponent,NavbarComponent,AddNgoComponent,NgoRequestComponent,NgoDetailComponent,DonatorDetailComponent,RecepientDetailComponent, NgoIndetailsComponent, DonatorIndetailsComponent, RecepientIndetailsComponent, ExecutiveListComponent, NgoDonationComponent, NgoMedRequestComponent, BefPersonComponent, DonationMadeComponent, RequestMadeComponent],
@@ -29,7 +31,9 @@ import { RequestMadeComponent } from './request-made/request-made.component';
     FormsModule,
     FormsModule,
     ReactiveFormsModule,
-    AgGridModule.withComponents([]),
+    AgGridModule.withComponents([BtnComponent]),
+    SharemoduleModule
+
   ]
 })
 export class DashBoardModule { 

@@ -11,5 +11,27 @@ body{
 .active-link{
   color: blue !important;
 }
+.ag-row-hover {
+  /* putting in !important so it overrides the theme's styling as it hovers the row also */
+  background-color: #dfdfff !important;
+}
+
+// .ag-column-hover {
+//   background-color: #dfffdf;
+// }
 @import "~ag-grid-community/dist/styles/ag-grid.css";  
 @import "~ag-grid-community/dist/styles/ag-theme-balham.css";
+
+.ag-row .ag-cell {
+  display: flex;
+ // justify-content: center; /* align horizontal */
+  align-items: center;
+}
+
+
+.ag-cell.ag-cell-not-inline-editing.ag-cell-auto-height.ag-cell-value{
+  font-size: 15px !important;
+}
+ .ag-header-cell-label{
+  font-size: 16px !important;
+ }
