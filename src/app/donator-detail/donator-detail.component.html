@@ -2,7 +2,7 @@
 <app-navbar></app-navbar>
 <div class="container-fluid mt-4" >
 
-<table class="table table-bordered">
+<!--  <table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">Sr No.</th>
@@ -23,10 +23,25 @@
       <td>{{receipt?.address}}</td>
      <td><button type="button" class="btn btn-primary" (click)="details(receipt)">Details</button></td>
     </tr>
-    
+     
   </tbody>
 </table>
 <div class="row" *ngIf="list.length == 0"><h5 class="m-auto">No records found</h5></div>
 </div>
-</div>
-
+</div> -->
+<div class="inner">
+  <ag-grid-angular
+        #agGrid
+       
+        class="ag-theme-balham"
+        [columnDefs]="columnDefs"
+        [rowData]="rowData"
+        [defaultColDef]="defaultColDef"
+        [rowHeight]="rowHeight"
+        [headerHeight]="headerHeight"
+        [frameworkComponents]="frameworkComponents"
+        [rowDragManaged]="true"
+      ></ag-grid-angular>  
+  </div>
+  </div>
+  </div>

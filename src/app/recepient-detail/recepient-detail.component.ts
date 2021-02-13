@@ -15,9 +15,9 @@ private gridApi;
 
   private columnDefs;
   private defaultColGroupDef;
-  private columnTypes;
+  private columnTypes; 
   rowData = [];
-  rowHeight = 50;
+  rowHeight = 50;  
   headerHeight = 50;
   frameworkComponents: any;
   constructor(private service:RegisterService,private route:Router) { 
@@ -40,12 +40,7 @@ private gridApi;
           onClick: this.onBtnClick1.bind(this),
           label: 'details'
         }
-      }
-      
-      // { headerName: 'Price', field: 'Price', sortable: true, filter: true ,  
-      // suppressSizeToFit: true,},  
-      // { headerName: 'BuyAccount', field: 'BuyAccount', sortable: true, filter: true ,  
-      // suppressSizeToFit: true,}  
+      } 
     ]; 
   }
   onBtnClick1(e) {

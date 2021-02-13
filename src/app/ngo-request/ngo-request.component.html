@@ -1,7 +1,7 @@
 <div class="page-wrapager">
   <app-navbar></app-navbar>
   <div class="container-fluid mt-4" >
-<table class="table table-bordered">
+<!-- <table class="table table-bordered">
   <thead>
     <tr>
       <th scope="col">Sr No.</th>
@@ -25,6 +25,20 @@
     </tr>
 
   </tbody>
-</table>
+</table> -->
+<div class="inner">
+  <ag-grid-angular
+        #agGrid
+       
+        class="ag-theme-balham"
+        [columnDefs]="columnDefs"
+        [rowData]="rowData"
+        [defaultColDef]="defaultColDef"
+        [rowHeight]="rowHeight"
+        [headerHeight]="headerHeight"
+        [frameworkComponents]="frameworkComponents"
+        [rowDragManaged]="true"
+      ></ag-grid-angular>  
+</div>
 </div>
 </div>

@@ -12,6 +12,9 @@ import { NgonavigationComponent } from './ngonavigation/ngonavigation.component'
 import { MedicineDonationDetailComponent } from './medicine-donation-detail/medicine-donation-detail.component';
 import { MedicineRequestDetailComponent } from './medicine-request-detail/medicine-request-detail.component';
 import { NgoExecutiveListComponent } from './ngo-executive-list/ngo-executive-list.component';
+import { BtnComponent } from '../share/components/btn/btn.component';
+import { AgGridModule } from 'ag-grid-angular';
+import { SharemoduleModule } from '../share/sharemodule.module';
  
 @NgModule({
   declarations: [AddExecutiveComponent,DonationComponent,RequestComponent,SucessfullDonationComponent,UnsucessfullDonationComponent, NgonavigationComponent, MedicineDonationDetailComponent, MedicineRequestDetailComponent, NgoExecutiveListComponent],
@@ -20,7 +23,10 @@ import { NgoExecutiveListComponent } from './ngo-executive-list/ngo-executive-li
     CommonModule,
     ngoRouting,
    FormsModule,
-   ReactiveFormsModule
+   ReactiveFormsModule,
+   AgGridModule.withComponents([BtnComponent]),
+   SharemoduleModule
+
   ]
 })
 export class NgoModule { }
