@@ -1,8 +1,8 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/register/register.service';
-import { BtnComponent } from '../share/components/btn/btn.component';
 import 'ag-grid-enterprise';
+import { BtnComponent } from 'src/app/share/components/btn/btn.component';
 
 
 @Component({

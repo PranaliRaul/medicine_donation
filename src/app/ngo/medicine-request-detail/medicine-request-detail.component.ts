@@ -54,9 +54,10 @@ export class MedicineRequestDetailComponent implements OnInit {
       this.donation_details.assign = this.assignmedicine.donator_name;
       this.donation_details.donation_id = this.assignmedicine.donation_id;
       this.donation_details.allow_status = 1;
-      const qwt = this.assignmedicine.quantity - this.donation_details.donation_id.quantity;
+      const qwt = this.assignmedicine.quantity - this.donation_details.quantity;
       this.donation_details.is_deliver = 0;
-      qwt >= 0 ? this.donation_details.remaining_quantity = qwt : this.donation_details.remaining_quantity = 0;
+      
+      qwt > 0 ? this.donation_details.remaining_quantity = qwt : this.donation_details.remaining_quantity = 0;
     }
     if (!this.assignmedicine) {
       alert('Please select medicine ')
@@ -67,9 +68,9 @@ export class MedicineRequestDetailComponent implements OnInit {
       return;
     }
 
-    this.servive.postdata(`assign-executor-request`, this.donation_details).subscribe(data => {
-      // this.list = data;
-      this.route.navigate(['/ngo/medicine-donation']);
+     this.servive.postdata(`assign-executor-request`, this.donation_details).subscribe(data => {
+    this.list = data;
+     this.route.navigate(['/ngo/medicine-donation']);
       alert(data.msg);
     }, err => {
       alert(err.error.err);
