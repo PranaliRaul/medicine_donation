@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/register/register.service';
 import 'ag-grid-enterprise';
 import { BtnComponent } from 'src/app/share/components/btn/btn.component';
+import { CollectedstatusComponent } from 'src/app/share/components/collectedstatus/collectedstatus.component';
+import { DateComponent } from 'src/app/share/components/date/date.component';
 
 
 @Component({
@@ -30,27 +32,35 @@ export class DonationComponent implements OnInit {
 
   this.frameworkComponents = { 
     buttonRenderer: BtnComponent,
+    status: CollectedstatusComponent,
+    datepipe: DateComponent
   }
   this.columnDefs = [  
     { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
+    width:150
      },  
     { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 
+    width:150,
     suppressSizeToFit: true},  
     { headerName: 'Medicine Type', field: 'medicine_type', sortable: true, filter: true , 
+    width:150,
     suppressSizeToFit: true}, 
     { headerName: 'Expiry Date', field: 'exp_date', sortable: true, filter: true , 
-    suppressSizeToFit: true,},
+    cellRenderer: 'datepipe', width:150, suppressSizeToFit: true,},
     { headerName: 'Quantity', field: 'quantity', sortable: true, filter: true , 
+    width:150,
     suppressSizeToFit: true,},
     { headerName: 'Benefited Person', field: 'assign', sortable: true, filter: true , 
+    width:150,
     suppressSizeToFit: true,},
-    { headerName: 'Status', field: 'is_collected', sortable: true, filter: true , 
+    { headerName: 'Status', field: 'is_collected', sortable: true, filter: true ,   width:150,  cellRenderer: 'status',
     suppressSizeToFit: true,},
-    { headerName: 'Assigned Executor', field: 'assign_executor', sortable: true, filter: true , 
+    { headerName: 'Assigned Executor', field: 'assign_executor', sortable: true, filter: true ,   width:150,
     suppressSizeToFit: true,},
     {
       headerName: '',
       cellRenderer: 'buttonRenderer',
+      width:100 ,
       cellRendererParams: {
         onClick: this.onBtnClick1.bind(this),
         label: 'details'

@@ -54,8 +54,6 @@ export class NgoDetailComponent implements OnInit {
   }
   rowDataClicked1
   defaultColDef = { 
-  
- 
     //filter: 'agTextColumnFilter',
     // floatingFilter: true,
     resizable: true,
@@ -70,8 +68,8 @@ export class NgoDetailComponent implements OnInit {
   public getngolist():void{
 
     this.service.getData('ngolist?id=2').subscribe(data =>{
-       this.list = data
-       this.rowData = data
+       this.list = data.filter(ele => ele.active_acc)
+       this.rowData =  this.list;
     },err =>{
       alert(err.error.err);
     })

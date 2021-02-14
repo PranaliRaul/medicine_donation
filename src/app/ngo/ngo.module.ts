@@ -15,6 +15,9 @@ import { NgoExecutiveListComponent } from './ngo-executive-list/ngo-executive-li
 import { BtnComponent } from '../share/components/btn/btn.component';
 import { AgGridModule } from 'ag-grid-angular';
 import { SharemoduleModule } from '../share/sharemodule.module';
+import { CollectedstatusComponent } from '../share/components/collectedstatus/collectedstatus.component';
+import { DateComponent } from '../share/components/date/date.component';
+import { DeliveredstatusComponent } from '../share/components/deliveredstatus/deliveredstatus.component';
  
 @NgModule({
   declarations: [AddExecutiveComponent,DonationComponent,RequestComponent,SucessfullDonationComponent,UnsucessfullDonationComponent, NgonavigationComponent, MedicineDonationDetailComponent, MedicineRequestDetailComponent, NgoExecutiveListComponent],
@@ -24,9 +27,8 @@ import { SharemoduleModule } from '../share/sharemodule.module';
     ngoRouting,
    FormsModule,
    ReactiveFormsModule,
-   AgGridModule.withComponents([BtnComponent]),
+   AgGridModule.withComponents([BtnComponent,CollectedstatusComponent,DateComponent,DeliveredstatusComponent]),
    SharemoduleModule
-
   ]
 })
 export class NgoModule { }
