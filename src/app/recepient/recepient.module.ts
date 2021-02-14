@@ -6,6 +6,9 @@ import { recepientRouting } from './recepient.routing';
 import { RecepientNavigationComponent } from './recepient-navigation/recepient-navigation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgoMedicineRequestComponent } from './ngo-medicine-request/ngo-medicine-request.component';
+import { AgGridModule } from 'ag-grid-angular';
+import { BtnComponent } from '../share/components/btn/btn.component';
+import { SharemoduleModule } from '../share/sharemodule.module';
 
 @NgModule({
   declarations: [MedicineRequestComponent, MyRequestsComponent, RecepientNavigationComponent, NgoMedicineRequestComponent],
@@ -13,7 +16,9 @@ import { NgoMedicineRequestComponent } from './ngo-medicine-request/ngo-medicine
     CommonModule,
     recepientRouting,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgGridModule.withComponents([BtnComponent]),
+   SharemoduleModule
   ]
 })
 export class RecepientModule { }

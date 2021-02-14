@@ -10,6 +10,9 @@ import { ExecutorNavigationComponent } from './executor-navigation/executor-navi
 import { DonateDetailsComponent } from './donate-details/donate-details.component';
 import { RequestDetailsComponent } from './request-details/request-details.component';
 import { RequestTransationComponent } from './request-transation/request-transation.component';
+import { AgGridModule } from 'ag-grid-angular';
+import { BtnComponent } from '../share/components/btn/btn.component';
+import { SharemoduleModule } from '../share/sharemodule.module';
 
 @NgModule({
   declarations: [AssigndonationsComponent, AssignrequestsComponent, TransationComponent, ExecutorNavigationComponent,DonateDetailsComponent, RequestDetailsComponent, RequestTransationComponent],
@@ -17,7 +20,10 @@ import { RequestTransationComponent } from './request-transation/request-transat
     CommonModule,
     ExecutorRoutingModule,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+    AgGridModule.withComponents([BtnComponent]),
+   SharemoduleModule 
+
   ]
 })
 export class ExecutorModule { }

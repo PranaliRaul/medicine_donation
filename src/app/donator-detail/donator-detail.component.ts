@@ -21,6 +21,7 @@ export class DonatorDetailComponent implements OnInit {
   rowHeight = 50;  
   headerHeight = 50;
   frameworkComponents: any;
+  
   constructor(private service:RegisterService, private route: Router) { 
     this.frameworkComponents = {
       buttonRenderer: BtnComponent,
@@ -71,6 +72,7 @@ export class DonatorDetailComponent implements OnInit {
     const url = `ngolist?id=3`;
     this.service.getData(url).subscribe(data =>{
      this.list = data;
+     this.rowData = data;
     })
   }
   details(data){

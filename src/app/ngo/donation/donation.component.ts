@@ -28,19 +28,25 @@ export class DonationComponent implements OnInit {
 
   constructor(private registerService:RegisterService,private route:Router) { 
 
-  this.frameworkComponents = {
+  this.frameworkComponents = { 
     buttonRenderer: BtnComponent,
   }
   this.columnDefs = [  
-    { headerName: 'Ngo Name', field: 'ngo_name', sortable: true ,
+    { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
      },  
-    { headerName: 'Email Id', field: 'email', sortable: true, filter: true , 
+    { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 
     suppressSizeToFit: true},  
-    { headerName: 'Contact no', field: 'mobile_no', sortable: true, filter: true , 
+    { headerName: 'Medicine Type', field: 'medicine_type', sortable: true, filter: true , 
     suppressSizeToFit: true}, 
-    { headerName: 'Address', field: 'address', sortable: true, filter: true , 
+    { headerName: 'Expiry Date', field: 'exp_date', sortable: true, filter: true , 
     suppressSizeToFit: true,},
-    { headerName: 'Year of Establishment', field: 'year_establishment', sortable: true, filter: true , 
+    { headerName: 'Quantity', field: 'quantity', sortable: true, filter: true , 
+    suppressSizeToFit: true,},
+    { headerName: 'Benefited Person', field: 'assign', sortable: true, filter: true , 
+    suppressSizeToFit: true,},
+    { headerName: 'Status', field: 'is_collected', sortable: true, filter: true , 
+    suppressSizeToFit: true,},
+    { headerName: 'Assigned Executor', field: 'assign_executor', sortable: true, filter: true , 
     suppressSizeToFit: true,},
     {
       headerName: '',
@@ -57,14 +63,14 @@ onBtnClick1(e) {
   this.rowDataClicked1 = e.rowData;
   this.registerService.donator_details =  this.rowDataClicked1;
   console.log(this.registerService.donator_details)
-  this.route.navigate(['/home/ngo/ngo-detail'])
+  this.route.navigate(['/ngo/medicine-donation-details'])
 }
 rowDataClicked1
 defaultColDef = { 
 
 
   //filter: 'agTextColumnFilter',
-  // floatingFilter: true,
+  // floatingFilter: true, 
   resizable: true,
   sortable: true,
   filter: true,
@@ -76,6 +82,7 @@ defaultColDef = {
     this.userId = JSON.parse(localStorage.getItem('userdata'))[0].email;
     this.registerService.getData(`ngo-donation?id=${this.userId}`).subscribe(data =>{
        this.list = data;
+       this.rowData = data
     },err =>{ 
       alert(err.error.err);
     })

@@ -5,6 +5,9 @@ import { MyDonationsComponent } from './my-donations/my-donations.component';
 import { donatorRouting } from './donator.routing';
 import { DonatorNavigationComponent } from './donator-navigation/donator-navigation.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
+import { AgGridModule } from 'ag-grid-angular';
+import { BtnComponent } from '../share/components/btn/btn.component';
+import { SharemoduleModule } from '../share/sharemodule.module';
 
 @NgModule({
   declarations: [DonateComponent, MyDonationsComponent, DonatorNavigationComponent],
@@ -12,7 +15,9 @@ import { FormsModule, ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     donatorRouting,
     FormsModule,
-    ReactiveFormsModule
+    ReactiveFormsModule,
+   AgGridModule.withComponents([BtnComponent]),
+   SharemoduleModule
   ]
 })
 export class DonatorModule { }

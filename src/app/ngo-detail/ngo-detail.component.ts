@@ -49,8 +49,7 @@ export class NgoDetailComponent implements OnInit {
   }
   onBtnClick1(e) {
     this.rowDataClicked1 = e.rowData;
-    this.service.donator_details =  this.rowDataClicked1;
-    console.log(this.service.donator_details)
+    this.service.ngo_details =   this.rowDataClicked1;
     this.route.navigate(['/home/ngo/ngo-detail'])
   }
   rowDataClicked1
@@ -72,6 +71,7 @@ export class NgoDetailComponent implements OnInit {
 
     this.service.getData('ngolist?id=2').subscribe(data =>{
        this.list = data
+       this.rowData = data
     },err =>{
       alert(err.error.err);
     })
