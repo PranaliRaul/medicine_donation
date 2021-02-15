@@ -29,7 +29,7 @@ export class NgoDonationComponent implements OnInit {
        this.list = data;
     },err =>{
       alert(err.error.err);
-    })
+    }) 
 
 
 }

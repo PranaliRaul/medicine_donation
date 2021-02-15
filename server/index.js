@@ -14,7 +14,7 @@ app.use(cors())
 
 app.post('/register',  async function (req, res) {
    // Prepare output in JSON format
-   response = req.body;
+   response = req.body; 
   const  data = {
     personId: Math.floor(Math.random() * 10000),
     fullName: response.fullName,
@@ -22,7 +22,7 @@ app.post('/register',  async function (req, res) {
     email: response.email,
     roleId: +response.role,
     ngo_name: response.ngo_name,
-    mobile_no:  +response.mobile_no,
+    mobile_no:  +response.mobile_no,  
     address: response.address,
     year_establishment: +response.year_establishment,
     ngo_executor:response.ngo_executor,

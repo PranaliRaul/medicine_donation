@@ -1,6 +1,6 @@
 <app-navbar  ></app-navbar>
 <div class="container">
-  <div class="row d-flex justify-content-center mt-3"  >
+  <!-- <div class="row d-flex justify-content-center mt-3"  >
     <h5>Donations to NGO " {{registerService?.ngo_details?.ngo_name}}"</h5>
 <table class="table table-bordered">
   <thead>
@@ -35,5 +35,18 @@
 
   </tbody>
 </table>
-</div>
+</div> -->
+<div class="inner">
+  <ag-grid-angular
+        #agGrid
+       
+        class="ag-theme-balham"
+        [columnDefs]="columnDefs"
+        [rowData]="rowData"
+        [defaultColDef]="defaultColDef"
+        [rowHeight]="rowHeight"
+        [headerHeight]="headerHeight"
+        [frameworkComponents]="frameworkComponents"
+      ></ag-grid-angular>  
+  </div>
 </div>
