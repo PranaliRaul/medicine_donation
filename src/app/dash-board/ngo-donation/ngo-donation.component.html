@@ -1,11 +1,14 @@
 <app-navbar  ></app-navbar>
 <div class="container">
-  <!-- <div class="row d-flex justify-content-center mt-3"  >
+  <div class="row d-flex justify-content-center mt-3"  >
     <h5>Donations to NGO " {{registerService?.ngo_details?.ngo_name}}"</h5>
-<table class="table table-bordered">
+  </div>
+ <!-- <table class="table table-bordered"> 
   <thead>
     <tr>
       <th scope="col">Sr No.</th>
+      <th scope="col">Donor Name</th>
+     
       <th scope="col">Brand Name</th>
       <th scope="col">Generic Name</th>
       <th scope="col">Medicine Type</th>
@@ -30,6 +33,8 @@
       <td>{{receipt?.assign}}</td>
       <td>{{receipt?.is_collected ? "Collected":"Not Collected"}}</td>
       <td>{{receipt?.assign_executor}}</td>
+        <td>{{receipt?.assign}}</td>
+
 
     </tr>
 

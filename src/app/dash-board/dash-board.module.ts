@@ -21,7 +21,8 @@ import { BefPersonComponent } from './bef-person/bef-person.component';
 import { DonationMadeComponent } from './donation-made/donation-made.component';
 import { RequestMadeComponent } from './request-made/request-made.component';
 import { SharemoduleModule } from '../share/sharemodule.module';
-import { BtnComponent } from '../share/components/btn/btn.component';
+// import { BtnComponent } from '../share/components/btn/btn.component';
+// import { DateComponent } from '../share/components/date/date.component';
 
 @NgModule({
   declarations: [DashBoardComponent,NavbarComponent,AddNgoComponent,NgoRequestComponent,NgoDetailComponent,DonatorDetailComponent,RecepientDetailComponent, NgoIndetailsComponent, DonatorIndetailsComponent, RecepientIndetailsComponent, ExecutiveListComponent, NgoDonationComponent, NgoMedRequestComponent, BefPersonComponent, DonationMadeComponent, RequestMadeComponent],
@@ -31,7 +32,7 @@ import { BtnComponent } from '../share/components/btn/btn.component';
     FormsModule,
     FormsModule,
     ReactiveFormsModule,
-    AgGridModule.withComponents([BtnComponent]),
+   //  AgGridModule.withComponents([BtnComponent,DateComponent,]),
     SharemoduleModule
 
   ]

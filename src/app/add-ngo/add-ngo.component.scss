@@ -10,3 +10,16 @@
 .login{
     padding: 5px 50px
 }
+
+
+@media only screen and (min-width: 1920px) {
+    .box-container{
+        background-color: lightblue;
+        padding: 20px;
+        position: absolute;
+        top:50%;
+        left: 50%;
+        transform: translate(-50%,-50%);
+    }
+    
+}

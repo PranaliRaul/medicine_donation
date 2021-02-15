@@ -44,7 +44,7 @@ export class MedicineRequestDetailComponent implements OnInit {
       alert(err.error.err);
     })
 
-  }
+  } 
   assignexecutor() {
     if (this.assignexecutive) {
       this.donation_details.excutor_email = this.assignexecutive.email;
