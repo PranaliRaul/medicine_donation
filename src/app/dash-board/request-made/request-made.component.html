@@ -1,8 +1,8 @@
 <app-navbar  ></app-navbar>
 <div class="container">
   <div class="row d-flex justify-content-center mt-3"  >
-   <h5>  Request made by : {{registerService?.donator_details?.fullName}}</h5>
-<table class="table table-bordered">
+   <h5>  Request made by : {{registerService?.donator_details?.fullName}}</h5></div>
+<!-- <table class="table table-bordered">
     <thead>
       <tr>
         <th scope="col">Sr No.</th>
@@ -27,5 +27,20 @@
 
     </tbody>
   </table>
+  </div> -->
+  <div class="inner">
+    <ag-grid-angular
+          #agGrid
+         
+          class="ag-theme-balham"
+          [columnDefs]="columnDefs"
+          [rowData]="rowData"
+          [defaultColDef]="defaultColDef"
+          [rowHeight]="rowHeight"
+          [headerHeight]="headerHeight"
+          [frameworkComponents]="frameworkComponents"
+          [rowDragManaged]="true"
+        ></ag-grid-angular>  
+  
   </div>
   </div>

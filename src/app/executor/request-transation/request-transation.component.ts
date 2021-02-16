@@ -1,6 +1,8 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/register/register.service';
+import 'ag-grid-enterprise';
+import { CollectedstatusComponent } from 'src/app/share/components/collectedstatus/collectedstatus.component';
 
 @Component({
   selector: 'app-request-transation',
@@ -12,8 +14,38 @@ export class RequestTransationComponent implements OnInit {
   list =[];
   userId:number;
   type = ['',"Tablet",'Capsule','Syrup']
+  private gridApi;
+  private gridColumnApi;
 
-  constructor(private registerService:RegisterService,private route:Router) { }
+  private columnDefs;
+  private defaultColGroupDef;
+  private columnTypes; 
+  rowData = [];
+  rowHeight = 50;  
+  headerHeight = 50;
+  frameworkComponents: any;
+
+  constructor(private registerService:RegisterService,private route:Router) { 
+    this.frameworkComponents = {
+      status:CollectedstatusComponent
+    }
+    this.columnDefs = [  
+      { headerName: 'Name', field: 'recepient_name', sortable: true ,
+       }, 
+      { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
+       },  
+      { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 
+      suppressSizeToFit: true},   
+      { headerName: 'Quantity', field: 'quantity', sortable: true, filter: true , 
+      suppressSizeToFit: true,},
+      { headerName: 'Mobile Number', field: 'mobile_no', sortable: true, filter: true , 
+      suppressSizeToFit: true,},
+      { headerName: 'Status', field: 'is_collected', sortable: true, filter: true , 
+      suppressSizeToFit: true,cellRenderer:'status'},
+      { headerName: 'Address', field: 'recepient_adress', sortable: true, filter: true , 
+      suppressSizeToFit: true,},
+    ];
+  }
 
 
   ngOnInit() {

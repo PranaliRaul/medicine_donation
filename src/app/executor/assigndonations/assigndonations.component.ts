@@ -2,7 +2,10 @@ import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/register/register.service';
 import 'ag-grid-enterprise';
+import { DateComponent } from 'src/app/share/components/date/date.component';
 import { BtnComponent } from 'src/app/share/components/btn/btn.component';
+import { MedicinetypeComponent } from 'src/app/share/medicinetype/medicinetype.component';
+import { CollectedstatusComponent } from 'src/app/share/components/collectedstatus/collectedstatus.component';
 
 @Component({
   selector: 'app-assigndonations',
@@ -28,6 +31,9 @@ export class AssigndonationsComponent implements OnInit {
   constructor(private registerService:RegisterService,private route:Router) { 
     this.frameworkComponents = {
       buttonRenderer: BtnComponent,
+      date:DateComponent,
+      status:CollectedstatusComponent,
+      medtype:MedicinetypeComponent
     }
     this.columnDefs = [  
       { headerName: 'Name', field: 'donator_name', sortable: true ,
@@ -37,15 +43,15 @@ export class AssigndonationsComponent implements OnInit {
       { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 
       suppressSizeToFit: true},   
       { headerName: 'Medicine Type', field: 'medicine_type', sortable: true, filter: true , 
-      suppressSizeToFit: true,},
+      suppressSizeToFit: true,cellRenderer:'medtype'},
       { headerName: 'Expiry Date', field: 'exp_date', sortable: true, filter: true , 
-      suppressSizeToFit: true,},
+      suppressSizeToFit: true,cellRenderer:'date'},
       { headerName: 'Quantity', field: 'quantity', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       { headerName: 'Mobile Number', field: 'mobile_no', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       { headerName: 'Status', field: 'is_collected', sortable: true, filter: true , 
-      suppressSizeToFit: true,},
+      suppressSizeToFit: true, cellRenderer:'status'},
       { headerName: 'Address', field: 'donator_address', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       {

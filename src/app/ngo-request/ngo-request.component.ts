@@ -47,8 +47,8 @@ export class NgoRequestComponent implements OnInit {
   }
   onBtnClick1(e) {
     this.rowDataClicked1 = e.rowData;
-    this.service.donator_details =  this.rowDataClicked1;
-    console.log(this.service.donator_details)
+    this.service.ngo_details =  this.rowDataClicked1;
+    console.log(this.service.ngo_details)
     this.route.navigate(['/home/ngo-request/ngo-detail'])
   }
   rowDataClicked1

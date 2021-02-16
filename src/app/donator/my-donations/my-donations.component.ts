@@ -1,9 +1,11 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/register/register.service';
-
+import { DateComponent } from 'src/app/share/components/date/date.component';
 import 'ag-grid-enterprise';
 import { BtnComponent } from 'src/app/share/components/btn/btn.component';
+import { CollectedstatusComponent } from 'src/app/share/components/collectedstatus/collectedstatus.component';
+import { MedicinetypeComponent } from 'src/app/share/medicinetype/medicinetype.component';
 
 @Component({
   selector: 'app-my-donations',
@@ -29,6 +31,9 @@ export class MyDonationsComponent implements OnInit {
   constructor(private registerService:RegisterService,private route:Router) {
     this.frameworkComponents = {
       buttonRenderer: BtnComponent,
+      status:CollectedstatusComponent,
+      date:DateComponent,
+      medtype:MedicinetypeComponent
     }
     this.columnDefs = [  
       { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
@@ -37,23 +42,23 @@ export class MyDonationsComponent implements OnInit {
       suppressSizeToFit: true},  
       { headerName: 'Ngo Name', field: 'ngo_name', sortable: true, filter: true , 
       suppressSizeToFit: true}, 
-      { headerName: 'Medicine Type', field: 'medicine_type', sortable: true, filter: true , 
+      { headerName: 'Medicine Type', field: 'medicine_type', sortable: true, filter: true,cellRenderer:'medtype' ,
       suppressSizeToFit: true,},
       { headerName: 'Expiry Date', field: 'exp_date', sortable: true, filter: true , 
-      suppressSizeToFit: true,},
+      suppressSizeToFit: true,cellRenderer:'date'},
       { headerName: 'Quantity', field: 'quantity', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       { headerName: 'Benefited Person', field: 'assign', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       { headerName: 'Status', field: 'is_collected', sortable: true, filter: true , 
-      suppressSizeToFit: true,},
+      suppressSizeToFit: true,cellRenderer:'status'},
       { headerName: 'Assigned Executor', field: 'assign_executor', sortable: true, filter: true , 
       suppressSizeToFit: true,}
      
       ]; 
    }
   
-
+ 
   ngOnInit() {
     this.getngolist();
   }

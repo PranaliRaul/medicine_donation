@@ -5,6 +5,7 @@ import 'ag-grid-enterprise';
 import { BtnComponent } from 'src/app/share/components/btn/btn.component';
 import { DateComponent } from 'src/app/share/components/date/date.component';
 import { MedicinetypeComponent } from 'src/app/share/medicinetype/medicinetype.component';
+import { CollectedstatusComponent } from 'src/app/share/components/collectedstatus/collectedstatus.component';
 
 
 @Component({
@@ -13,7 +14,6 @@ import { MedicinetypeComponent } from 'src/app/share/medicinetype/medicinetype.c
   styleUrls: ['./ngo-donation.component.scss']
 })
 export class NgoDonationComponent implements OnInit {
-
   list =[];
   userId:number;
   type = ['',"Tablet",'Capsule','Syrup']
@@ -33,7 +33,8 @@ export class NgoDonationComponent implements OnInit {
   constructor(public registerService:RegisterService,private route:Router) { 
     this.frameworkComponents = {
       DateComponent: DateComponent,
-      medicinetype:MedicinetypeComponent
+      medicinetype:MedicinetypeComponent,
+      status:CollectedstatusComponent
     }
     this.columnDefs = [  
       { headerName: 'Donor Name', field: 'donator_name', sortable: true ,
@@ -52,7 +53,7 @@ export class NgoDonationComponent implements OnInit {
       { headerName: 'Benefited Person', field: 'assign', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       { headerName: 'Status', field: 'is_collected', sortable: true, filter: true , 
-      suppressSizeToFit: true,},
+      suppressSizeToFit: true,cellRenderer:'status'},
       { headerName: 'Assigned Executor', field: 'assign_executor', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       ];

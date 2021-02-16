@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/register/register.service';
 import 'ag-grid-enterprise';
 import { BtnComponent } from 'src/app/share/components/btn/btn.component';    
+import { DeliveredstatusComponent } from 'src/app/share/components/deliveredstatus/deliveredstatus.component';
 
 @Component({
   selector: 'app-request',
@@ -27,6 +28,7 @@ export class RequestComponent implements OnInit {
   constructor(private registerService:RegisterService, private route:Router) { 
     this.frameworkComponents = { 
       buttonRenderer: BtnComponent,
+      status:DeliveredstatusComponent
     }
     this.columnDefs = [  
       { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
@@ -35,8 +37,8 @@ export class RequestComponent implements OnInit {
       suppressSizeToFit: true,},
       { headerName: 'Donor name', field: 'assign', sortable: true, filter: true , 
       suppressSizeToFit: true,},
-      { headerName: 'Status', field: 'is_deliver'?"Delivered":"Not Delivered", sortable: true, filter: true , 
-      suppressSizeToFit: true,},
+      { headerName: 'Status', field: 'is_deliver', sortable: true, filter: true , 
+      suppressSizeToFit: true,cellRenderer:'status'},
       { headerName: 'Assigned Executor', field: 'assign_executor', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       {

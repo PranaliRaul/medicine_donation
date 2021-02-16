@@ -2,6 +2,7 @@ import { Component, Input, OnInit } from '@angular/core';
 import { RegisterService } from 'src/app/register/register.service';
 import 'ag-grid-enterprise';
 import { BtnComponent } from 'src/app/share/components/btn/btn.component';
+import { DeliveredstatusComponent } from 'src/app/share/components/deliveredstatus/deliveredstatus.component';
 
 @Component({
   selector: 'app-my-requests',
@@ -25,6 +26,8 @@ export class MyRequestsComponent implements OnInit {
   constructor(private registerService:RegisterService) { 
     this.frameworkComponents = {
       buttonRenderer: BtnComponent,
+      status:DeliveredstatusComponent
+
     }
     this.columnDefs = [  
       { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
@@ -38,7 +41,7 @@ export class MyRequestsComponent implements OnInit {
       { headerName: 'Benefited Person', field: 'assign', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       { headerName: 'Status', field: 'is_deliver', sortable: true, filter: true , 
-      suppressSizeToFit: true,},
+      suppressSizeToFit: true,cellRenderer:'status'},
       { headerName: 'Assigned Executor', field: 'assign_executor', sortable: true, filter: true , 
       suppressSizeToFit: true,}
      

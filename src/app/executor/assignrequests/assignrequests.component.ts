@@ -3,6 +3,7 @@ import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/register/register.service';
 import 'ag-grid-enterprise';
 import { BtnComponent } from 'src/app/share/components/btn/btn.component';
+import { CollectedstatusComponent } from 'src/app/share/components/collectedstatus/collectedstatus.component';
 
 
 @Component({
@@ -28,6 +29,7 @@ export class AssignrequestsComponent implements OnInit {
   constructor(private registerService:RegisterService,private route:Router) {
     this.frameworkComponents = {
       buttonRenderer: BtnComponent,
+      status:CollectedstatusComponent
     }
     this.columnDefs = [  
       { headerName: 'Name', field: 'recepient_name', sortable: true ,
@@ -41,7 +43,7 @@ export class AssignrequestsComponent implements OnInit {
       { headerName: 'Mobile Number', field: 'mobile_no', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       { headerName: 'Status', field: 'is_collected', sortable: true, filter: true , 
-      suppressSizeToFit: true,},
+      suppressSizeToFit: true,cellRenderer:'status'},
       { headerName: 'Address', field: 'recepient_adress', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       {
@@ -58,9 +60,9 @@ export class AssignrequestsComponent implements OnInit {
    }
    onBtnClick1(e) {
     this.rowDataClicked1 = e.rowData;
-    this.registerService.donator_details =  this.rowDataClicked1;
-    console.log(this.registerService.donator_details)
-    this.route.navigate(['/executor/donation-details'])
+    this.registerService.request_details =  this.rowDataClicked1;
+    console.log(this.registerService.request_details)
+    this.route.navigate(['/executor/request-details'])
   }
   rowDataClicked1
   defaultColDef = { 

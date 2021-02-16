@@ -5,6 +5,7 @@ import 'ag-grid-enterprise';
 import { BtnComponent } from 'src/app/share/components/btn/btn.component';
 import { CollectedstatusComponent } from 'src/app/share/components/collectedstatus/collectedstatus.component';
 import { DateComponent } from 'src/app/share/components/date/date.component';
+import { MedicinetypeComponent } from 'src/app/share/medicinetype/medicinetype.component';
 
 
 @Component({
@@ -33,7 +34,8 @@ export class DonationComponent implements OnInit {
   this.frameworkComponents = { 
     buttonRenderer: BtnComponent,
     status: CollectedstatusComponent,
-    datepipe: DateComponent
+    datepipe: DateComponent,
+    medtype:MedicinetypeComponent
   }
   this.columnDefs = [  
     { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
@@ -43,8 +45,7 @@ export class DonationComponent implements OnInit {
     width:150,
     suppressSizeToFit: true},  
     { headerName: 'Medicine Type', field: 'medicine_type', sortable: true, filter: true , 
-    width:150,
-    suppressSizeToFit: true}, 
+    width:150, suppressSizeToFit: true,cellRenderer:'medtype'}, 
     { headerName: 'Expiry Date', field: 'exp_date', sortable: true, filter: true , 
     cellRenderer: 'datepipe', width:150, suppressSizeToFit: true,},
     { headerName: 'Quantity', field: 'quantity', sortable: true, filter: true , 

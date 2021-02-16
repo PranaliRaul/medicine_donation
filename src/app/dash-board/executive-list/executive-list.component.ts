@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/register/register.service';
 import 'ag-grid-enterprise';
 import { BtnComponent } from 'src/app/share/components/btn/btn.component';
+import { CollectedstatusComponent } from 'src/app/share/components/collectedstatus/collectedstatus.component';
+import { DateComponent } from 'ag-grid-community/dist/lib/components/framework/componentTypes';
 
 
 @Component({
@@ -26,6 +28,8 @@ export class ExecutiveListComponent implements OnInit {
   constructor(public servive:RegisterService, private route:Router) {
     this.frameworkComponents = { 
       buttonRenderer: BtnComponent,
+      status: CollectedstatusComponent
+     
     }
     this.columnDefs = [  
       { headerName: 'Name', field: 'fullName', sortable: true ,
@@ -37,7 +41,7 @@ export class ExecutiveListComponent implements OnInit {
       { headerName: 'Address', field: 'address', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       { headerName: 'Status', field: 'active_acc', sortable: true, filter: true , 
-      suppressSizeToFit: true,},
+      suppressSizeToFit: true, cellRenderer: 'status'},
       
       // {
       //   headerName: '',
