@@ -424,20 +424,25 @@ app.get('/assign-request',    (req, res) =>{
 
 app.post('/recepient-request',    (req, res) =>{
    const response = req.body;
-const sql1 = "INSERT INTO request (personId,brand_name, generic_name,ngo_name,mobile_no,quantity,assign,allow_status,assign_executor,recepient_adress,recepient_name,ngo_email,recepient_email,donation_id,excutor_email,is_deliver) VALUES ( '"+response.personId+"' ,'"+response.brand_name+"','"+response.generic_name+"','"+response.ngo_name+"','"+response.mobile_no+"','"+response.quantity+"','"+response.assign+"','"+response.allow_status+"','"+response.assign_executor+"','"+response.recepient_adress+"','"+response.name +"' ,'"+response.ngo_email+"','"+response.recepient_email+"' ,'"+response.donation_id+"','"+response.excutor_email+"','"+response.is_deliver+"')";
-
-  const sql2 = 'UPDATE donator SET quantity = "'+req.body.remaining_quantity+'" , assign="'+req.body.recepient_name+'" , request_id="'+req.body.request_id+'" WHERE donation_id="'+req.body.donation_id+'" ';
-
+const sql1 = "INSERT INTO request (personId,brand_name, generic_name,ngo_name,mobile_no,quantity,assign,allow_status,assign_executor,recepient_adress,recepient_name,ngo_email,recepient_email,donation_id,excutor_email,is_deliver) VALUES ( '"+response.personId+"' ,'"+response.brand_name+"','"+response.generic_name+"','"+response.ngo_name+"','"+response.mobile_no+"','"+response.quantity+"','"+response.assign+"','"+response.allow_status+"','"+response.assign_executor+"','"+response.recepient_adress+"','"+response.recepient_name +"' ,'"+response.ngo_email+"','"+response.recepient_email+"' ,'"+response.donation_id+"','"+response.excutor_email+"','"+response.is_deliver+"')";
+ 
+  const sql3 =  `SELECT  * FROM request ORDER BY request_id DESC LIMIT 1`
   connection.query( sql1 ,  function (err, result) {
       try{
       if (err) {
           res.status(500).send({err:'fail to load ngo list'});
       };
-      
-      connection.query( sql2 ,  function (err, result) {
+      connection.query( sql3 ,  function (err, sql3result) {
         if (err) {
 
-      };
+        }
+  const sql2 = 'UPDATE donator SET quantity = "'+response.remaining_quantity+'" , assign="'+response.recepient_name+'" , request_id="'+sql3result[0].request_id+'" WHERE donation_id="'+req.body.donation_id+'" ';
+
+      connection.query( sql2 ,  function (err, result) {
+        if (err) {
+        }
+    })
+  
       res.send({msg:'executor assigned sucessfully'});
       })
       // if(req.body.is_deliver ){

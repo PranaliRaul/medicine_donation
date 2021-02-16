@@ -1,7 +1,8 @@
 <app-ngonavigation></app-ngonavigation>
-<div class="container">
+<div class="container-fluid container1">
+    <div class="w-50 box-container">
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
        Recepient Name:
     </div>
     <div class="col">
@@ -9,7 +10,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
       Brand Name:
     </div>
     <div class="col">
@@ -17,7 +18,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
       Generic Name:
     </div>
     <div class="col">
@@ -25,7 +26,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
       Quantity:
     </div>
     <div class="col-3">
@@ -33,7 +34,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
       Email:
     </div>
     <div class="col">
@@ -41,7 +42,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
       Mobile Number:
     </div>
     <div class="col">
@@ -49,7 +50,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
        Select Medicine:
     </div>
     <div class="col-3">
@@ -60,7 +61,7 @@
     </div>
   </div>
   <div class="row">
-    <div class="col-2">
+    <div class="col-3">
        Assign Executor:
     </div>
     <div class="col-3">
@@ -77,5 +78,58 @@
     </div>
 
   </div>
-
+    </div>
+    <div class="w-25 box-container"  >
+    
+        <div class="row mb-3">
+          <div class="col-6">
+            Brand Name:
+          </div>
+          <div class="col">
+            {{selected_medicineshow?.brand_name}}
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-6">
+            Generic Name:
+          </div>
+          <div class="col">
+            {{selected_medicineshow?.generic_name}}
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-6">
+           Medicine Type:
+          </div>
+          <div class="col">
+            {{type[selected_medicineshow?.medicine_type]}}
+          </div>
+        </div>
+        <div class="row mb-3" >
+          <div class="col-6">
+            Quantity:
+          </div>
+          <div class="col">
+            {{selected_medicineshow?.quantity}}
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-6 ">
+            Expiry Date:
+          </div>
+          <div class="col">
+            {{selected_medicineshow?.exp_date | date}}
+          </div>
+        </div>
+        <div class="row mb-3">
+          <div class="col-6 ">
+            Donator Name:
+          </div>
+          <div class="col">
+            {{selected_medicineshow?.donator_name}}
+          </div>
+        </div>
+     
+       
+      </div>
 </div>

@@ -6,3 +6,23 @@
 .row{
 margin-bottom: 15px;
 }
+.box-container{
+  background-color: lightblue;
+  padding: 20px;  
+}
+
+.login{
+  padding: 5px 50px
+}
+
+.container1{
+display: flex;
+justify-content: space-evenly;
+align-items: center;
+justify-content: space-around;
+width: 100%;
+position: absolute;
+transform: translate(-50%, -35%);
+left: 50%;
+top: 40%;
+}

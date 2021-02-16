@@ -19,11 +19,12 @@ export class BtnComponent implements ICellRendererAngularComp {
     return true;
   }
   onClick($event) {
+    console.log( this.params)
     if (this.params.onClick instanceof Function) {
       // put anything into params u want pass into parents component
       const params = {
         event: $event,
-        rowData: this.params.node.data
+        rowData: this.params.data
         // ...something
       }
       this.params.onClick(params);

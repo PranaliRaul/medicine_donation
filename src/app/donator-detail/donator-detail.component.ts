@@ -48,6 +48,7 @@ export class DonatorDetailComponent implements OnInit {
         
   }
   onBtnClick1(e) {
+    console.log(e)
     this.rowDataClicked1 = e.rowData;
     this.service.donator_details =  this.rowDataClicked1;
     console.log(this.service.donator_details)

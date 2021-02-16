@@ -17,6 +17,7 @@ export class MedicineRequestDetailComponent implements OnInit {
   medicinelist = [];
   selected_medicine: any;
   assignmedicine: any;
+  selected_medicineshow:any;
   disabled =true
   constructor(private servive: RegisterService, private route: Router) { }
   type = ['', "Tablet", 'Capsule', 'Syrup']
@@ -28,7 +29,8 @@ export class MedicineRequestDetailComponent implements OnInit {
     }
     console.log(this.donation_details)
     this.email = this.donation_details.excutor_email;
-    this.selected_medicine = this.donation_details.donation_id
+    this.selected_medicine = this.donation_details.donation_id;
+   
     if (this.donation_details.donation_id) {
       this.setmedicine();
     }
@@ -59,7 +61,7 @@ export class MedicineRequestDetailComponent implements OnInit {
       
       qwt > 0 ? this.donation_details.remaining_quantity = qwt : this.donation_details.remaining_quantity = 0;
     }
-    if (!this.assignmedicine) {
+    if (!this.assignmedicine && !this.donation_details.donation_id) {
       alert('Please select medicine ')
       return;
     }
@@ -84,7 +86,11 @@ export class MedicineRequestDetailComponent implements OnInit {
     this.disabled = false;
     this.userId = JSON.parse(localStorage.getItem('userdata'))[0].email;
     this.servive.getData(`ngo-donation?id=${this.userId}`).subscribe(data => {
+      if(this.donation_details.donation_id){
+        this.selected_medicineshow = data.find(ele => ele.donation_id == this.selected_medicine)
+      }
       this.medicinelist = data.filter(ele => ele.is_collected && ele.quantity > 0);
+      
       if(this.medicinelist.length === 0) {
         this.disabled =true;
         alert('Currently there is no donated medicine available')
@@ -94,6 +100,7 @@ export class MedicineRequestDetailComponent implements OnInit {
     })
   }
   setmedicine() {
-    this.assignmedicine = this.medicinelist.find(ele => ele.donation_id == this.selected_medicine)
+    this.assignmedicine = this.medicinelist.find(ele => ele.donation_id == this.selected_medicine);
+    this.selected_medicineshow =  this.assignmedicine
   }
 }

@@ -57,7 +57,11 @@ export class NgoMedicineRequestComponent implements OnInit {
 
   request(){
     this.registrationForm.value.ngo_name = this.name;
-    
+    const medicinequantity =  this.registrationForm.value.quantity 
+    if( medicinequantity&& medicinequantity >  this.selecedmedicine.quantity){
+      alert('quantity should not be greater than selected medicine  available quantity');
+      return ;
+    }
     if(this.registrationForm.valid){
       const qwt= this.selecedmedicine.quantity - this.registrationForm.value.quantity 
       const data = {
