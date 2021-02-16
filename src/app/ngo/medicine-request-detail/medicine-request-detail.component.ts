@@ -29,6 +29,7 @@ export class MedicineRequestDetailComponent implements OnInit {
     }
     console.log(this.donation_details)
     this.email = this.donation_details.excutor_email;
+
     this.selected_medicine = this.donation_details.donation_id;
    
     if (this.donation_details.donation_id) {
@@ -65,7 +66,7 @@ export class MedicineRequestDetailComponent implements OnInit {
       alert('Please select medicine ')
       return;
     }
-    if (!this.assignexecutive) {
+    if (!this.assignexecutive && !this.donation_details.excutor_email) {
       alert('Please assign executor')
       return;
     }
@@ -86,10 +87,14 @@ export class MedicineRequestDetailComponent implements OnInit {
     this.disabled = false;
     this.userId = JSON.parse(localStorage.getItem('userdata'))[0].email;
     this.servive.getData(`ngo-donation?id=${this.userId}`).subscribe(data => {
-      if(this.donation_details.donation_id){
-        this.selected_medicineshow = data.find(ele => ele.donation_id == this.selected_medicine)
+    this.selected_medicineshow = data.find(ele => ele.donation_id == this.selected_medicine)
+      if(this.donation_details.is_deliver){
+        this.disabled =true;
+      this.medicinelist = data;
+      return;
       }
       this.medicinelist = data.filter(ele => ele.is_collected && ele.quantity > 0);
+      
       
       if(this.medicinelist.length === 0) {
         this.disabled =true;
