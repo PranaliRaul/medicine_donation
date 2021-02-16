@@ -29,6 +29,7 @@ import { DeliveredstatusComponent } from '../share/components/deliveredstatus/de
    ReactiveFormsModule,
    AgGridModule.withComponents([BtnComponent,CollectedstatusComponent,DateComponent,DeliveredstatusComponent]),
    SharemoduleModule
-  ]
+  ],
+  schemas:[ ]
 })
 export class NgoModule { }

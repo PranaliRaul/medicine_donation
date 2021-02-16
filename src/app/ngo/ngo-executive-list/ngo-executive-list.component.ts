@@ -40,22 +40,22 @@ export class NgoExecutiveListComponent implements OnInit {
       { headerName: 'Address', field: 'address', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       
-      // {
-      //   headerName: '',
-      //   cellRenderer: 'buttonRenderer',
-      //   cellRendererParams: {
-      //     onClick: this.onBtnClick1.bind(this),
-      //     label: 'details'
+      {
+        headerName: '',
+        cellRenderer: 'buttonRenderer',
+        cellRendererParams: {
+          onClick: this.onBtnClick1.bind(this),
+          label: 'details'
   
-      //   } 
-      // }
+        } 
+      }
       ]; 
   }
   onBtnClick1(e) {
     this.rowDataClicked1 = e.rowData;
     this.servive.donator_details =  this.rowDataClicked1;
     console.log(this.servive.donator_details)
-    this.route.navigate(['/ngo/medicine-donation-details'])
+    this.route.navigate(['/ngo/ngo-executive-deatails'])
   }
   rowDataClicked1
   defaultColDef = { 

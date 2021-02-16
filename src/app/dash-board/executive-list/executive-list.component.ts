@@ -40,8 +40,13 @@ export class ExecutiveListComponent implements OnInit {
       suppressSizeToFit: true}, 
       { headerName: 'Address', field: 'address', sortable: true, filter: true , 
       suppressSizeToFit: true,},
-      { headerName: 'Status', field: 'active_acc', sortable: true, filter: true , 
-      suppressSizeToFit: true, cellRenderer: 'status'},
+      { headerName: '', field: '', sortable: true, filter: true , 
+      suppressSizeToFit: true, cellRenderer: 'buttonRenderer',
+      cellRendererParams: {
+        onClick: this.onBtnClick1.bind(this),
+        label: 'details'
+      }
+    },
       
       // {
       //   headerName: '',
@@ -58,7 +63,7 @@ export class ExecutiveListComponent implements OnInit {
     this.rowDataClicked1 = e.rowData;
     this.servive.donator_details =  this.rowDataClicked1;
     console.log(this.servive.donator_details)
-    this.route.navigate(['/ngo/medicine-donation-details'])
+    this.route.navigate(['home/ngo/executivedetails'])
   }
   rowDataClicked1
   defaultColDef = { 

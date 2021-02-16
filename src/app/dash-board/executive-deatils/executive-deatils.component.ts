@@ -1,23 +1,21 @@
 import { Component, OnInit } from '@angular/core';
-import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/register/register.service';
+import { Router } from '@angular/router';
 
 @Component({
-  selector: 'app-recepient-indetails',
-  templateUrl: './recepient-indetails.component.html',
-  styleUrls: ['./recepient-indetails.component.scss']
+  selector: 'app-executive-deatils',
+  templateUrl: './executive-deatils.component.html',
+  styleUrls: ['./executive-deatils.component.scss']
 })
-export class RecepientIndetailsComponent implements OnInit {
+export class ExecutiveDeatilsComponent implements OnInit {
 
   ngo_details:any;
-  user:any;
   constructor(private servive:RegisterService, private route:Router) { }
 
   ngOnInit() {
-    this.user = JSON.parse(localStorage.getItem('userdata'))
     this.ngo_details = this.servive.donator_details;
     if(!this.ngo_details){
-      this.route.navigate(['/home/recepient']);
+      this.route.navigate(['/home/donor']);
     }
     console.log(this.ngo_details );
   }
@@ -25,15 +23,16 @@ export class RecepientIndetailsComponent implements OnInit {
     if(confirm("Are You Sure ")){
     this.ngo_details.active_acc = active;
     this.servive.postdata('update-ngo', this.ngo_details ).subscribe(data =>{
-      alert("Updates Sucessfully");
-      this.route.navigate(['/home/recepient']);
+      alert("Updated Sucessfully");
+      this.route.navigate(['/home/donor']);
     },err =>{
       console.log(err);
       alert(err.error.err);
     })
   }
   }
-public navigate(url){
-  this.route.navigate([url])
-}
+
+  public navigate(url){
+    this.route.navigate([url]);
+  }
 }

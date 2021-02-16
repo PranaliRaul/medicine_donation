@@ -11,7 +11,7 @@ import { BtnComponent } from '../share/components/btn/btn.component';
 import { SharemoduleModule } from '../share/sharemodule.module';
 
 @NgModule({
-  declarations: [MedicineRequestComponent, MyRequestsComponent, RecepientNavigationComponent, NgoMedicineRequestComponent],
+  declarations: [MedicineRequestComponent, MyRequestsComponent,  NgoMedicineRequestComponent],
   imports: [
     CommonModule,
     recepientRouting,

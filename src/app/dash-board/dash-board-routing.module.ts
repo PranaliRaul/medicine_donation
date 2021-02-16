@@ -15,6 +15,7 @@ import {   NgoMedRequestComponent } from './ngo-med-request/ngo-med-request.comp
 import { DonationMadeComponent } from './donation-made/donation-made.component';
 import { BefPersonComponent } from './bef-person/bef-person.component';
 import { RequestMadeComponent } from './request-made/request-made.component';
+import { ExecutiveDeatilsComponent } from './executive-deatils/executive-deatils.component';
 
 const routes: Routes = [
   {
@@ -80,6 +81,11 @@ const routes: Routes = [
   {
     path:'recepient/request-made',
     component:RequestMadeComponent
+  },
+  {
+    path:'ngo/executivedetails',
+    component:ExecutiveDeatilsComponent
+
   }
 
 

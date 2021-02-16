@@ -1,5 +1,4 @@
-<app-navbar  *ngIf="user.roleId != 2"></app-navbar>
-<app-recepient-navigation  *ngIf="user.roleId == 2"></app-recepient-navigation>
+<app-navbar  ></app-navbar>
 
 <div class="container">
   <div class="row">
@@ -52,7 +51,8 @@
   </div>
   <div class="row"  >
     <div class="col">
-      <button type="button" class="btn btn-primary mr-2" (click)="navigate('/home/recepient/request-made')">Request made</button>
+      <button type="button" class="btn btn-primary mr-2"  >Donations delivered</button>
+      <button type="button" class="btn btn-primary mr-2"  >Donations  collected</button>
     </div>
   </div>
 </div>

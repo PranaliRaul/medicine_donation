@@ -8,6 +8,7 @@ import { DonationComponent } from './donation/donation.component';
 import { MedicineDonationDetailComponent } from './medicine-donation-detail/medicine-donation-detail.component';
 import { MedicineRequestDetailComponent } from './medicine-request-detail/medicine-request-detail.component';
 import { NgoExecutiveListComponent } from './ngo-executive-list/ngo-executive-list.component';
+import { RecepientIndetailsComponent } from '../dash-board/recepient-indetails/recepient-indetails.component';
 const routes: Routes = [
     {
         path:'',
@@ -44,6 +45,10 @@ const routes: Routes = [
   {
     path:'ngo-executive-list',
     component: NgoExecutiveListComponent
+  },
+  {
+    path:'ngo-executive-deatails',
+    component: RecepientIndetailsComponent
   }
   
   ];

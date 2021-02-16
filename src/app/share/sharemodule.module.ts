@@ -8,11 +8,16 @@ import { DeliveredstatusComponent } from './components/deliveredstatus/delivered
 import { DateComponent } from './components/date/date.component';
 import { HomepageComponent } from './homepage/homepage.component';
 import { MedicinetypeComponent } from './medicinetype/medicinetype.component';
+import { RecepientIndetailsComponent } from '../dash-board/recepient-indetails/recepient-indetails.component';
+import { RecepientNavigationComponent } from '../recepient/recepient-navigation/recepient-navigation.component';
+import { NavbarComponent } from '../navbar/navbar.component';
+import { RouterModule } from '@angular/router';
 
 @NgModule({
-  declarations: [BtnComponent, CollectedstatusComponent, DeliveredstatusComponent, DateComponent, HomepageComponent, MedicinetypeComponent],
+  declarations: [BtnComponent, CollectedstatusComponent, DeliveredstatusComponent, DateComponent, HomepageComponent, MedicinetypeComponent,RecepientIndetailsComponent,RecepientNavigationComponent,NavbarComponent],
   imports: [
     CommonModule,
+    RouterModule,
     AgGridModule.withComponents([BtnComponent,DateComponent,DeliveredstatusComponent,CollectedstatusComponent,MedicinetypeComponent]),
   ],
   exports: [
@@ -23,7 +28,10 @@ import { MedicinetypeComponent } from './medicinetype/medicinetype.component';
     DateComponent,
     DeliveredstatusComponent,
     HomepageComponent,
-    MedicinetypeComponent
+    MedicinetypeComponent,
+    RecepientIndetailsComponent,
+    RecepientNavigationComponent,
+    NavbarComponent
   ]
 })
 export class SharemoduleModule { }
