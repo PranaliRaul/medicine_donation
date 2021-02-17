@@ -3,6 +3,7 @@ import { RegisterService } from 'src/app/register/register.service';
 import 'ag-grid-enterprise';
 import { BtnComponent } from 'src/app/share/components/btn/btn.component';
 import { DeliveredstatusComponent } from 'src/app/share/components/deliveredstatus/deliveredstatus.component';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-my-requests',
@@ -23,7 +24,7 @@ export class MyRequestsComponent implements OnInit {
   headerHeight = 50;
   frameworkComponents: any;
 
-  constructor(private registerService:RegisterService) { 
+  constructor(private registerService:RegisterService , private route:Router) { 
     this.frameworkComponents = {
       buttonRenderer: BtnComponent,
       status:DeliveredstatusComponent
@@ -43,11 +44,35 @@ export class MyRequestsComponent implements OnInit {
       { headerName: 'Status', field: 'is_deliver', sortable: true, filter: true , 
       suppressSizeToFit: true,cellRenderer:'status'},
       { headerName: 'Assigned Executor', field: 'assign_executor', sortable: true, filter: true , 
-      suppressSizeToFit: true,}
+      suppressSizeToFit: true,},
+      {
+        headerName: '',
+        cellRenderer: 'buttonRenderer',
+        cellRendererParams: {
+          onClick: this.onBtnClick1.bind(this),
+          label: 'details'
+  
+        } 
+      }
      
       ]; 
   }
-
+  onBtnClick1(e) {
+    this.rowDataClicked1 = e.rowData;
+    this.registerService.donator_details =  this.rowDataClicked1;
+    console.log(this.registerService.donator_details)
+    this.route.navigate(['/executor/donation-details'])
+  }
+  rowDataClicked1
+  defaultColDef = { 
+  
+  
+    //filter: 'agTextColumnFilter',
+    // floatingFilter: true, 
+    resizable: true,
+    sortable: true,
+    filter: true,
+  };
   ngOnInit() {
     this.getngolist();
   }

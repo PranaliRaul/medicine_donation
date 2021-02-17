@@ -32,20 +32,20 @@ export class AssignrequestsComponent implements OnInit {
       status:CollectedstatusComponent
     }
     this.columnDefs = [  
-      { headerName: 'Name', field: 'recepient_name', sortable: true ,
+      { headerName: 'Recepient Name', field: 'recepient_name', sortable: true ,
        }, 
       { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
        },  
-      { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 
-      suppressSizeToFit: true},   
+      // { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 
+      // suppressSizeToFit: true},   
       { headerName: 'Quantity', field: 'quantity', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       { headerName: 'Mobile Number', field: 'mobile_no', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       { headerName: 'Status', field: 'is_collected', sortable: true, filter: true , 
       suppressSizeToFit: true,cellRenderer:'status'},
-      { headerName: 'Address', field: 'recepient_adress', sortable: true, filter: true , 
-      suppressSizeToFit: true,},
+      // { headerName: 'Address', field: 'recepient_adress', sortable: true, filter: true , 
+      // suppressSizeToFit: true,},
       {
         headerName: '',
         cellRenderer: 'buttonRenderer',

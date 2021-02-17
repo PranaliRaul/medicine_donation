@@ -38,6 +38,9 @@ export class DonationComponent implements OnInit {
     medtype:MedicinetypeComponent
   }
   this.columnDefs = [  
+    { headerName: 'Donor Name', field: 'donator_name', sortable: true ,
+    width:150
+     },  
     { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
     width:150
      },  

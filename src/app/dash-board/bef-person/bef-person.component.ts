@@ -5,6 +5,7 @@ import 'ag-grid-enterprise';
 import { DateComponent } from 'src/app/share/components/date/date.component';
 import { MedicinetypeComponent } from 'src/app/share/medicinetype/medicinetype.component';
 import { CollectedstatusComponent } from 'src/app/share/components/collectedstatus/collectedstatus.component';
+import { DeliveredstatusComponent } from 'src/app/share/components/deliveredstatus/deliveredstatus.component';
 
 @Component({
   selector: 'app-bef-person',
@@ -31,7 +32,7 @@ export class BefPersonComponent implements OnInit {
     this.frameworkComponents = {
       DateComponent: DateComponent,
       medicinetype:MedicinetypeComponent,
-      status:CollectedstatusComponent
+      status:DeliveredstatusComponent
     }
     this.columnDefs = [  
       { headerName: 'Benefited Person', field: 'assign', sortable: true, filter: true , 
@@ -47,7 +48,7 @@ export class BefPersonComponent implements OnInit {
       suppressSizeToFit: true,},
       { headerName: 'Quantity', field: 'quantity', sortable: true, filter: true , 
       suppressSizeToFit: true,},
-      { headerName: 'Status', field: 'is_collected', sortable: true, filter: true , 
+      { headerName: 'Status', field: 'is_deliver', sortable: true, filter: true , 
       suppressSizeToFit: true,cellRenderer:'status'},
       { headerName: 'Assigned Executor', field: 'assign_executor', sortable: true, filter: true , 
       suppressSizeToFit: true,},

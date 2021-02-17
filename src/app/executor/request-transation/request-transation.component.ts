@@ -34,8 +34,6 @@ export class RequestTransationComponent implements OnInit {
        }, 
       { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
        },  
-      { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 
-      suppressSizeToFit: true},   
       { headerName: 'Quantity', field: 'quantity', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       { headerName: 'Mobile Number', field: 'mobile_no', sortable: true, filter: true , 
@@ -44,8 +42,34 @@ export class RequestTransationComponent implements OnInit {
       suppressSizeToFit: true,cellRenderer:'status'},
       { headerName: 'Address', field: 'recepient_adress', sortable: true, filter: true , 
       suppressSizeToFit: true,},
-    ];
+      {
+        headerName: '',
+        cellRenderer: 'buttonRenderer',
+        cellRendererParams: {
+          onClick: this.onBtnClick1.bind(this),
+          label: 'details'
+  
+        } 
+      }
+     
+      ]; 
+   }
+   onBtnClick1(e) {
+    this.rowDataClicked1 = e.rowData;
+    this.registerService.request_details =  this.rowDataClicked1;
+    console.log(this.registerService.request_details)
+    this.route.navigate(['/executor/request-details'])
   }
+  rowDataClicked1
+  defaultColDef = { 
+  
+  
+    //filter: 'agTextColumnFilter',
+    // floatingFilter: true, 
+    resizable: true,
+    sortable: true,
+    filter: true,
+  };
 
 
   ngOnInit() {

@@ -31,11 +31,11 @@ export class RequestComponent implements OnInit {
       status:DeliveredstatusComponent
     }
     this.columnDefs = [  
+      { headerName: 'Requestor Name', field: 'recepient_name', sortable: true ,
+       },  
       { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
        },  
       { headerName: 'Quantity', field: 'quantity', sortable: true, filter: true , 
-      suppressSizeToFit: true,},
-      { headerName: 'Donor name', field: 'assign', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       { headerName: 'Status', field: 'is_deliver', sortable: true, filter: true , 
       suppressSizeToFit: true,cellRenderer:'status'},
@@ -55,7 +55,7 @@ export class RequestComponent implements OnInit {
   onBtnClick1(e) {
     this.rowDataClicked1 = e.rowData;
     this.registerService.request_details =  this.rowDataClicked1;
-    console.log(this.registerService.donator_details)
+    console.log(this.registerService.request_details)
     this.route.navigate(['/ngo/medicine-request-detail'])
   }
   rowDataClicked1

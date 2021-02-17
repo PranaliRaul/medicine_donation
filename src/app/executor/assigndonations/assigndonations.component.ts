@@ -36,12 +36,12 @@ export class AssigndonationsComponent implements OnInit {
       medtype:MedicinetypeComponent
     }
     this.columnDefs = [  
-      { headerName: 'Name', field: 'donator_name', sortable: true ,
+      { headerName: 'Donator Name', field: 'donator_name', sortable: true ,
        }, 
       { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
        },  
-      { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 
-      suppressSizeToFit: true},   
+      // { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 
+      // suppressSizeToFit: true},   
       { headerName: 'Medicine Type', field: 'medicine_type', sortable: true, filter: true , 
       suppressSizeToFit: true,cellRenderer:'medtype'},
       { headerName: 'Expiry Date', field: 'exp_date', sortable: true, filter: true , 
@@ -52,8 +52,8 @@ export class AssigndonationsComponent implements OnInit {
       suppressSizeToFit: true,},
       { headerName: 'Status', field: 'is_collected', sortable: true, filter: true , 
       suppressSizeToFit: true, cellRenderer:'status'},
-      { headerName: 'Address', field: 'donator_address', sortable: true, filter: true , 
-      suppressSizeToFit: true,},
+      // { headerName: 'Address', field: 'donator_address', sortable: true, filter: true , 
+      // suppressSizeToFit: true,},
       {
         headerName: '',
         cellRenderer: 'buttonRenderer',
