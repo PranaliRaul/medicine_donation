@@ -24,10 +24,11 @@ export class ExecutiveDeatilsComponent implements OnInit {
     this.ngo_details.active_acc = active;
     this.servive.postdata('update-ngo', this.ngo_details ).subscribe(data =>{
       alert("Updated Sucessfully");
-      this.route.navigate(['/home/donor']);
+      this.route.navigate(['/home/ngo/ngo-executive-list']);
     },err =>{
       console.log(err);
       alert(err.error.err);
+      
     })
   }
   }

@@ -5,6 +5,7 @@ import 'ag-grid-enterprise';
 import { DateComponent } from 'src/app/share/components/date/date.component';
 import { MedicinetypeComponent } from 'src/app/share/medicinetype/medicinetype.component';
 import { CollectedstatusComponent } from 'src/app/share/components/collectedstatus/collectedstatus.component';
+import { BtnComponent } from 'src/app/share/components/btn/btn.component';
 
 @Component({
   selector: 'app-donation-made',
@@ -30,7 +31,8 @@ export class DonationMadeComponent implements OnInit {
     this.frameworkComponents = {
       DateComponent: DateComponent,
       medicinetype:MedicinetypeComponent,
-      status:CollectedstatusComponent
+      status:CollectedstatusComponent,
+      buttonRenderer: BtnComponent
     }
     this.columnDefs = [  
       { headerName: 'Brand Name', field: 'brand_name', sortable: true, filter: true , 
@@ -38,18 +40,22 @@ export class DonationMadeComponent implements OnInit {
       { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 
       suppressSizeToFit: true}, 
       { headerName: 'Ngo Name', field: 'ngo_name', sortable: true, filter: true , 
-      suppressSizeToFit: true, cellRenderer:'medicinetype'},
+      suppressSizeToFit: true, },
       { headerName: 'Medicine Type', field: 'medicine_type', sortable: true, filter: true , 
-      suppressSizeToFit: true, cellRenderer:'medicinetype'},
+      suppressSizeToFit: true, cellRenderer:'medicinetype',width:150},
       { headerName: 'Expiry Date', field: 'exp_date', sortable: true, filter: true , 
       cellRenderer: 'DateComponent',
-      suppressSizeToFit: true,},
+      suppressSizeToFit: true, width:180},
       { headerName: 'Quantity', field: 'quantity', sortable: true, filter: true , 
-      suppressSizeToFit: true,},
+      suppressSizeToFit: true, width:120},
       { headerName: 'Status', field: 'is_collected', sortable: true, filter: true , 
-      suppressSizeToFit: true,cellRenderer:'status'},
-      // { headerName: 'Assigned Executor', field: 'assign_executor', sortable: true, filter: true , 
-      // suppressSizeToFit: true,},
+      suppressSizeToFit: true,cellRenderer:'status' ,width:130},
+      { headerName: '', field: ' ', width:150,sortable: false,
+      filter: false,cellRenderer: 'buttonRenderer',
+      cellRendererParams: {
+        onClick: this.onBtnClick1.bind(this),
+        label: 'details'
+      }},
       ];
   }
   defaultColDef = { 
@@ -97,6 +103,8 @@ BindData(params) {
     this.gridApi.sizeColumnsToFit();  
   }  
 }
+onBtnClick1(data){
 
+}
 
 }

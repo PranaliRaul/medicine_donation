@@ -4,6 +4,7 @@ import { RegisterService } from 'src/app/register/register.service';
 import 'ag-grid-enterprise';
 
 import { DeliveredstatusComponent } from 'src/app/share/components/deliveredstatus/deliveredstatus.component';
+import { BtnComponent } from 'src/app/share/components/btn/btn.component';
 
 
 
@@ -27,7 +28,8 @@ export class RequestMadeComponent implements OnInit {
   headerHeight = 50;
   frameworkComponents: any;
   constructor( public registerService:RegisterService,private route:Router) {  this.frameworkComponents = {
-    status:DeliveredstatusComponent
+    status:DeliveredstatusComponent,
+    buttonRenderer:BtnComponent
   }
   this.columnDefs = [  
     { headerName: 'Brand Name', field: 'brand_name', sortable: true, filter: true , 
@@ -42,6 +44,11 @@ export class RequestMadeComponent implements OnInit {
     suppressSizeToFit: true,cellRenderer:'status'},
     { headerName: 'Assigned Executor', field: 'assign_executor', sortable: true, filter: true , 
      suppressSizeToFit: true,},
+     { headerName: ' ', field: ' ', width:110,cellRenderer: 'buttonRenderer',
+     cellRendererParams: {
+       onClick: this.onBtnClick1.bind(this),
+       label: 'details'
+     }},
     ];
 }
 defaultColDef = { 
@@ -89,6 +96,9 @@ defaultColDef = {
     if (this.IsColumnsToFit) {  
       this.gridApi.sizeColumnsToFit();  
     }  
+  }
+  onBtnClick1(e){
+
   }
   
 }
