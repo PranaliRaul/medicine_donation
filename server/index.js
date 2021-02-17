@@ -80,13 +80,14 @@ const sql1 = "INSERT INTO register(personId,fullName, pass,email,roleId,ngo_name
 }
 app.post('/login',  function (req, res) {
     const response = req.body;
-    const sql4 = 'SELECT * FROM register WHERE email="'+response.email+'" && active_acc=1';
+    const sql4 = 'SELECT * FROM register WHERE email="'+response.email+'" ';
     connection.query( sql4 ,async function (err, result) {
         try{
         if (err) {
             res.status(500).send({err:'login fail'});
         };
-        if(result.length){
+         
+        if(result.length && result[0].active_acc==1){
             if(response.Password,result[0].pass === response.Password  ){
               // await bycrt.compare(response.Password,result[0].pass)
                 delete result[0].pass;
@@ -95,7 +96,12 @@ app.post('/login',  function (req, res) {
                 res.status(500).send({errr:'Invald paswword'});
             }
         }else{
+          if(result.length){
+            res.status(500).send({errr:'your account block by admin please contact for more info'})
+          }else{
             res.status(500).send({errr:'Invald username '})
+          }
+          
         }
     }catch{
         res.status(500).send({err:'email id already use'});
