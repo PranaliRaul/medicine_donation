@@ -19,7 +19,6 @@ list = []
       return;
     }
 
-    console.log(this.ngo_details );
   }
 
     activeAcc(active){

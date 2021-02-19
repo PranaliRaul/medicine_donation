@@ -4,6 +4,7 @@ import { RegisterService } from 'src/app/register/register.service';
 import 'ag-grid-enterprise';
 import { BtnComponent } from 'src/app/share/components/btn/btn.component';
 import { CollectedstatusComponent } from 'src/app/share/components/collectedstatus/collectedstatus.component';
+import { DeliveredstatusComponent } from 'src/app/share/components/deliveredstatus/deliveredstatus.component';
 
 
 @Component({
@@ -29,7 +30,7 @@ export class AssignrequestsComponent implements OnInit {
   constructor(private registerService:RegisterService,private route:Router) {
     this.frameworkComponents = {
       buttonRenderer: BtnComponent,
-      status:CollectedstatusComponent
+      status:DeliveredstatusComponent
     }
     this.columnDefs = [  
       { headerName: 'Recepient Name', field: 'recepient_name', sortable: true ,
@@ -42,7 +43,7 @@ export class AssignrequestsComponent implements OnInit {
       suppressSizeToFit: true,},
       { headerName: 'Mobile Number', field: 'mobile_no', sortable: true, filter: true , 
       suppressSizeToFit: true,},
-      { headerName: 'Status', field: 'is_collected', sortable: true, filter: true , 
+      { headerName: 'Status', field: 'is_deliver', sortable: true, filter: true , 
       suppressSizeToFit: true,cellRenderer:'status'},
       // { headerName: 'Address', field: 'recepient_adress', sortable: true, filter: true , 
       // suppressSizeToFit: true,},
@@ -61,7 +62,6 @@ export class AssignrequestsComponent implements OnInit {
    onBtnClick1(e) {
     this.rowDataClicked1 = e.rowData;
     this.registerService.request_details =  this.rowDataClicked1;
-    console.log(this.registerService.request_details)
     this.route.navigate(['/executor/request-details'])
   }
   rowDataClicked1
@@ -82,8 +82,8 @@ export class AssignrequestsComponent implements OnInit {
   public getngolist():void{
     this.userId = JSON.parse(localStorage.getItem('userdata'))[0].email;
     this.registerService.getData(`assign-request?id=${this.userId}`).subscribe(data =>{
-       this.list = data;
-       this.rowData = data;
+       this.list = data.filter(ele => !ele.is_deliver);
+       this.rowData = this.list;
     },err =>{
       alert(err.error.err);
     })

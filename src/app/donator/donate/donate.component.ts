@@ -49,12 +49,10 @@ export class DonateComponent implements OnInit {
 
   }
   donate(){
-    console.log( this.registrationForm.value);
     this.registrationForm.value.ngo_name = this.name;
     if(this.registrationForm.valid){
     this.registerService.postdata('donator',this.registrationForm.value).subscribe(data =>{
       // this.list = data
-      console.log(data);
       alert(data.msg);
       this.router.navigate(['/donator/my-donation'])
     },err =>{

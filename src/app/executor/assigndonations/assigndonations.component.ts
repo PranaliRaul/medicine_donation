@@ -69,7 +69,6 @@ export class AssigndonationsComponent implements OnInit {
   onBtnClick1(e) {
     this.rowDataClicked1 = e.rowData;
     this.registerService.donator_details =  this.rowDataClicked1;
-    console.log(this.registerService.donator_details)
     this.route.navigate(['/executor/donation-details'])
   }
   rowDataClicked1
@@ -91,8 +90,8 @@ export class AssigndonationsComponent implements OnInit {
   public getngolist():void{
     this.userId = JSON.parse(localStorage.getItem('userdata'))[0].email;
     this.registerService.getData(`assign-donation?id=${this.userId}`).subscribe(data =>{
-       this.list = data;
-       this.rowData = data;
+       this.list = data.filter(ele => !ele.is_collected);
+       this.rowData =  this.list;
     },err =>{
       alert(err.error.err);
     })

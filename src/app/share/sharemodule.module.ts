@@ -12,9 +12,10 @@ import { RecepientIndetailsComponent } from '../dash-board/recepient-indetails/r
 import { RecepientNavigationComponent } from '../recepient/recepient-navigation/recepient-navigation.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { RouterModule } from '@angular/router';
+import { NgoTransationComponent } from './components/ngo-transation/ngo-transation.component';
 
 @NgModule({
-  declarations: [BtnComponent, CollectedstatusComponent, DeliveredstatusComponent, DateComponent, HomepageComponent, MedicinetypeComponent,RecepientIndetailsComponent,RecepientNavigationComponent,NavbarComponent],
+  declarations: [BtnComponent, CollectedstatusComponent, DeliveredstatusComponent, DateComponent, HomepageComponent, MedicinetypeComponent,RecepientIndetailsComponent,RecepientNavigationComponent,NavbarComponent, NgoTransationComponent],
   imports: [
     CommonModule,
     RouterModule,
@@ -31,7 +32,8 @@ import { RouterModule } from '@angular/router';
     MedicinetypeComponent,
     RecepientIndetailsComponent,
     RecepientNavigationComponent,
-    NavbarComponent
+    NavbarComponent,
+    NgoTransationComponent
   ]
 })
 export class SharemoduleModule { }

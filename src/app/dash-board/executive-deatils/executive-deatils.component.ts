@@ -17,7 +17,6 @@ export class ExecutiveDeatilsComponent implements OnInit {
     if(!this.ngo_details){
       this.route.navigate(['/home/donor']);
     }
-    console.log(this.ngo_details );
   }
   activeAcc(active){
     if(confirm("Are You Sure ")){

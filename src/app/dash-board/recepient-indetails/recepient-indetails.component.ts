@@ -19,7 +19,6 @@ export class RecepientIndetailsComponent implements OnInit {
     if(!this.ngo_details){
       this.route.navigate(['/home/recepient']);
     }
-    console.log(this.ngo_details );
   }
   activeAcc(active){
     if(confirm("Are You Sure ")){
@@ -28,7 +27,6 @@ export class RecepientIndetailsComponent implements OnInit {
       alert("Updates Sucessfully");
       this.route.navigate(['/home/recepient']);
     },err =>{
-      console.log(err);
       alert(err.error.err);
     })
   }

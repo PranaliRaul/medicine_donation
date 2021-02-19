@@ -3,6 +3,8 @@ import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/register/register.service';
 import 'ag-grid-enterprise';
 import { CollectedstatusComponent } from 'src/app/share/components/collectedstatus/collectedstatus.component';
+import { DeliveredstatusComponent } from 'src/app/share/components/deliveredstatus/deliveredstatus.component';
+import { BtnComponent } from 'src/app/share/components/btn/btn.component';
 
 @Component({
   selector: 'app-request-transation',
@@ -27,7 +29,8 @@ export class RequestTransationComponent implements OnInit {
 
   constructor(private registerService:RegisterService,private route:Router) { 
     this.frameworkComponents = {
-      status:CollectedstatusComponent
+      status: DeliveredstatusComponent,
+      buttonRenderer:BtnComponent
     }
     this.columnDefs = [  
       { headerName: 'Name', field: 'recepient_name', sortable: true ,
@@ -38,7 +41,7 @@ export class RequestTransationComponent implements OnInit {
       suppressSizeToFit: true,},
       { headerName: 'Mobile Number', field: 'mobile_no', sortable: true, filter: true , 
       suppressSizeToFit: true,},
-      { headerName: 'Status', field: 'is_collected', sortable: true, filter: true , 
+      { headerName: 'Status', field: 'is_deliver', sortable: true, filter: true , 
       suppressSizeToFit: true,cellRenderer:'status'},
       { headerName: 'Address', field: 'recepient_adress', sortable: true, filter: true , 
       suppressSizeToFit: true,},
@@ -47,7 +50,7 @@ export class RequestTransationComponent implements OnInit {
         cellRenderer: 'buttonRenderer',
         cellRendererParams: {
           onClick: this.onBtnClick1.bind(this),
-          label: 'details'
+          label: 'details' 
   
         } 
       }
@@ -57,7 +60,6 @@ export class RequestTransationComponent implements OnInit {
    onBtnClick1(e) {
     this.rowDataClicked1 = e.rowData;
     this.registerService.request_details =  this.rowDataClicked1;
-    console.log(this.registerService.request_details)
     this.route.navigate(['/executor/request-details'])
   }
   rowDataClicked1
@@ -78,7 +80,9 @@ export class RequestTransationComponent implements OnInit {
   public getngolist():void{
     this.userId = JSON.parse(localStorage.getItem('userdata'))[0].email;
     this.registerService.getData(`assign-request?id=${this.userId}`).subscribe(data =>{
-       this.list = data;
+      this.list = data.filter(ele => ele.is_deliver);
+      this.rowData = this.list;
+
     },err =>{
       alert(err.error.err);
     })

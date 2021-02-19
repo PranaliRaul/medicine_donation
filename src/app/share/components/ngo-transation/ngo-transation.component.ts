@@ -1,21 +1,23 @@
-import { Component, Input, OnInit } from '@angular/core';
+import { Component, OnInit,Input } from '@angular/core';
 import { Router } from '@angular/router';
+ import { DateComponent } from 'src/app/share/components/date/date.component';
 import { RegisterService } from 'src/app/register/register.service';
+import { MedicinetypeComponent } from '../../medicinetype/medicinetype.component';
+import { BtnComponent } from '../btn/btn.component';
+import { CollectedstatusComponent } from '../collectedstatus/collectedstatus.component';
 import 'ag-grid-enterprise';
-import { BtnComponent } from 'src/app/share/components/btn/btn.component';
-import { DateComponent } from 'src/app/share/components/date/date.component';
-import { CollectedstatusComponent } from 'src/app/share/components/collectedstatus/collectedstatus.component';
-import { MedicinetypeComponent } from 'src/app/share/medicinetype/medicinetype.component';
-
 
 @Component({
-  selector: 'app-transation',
-  templateUrl: './transation.component.html',
-  styleUrls: ['./transation.component.scss']
+  selector: 'app-ngo-transation',
+  templateUrl: './ngo-transation.component.html',
+  styleUrls: ['./ngo-transation.component.scss']
 })
-export class TransationComponent implements OnInit {
+export class NgoTransationComponent implements OnInit {
+  @Input() email: string;  
+  @Input() column: boolean;  
 
   list =[];
+  userId:number;
   type = ['',"Tablet",'Capsule','Syrup'];
   private gridApi;
   private gridColumnApi;
@@ -27,8 +29,17 @@ export class TransationComponent implements OnInit {
   rowHeight = 50;  
   headerHeight = 50;
   frameworkComponents: any;
-  userId = JSON.parse(localStorage.getItem('userdata'))[0].email;
+  private extracolumn = {
+    headerName: '',
+    cellRenderer: 'buttonRenderer',
+    sortable: false, 
+    filter: false ,
+    cellRendererParams: {
+      onClick: this.onBtnClick1.bind(this),
+      label: 'details'
 
+    } 
+  }
   constructor(private registerService:RegisterService,private route:Router) { 
     this.frameworkComponents = {
       buttonRenderer: BtnComponent,
@@ -36,6 +47,8 @@ export class TransationComponent implements OnInit {
       status:CollectedstatusComponent,
       medtype:MedicinetypeComponent
     }
+
+     
     this.columnDefs = [  
       { headerName: 'Name', field: 'donator_name', sortable: true ,
        }, 
@@ -55,15 +68,7 @@ export class TransationComponent implements OnInit {
       suppressSizeToFit: true,cellRenderer:'status'},
       // { headerName: 'Address', field: 'donator_address', sortable: true, filter: true , 
       // suppressSizeToFit: true,},
-      {
-        headerName: '',
-        cellRenderer: 'buttonRenderer',
-        cellRendererParams: {
-          onClick: this.onBtnClick1.bind(this),
-          label: 'details'
-  
-        } 
-      }
+      
      
       ]; 
   }
@@ -85,9 +90,13 @@ export class TransationComponent implements OnInit {
 
   ngOnInit() {
     this.getngolist();
+    if(this.column){
+    this.columnDefs.push(this.extracolumn)
+    }
   }
   public getngolist():void{
-    this.registerService.getData(`assign-donation?id=${this.userId}`).subscribe(data =>{
+    
+    this.registerService.getData(`assign-donation?id=${this.email}`).subscribe(data =>{
       this.list = data.filter(ele => ele.is_collected);
       this.rowData =  this.list;
     },err =>{
@@ -106,10 +115,9 @@ onGridReady(params) {
   this.gridColumnApi = params.columnApi;
    
 }  
-@Input() ColumnDefs: any;  
-@Input() RowData: any;  
-@Input() IsColumnsToFit: boolean;  
-
+@Input() ColumnDefs: any; 
+@Input() RowData: any;
+@Input() IsColumnsToFit: boolean;
 
 BindData(params) {  
   this.gridApi = params.api;  
@@ -119,4 +127,5 @@ BindData(params) {
     this.gridApi.sizeColumnsToFit();  
   }  
 }
+
 }

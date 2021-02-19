@@ -63,7 +63,7 @@ export class NgoMedicineRequestComponent implements OnInit {
       return ;
     }
     if(this.registrationForm.valid){
-      const qwt= this.selecedmedicine.quantity - this.registrationForm.value.quantity 
+      const qwt= this.selecedmedicine.quantity - this.registrationForm.value.remaining_quantity 
       const data = {
         ...this.registrationForm.value,
         donation_id:this.selecedmedicine.donation_id,
@@ -72,7 +72,6 @@ export class NgoMedicineRequestComponent implements OnInit {
         brand_name:this.selecedmedicine.brand_name,
         remaining_quantity:qwt >0 ? qwt:0
       }
-     console.log(data);
     this.registerService.postdata('recepient-request',data).subscribe(data =>{
       alert('Your medicine request has been sucessfully recorded');
       this.router.navigate(['/Recepient/my-request'])

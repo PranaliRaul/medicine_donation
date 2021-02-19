@@ -52,6 +52,5 @@ export class MedicineDonationDetailComponent implements OnInit {
   }
   assignexe(value){
     this.assignexecutive = this.list.find(ele => ele.email === value);
-    console.log(this.assignexecutive);
   }
 }

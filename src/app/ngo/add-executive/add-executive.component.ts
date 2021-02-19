@@ -32,7 +32,6 @@ export class AddExecutiveComponent implements OnInit {
   }
   public register():void{
     if (this.registrationForm.valid) { 
-            console.log(this.registrationForm.value);
             this.registerService.postdata('register', this.registrationForm.value).subscribe(data =>{
               console.log(data);
              

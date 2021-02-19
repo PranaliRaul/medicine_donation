@@ -55,24 +55,11 @@ export class MyDonationsComponent implements OnInit {
       { headerName: 'Assigned Executor', field: 'assign_executor', sortable: true, filter: true , 
       suppressSizeToFit: true,},
      
-      {
-        headerName: '',
-        cellRenderer: 'buttonRenderer',
-        cellRendererParams: {
-          onClick: this.onBtnClick1.bind(this),
-          label: 'details'
-  
-        } 
-      }
+    
      
       ]; 
   }
-  onBtnClick1(e) {
-    this.rowDataClicked1 = e.rowData;
-    this.registerService.donator_details =  this.rowDataClicked1;
-    console.log(this.registerService.donator_details)
-    this.route.navigate(['/executor/donation-details'])
-  }
+  
   rowDataClicked1
   defaultColDef = { 
   

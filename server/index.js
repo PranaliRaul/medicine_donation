@@ -39,7 +39,6 @@ const sql1 = "INSERT INTO register(personId,fullName, pass,email,roleId,ngo_name
         res.status(500).send({err:'email id already use'});
         return;
     };
-    console.log("Number of records inserted: " + result.affectedRows);
     if(data.active_acc){
     res.send({msg:'register sucessfully'});
     }else{
@@ -132,13 +131,12 @@ app.post('/donator',  async function (req, res) {
 
 
 try{
-const sql1 = "INSERT INTO donator (personId,brand_name, generic_name,ngo_name, medicine_type, exp_date,mobile_no,quantity,assign,allow_status,assign_executor,donator_name,donator_address,donation_id,donator_email,ngo_email) VALUES ( '"+response.personId+"' ,'"+response.brand_name+"','"+response.generic_name+"','"+response.ngo_name+"','"+response.medicine_type+"','"+response.exp_date+"','"+response.mobile_no+"','"+response.quantity+"','"+response.assign+"','"+response.allow_status+"','"+response.assign_executor+"','"+response.donator_name+"','"+response.donator_address+"' , null,'"+response.donator_email+"','"+response.ngo_email+"')";
+const sql1 = "INSERT INTO donator (personId,brand_name, generic_name,ngo_name, medicine_type, exp_date,mobile_no,quantity,assign,allow_status,assign_executor,donator_name,donator_address,donation_id,donator_email,ngo_email,remaining_quantity) VALUES ( '"+response.personId+"' ,'"+response.brand_name+"','"+response.generic_name+"','"+response.ngo_name+"','"+response.medicine_type+"','"+response.exp_date+"','"+response.mobile_no+"','"+response.quantity+"','"+response.assign+"','"+response.allow_status+"','"+response.assign_executor+"','"+response.donator_name+"','"+response.donator_address+"' , null,'"+response.donator_email+"','"+response.ngo_email+"','"+response.quantity+"')";
  connection.query( sql1 ,function (err, result) {
    if (err) {
        res.status(500).send({err:'donation fail'});
        return;
    };
-   console.log("Number of records inserted: " + result.affectedRows);
    res.send({msg:'donation sucessfull'});
    // sendemail(data);
  });
@@ -267,7 +265,6 @@ try{
 const sql1 = "UPDATE register SET active_acc= '"+response.status+"'  WHERE email= '"+response.email+"' ";
 const sql2 = "UPDATE register SET active_acc= '"+response.status+"'  WHERE ngo_executor= '"+response.email+"' "
  connection.query( sql1 ,function (err, result) {
-   console.log(result)
    if (err) {
        res.status(500).send({err:'email id already use'});
        return;
@@ -381,7 +378,7 @@ app.get('/assign-donation',    (req, res) =>{
 app.post('/assign-executor-request',    (req, res) =>{
   console.log(req.body)
   const sql4 = 'UPDATE request SET excutor_email = "'+req.body.excutor_email+'" , assign_executor="'+req.body.assign_executor+'" , is_deliver="'+req.body.is_deliver+'", assign="'+req.body.assign+'", donation_id="'+req.body.donation_id+'",allow_status="'+req.body.allow_status+'" WHERE request_id="'+req.body.request_id+'" ';
-  const sql5 = 'UPDATE donator SET quantity = "'+req.body.remaining_quantity+'" , assign="'+req.body.recepient_name+'" , request_id="'+req.body.request_id+'" WHERE donation_id="'+req.body.donation_id+'" ';
+  const sql5 = 'UPDATE donator SET remaining_quantity = "'+req.body.remaining_quantity+'" , assign="'+req.body.recepient_name+'" , request_id="'+req.body.request_id+'" WHERE donation_id="'+req.body.donation_id+'" ';
 
   connection.query( sql4 ,  function (err, result) {
       try{
@@ -442,7 +439,7 @@ const sql1 = "INSERT INTO request (personId,brand_name, generic_name,ngo_name,mo
         if (err) {
 
         }
-  const sql2 = 'UPDATE donator SET quantity = "'+response.remaining_quantity+'" , assign="'+response.recepient_name+'" , request_id="'+sql3result[0].request_id+'" WHERE donation_id="'+req.body.donation_id+'" ';
+  const sql2 = 'UPDATE donator SET remaining_quantity = "'+response.remaining_quantity+'" , assign="'+response.recepient_name+'" , request_id="'+sql3result[0].request_id+'" WHERE donation_id="'+req.body.donation_id+'" ';
 
       connection.query( sql2 ,  function (err, result) {
         if (err) {

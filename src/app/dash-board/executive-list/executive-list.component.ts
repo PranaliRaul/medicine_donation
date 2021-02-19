@@ -62,7 +62,6 @@ export class ExecutiveListComponent implements OnInit {
   onBtnClick1(e) {
     this.rowDataClicked1 = e.rowData;
     this.servive.donator_details =  this.rowDataClicked1;
-    console.log(this.servive.donator_details)
     this.route.navigate(['home/ngo/executivedetails'])
   }
   rowDataClicked1

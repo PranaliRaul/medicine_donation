@@ -26,7 +26,6 @@ export class MyRequestsComponent implements OnInit {
 
   constructor(private registerService:RegisterService , private route:Router) { 
     this.frameworkComponents = {
-      buttonRenderer: BtnComponent,
       status:DeliveredstatusComponent
 
     }
@@ -45,24 +44,11 @@ export class MyRequestsComponent implements OnInit {
       suppressSizeToFit: true,cellRenderer:'status'},
       { headerName: 'Assigned Executor', field: 'assign_executor', sortable: true, filter: true , 
       suppressSizeToFit: true,},
-      {
-        headerName: '',
-        cellRenderer: 'buttonRenderer',
-        cellRendererParams: {
-          onClick: this.onBtnClick1.bind(this),
-          label: 'details'
-  
-        } 
-      }
+       
      
       ]; 
   }
-  onBtnClick1(e) {
-    this.rowDataClicked1 = e.rowData;
-    this.registerService.donator_details =  this.rowDataClicked1;
-    console.log(this.registerService.donator_details)
-    this.route.navigate(['/executor/donation-details'])
-  }
+  
   rowDataClicked1
   defaultColDef = { 
   
@@ -79,8 +65,8 @@ export class MyRequestsComponent implements OnInit {
   public getngolist():void{
     this.userId = JSON.parse(localStorage.getItem('userdata'))[0].personId;
     this.registerService.getData(`myrequest?id=${this.userId}`).subscribe(data =>{
-       this.list = data;
-       this.rowData = data;
+       this.list = data.filter(ele =>!ele.is_deliver);
+       this.rowData =  this.list;
     },err =>{ 
       alert(err.error.err);
     })

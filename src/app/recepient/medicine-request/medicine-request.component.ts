@@ -26,7 +26,7 @@ export class MedicineRequestComponent implements OnInit {
           personId:[this.userId[0].personId,  ''],
           mobile_no:[this.userId[0].mobile_no,''],
           assign:['',  ''],
-          allow_status:[0  ,''],
+          allow_status:[0  ,''], 
           assign_executor:['',  ''],
           recepient_adress:[this.userId[0].address,''],
           name:[this.userId[0].fullName,''],

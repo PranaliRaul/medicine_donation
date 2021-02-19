@@ -1,25 +1,19 @@
 <app-executor-navigation></app-executor-navigation>
 <div class="container-fluid mt-4" >
-  <table class="table table-bordered">
-
-    <!-- <thead>
+  <!--  <table class="table table-bordered">
+    <thead>
       <tr>
         <th scope="col">Sr No.</th>
         <th scope="col"> Name</th>
-
         <th scope="col">Brand Name</th>
         <th scope="col">Generic Name</th>
         <th scope="col">Medicine Type</th>
         <th scope="col">Expiry Date </th>
         <th scope="col">Quantity</th>
         <th scope="col">Mobile Number</th>
-
         <th scope="col">Status</th>
-
         <th scope="col">Address</th>
         <th scope="col"></th>
-
-
       </tr>
     </thead>
     <tbody>
@@ -44,9 +38,8 @@
     </tbody>
   </table> -->
   <div class="inner">
-    <ag-grid-angular
+    <!-- <ag-grid-angular
           #agGrid
-         
           class="ag-theme-balham"
           [columnDefs]="columnDefs"
           [rowData]="rowData"
@@ -55,5 +48,6 @@
           [headerHeight]="headerHeight"
           [frameworkComponents]="frameworkComponents"
           [rowDragManaged]="true"
-        ></ag-grid-angular>  
+        ></ag-grid-angular>   -->
+        <app-ngo-transation [email]='userId' [column]="true"></app-ngo-transation>
     </div>

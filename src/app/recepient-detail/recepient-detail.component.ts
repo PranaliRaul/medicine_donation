@@ -46,7 +46,6 @@ private gridApi;
   onBtnClick1(e) {
     this.rowDataClicked1 = e.rowData;
     this.service.donator_details =  this.rowDataClicked1;
-    console.log(this.service.donator_details)
     this.route.navigate(['/home/recepient/recepient-detail'])
   }
   rowDataClicked1

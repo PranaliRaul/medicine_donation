@@ -24,10 +24,9 @@ export class MedicineRequestDetailComponent implements OnInit {
   ngOnInit() {
     this.donation_details = this.servive.request_details;
     if (!this.donation_details) {
-      this.route.navigate(['/ngo/medicine-donation']);
+      this.route.navigate(['ngo/medicine-request']);
       return;
     }
-    console.log(this.donation_details)
     this.email = this.donation_details.excutor_email;
 
     this.selected_medicine = this.donation_details.donation_id;
@@ -42,7 +41,11 @@ export class MedicineRequestDetailComponent implements OnInit {
   fetchexecutor() {
     this.userId = JSON.parse(localStorage.getItem('userdata'))[0].email;
     this.servive.getData(`executor-list?id=${this.userId}`).subscribe(data => {
-      this.list = data;
+      if(this.donation_details.is_deliver || this.donation_details.excutor_email){
+        this.list = data
+        return;
+      }
+      this.list = data.filter(ele => ele.active_acc);
     }, err => {
       alert(err.error.err);
     })
@@ -57,7 +60,7 @@ export class MedicineRequestDetailComponent implements OnInit {
       this.donation_details.assign = this.assignmedicine.donator_name;
       this.donation_details.donation_id = this.assignmedicine.donation_id;
       this.donation_details.allow_status = 1;
-      const qwt = this.assignmedicine.quantity - this.donation_details.quantity;
+      const qwt = this.assignmedicine.remaining_quantity - this.donation_details.quantity;
       this.donation_details.is_deliver = 0;
       
       qwt > 0 ? this.donation_details.remaining_quantity = qwt : this.donation_details.remaining_quantity = 0;
@@ -73,7 +76,8 @@ export class MedicineRequestDetailComponent implements OnInit {
 
      this.servive.postdata(`assign-executor-request`, this.donation_details).subscribe(data => {
     this.list = data;
-     this.route.navigate(['/ngo/medicine-donation']);
+    this.route.navigate(['ngo/medicine-request']);
+
       alert(data.msg);
     }, err => {
       alert(err.error.err);
@@ -88,12 +92,12 @@ export class MedicineRequestDetailComponent implements OnInit {
     this.userId = JSON.parse(localStorage.getItem('userdata'))[0].email;
     this.servive.getData(`ngo-donation?id=${this.userId}`).subscribe(data => {
     this.selected_medicineshow = data.find(ele => ele.donation_id == this.selected_medicine)
-      if(this.donation_details.is_deliver){
+      if(this.donation_details.is_deliver || this.donation_details.excutor_email){
         this.disabled =true;
       this.medicinelist = data;
       return;
       }
-      this.medicinelist = data.filter(ele => ele.is_collected && ele.quantity > 0);
+      this.medicinelist = data.filter(ele => ele.is_collected && ele.remaining_quantity > 0);
       
       
       if(this.medicinelist.length === 0) {

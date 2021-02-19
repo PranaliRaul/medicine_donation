@@ -17,7 +17,6 @@ export class MedicinetypeComponent implements ICellRendererAngularComp {
   agInit(params): void {
     this.params = params;
     this.label = this.params.label || null;
-    console.log(  this.params )
   }
 
   refresh(params?: any): boolean {

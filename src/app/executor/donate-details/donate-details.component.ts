@@ -53,7 +53,6 @@ export class DonateDetailsComponent implements OnInit {
   }
   assignexe(value){
     this.assignexecutive = this.list.find(ele => ele.email === value);
-    console.log(this.assignexecutive);
   }
   collecte(){
     if(confirm('Are You Sure')){
