@@ -14,12 +14,16 @@ import { NavbarComponent } from '../navbar/navbar.component';
 import { RouterModule } from '@angular/router';
 import { NgoTransationComponent } from './components/ngo-transation/ngo-transation.component';
 import { ExecutorAssignRequestComponent } from './components/executor-assign-request/executor-assign-request.component';
+import { AboutusComponent } from './aboutus/aboutus.component';
 
 @NgModule({
   declarations: [BtnComponent, CollectedstatusComponent, 
                 DeliveredstatusComponent, DateComponent, HomepageComponent,
                 MedicinetypeComponent,RecepientIndetailsComponent,RecepientNavigationComponent,
-                NavbarComponent, NgoTransationComponent, ExecutorAssignRequestComponent],
+                NavbarComponent, NgoTransationComponent, ExecutorAssignRequestComponent,AboutusComponent],
+
+
+
   imports: [
     CommonModule,
     RouterModule,
@@ -38,7 +42,8 @@ import { ExecutorAssignRequestComponent } from './components/executor-assign-req
     RecepientNavigationComponent,
     NavbarComponent,
     NgoTransationComponent,
-    ExecutorAssignRequestComponent
+    ExecutorAssignRequestComponent,
+    AboutusComponent
   ]
 })
 export class SharemoduleModule {
