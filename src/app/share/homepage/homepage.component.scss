@@ -1,0 +1,19 @@
+.container2{
+    position:  absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%,-50%);
+    background: green;
+    height: 300px;
+    border-radius: 30px;
+    width: 40%;
+    padding: 10px
+
+}
+
+
+.container2 > p{
+    text-align: center;
+    font-size: 30px;
+    color: #fff;
+}
