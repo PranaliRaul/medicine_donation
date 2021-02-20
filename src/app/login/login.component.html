@@ -4,15 +4,15 @@
 <form  autocomplete="off"  [formGroup]="loginForm">
   <div class="form-group">
     <label for="email">Email address:</label>
-    <input type="email" class="form-control" formControlName="email" placeholder="Enter email" id="email" required  >
+    <input type="email" class="form-control" formControlName="email" placeholder="Enter email" id="email" required   [ngClass]="{ 'is-invalid': submitted && f?.email?.errors }">
   </div>
   <div class="form-group">
     <label for="pwd">Password:</label>
-    <input type="password" class="form-control" formControlName="Password" placeholder="Enter password" id="pwd" required  >
+    <input type="password" class="form-control" formControlName="Password" placeholder="Enter password" id="pwd" required   [ngClass]="{ 'is-invalid': submitted && f?.Password?.errors }">
   </div>
   <button type="submit" class="btn btn-primary login" (click)="Login()">Login</button>
   <div class="form-group mt-2">
-      <span>Don't have an account ? </span><a class="registerlink" style="color:blue" routerLinkActive="router-link-active" > Click here to register</a>
+      <span>Don't have an account ? </span><a class="registerlink" style="color:blue"  [routerLink]="['/register']" routerLinkActive="router-link-active" > Click here to register</a>
     </div>
     <div class="form-group mt-2">
       <span>  forgot password  ? </span><a class="registerlink" style="color:blue"   [routerLink]="['/forgot-password']"  > Click here to reset password</a>

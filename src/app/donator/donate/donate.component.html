@@ -8,21 +8,21 @@
 
       <div class="form-group"  >
           <label for="email">Brand Name:</label>
-          <input type="text" class="form-control"  formControlName="brand_name" placeholder="Enter Brand Name"  required>
+          <input type="text" class="form-control"  formControlName="brand_name" placeholder="Enter Brand Name"  required  [ngClass]="{ 'is-invalid': submitted && f.brand_name.errors }">
         </div>
         <div class="form-group" >
             <label for="email">Generic Name:</label>
-            <input type="text" class="form-control"  formControlName="generic_name" placeholder="Generic Name" required>
+            <input type="text" class="form-control"  formControlName="generic_name" placeholder="Generic Name" required  [ngClass]="{ 'is-invalid': submitted && f.generic_name.errors }">
           </div>
           <div class="form-group">
               <label for="sel1">Ngo Name:</label>
-              <select class="form-control"    formControlName="ngo_email"  (change)="selctngo($event.target.value)">
+              <select class="form-control"    formControlName="ngo_email"  (change)="selctngo($event.target.value)"  [ngClass]="{ 'is-invalid': submitted && f.ngo_email.errors }">
                   <option *ngFor="let ngo of list" [value]="ngo.email">{{ngo?.ngo_name}}</option>
               </select>
             </div>
             <div class="form-group">
                 <label for="sel1">Type:</label>
-                <select class="form-control"    formControlName="medicine_type"  >
+                <select class="form-control"    formControlName="medicine_type"   [ngClass]="{ 'is-invalid': submitted && f.medicine_type.errors }">
                     <option [value]="1">Tablet</option>
                      <option [value]="2">Capsule</option>
                       <option [value]="3">Syrup</option>
@@ -30,11 +30,11 @@
               </div>
               <div class="form-group" >
                   <label for="email">Expiry Date:</label>
-                  <input type="date" class="form-control"  formControlName="exp_date" placeholder="Generic Name" required>
+                  <input type="date" class="form-control"  formControlName="exp_date" placeholder="Generic Name" required  min="{{mindate}}"  [ngClass]="{ 'is-invalid': submitted && f.exp_date.errors }">
                 </div>
     <div class="form-group">
         <label for="pwd">quantity:</label>
-        <input type="text" class="form-control"   formControlName="quantity" placeholder="Enter quantity" id="pwd" maxlength="10" required>
+        <input type="text" class="form-control"   formControlName="quantity" placeholder="Enter quantity" id="pwd"   required  [ngClass]="{ 'is-invalid': submitted && f.quantity.errors }"  (keypress)="keyPress($event)" maxlength="9">
       </div>
     <button type="submit" class="btn btn-primary login" (click)="donate()">Donate</button>
 

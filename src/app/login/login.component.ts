@@ -15,7 +15,8 @@ Password:string;
   styleUrls: ['./login.component.scss']
 })
 export class LoginComponent implements OnInit {
-
+  get f() { return this.loginForm.controls; }
+  submitted = false
   constructor(private router:Router,private formBuilder: FormBuilder,private shareService:ShareService,private registerService:RegisterService) { }
   loginForm: FormGroup;
   ngOnInit() {
@@ -30,6 +31,7 @@ export class LoginComponent implements OnInit {
     }
   }
   public Login():void{
+  this.submitted = true;
   if(this.loginForm.valid){
    this.registerService.postdata('login', this.loginForm.value).subscribe(data =>{
      localStorage.setItem('userdata',JSON.stringify(data));

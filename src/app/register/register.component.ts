@@ -11,12 +11,15 @@ import { RegisterService } from './register.service';
 export class RegisterComponent implements OnInit {
   role = '3';
   registrationForm: FormGroup;
+  submitted = false
+  get f() { return this.registrationForm.controls; }
+
   constructor(private router:Router,private formBuilder: FormBuilder, private registerService:RegisterService) { }
   ngOnInit() {
      
     this.registrationForm = this.formBuilder.group({
             role: ["", Validators.required], 
-            fullName: ["",], 
+            fullName: ["", Validators.required], 
             email: ["", [Validators.required, Validators.email]], 
             password: ["", [Validators.required]],
            ngo_name : ["",  ],
@@ -28,6 +31,7 @@ export class RegisterComponent implements OnInit {
           });
   }
   public register():void{
+    this.submitted = true;
     if (this.registrationForm.valid) {
             if(this.role == '2'){
                 this.registrationForm.value.active_acc = false;
@@ -43,5 +47,32 @@ export class RegisterComponent implements OnInit {
           }
   }
 
-  
+  public keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
+  }
+
+  public rolechange(){
+    this.registrationForm.get('fullName').clearValidators();
+    this.registrationForm.get('year_establishment').clearValidators();
+    this.registrationForm.get('ngo_name').clearValidators();
+    if(this.role == '2'){
+      this.registrationForm.get('ngo_name').setValidators([Validators.required]);
+      this.registrationForm.get('year_establishment').setValidators([Validators.required]);
+
+    }else{
+      this.registrationForm.get('fullName').setValidators([Validators.required]);
+
+    }
+    this.registrationForm.get('fullName').updateValueAndValidity()
+
+    this.registrationForm.get('ngo_name').updateValueAndValidity();
+    this.registrationForm.get('year_establishment').updateValueAndValidity()
+    
+  }
+
 }

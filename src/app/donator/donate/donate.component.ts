@@ -2,7 +2,7 @@ import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegisterService } from 'src/app/register/register.service';
-
+import { DatePipe } from '@angular/common'
 @Component({
   selector: 'app-donate',
   templateUrl: './donate.component.html',
@@ -13,10 +13,19 @@ export class DonateComponent implements OnInit {
   list = [];
   userId:any;
   name: any;
-  constructor(private router:Router,private formBuilder: FormBuilder, private registerService:RegisterService) {
+  mindate
+  submitted = false;
+  constructor(private router:Router,private formBuilder: FormBuilder, public datepipe: DatePipe,
+    private registerService:RegisterService) {
     this.userId = JSON.parse(localStorage.getItem('userdata'));
   }
   ngOnInit() {
+    const date = new Date();
+    const months = date.getMonth() >= 9 ? date.getMonth() + 1:`0${date.getMonth() +1}`;
+    const day =  date.getDate() >= 9 ? date.getDate() + 1:`0${date.getDate() +1}`;
+    this.mindate = `${date.getFullYear()}-${months}-${day}`;
+
+    console.log(this.mindate)
     this.registrationForm = this.formBuilder.group({
           brand_name: ["", Validators.required],
           generic_name: ["",Validators.required],
@@ -36,7 +45,7 @@ export class DonateComponent implements OnInit {
           });
           this.getngolist();
   }
-
+  get f() { return this.registrationForm.controls; }
 
   public getngolist():void{
 
@@ -50,7 +59,13 @@ export class DonateComponent implements OnInit {
   }
   donate(){
     this.registrationForm.value.ngo_name = this.name;
+    this.submitted = true;
     if(this.registrationForm.valid){
+      const value = this.registrationForm.value.quantity
+      if( value <=0 ){
+          alert('quantity should be greater than zero');
+        return;
+      }
     this.registerService.postdata('donator',this.registrationForm.value).subscribe(data =>{
       // this.list = data
       alert(data.msg);
@@ -67,5 +82,13 @@ export class DonateComponent implements OnInit {
     this.name = ngo.ngo_name;
     this.registrationForm.value.ngo_name = ngo.ngo_name;
 
+  }
+  keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
   }
 }
