@@ -18,14 +18,22 @@ export class ForgotPasswordComponent implements OnInit {
     this.loginForm = this.formBuilder.group({  
       email: ["", [Validators.required, Validators.email]], 
       password: ["", [Validators.required]],
-    
-    })
+      confirm_password: ["", [Validators.required]],
+
+    },{ validators: this.checkPasswords })
     const data =  JSON.parse(localStorage.getItem('userdata'));
     if(data){
       
     }
   }
+  checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+  const password = group.get('password').value;
+  const confirmPassword = group.get('confirm_password').value;
+
+  return password === confirmPassword ? null : { notSame: true }     
+}
   public changepassword():void{
+    
   this.submitted = true;
   if(this.loginForm.valid){
    this.registerService.postdata('forgot-password', this.loginForm.value).subscribe(data =>{
