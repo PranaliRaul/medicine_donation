@@ -9,12 +9,13 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { HttpClientModule } from '@angular/common/http';
 import { RegisterService } from './register/register.service';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
  
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent, 
-    RegisterComponent,    
+    RegisterComponent, ForgotPasswordComponent,    
   ],
   imports: [
     BrowserModule,

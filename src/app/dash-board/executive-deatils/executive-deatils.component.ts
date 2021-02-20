@@ -26,7 +26,9 @@ export class ExecutiveDeatilsComponent implements OnInit {
       this.route.navigate(['/home/ngo/ngo-executive-list']);
     },err =>{
       console.log(err);
-      alert(err.error.err);
+      alert(err.error.err);  
+      
+      
       
     })
   }

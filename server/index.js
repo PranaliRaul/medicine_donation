@@ -2,15 +2,18 @@ var express = require('express');
 var app = express();
 var bodyParser = require('body-parser');
 var cors = require('cors');
-var connection = require('./db.connection')
+var connection = require('./db.connection');
 const bycrt = require('bcrypt');
 const transporter =  require('./emailservice');
+const donator = require('./donator');
+// console.log(donator)
 // Create application/x-www-form-urlencoded parser
-var urlencodedParser = bodyParser.urlencoded({ extended: false })
+var urlencodedParser = bodyParser.urlencoded({ extended: false });
+
 app.use(bodyParser({ extended: false }))
 
 app.use(cors())
-
+app.use(donator);
 
 app.post('/register',  async function (req, res) {
    // Prepare output in JSON format
@@ -125,26 +128,26 @@ app.get('/ngolist',    (req, res) =>{
     });
 })
 
-app.post('/donator',  async function (req, res) {
-  // Prepare output in JSON format
-  response = req.body;
+// app.post('/donator',  async function (req, res) {
+//   // Prepare output in JSON format
+//   response = req.body;
 
 
-try{
-const sql1 = "INSERT INTO donator (personId,brand_name, generic_name,ngo_name, medicine_type, exp_date,mobile_no,quantity,assign,allow_status,assign_executor,donator_name,donator_address,donation_id,donator_email,ngo_email,remaining_quantity) VALUES ( '"+response.personId+"' ,'"+response.brand_name+"','"+response.generic_name+"','"+response.ngo_name+"','"+response.medicine_type+"','"+response.exp_date+"','"+response.mobile_no+"','"+response.quantity+"','"+response.assign+"','"+response.allow_status+"','"+response.assign_executor+"','"+response.donator_name+"','"+response.donator_address+"' , null,'"+response.donator_email+"','"+response.ngo_email+"','"+response.quantity+"')";
- connection.query( sql1 ,function (err, result) {
-   if (err) {
-       res.status(500).send({err:'donation fail'});
-       return;
-   };
-   res.send({msg:'donation sucessfull'});
-   // sendemail(data);
- });
-}catch{
-  res.status(500).send({err:'donation fail'});
+// try{
+// const sql1 = "INSERT INTO donator (personId,brand_name, generic_name,ngo_name, medicine_type, exp_date,mobile_no,quantity,assign,allow_status,assign_executor,donator_name,donator_address,donation_id,donator_email,ngo_email,remaining_quantity) VALUES ( '"+response.personId+"' ,'"+response.brand_name+"','"+response.generic_name+"','"+response.ngo_name+"','"+response.medicine_type+"','"+response.exp_date+"','"+response.mobile_no+"','"+response.quantity+"','"+response.assign+"','"+response.allow_status+"','"+response.assign_executor+"','"+response.donator_name+"','"+response.donator_address+"' , null,'"+response.donator_email+"','"+response.ngo_email+"','"+response.quantity+"')";
+//  connection.query( sql1 ,function (err, result) {
+//    if (err) {
+//        res.status(500).send({err:'donation fail'});
+//        return;
+//    };
+//    res.send({msg:'donation sucessfull'});
+//    // sendemail(data);
+//  });
+// }catch{
+//   res.status(500).send({err:'donation fail'});
 
-}
-})
+// }
+// })
 var server = app.listen(8081, function () {
    var host = server.address().address
    var port = server.address().port
@@ -463,4 +466,28 @@ const sql1 = "INSERT INTO request (personId,brand_name, generic_name,ngo_name,mo
     });
 })
 
+
+app.post('/forgot-password',    (req, res) =>{
+  const body = req.body;
+  const sql = 'UPDATE register SET  pass="'+body.password + '" WHERE  email= "'+body.email+'"';
+
+  connection.query( sql ,  function (err, result) {
+      try{
+      if (err) {
+          res.status(500).send({err:'fail to load ngo list'});
+      };
+      res.send({msg:'password changed successfully '});
+      
+      //  const text =  `<h4>Hi ${ req.body. }</h4>
+      //               <p>Greeting from ${req.body.ngo_name}, Your requested medicine has been sucessfully delivered by our executor ${req.body.assign_executor}</p>
+      //               <p>Thanks & Regards</p>
+      //               <p>Email: ${req.body.ngo_email}</p>`
+      //   sendemail(req.body.recepient_email,'Medicine donation',text);   
+
+  }catch{
+      res.status(500).send({err:'Server error'});
+  }
+
+    });
+})
 

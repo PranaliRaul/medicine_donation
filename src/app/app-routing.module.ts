@@ -7,6 +7,7 @@ import { NgoGuard } from './auth/ngo.guard';
 import { RecepientGuard } from './auth/recepient.guard';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
+import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'login' , pathMatch:'full'},
@@ -19,7 +20,10 @@ const routes: Routes = [
     component:LoginComponent,
     // canActivate:[AuthGuard],
   },
-
+  {
+    path:'forgot-password',
+    component:  ForgotPasswordComponent
+  },
   {
     path:'home',
     loadChildren:'./dash-board/dash-board.module#DashBoardModule',

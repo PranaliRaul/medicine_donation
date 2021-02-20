@@ -17,6 +17,7 @@ import { BefPersonComponent } from './bef-person/bef-person.component';
 import { RequestMadeComponent } from './request-made/request-made.component';
 import { ExecutiveDeatilsComponent } from './executive-deatils/executive-deatils.component';
 import { ExecutorassignComponent } from './executorassign/executorassign.component';
+import { ExectorAssignRequestComponent } from './exector-assign-request/exector-assign-request.component';
 
 const routes: Routes = [
   {
@@ -92,10 +93,12 @@ const routes: Routes = [
     path:'ngo/executive-donation',
     component:ExecutorassignComponent
 
+  },
+  {
+    path:'ngo/executive-assign-donation',
+    component:ExectorAssignRequestComponent
+
   }
-
-
-
 
 ];
 

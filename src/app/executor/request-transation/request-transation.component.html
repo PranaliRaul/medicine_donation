@@ -37,17 +37,6 @@
     </tbody>
   </table> -->
   <div class="inner">
-    <ag-grid-angular
-          #agGrid
-         
-          class="ag-theme-balham"
-          [columnDefs]="columnDefs"
-          [rowData]="rowData"
-          [defaultColDef]="defaultColDef"
-          [rowHeight]="rowHeight"
-          [headerHeight]="headerHeight"
-          [frameworkComponents]="frameworkComponents"
-          [rowDragManaged]="true"
-        ></ag-grid-angular>  
+    <app-executor-assign-request [email]="email" [button]="true"></app-executor-assign-request>
     </div>
   </div>
