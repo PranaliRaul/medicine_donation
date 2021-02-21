@@ -17,7 +17,7 @@ export class ForgotPasswordComponent implements OnInit {
   ngOnInit() {
     this.loginForm = this.formBuilder.group({  
       email: ["", [Validators.required, Validators.email]], 
-      password: ["", [Validators.required]],
+      password: ["", [Validators.required,Validators.minLength(6)]],
       confirm_password: ["", [Validators.required]],
 
     },{ validators: this.checkPasswords })
@@ -28,8 +28,7 @@ export class ForgotPasswordComponent implements OnInit {
   }
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
   const password = group.get('password').value;
-  const confirmPassword = group.get('confirm_password').value;
-
+  const confirmPassword = group.get('confirm_password').value; 
   return password === confirmPassword ? null : { notSame: true }     
 }
   public changepassword():void{

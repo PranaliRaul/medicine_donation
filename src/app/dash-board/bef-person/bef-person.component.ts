@@ -53,6 +53,7 @@ export class BefPersonComponent implements OnInit {
       { headerName: 'Assigned Executor', field: 'assign_executor', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       ];
+      
    }
    defaultColDef = { 
   

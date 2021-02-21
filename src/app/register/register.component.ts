@@ -21,10 +21,10 @@ export class RegisterComponent implements OnInit {
             role: ["", Validators.required], 
             fullName: ["", Validators.required], 
             email: ["", [Validators.required, Validators.email]], 
-            password: ["", [Validators.required]],
+            password: ["", [Validators.required,Validators.minLength(6)]],
            ngo_name : ["",  ],
-            mobile_no : ["", [Validators.required, Validators.minLength(10)]],
-            address : ["", [Validators.required]],
+            mobile_no : ["", [Validators.required,Validators.pattern('[7-9]\\d{9}')]],
+            address : ["", [Validators.required,Validators.minLength(15)]],
             year_establishment: ["", [ Validators.minLength(4)]],
             active_acc: [true, ''],
             ngo_executor: ['','']
@@ -62,7 +62,7 @@ export class RegisterComponent implements OnInit {
     this.registrationForm.get('ngo_name').clearValidators();
     if(this.role == '2'){
       this.registrationForm.get('ngo_name').setValidators([Validators.required]);
-      this.registrationForm.get('year_establishment').setValidators([Validators.required]);
+      this.registrationForm.get('year_establishment').setValidators([Validators.required,Validators.minLength(4),Validators.max(new Date().getFullYear())]);
 
     }else{
       this.registrationForm.get('fullName').setValidators([Validators.required]);
