@@ -8,6 +8,7 @@ import { RecepientGuard } from './auth/recepient.guard';
 import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
+import { AboutusComponent } from './share/aboutus/aboutus.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'login' , pathMatch:'full'},
@@ -68,9 +69,14 @@ const routes: Routes = [
     }
   },
   {
+    path:'about-us',
+    component:AboutusComponent
+  },
+  {
     path:'**',
     component: LoginComponent
   },
+  
 ];
 
 @NgModule({

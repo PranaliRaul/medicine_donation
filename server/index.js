@@ -85,7 +85,7 @@ app.post('/login',  function (req, res) {
     connection.query( sql4 ,async function (err, result) {
         try{
         if (err) {
-            res.status(500).send({err:'login fail'});
+            res.status(500).send({err:'Login Failed'});
         };
          
         if(result.length && result[0].active_acc==1){
@@ -94,18 +94,18 @@ app.post('/login',  function (req, res) {
                 delete result[0].pass;
                 res.send(result);
             }else{
-                res.status(500).send({errr:'Invald paswword'});
+                res.status(500).send({errr:'Invalid Paswword'});
             }
         }else{
           if(result.length){
-            res.status(500).send({errr:'your account block by admin please contact for more info'})
+            res.status(500).send({errr:'Your account has been blocked by admin'})
           }else{
-            res.status(500).send({errr:'Invald username '})
+            res.status(500).send({errr:'Invalid username '})
           }
           
         }
     }catch{
-        res.status(500).send({err:'email id already use'});
+        res.status(500).send({err:'Email id already use'});
     }
 
       });
@@ -430,7 +430,7 @@ const sql1 = "INSERT INTO request (personId,brand_name, generic_name,ngo_name,mo
 
 app.post('/forgot-password',    (req, res) =>{
   const body = req.body;
-  const sql = 'UPDATE register SET  pass="'+body.password + '" WHERE  email= "'+body.email+'"';
+  const sql = 'UPDATE register SET  pass="'+body.password + '" WHERE  email= "'+body.email+'" and active_acc=1';
 
   connection.query( sql ,  function (err, result) {
       try{
@@ -438,9 +438,9 @@ app.post('/forgot-password',    (req, res) =>{
           res.status(500).send({err:'fail to load ngo list'});
       };
       if(result.affectedRows){
-      res.send({msg:'password changed successfully '});
+      res.send({msg:'Password changed successfully '});
       }else{
-      res.status(500).send({msg:'Email not exists'});
+      res.status(500).send({msg:'Email Id does not exists'});
 
       }
       

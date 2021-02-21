@@ -38,7 +38,7 @@
       <input type="password" class="form-control"  formControlName="password" placeholder="Enter password" id="pwd" required [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
       <div *ngIf="submitted && f?.password?.errors" class="invalid-feedback">
         <div *ngIf="f?.password?.errors?.required">Password is required</div>
-        <div *ngIf="f?.password?.errors?.minlength">Password shold be 6 character</div>
+        <div *ngIf="f?.password?.errors?.minlength">Password should be atleast 6 characters</div>
 
     </div>
     </div>
@@ -55,7 +55,7 @@
           <textarea class="form-control" rows="3" id="comment"  formControlName="address"  [ngClass]="{ 'is-invalid': submitted && f.address.errors }"></textarea>
           <div *ngIf="submitted && f?.address?.errors" class="invalid-feedback">
             <div  *ngIf="f?.address?.errors?.required">Address is required</div>
-            <div *ngIf="f?.address?.errors?.minlength">Address must have 15 characters</div>
+            <div *ngIf="f?.address?.errors?.minlength">Address must have minimum 15 characters</div>
             
         </div>
         </div>

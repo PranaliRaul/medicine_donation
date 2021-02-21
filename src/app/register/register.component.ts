@@ -41,6 +41,7 @@ export class RegisterComponent implements OnInit {
               this.router.navigate(['/login']);
             },err =>{
               console.log(err);
+
               alert(err.error.err);
             })
           
@@ -68,11 +69,9 @@ export class RegisterComponent implements OnInit {
       this.registrationForm.get('fullName').setValidators([Validators.required]);
 
     }
-    this.registrationForm.get('fullName').updateValueAndValidity()
-
+    this.registrationForm.get('fullName').updateValueAndValidity();
     this.registrationForm.get('ngo_name').updateValueAndValidity();
-    this.registrationForm.get('year_establishment').updateValueAndValidity()
-    
+    this.registrationForm.get('year_establishment').updateValueAndValidity() 
   }
 
 }

@@ -20,7 +20,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
   declarations: [BtnComponent, CollectedstatusComponent, 
                 DeliveredstatusComponent, DateComponent, HomepageComponent,
                 MedicinetypeComponent,RecepientIndetailsComponent,RecepientNavigationComponent,
-                NavbarComponent, NgoTransationComponent, ExecutorAssignRequestComponent,AboutusComponent],
+                NavbarComponent, NgoTransationComponent, ExecutorAssignRequestComponent,],
 
 
 
@@ -43,7 +43,7 @@ import { AboutusComponent } from './aboutus/aboutus.component';
     NavbarComponent,
     NgoTransationComponent,
     ExecutorAssignRequestComponent,
-    AboutusComponent
+    
   ]
 })
 export class SharemoduleModule {

@@ -42,6 +42,7 @@ body{
 
  .active-link{
   color: #ff3102 !important;
+  border-bottom: 1px solid;
  }
  .ag-theme-balham .ag-root-wrapper {
   
@@ -52,4 +53,18 @@ body{
 }
 app-btn{ 
   margin: auto;
+}
+
+ 
+ul >li {
+  padding: 10px;
+  list-style: none;
+  color: #929191;
+
+}
+ul >li >a{
+  color: #929191;
+}
+ul >li >a:hover{
+  color: orange;
 }
