@@ -33,6 +33,7 @@ export class ForgotPasswordComponent implements OnInit {
 }
   public changepassword():void{
     
+    
   this.submitted = true;
   if(this.loginForm.valid){
    this.registerService.postdata('forgot-password', this.loginForm.value).subscribe(data =>{
