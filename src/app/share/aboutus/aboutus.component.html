@@ -1,63 +1,93 @@
- 
-<div class="row1">
-  <div class="column">
-    <div class="card">
-      <h3>Why medicine?
-        <span><img class="iconabt" src="../../../assets/Donate-Box_trupurge.png"/></span>
-      </h3>
-
-      <p>
-        Our health is a fundamental part of being human. Without it, we have 
-        nothing. Reports shows, nearly 2 billion people have no access to basic medicines,
-        causing a cascade of preventable misery and suffering.
-      </p>
-     </div>
-  </div>
-
-  <div class="column">
-    <div class="card">
-      <h3>Our Vision
-        <span><img class="iconabt" src="../../../assets/vision.jpg"/></span>
-      </h3>
-      <p>
-        Our website drives the future of healthcare by connecting people with
-        surplus medications. Our system is built to ensure compliance and provide 
-        full liability protection.
-      </p>
-      
+<app-navigation></app-navigation>
+<div>
+    <div class="page-header">
+        <div class="container">
+        <div class="row">
+        <div class="col-12">
+        <h1 class="about">About Us</h1>
+        </div>
+         </div>
+        </div>
+        </div>
+  <div class="welcome-wrap" [@flyInOut]="'in'">
+    <div class="container">
+      <div class="row">
+        <div class="col-12 col-lg-6 order-2 order-lg-1">
+          <div class="welcome-content">
+            <header class="entry-header">
+              <h3>Why medicine?</h3>
+            </header>
+            <div class="entry-content mt-5">
+              <p>
+                Our health is a fundamental part of being human. Without it, we have
+                nothing. Reports shows, nearly 2 billion people have no access to basic medicines,
+                causing a cascade of preventable misery and suffering.
+              </p>
+            </div>
+            <div class="entry-footer mt-5">
+            </div>
+          </div>
+        </div>
+        <div class="col-12 col-lg-6 order-1 order-lg-2">
+          <img src="../../../assets/Donate-Box_trupurge.png" alt="welcome">
+        </div>
+      </div>
     </div>
   </div>
-  
-  <div class="column">
-    <div class="card">
-      <h3>Join Us
-        <span><img class="iconabt" src="../../../assets/join us.jpg"/></span>
-      </h3>
-      <p>
-        You can join us easily with different asoects to become a  part of the impact.
-        You can be a Donator, Volunteer, Executive, Pharmacist or any 
-        Non Goverment Organistions.
-      </p>
-     
-    </div>
-  </div>
-</div>
-<footer >
-  <div class="d-flex container">
-    <ul class="list">
-      <li>
-        <a  [routerLink]="['/about-us']"  > About Us </a>
-        </li>
-      <li> <a  [routerLink]="['/']"  > FAQ</a></li>
-    </ul>
+  <div>
+    <div class="welcome-wrap" [@flyInOut]="'in'">
+      <div class="container">
+        <div class="row">
+          <div class="col-12 col-lg-6 order-2 order-lg-1">
+            <div class="welcome-content">
+              <header class="entry-header">
+                <h3>Our Vision</h3>
+              </header>
+              <div class="entry-content mt-5">
+                <p>
+                  Our website drives the future of healthcare by connecting people with
+                  surplus medications. Our system is built to ensure compliance and provide
+                  full liability protection.
+                </p>
 
-    <ul class="list">
-      <li>About Us</li>
-      <li>FAQ</li>
-    </ul>
-    <ul class="list">
-      <li>About Us</li>
-      <li>FAQ</li>
-    </ul>
-  </div>
-</footer>
+              </div>
+              <div class="entry-footer mt-5">
+              </div>
+            </div>
+          </div>
+          <div class="col-12 col-lg-6 order-1 order-lg-2">
+            <img src="../../../assets/vision.jpg" alt="welcome">
+          </div>
+        </div>
+      </div>
+    </div>
+    <div>
+      <div class="welcome-wrap" [@flyInOut]="'in'">
+        <div class="container">
+          <div class="row">
+            <div class="col-12 col-lg-6 order-2 order-lg-1">
+              <div class="welcome-content">
+                <header class="entry-header">
+                  <h2 class="entry-title">Join Us</h2>
+                </header>
+                <div class="entry-content mt-5">
+                  <p>
+                    You can join us easily with different asoects to become a part of the impact.
+                    You can be a Donator, Volunteer, Executive, Pharmacist or any
+                    Non Goverment Organistions.
+                  </p>
+
+                </div>
+                <div class="entry-footer mt-5">
+                </div>
+              </div>
+            </div>
+            <div class="col-12 col-lg-6 order-1 order-lg-2">
+              <img src="../../../assets/join us.jpg" alt="welcome">
+            </div>
+          </div>
+        </div>
+      </div>
+      <div>
+        <app-footer></app-footer>
+      </div>

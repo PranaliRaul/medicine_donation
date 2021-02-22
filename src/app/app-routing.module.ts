@@ -74,12 +74,13 @@ const routes: Routes = [
     component:AboutusComponent
   },
   {
-    path:'**',
-    component: LoginComponent
-  },
-  {
     path:'faq',
     component: FaqComponent
+  },
+  
+  {
+    path:'**',
+    component: LoginComponent
   },
   
   

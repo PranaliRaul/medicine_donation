@@ -1,0 +1,27 @@
+.footer-widgets {
+    position: relative;
+    padding: 96px 0 90px;
+    background:  url('../../../assets/poor_chlid.jpg') no-repeat center;
+    background-size: cover;
+    box-shadow:inset 0 0 0 2000px rgba(0, 0, 0, 0.8 );
+    // z-index: 99;
+}
+
+.container{
+    color: #fff;
+}
+
+.foot-about >p{
+    color: #929191;
+}
+
+.foot-logo >img{
+    width: 89%;
+    height: 49px;
+}
+
+.footer-bar{
+    background: black;
+    padding: 10px;
+    text-align: center;
+}
