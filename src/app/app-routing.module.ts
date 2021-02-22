@@ -9,6 +9,7 @@ import { LoginComponent } from './login/login.component';
 import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AboutusComponent } from './share/aboutus/aboutus.component';
+import { FaqComponent } from './share/faq/faq.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'login' , pathMatch:'full'},
@@ -76,6 +77,11 @@ const routes: Routes = [
     path:'**',
     component: LoginComponent
   },
+  {
+    path:'faq',
+    component: FaqComponent
+  },
+  
   
 ];
 

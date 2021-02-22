@@ -29,6 +29,6 @@ export class HomepageComponent implements OnInit,OnDestroy {
   }
   ngOnDestroy(): void {
     clearTimeout(this.timeout);
-  }
+  } 
 }
 

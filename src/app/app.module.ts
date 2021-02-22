@@ -11,13 +11,14 @@ import { HttpClientModule } from '@angular/common/http';
 import { RegisterService } from './register/register.service';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AboutusComponent } from './share/aboutus/aboutus.component';
+import { FaqComponent } from './share/faq/faq.component';
  
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent, 
     RegisterComponent, ForgotPasswordComponent,  
-    AboutusComponent  
+    AboutusComponent, FaqComponent  
   ],
   imports: [
     BrowserModule,
