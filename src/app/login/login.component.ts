@@ -16,7 +16,8 @@ Password:string;
 })
 export class LoginComponent implements OnInit {
   get f() { return this.loginForm.controls; }
-  submitted = false
+  submitted = false;
+  fieldTextType:boolean;
   constructor(private router:Router,private formBuilder: FormBuilder,private shareService:ShareService,private registerService:RegisterService) { }
   loginForm: FormGroup;
   ngOnInit() {
@@ -41,6 +42,7 @@ export class LoginComponent implements OnInit {
     alert(err.error.errr);
    })
   }
+
   }
 
   public islogin(data){
@@ -57,6 +59,8 @@ export class LoginComponent implements OnInit {
         this.router.navigate(['/Recepient/my-request']);       
       }
   }
-
+toggleFieldTextType() {
+    this.fieldTextType = !this.fieldTextType;
+  }
 
 }

@@ -12,6 +12,8 @@ export class ForgotPasswordComponent implements OnInit {
   submitted = false;
   constructor(private router:Router,private formBuilder: FormBuilder,private registerService:RegisterService) { }
   loginForm: FormGroup;
+  fieldTextType:boolean;
+  fieldTextType2:boolean;
   get f() { return this.loginForm.controls; }
 
   ngOnInit() {
@@ -44,5 +46,12 @@ export class ForgotPasswordComponent implements OnInit {
     alert(err.error.msg);
    })
   }
+}
+toggleFieldTextType(){
+this.fieldTextType = !this.fieldTextType 
+}
+toggleFieldTextType2(){
+this.fieldTextType2 = !this.fieldTextType2;
+  
 }
 }
