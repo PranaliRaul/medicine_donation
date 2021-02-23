@@ -1,11 +1,17 @@
-import { Component, OnInit } from '@angular/core';
+import { Component, OnInit, AfterViewInit } from '@angular/core';
 
 @Component({
   selector: 'app-faq',
   templateUrl: './faq.component.html',
   styleUrls: ['./faq.component.scss']
 })
-export class FaqComponent implements OnInit {
+export class FaqComponent implements OnInit, AfterViewInit {
+  private classList:any;
+  private nextElementSibling:any
+  ngAfterViewInit(): void {
+    const items = document.querySelectorAll(".accordion a");
+    items.forEach(item => item.addEventListener('click', this.toggleAccordion));
+  }
 
   constructor() { }
 
@@ -13,12 +19,12 @@ export class FaqComponent implements OnInit {
   }
 
 
-//   const items = document.querySelectorAll(".accordion a");
  
-// function toggleAccordion(){
-//   this.classList.toggle('active');
-//   this.nextElementSibling.classList.toggle('active');
-// }
+  toggleAccordion(){
+   
+
+  this.classList.toggle('active');
+  this.nextElementSibling.classList.toggle('active');
+}
  
-// items.forEach(item => item.addEventListener('click', toggleAccordion));
 }
