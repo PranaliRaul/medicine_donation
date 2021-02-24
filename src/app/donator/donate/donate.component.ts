@@ -66,6 +66,7 @@ export class DonateComponent implements OnInit {
           alert('quantity should be greater than zero');
         return;
       }
+      this.registrationForm.value.donation_date = this.registerService.getdate()
     this.registerService.postdata('donator',this.registrationForm.value).subscribe(data =>{
       // this.list = data
       alert(data.msg);

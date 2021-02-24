@@ -14,7 +14,7 @@ import { MedicinetypeComponent } from 'src/app/share/medicinetype/medicinetype.c
 })
 export class MyDonationsComponent implements OnInit {
   
-  list =[];
+ // list =[];
   userId:number;
   type = ['',"Tablet",'Capsule','Syrup'];
   private gridApi;
@@ -40,6 +40,8 @@ export class MyDonationsComponent implements OnInit {
        },  
       { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 
       suppressSizeToFit: true},  
+      { headerName: 'Donation Date', field: 'donation_date', sortable: true, filter: true , 
+      suppressSizeToFit: true,cellRenderer:'date'}, 
       { headerName: 'Ngo Name', field: 'ngo_name', sortable: true, filter: true , 
       suppressSizeToFit: true}, 
       { headerName: 'Medicine Type', field: 'medicine_type', sortable: true, filter: true,cellRenderer:'medtype' ,
@@ -77,8 +79,8 @@ export class MyDonationsComponent implements OnInit {
   public getngolist():void{
     this.userId = JSON.parse(localStorage.getItem('userdata'))[0].personId;
     this.registerService.getData(`mydonator?id=${this.userId}`).subscribe(data =>{
-       this.list = data;
-       this.rowData = data;
+      // this.list = data.reverse();
+       this.rowData = data.reverse();
     },err =>{ 
       alert(err.error.err);
     })

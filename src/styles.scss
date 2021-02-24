@@ -37,7 +37,8 @@ body{
  }
 
  .navigation-bg{
-  background-color:darkgray;
+ // background-color:darkgray;
+  background: #f4f1fb;
  }
 
  .active-link{
@@ -77,4 +78,7 @@ ul >li >a:hover{
 .page-wrapager{
   height: 100vh;
   background-image: url('../src/assets/login1.png')
+}
+.ag-root.ag-unselectable.ag-layout-normal {
+  padding: 10px;
 }

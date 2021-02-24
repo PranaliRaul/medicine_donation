@@ -24,7 +24,7 @@ import {
   ]
 })
 export class HomepageComponent implements OnInit,OnDestroy {
-
+ 
   private myIndex = 0;
   private timeout:any
   constructor() { }

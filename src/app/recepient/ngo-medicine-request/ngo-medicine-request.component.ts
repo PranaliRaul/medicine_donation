@@ -70,8 +70,10 @@ export class NgoMedicineRequestComponent implements OnInit {
         assign:this.selecedmedicine.donator_name,
         generic_name:this.selecedmedicine.generic_name,
         brand_name:this.selecedmedicine.brand_name,
-        remaining_quantity:qwt >0 ? qwt:0
+        remaining_quantity:qwt >0 ? qwt:0,
+        request_date:  this.registerService.getdate()
       }
+     
     this.registerService.postdata('recepient-request',data).subscribe(data =>{
       alert('Your medicine request has been sucessfully recorded');
       this.router.navigate(['/Recepient/my-request'])

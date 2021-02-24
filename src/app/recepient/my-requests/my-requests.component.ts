@@ -4,6 +4,7 @@ import 'ag-grid-enterprise';
 import { BtnComponent } from 'src/app/share/components/btn/btn.component';
 import { DeliveredstatusComponent } from 'src/app/share/components/deliveredstatus/deliveredstatus.component';
 import { Router } from '@angular/router';
+import { DateComponent } from 'src/app/share/components/date/date.component';
 
 @Component({
   selector: 'app-my-requests',
@@ -15,7 +16,7 @@ export class MyRequestsComponent implements OnInit {
   userId:number;
   private gridApi;
   private gridColumnApi;
-
+  paginationPageSize = 10;
   private columnDefs;
   private defaultColGroupDef;
   private columnTypes; 
@@ -26,8 +27,8 @@ export class MyRequestsComponent implements OnInit {
 
   constructor(private registerService:RegisterService , private route:Router) { 
     this.frameworkComponents = {
-      status:DeliveredstatusComponent
-
+      status:DeliveredstatusComponent,
+      date:DateComponent,
     }
     this.columnDefs = [  
       { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
@@ -36,6 +37,8 @@ export class MyRequestsComponent implements OnInit {
       suppressSizeToFit: true},  
       { headerName: 'Ngo Name', field: 'ngo_name', sortable: true, filter: true , 
       suppressSizeToFit: true}, 
+      { headerName: 'Request Date', field: 'request_date', sortable: true, filter: true , 
+      suppressSizeToFit: true,cellRenderer:'date'}, 
       { headerName: 'Quantity', field: 'quantity', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       { headerName: 'Benefited Person', field: 'assign', sortable: true, filter: true , 

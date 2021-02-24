@@ -10,12 +10,9 @@ export class DateComponent implements ICellRendererAngularComp {
 
   constructor() { }
 
-  params;
-  label: string;
-
+  public params:any;
   agInit(params): void {
     this.params = params;
-    this.label = this.params.label || null;
    
   }
 

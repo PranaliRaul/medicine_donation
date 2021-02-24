@@ -63,6 +63,7 @@ export class MedicineRequestComponent implements OnInit {
   request(){
     this.registrationForm.value.ngo_name = this.name;
     if(this.registrationForm.valid){
+      this.registrationForm.value.request_date = this.registerService.getdate()
     this.registerService.postdata('recepient',this.registrationForm.value).subscribe(data =>{
       alert('Your medicine request has been sucessfully recorded');
       this.router.navigate(['/Recepient/my-request'])
@@ -79,6 +80,9 @@ export class MedicineRequestComponent implements OnInit {
     this.registrationForm.value.ngo_name = ngo.ngo_name;
 
   }
+
+
+ 
 }
 
 
