@@ -1,4 +1,4 @@
-<div class="page-wrapager">
+<!-- <div class="page-wrapager">
   <app-navbar></app-navbar>
     <div class="container" >
         <div class="w-50 box-container">
@@ -33,5 +33,96 @@
       </div>
       </div>
       </div>
-      
+       -->
 
+
+
+
+
+
+
+      <div>
+        <app-navbar></app-navbar>
+    
+        <div class="wrapper" class="bg-theme bg-theme1  pace-done">
+        <div class="section-authentication-signin d-flex align-items-center justify-content-center  ">
+            <div class="container-fluid">
+    
+              <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+                <div class="col mx-auto" style="flex-grow: 0.4;">
+                  <div class="card mt-5 mt-lg-0">
+                    <div class="card-body">
+                      <div class="border p-4 rounded">
+                        <div class="text-center">
+                          <h3 class="">Add NGO Form</h3>
+                          
+                        </div> 
+                          <hr>
+                         
+                        <div class="form-body">
+                          <form class="row g-3" [formGroup]="registrationForm" autocomplete="off">
+                            <div class="col-12 pb-2">
+                              <label for="inputEmailAddress" class="form-label">Name of NGO:</label>
+                              <input type="text" class="form-control" placeholder="Enter Full Name" id="email" required formControlName="ngo_name" required  [ngClass]="{ 'is-invalid': submitted && f.ngo_name.errors }">
+                              <div *ngIf="submitted && f.ngo_name?.errors" class="invalid-feedback">
+                                <div *ngIf="f?.ngo_name?.errors?.required">NGO Name is required</div>
+                                </div>
+                            </div>
+                            <div class="col-12 pb-2">
+                              <label for="inputChoosePassword" class="form-label">Email address:</label>
+                              <div class="input-group"  >
+                                <input type="email" class="form-control" placeholder="Enter email" id="email" required formControlName="email" required  [ngClass]="{ 'is-invalid': submitted && f.email.errors }"> 
+                                <div *ngIf="submitted && f.email?.errors" class="invalid-feedback">
+                                  <div *ngIf="f?.email?.errors?.required">Email is required</div> 
+                                  <div *ngIf="f?.email?.errors?.email">Email must be a valid email address</div>
+                              </div>
+                              </div>
+                            </div>
+                           
+                          <div class="col-12 pb-2">
+                           <label for="inputEmailAddress" class="form-label">Password:</label>
+                           <input type="password" class="form-control" placeholder="Enter password" id="pwd" required formControlName="password" required  [ngClass]="{ 'is-invalid': submitted && f.password.errors }">                              
+                              <div *ngIf="submitted && f.password?.errors" class="invalid-feedback">
+                                <div *ngIf="f?.password?.errors?.required">Password is required</div>
+                                </div>
+                            </div>
+                            <div class="col-12 pb-2">
+                              <label for="inputEmailAddress" class="form-label">Contact Number:</label>
+                              <input type="text" class="form-control" placeholder="Enter Mobile Number" id="pwd" maxlength="10" required formControlName="mobile_no" required  [ngClass]="{ 'is-invalid': submitted && f.mobile_no.errors }">
+                              <div *ngIf="submitted && f.mobile_no?.errors" class="invalid-feedback">
+                              <div *ngIf="f?.mobile_no?.errors?.required">Contact Number is required</div>
+                                   </div>
+                               </div>
+                               <div class="col-12 pb-2">
+                                <label for="inputEmailAddress" class="form-label">Address:</label>
+                                <textarea class="form-control" rows="3" id="comment" formControlName="address" required  [ngClass]="{ 'is-invalid': submitted && f.address.errors }"></textarea>                              
+                                   <div *ngIf="submitted && f.address?.errors" class="invalid-feedback">
+                                     <div *ngIf="f?.address?.errors?.required">Address is required</div>
+                                     </div>
+                                 </div>
+                                 <div class="col-12 pb-2">
+                                  <label for="inputEmailAddress" class="form-label">Year of establishment:</label>
+                                  <input type="text" class="form-control" placeholder="Enter year of establishment" id="email" required maxlength="4" formControlName="year_establishment" (keypress)="validateForm($event.target.value)" required  [ngClass]="{ 'is-invalid': submitted && f.year_establishment.errors }">
+
+                               <div *ngIf="submitted && f.year_establishment?.errors" class="invalid-feedback">
+                                <div *ngIf="f?.year_establishment?.errors?.required">Year of establishment is required</div>
+                                  </div>
+                                 </div>
+
+                            <div class="col-12 pt-2">
+                              <div class="d-grid">
+                                <button type="submit" class="btn btn-light"  (click)="register()">Register</button>
+                              </div>
+                            </div>
+                          </form>
+                        </div>
+                      </div>
+                    </div>
+                  </div>
+                </div>
+              </div>
+              <!--end row-->
+            </div>
+          </div>
+          </div>
+          </div>

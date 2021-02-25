@@ -14,6 +14,7 @@ export class DonateComponent implements OnInit {
   userId:any;
   name: any;
   mindate
+  tipButtons
   submitted = false;
   constructor(private router:Router,private formBuilder: FormBuilder, public datepipe: DatePipe,
     private registerService:RegisterService) {
@@ -93,3 +94,13 @@ export class DonateComponent implements OnInit {
     }
   }
 }
+
+
+
+
+
+
+
+
+
+

@@ -22,7 +22,7 @@ export class FaqComponent implements OnInit, AfterViewInit {
  
   toggleAccordion(){
    
-
+ 
   this.classList.toggle('active');
   this.nextElementSibling.classList.toggle('active');
 }

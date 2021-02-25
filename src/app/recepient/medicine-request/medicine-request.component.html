@@ -1,6 +1,5 @@
 
-<app-recepient-navigation></app-recepient-navigation>
-
+<!-- 
 <div class="container" >
     <div class="w-50 box-container">
 
@@ -28,4 +27,90 @@
 
   </form>
   </div>
-  </div>
+  </div> -->
+
+
+
+
+
+
+
+
+
+
+
+
+  <div>
+    <app-recepient-navigation></app-recepient-navigation>
+
+    <div class="wrapper" class="bg-theme bg-theme1  pace-done">
+    <div class="section-authentication-signin d-flex align-items-center justify-content-center  ">
+        <div class="container-fluid">
+
+          <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+            <div class="col mx-auto" style="flex-grow: 0.4;">
+              <div class="card mt-5 mt-lg-0">
+                <div class="card-body">
+                  <div class="border p-4 rounded">
+                    <div class="text-center">
+                      <h3 class="">Request Form</h3>
+                      
+                    </div> 
+                      <hr>
+                     
+                    <div class="form-body">
+                      <form class="row g-3" [formGroup]="registrationForm" autocomplete="off">
+                        <div class="col-12 pb-2">
+                          <label for="inputEmailAddress" class="form-label">Brand Name:</label>
+                          <input type="text"    class="form-control"   formControlName="brand_name" placeholder="Enter Brand Name"  required  [ngClass]="{ 'is-invalid': submitted && f.brand_name.errors }">
+                          <div *ngIf="submitted && f.brand_name?.errors" class="invalid-feedback">
+                            <div *ngIf="f?.brand_name?.errors?.required">Brand Name is required</div>
+                            </div>
+                        </div>
+                        <div class="col-12 pb-2">
+                          <label for="inputChoosePassword" class="form-label">Generic Name:</label>
+                          <div class="input-group"  >
+                            <input     type="text"    class="form-control border-end-0" formControlName="generic_name" placeholder="Generic Name" required  [ngClass]="{ 'is-invalid': submitted && f.generic_name.errors }">
+                              
+                            <div *ngIf="submitted && f.generic_name?.errors" class="invalid-feedback">
+                              <div *ngIf="f?.generic_name?.errors?.required">Generic Name is required</div> 
+                          </div>
+                          </div>
+                        </div>
+                        <div class="col-12 pb-2">
+                          <label for="inputChoosePassword" class="form-label">Ngo Name:</label>
+                          <div class="input-group" >
+                               <select class="form-control"    formControlName="ngo_email"  (change)="selctngo($event.target.value)"  [ngClass]="{ 'is-invalid': submitted && f.ngo_email.errors }">
+                               <option *ngFor="let ngo of list" [value]="ngo.email">{{ngo?.ngo_name}}</option>
+                              </select>
+                            <div *ngIf="submitted && f.ngo_email?.errors" class="invalid-feedback">
+                              <div *ngIf="f?.ngo_email?.errors?.required">Ngo Name is required</div> 
+                          </div>
+                          </div>
+                        </div>
+                       
+                        <div class="col-12 pb-2">
+                          <label for="inputEmailAddress" class="form-label">Quantity:</label>
+                           <input type="text" class="form-control"   formControlName="quantity" placeholder="Enter quantity" id="pwd"   required  [ngClass]="{ 'is-invalid': submitted && f.quantity.errors }"  (keypress)="keyPress($event)" maxlength="9">
+                          
+                          <div *ngIf="submitted && f.quantity?.errors" class="invalid-feedback">
+                            <div *ngIf="f?.quantity?.errors?.required">Quantity is required</div>
+                            </div>
+                        </div>
+                        <div class="col-12 pt-2">
+                          <div class="d-grid">
+                            <button type="submit" class="btn btn-light"  (click)="request()">Request</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end row-->
+        </div>
+      </div>
+      </div>
+      </div>
