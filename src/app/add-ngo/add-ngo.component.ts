@@ -10,6 +10,9 @@ import { RegisterService } from '../register/register.service';
 })
 export class AddNgoComponent implements OnInit {
   registrationForm: FormGroup;
+  submitted = false;
+  get f() { return this.registrationForm.controls; }
+
   constructor(private router:Router,private formBuilder: FormBuilder, private registerService:RegisterService) { }
   ngOnInit() {
      
@@ -27,6 +30,7 @@ export class AddNgoComponent implements OnInit {
           });
   }
   public register():void{
+    this.submitted =true;
     if (this.registrationForm.valid) {
             this.registerService.postdata('register', this.registrationForm.value).subscribe(data =>{
               alert(data.msg);

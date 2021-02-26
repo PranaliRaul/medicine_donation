@@ -16,7 +16,7 @@
     background-image: url('../../../assets/login1.png');
   }
   .section-authentication-signin {
-    height: 100vh;
+    // height: 100vh;
   }
   
   .wrapper {
@@ -123,12 +123,8 @@
   }
 
 
-
-
-
-
-
-
-
-
- 
+  @media screen and (max-width: 1400px) {
+      .container-fluid{
+          margin-top: 20px;
+      }
+  }

@@ -32,7 +32,7 @@ export class DonateComponent implements OnInit {
           generic_name: ["",Validators.required],
           ngo_email: ["", [Validators.required, ]],
           medicine_type: ["", [Validators.required]],
-           quantity : ["",  Validators.required],
+           quantity : ["",  [Validators.required,Validators.min(1)]],
            exp_date:['', Validators.required],
            assign:['',  ''],
            allow_status:[0  ,''],
@@ -61,22 +61,22 @@ export class DonateComponent implements OnInit {
   donate(){
     this.registrationForm.value.ngo_name = this.name;
     this.submitted = true;
+    this.registrationForm.value.donation_date = this.registerService.getdate();
+      this.registerService.confirmThis('', function () {  
+        alert("Yes clicked");  
+      }, function () {  
+        alert("No clicked");  
+      }) 
     if(this.registrationForm.valid){
-      const value = this.registrationForm.value.quantity
-      if( value <=0 ){
-          alert('quantity should be greater than zero');
-        return;
-      }
-      this.registrationForm.value.donation_date = this.registerService.getdate()
+      const value = this.registrationForm.value.quantity;
+      
     this.registerService.postdata('donator',this.registrationForm.value).subscribe(data =>{
-      // this.list = data
-      alert(data.msg);
+       
+     
       this.router.navigate(['/donator/my-donation'])
     },err =>{
       alert(err.error.err);
-    })}else{
-      alert('please fill all required field')
-    }
+    })}
 
   }
   selctngo(value){
@@ -86,8 +86,7 @@ export class DonateComponent implements OnInit {
 
   }
   keyPress(event: any) {
-    const pattern = /[0-9\+\-\ ]/;
-
+    const pattern = /[0-9]/;
     let inputChar = String.fromCharCode(event.charCode);
     if (event.keyCode != 8 && !pattern.test(inputChar)) {
       event.preventDefault();

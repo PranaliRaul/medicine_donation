@@ -12,6 +12,8 @@ export class AddExecutiveComponent implements OnInit {
   registrationForm: FormGroup;
   role= '5';
   userId:string;
+  submitted = false;
+  get f() { return this.registrationForm.controls; }
   constructor(private router:Router,private formBuilder: FormBuilder, private registerService:RegisterService) { 
     this.userId = JSON.parse(localStorage.getItem('userdata'))[0].email;
   }
@@ -31,6 +33,7 @@ export class AddExecutiveComponent implements OnInit {
           });
   }
   public register():void{
+  this.submitted = true;
     if (this.registrationForm.valid) { 
             this.registerService.postdata('register', this.registrationForm.value).subscribe(data =>{
               console.log(data);

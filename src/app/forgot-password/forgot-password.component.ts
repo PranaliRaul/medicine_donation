@@ -28,6 +28,7 @@ export class ForgotPasswordComponent implements OnInit {
       
     }
   }
+  
   checkPasswords(group: FormGroup) { // here we have the 'passwords' group
   const password = group.get('password').value;
   const confirmPassword = group.get('confirm_password').value; 

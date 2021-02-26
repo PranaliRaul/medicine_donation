@@ -1,6 +1,7 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { FormBuilder, FormGroup, Validators } from '@angular/forms';
+
 import { RegisterService } from 'src/app/register/register.service';
 
 @Component({
@@ -13,8 +14,11 @@ export class MedicineRequestComponent implements OnInit {
   public list = [];
   private userId:any;
   private name:string;
+  submitted = false;
+  get f() { return this.registrationForm.controls; }
   constructor(private router:Router,private formBuilder: FormBuilder, private registerService:RegisterService) {
     this.userId = JSON.parse(localStorage.getItem('userdata'));
+   
   }
   ngOnInit() {
 
@@ -60,19 +64,21 @@ export class MedicineRequestComponent implements OnInit {
 
 }
 
-  request(){
+  request(content){
+  this.submitted = true;
+
     this.registrationForm.value.ngo_name = this.name;
     if(this.registrationForm.valid){
       this.registrationForm.value.request_date = this.registerService.getdate()
     this.registerService.postdata('recepient',this.registrationForm.value).subscribe(data =>{
-      alert('Your medicine request has been sucessfully recorded');
-      this.router.navigate(['/Recepient/my-request'])
+     //  alert('Your medicine request has been sucessfully recorded');
+      setTimeout(() =>{
+        this.router.navigate(['/Recepient/my-request']) 
+      },1000)
     },err =>{
-      alert(err.error.err);
+      // alert(err.error.err);
     })
-  }else{
-    alert('please fill all required field')
-  }
+  } 
   }
   selctngo(value){
     const ngo = this.list.find(ele =>ele.email === value);

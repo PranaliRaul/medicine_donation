@@ -1,5 +1,5 @@
 const express = require('express');
-var app = express();
+const app = express();
 const bodyParser = require('body-parser');
 const cors = require('cors');
 const connection = require('./db.connection');
@@ -9,8 +9,8 @@ const donator = require('./donator');
 const recepient = require('./recepient');
 const ngolist = require('./ngolist');
 const executor = require('./executor');
+const urlencodedParser = bodyParser.urlencoded({ extended: false ,limit: '50mb'});
 
-const urlencodedParser = bodyParser.urlencoded({ extended: false ,limit: '50mb'})
 app.use(bodyParser.json());
 // app.use(app.bodyParser({limit: '6mb'}))
 // app.use(bodyParser({ extended: false }))

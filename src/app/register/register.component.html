@@ -104,6 +104,13 @@
                      
                     <div class="form-body">
                       <form class="row g-3" [formGroup]="registrationForm" autocomplete="off">
+                          <div class="col-12 pb-2"   *ngIf="role != 2">
+                              <label for="inputEmailAddress" class="form-label">Name of NGO:</label>
+                              <input type="text" class="form-control"  formControlName="fullName" placeholder="Enter Full Name" id="name"  [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }">
+                              <div *ngIf="submitted && f.ngo_name?.errors" class="invalid-feedback">
+                                <div *ngIf="f?.ngo_name?.errors?.required">NGO Name is required</div>
+                                </div>
+                            </div>
                         <div class="col-12 pb-2">
                           <label for="inputEmailAddress" class="form-label">Name of NGO:</label>
                           <input type="text" class="form-control" placeholder="Enter Full Name" id="email" required formControlName="ngo_name" required  [ngClass]="{ 'is-invalid': submitted && f.ngo_name.errors }">
@@ -168,7 +175,6 @@
         </div>
       </div>
       </div>
-      </div> -->
-
+      </div>
 
 
