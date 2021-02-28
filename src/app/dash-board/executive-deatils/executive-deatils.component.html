@@ -1,4 +1,5 @@
-<app-navbar  ></app-navbar>
+<app-navbar  *ngIf="!app_navbar" ></app-navbar>
+<app-ngonavigation *ngIf="app_navbar"></app-ngonavigation>
 
 <div class="container">
   <div class="row">
@@ -39,8 +40,8 @@
      Status:
     </div>
     <div class="col">
-      <button type="button" class="btn btn-danger" *ngIf="!ngo_details?.active_acc" (click)="activeAcc(true)">Inactive</button>
-      <button type="button" class="btn btn-success" *ngIf="ngo_details?.active_acc" (click)="activeAcc(false)">Active</button>
+      <button type="button" class="btn btn-danger" *ngIf="!active_acc" (click)="activeAcc(true)">Inactive</button>
+      <button type="button" class="btn btn-success" *ngIf="active_acc" (click)="activeAcc(false)">Active</button>
     </div>
   </div>
   <div class="row">
@@ -51,8 +52,8 @@
   </div>
   <div class="row"  >
     <div class="col">
-      <button type="button" class="btn btn-primary mr-2"  (click)="navigate('/home/ngo/executive-assign-donation')">Donations delivered</button>
-      <button type="button" class="btn btn-primary mr-2"  (click)="navigate('/home/ngo/executive-donation')" >Donations  collected</button>
+      <button type="button" class="btn btn-primary mr-2"  (click)="navigate(url)">Donations delivered</button>
+      <button type="button" class="btn btn-primary mr-2"  (click)="navigate(url2)" >Donations  collected</button>
     </div>
   </div>
 </div>

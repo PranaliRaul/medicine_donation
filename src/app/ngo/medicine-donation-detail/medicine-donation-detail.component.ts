@@ -30,7 +30,7 @@ export class MedicineDonationDetailComponent implements OnInit {
   fetchexecutor(){
     this.userId = JSON.parse(localStorage.getItem('userdata'))[0].email;
     this.servive.getData(`executor-list?id=${this.userId}`).subscribe(data =>{
-       this.list = data;
+       this.list = data.filter(data => data.active_acc);
     },err =>{ 
       alert(err.error.err);
     })

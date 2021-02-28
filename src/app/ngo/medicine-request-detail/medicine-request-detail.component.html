@@ -65,7 +65,7 @@
        Assign Executor:
     </div>
     <div class="col-3">
-      <select class="form-control"    [(ngModel)]="email"    (change)="assignexe($event.target.value)" [disabled]="disabled">
+      <select class="form-control"    [(ngModel)]="email"    (change)="assignexe($event.target.value)" [disabled]="!selected_medicine">
         <option *ngFor="let executor of list" [value]="executor.email"> {{executor?.fullName}}</option>
     </select>
     </div>

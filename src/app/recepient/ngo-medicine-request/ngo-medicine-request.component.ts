@@ -17,17 +17,20 @@ export class NgoMedicineRequestComponent implements OnInit {
   public medicinelist = [];
   public selecedmedicine:any;
   public disabled = true;
-  type = ['',"Tablet",'Capsule','Syrup']
+  public submitted = false;
+  type = ['',"Tablet",'Capsule','Syrup'];
+  get f() { return this.registrationForm.controls; }
+
   constructor(private router:Router,private formBuilder: FormBuilder, private registerService:RegisterService) {
     this.userId = JSON.parse(localStorage.getItem('userdata'));
   }
   ngOnInit() {
 
     this.registrationForm = this.formBuilder.group({
-          brand_name: ["", ''],
-          /// generic_name: ["",Validators.required],
-           ngo_email: ["",  ''],
-          quantity : ["",  Validators.required],
+          // brand_name: ["", Validators.required],
+           generic_name: ["",Validators.required],
+           ngo_email: ["",  Validators.required],
+          quantity : ["",  [Validators.required, Validators.min(1)]],
           personId:[this.userId[0].personId,  ''],
           mobile_no:[this.userId[0].mobile_no,''],
           assign:['',  ''],
@@ -56,10 +59,11 @@ export class NgoMedicineRequestComponent implements OnInit {
 }
 
   request(){
+    this.submitted = true;
     this.registrationForm.value.ngo_name = this.name;
     const medicinequantity =  this.registrationForm.value.quantity 
     if( medicinequantity&& medicinequantity >  this.selecedmedicine.quantity){
-      alert('quantity should not be greater than selected medicine  available quantity');
+      alert('Quantity should not be greater than selected medicine available quantity');
       return ;
     }
     if(this.registrationForm.valid){
@@ -72,17 +76,15 @@ export class NgoMedicineRequestComponent implements OnInit {
         brand_name:this.selecedmedicine.brand_name,
         remaining_quantity:qwt >0 ? qwt:0,
         request_date:  this.registerService.getdate()
+
       }
      
     this.registerService.postdata('recepient-request',data).subscribe(data =>{
-      alert('Your medicine request has been sucessfully recorded');
-      this.router.navigate(['/Recepient/my-request'])
+      this.modal(data.msg, true);
     },err =>{
-      alert(err.error.err);
+      this.modal(err.error.err);
     })
-  }else{
-    alert('please fill all required field')
-  }
+  } 
   }
   selctngo(value){
     const ngo = this.list.find(ele =>ele.email === value);
@@ -95,7 +97,7 @@ export class NgoMedicineRequestComponent implements OnInit {
   }
   public getmedicine(email):void{
     this.registerService.getData(`ngo-donation?id=${email}`).subscribe(data =>{
-       this.medicinelist = data.filter(ele => ele.is_collected && ele.quantity > 0);
+       this.medicinelist = data.filter(ele => ele.is_collected && ele.remaining_quantity > 0);
        if(this.medicinelist.length === 0) {
         this.disabled =true;
         alert('selected ngo doesn\'t have any donated medicine')
@@ -112,7 +114,7 @@ export class NgoMedicineRequestComponent implements OnInit {
   checkqwt(value){
     const v = +value 
     if(v && v >  this.selecedmedicine.quantity){
-      alert('quantity should not be greater than selected medicine  available quantity')
+      alert('Quantity should not be greater than selected medicine available quantity')
     }
   }
 
@@ -120,9 +122,16 @@ export class NgoMedicineRequestComponent implements OnInit {
     this.registrationForm.value.donation_date = this.registerService.getdate();
       this.registerService.confirmThis(msg, () =>{  
         if(from){
-          this.router.navigate(['/donator/my-donation'])
+          this.router.navigate(['/Recepient/my-request'])
 
         }
       })  
+  }
+  public keyPress(event: any) {
+    const pattern = /[0-9 ]/; 
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
   }
 }

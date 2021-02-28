@@ -59,6 +59,7 @@
 
                         <div *ngIf="submitted && f.quantity?.errors" class="invalid-feedback">
                           <div *ngIf="f?.quantity?.errors?.required">Quantity is required</div>
+                          <div *ngIf="f?.quantity?.errors?.min">Quantity should be greater than zero</div>
                         </div>
                       </div>
                       <div class="col-12 pt-2">

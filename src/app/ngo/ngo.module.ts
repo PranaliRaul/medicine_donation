@@ -20,7 +20,7 @@ import { DateComponent } from '../share/components/date/date.component';
 import { DeliveredstatusComponent } from '../share/components/deliveredstatus/deliveredstatus.component';
  
 @NgModule({
-  declarations: [AddExecutiveComponent,DonationComponent,RequestComponent,SucessfullDonationComponent,UnsucessfullDonationComponent, NgonavigationComponent, MedicineDonationDetailComponent, MedicineRequestDetailComponent, NgoExecutiveListComponent],
+  declarations: [AddExecutiveComponent,DonationComponent,RequestComponent,SucessfullDonationComponent,UnsucessfullDonationComponent, MedicineDonationDetailComponent, MedicineRequestDetailComponent, NgoExecutiveListComponent],
 
   imports: [
     CommonModule,

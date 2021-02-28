@@ -1,6 +1,5 @@
-<app-navbar  *ngIf="user.roleId != 2"></app-navbar>
-<app-recepient-navigation  *ngIf="user.roleId == 2"></app-recepient-navigation>
-
+<app-navbar  *ngIf="!app_navbar"></app-navbar>
+<!-- <app-recepient-navigation  *ngIf="user.roleId == 2"></app-recepient-navigation> --> 
 <div class="container">
   <div class="row">
     <div class="col-2">
@@ -40,8 +39,8 @@
      Status:
     </div>
     <div class="col">
-      <button type="button" class="btn btn-danger" *ngIf="!ngo_details?.active_acc" (click)="activeAcc(true)">Inactive</button>
-      <button type="button" class="btn btn-success" *ngIf="ngo_details?.active_acc" (click)="activeAcc(false)">Active</button>
+      <button type="button" class="btn btn-danger" *ngIf="!active_acc" (click)="activeAcc(true)">Inactive</button>
+      <button type="button" class="btn btn-success" *ngIf="active_acc" (click)="activeAcc(false)">Active</button>
     </div>
   </div>
   <div class="row">

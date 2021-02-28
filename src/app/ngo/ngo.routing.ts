@@ -9,6 +9,9 @@ import { MedicineDonationDetailComponent } from './medicine-donation-detail/medi
 import { MedicineRequestDetailComponent } from './medicine-request-detail/medicine-request-detail.component';
 import { NgoExecutiveListComponent } from './ngo-executive-list/ngo-executive-list.component';
 import { RecepientIndetailsComponent } from '../dash-board/recepient-indetails/recepient-indetails.component';
+import { ExecutiveDeatilsComponent } from '../dash-board/executive-deatils/executive-deatils.component';
+import { ExecutorassignComponent } from '../dash-board/executorassign/executorassign.component';
+import { ExectorAssignRequestComponent } from '../dash-board/exector-assign-request/exector-assign-request.component';
 const routes: Routes = [
     {
         path:'',
@@ -48,7 +51,15 @@ const routes: Routes = [
   },
   {
     path:'ngo-executive-deatails',
-    component: RecepientIndetailsComponent
+    component: ExecutiveDeatilsComponent
+  },
+  {
+    path:'ngo-executive-assign-donation',
+    component: ExecutorassignComponent
+  },
+  {
+    path:'ngo-executive-assign-request',
+    component: ExectorAssignRequestComponent
   }
   
   ];

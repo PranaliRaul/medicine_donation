@@ -31,9 +31,9 @@ export class MedicineRequestDetailComponent implements OnInit {
 
     this.selected_medicine = this.donation_details.donation_id;
    
-    if (this.donation_details.donation_id) {
-      this.setmedicine();
-    }
+    // if (this.donation_details.donation_id) {
+    //   this.setmedicine();
+    // }
     this.fetchexecutor();
     this.getngolist();
   }
@@ -92,7 +92,7 @@ export class MedicineRequestDetailComponent implements OnInit {
     this.userId = JSON.parse(localStorage.getItem('userdata'))[0].email;
     this.servive.getData(`ngo-donation?id=${this.userId}`).subscribe(data => {
     this.selected_medicineshow = data.find(ele => ele.donation_id == this.selected_medicine)
-      if(this.donation_details.is_deliver || this.donation_details.excutor_email){
+      if(this.donation_details.is_deliver || this.donation_details.excutor_email ||  this.selected_medicine){
         this.disabled =true;
       this.medicinelist = data;
       return;

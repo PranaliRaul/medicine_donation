@@ -23,12 +23,10 @@ import { RequestMadeComponent } from './request-made/request-made.component';
 import { SharemoduleModule } from '../share/sharemodule.module';
 import { BtnComponent } from '../share/components/btn/btn.component';
  import { DateComponent } from '../share/components/date/date.component';
-import { ExecutiveDeatilsComponent } from './executive-deatils/executive-deatils.component';
-import { ExecutorassignComponent } from './executorassign/executorassign.component';
-import { ExectorAssignRequestComponent } from './exector-assign-request/exector-assign-request.component';
+ 
 
 @NgModule({
-  declarations: [DashBoardComponent,AddNgoComponent,NgoRequestComponent,NgoDetailComponent,DonatorDetailComponent,RecepientDetailComponent, NgoIndetailsComponent, DonatorIndetailsComponent,  ExecutiveListComponent, NgoDonationComponent, NgoMedRequestComponent, BefPersonComponent, DonationMadeComponent, RequestMadeComponent, ExecutiveDeatilsComponent, ExecutorassignComponent, ExectorAssignRequestComponent],
+  declarations: [DashBoardComponent,AddNgoComponent,NgoRequestComponent,NgoDetailComponent,DonatorDetailComponent,RecepientDetailComponent, NgoIndetailsComponent, DonatorIndetailsComponent,  ExecutiveListComponent, NgoDonationComponent, NgoMedRequestComponent, BefPersonComponent, DonationMadeComponent, RequestMadeComponent],
   imports: [
     CommonModule,
     DashBoardRoutingModule,

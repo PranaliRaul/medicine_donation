@@ -18,7 +18,7 @@ router.post('/recepient',  async function (req, res) {
            // sendemail(data);
          });
         }catch{
-          res.status(500).send({err:'donation fail'});
+          res.status(500).send({err:'Request Fail... Please try again'});
         
         }
     })
@@ -64,7 +64,7 @@ router.post('/recepient',  async function (req, res) {
              }
          })
        
-           res.send({msg:'executor assigned sucessfully'});
+           res.send({msg:'Your medicine request has been sucessfully recorded'});
            })
            // if(req.body.is_deliver ){
            //  const text =  `<h4>Hi ${ req.body.recepient_name }</h4>
