@@ -34,6 +34,7 @@ export class HomepageComponent implements OnInit,OnDestroy {
   }
  
   
+  
     private carousel() { 
     const x = document.getElementsByClassName("mySlides");
     

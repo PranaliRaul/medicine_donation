@@ -1,4 +1,4 @@
-<div class="container" >
+<!-- <div class="container" >
     <div class="w-50 box-container">
       <h5 class="text-center">Registration Form</h5>
   <form  autocomplete="off"  [formGroup]="registrationForm">
@@ -76,17 +76,8 @@
      
   </form>
   </div>
-  </div>
-
-
-
-
-
-
-
-
-
-  <div>
+  </div> -->
+ <div>
     <div class="wrapper" class="bg-theme bg-theme1  pace-done">
     <div class="section-authentication-signin d-flex align-items-center justify-content-center  ">
         <div class="container-fluid">
@@ -104,16 +95,28 @@
                      
                     <div class="form-body">
                       <form class="row g-3" [formGroup]="registrationForm" autocomplete="off">
-                          <div class="col-12 pb-2"   *ngIf="role != 2">
-                              <label for="inputEmailAddress" class="form-label">Name of NGO:</label>
-                              <input type="text" class="form-control"  formControlName="fullName" placeholder="Enter Full Name" id="name"  [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }">
-                              <div *ngIf="submitted && f.ngo_name?.errors" class="invalid-feedback">
-                                <div *ngIf="f?.ngo_name?.errors?.required">NGO Name is required</div>
-                                </div>
-                            </div>
+                          
                         <div class="col-12 pb-2">
+                          <label for="inputEmailAddress" class="form-label">Role:</label>
+                          <select class="form-control"    formControlName="role"  [(ngModel)]="role"   [ngClass]="{ 'is-invalid': submitted && f.role.errors }" (change)="rolechange()">
+                            <option [value]="3">Donator</option>
+                          <option [value]="4">Recepient</option>
+                            <option [value]="2">NGO</option>     
+                        </select>
+                          <div *ngIf="submitted && f.role?.errors" class="invalid-feedback">
+                            <div *ngIf="f?.role?.errors?.required">Role is required</div>
+                            </div>
+                        </div>
+                        <div class="col-12 pb-2"  *ngIf="role != 2">
+                          <label for="inputEmailAddress" class="form-label">Full Name:</label>
+                          <input type="text" class="form-control"  formControlName="fullName" placeholder="Enter Full Name" id="name"  [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }">
+                          <div *ngIf="submitted && f?.fullName?.errors" class="invalid-feedback"> 
+                            <div *ngIf="f?.fullName?.errors?.required">Full Name is required</div>
+                            </div>
+                        </div>
+                        <div class="col-12 pb-2" *ngIf="role == 2">
                           <label for="inputEmailAddress" class="form-label">Name of NGO:</label>
-                          <input type="text" class="form-control" placeholder="Enter Full Name" id="email" required formControlName="ngo_name" required  [ngClass]="{ 'is-invalid': submitted && f.ngo_name.errors }">
+                          <input type="text" class="form-control" placeholder="Enter NGO Name" id="email" required formControlName="ngo_name" required  [ngClass]="{ 'is-invalid': submitted && f.ngo_name.errors }">
                           <div *ngIf="submitted && f.ngo_name?.errors" class="invalid-feedback">
                             <div *ngIf="f?.ngo_name?.errors?.required">NGO Name is required</div>
                             </div>
@@ -133,14 +136,18 @@
                        <label for="inputEmailAddress" class="form-label">Password:</label>
                        <input type="password" class="form-control" placeholder="Enter password" id="pwd" required formControlName="password" required  [ngClass]="{ 'is-invalid': submitted && f.password.errors }">                              
                           <div *ngIf="submitted && f.password?.errors" class="invalid-feedback">
-                            <div *ngIf="f?.password?.errors?.required">Password is required</div>
+                          <div *ngIf="f?.password?.errors?.required">Password is required</div>
+                         <div *ngIf="f?.password?.errors?.minlength">Password should be atleast 6 characters</div>
+
                             </div>
                         </div>
                         <div class="col-12 pb-2">
-                          <label for="inputEmailAddress" class="form-label">Contact Number:</label>
-                          <input type="text" class="form-control" placeholder="Enter Mobile Number" id="pwd" maxlength="10" required formControlName="mobile_no" required  [ngClass]="{ 'is-invalid': submitted && f.mobile_no.errors }">
+                          <label for="inputEmailAddress" class="form-label">Mobile Number:</label>
+                          <input type="text" class="form-control" placeholder="Enter Mobile Number" id="pwd" maxlength="10" required formControlName="mobile_no" required  [ngClass]="{ 'is-invalid': submitted && f.mobile_no.errors }" (keypress)="keyPress($event)">
                           <div *ngIf="submitted && f.mobile_no?.errors" class="invalid-feedback">
-                          <div *ngIf="f?.mobile_no?.errors?.required">Contact Number is required</div>
+                          <div *ngIf="f?.mobile_no?.errors?.required">Mobile Number is required</div>
+                            <div *ngIf="f?.mobile_no?.errors?.pattern " >Invalid Phone Number</div>
+
                                </div>
                            </div>
                            <div class="col-12 pb-2">
@@ -148,15 +155,26 @@
                             <textarea class="form-control" rows="3" id="comment" formControlName="address" required  [ngClass]="{ 'is-invalid': submitted && f.address.errors }"></textarea>                              
                                <div *ngIf="submitted && f.address?.errors" class="invalid-feedback">
                                  <div *ngIf="f?.address?.errors?.required">Address is required</div>
+                                 <div *ngIf="f?.address?.errors?.minlength">Address must have minimum 15 characters</div>
                                  </div>
                              </div>
-                             <div class="col-12 pb-2">
+                             <div class="col-12 pb-2" *ngIf="role == 2">
                               <label for="inputEmailAddress" class="form-label">Year of establishment:</label>
-                              <input type="text" class="form-control" placeholder="Enter year of establishment" id="email" required maxlength="4" formControlName="year_establishment" (keypress)="validateForm($event.target.value)" required  [ngClass]="{ 'is-invalid': submitted && f.year_establishment.errors }">
+                              <input type="text" class="form-control" placeholder="Enter year of establishment" id="email" required maxlength="4" formControlName="year_establishment" (keypress)="keyPress($event)" required  [ngClass]="{ 'is-invalid': submitted && f.year_establishment.errors }">
 
                            <div *ngIf="submitted && f.year_establishment?.errors" class="invalid-feedback">
                             <div *ngIf="f?.year_establishment?.errors?.required">Year of establishment is required</div>
+                            <div *ngIf="f?.year_establishment?.errors?.minlength" >Minimum length should be 4 digit</div>
+                            <div *ngIf="f?.year_establishment?.errors?.max" >Invalid year</div> 
                               </div>
+                             </div>
+
+                             <div class="col-12 pb-2" *ngIf="role == 2">
+                              <label for="email">Registration certificate of NGO:</label>
+                              <input type="file" class="form-control" placeholder="Enter Full Name" id="email" required>
+                           <!-- <div *ngIf="submitted && f.year_establishment?.errors" class="invalid-feedback">
+                            <div *ngIf="f?.year_establishment?.errors?.required">Registration certificate is required</div>
+                              </div> -->
                              </div>
 
                         <div class="col-12 pt-2">
@@ -177,4 +195,5 @@
       </div>
       </div>
 
-
+      <app-pop-up  >
+      </app-pop-up>

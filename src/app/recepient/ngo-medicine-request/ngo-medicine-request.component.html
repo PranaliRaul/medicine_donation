@@ -2,7 +2,8 @@
 <app-recepient-navigation></app-recepient-navigation>
 
 <div class="container-fluid container1" >
-    <div class="w-50 box-container">
+    <!-- <div class="w-50 box-container">
+
   <form  autocomplete="off"  [formGroup]="registrationForm">
     <div class="form-group">
       <label for="sel1">Ngo Name:</label>
@@ -24,7 +25,72 @@
     <button type="submit" class="btn btn-primary login" (click)="request()">Request</button>
 
   </form>
+  </div> -->
+  
+  <div>
+    <app-recepient-navigation></app-recepient-navigation>
+  
+    <div class="wrapper" class="bg-theme bg-theme1  pace-done" class="w-50 box-container" >
+      <div class="section-authentication-signin d-flex align-items-center justify-content-center  ">
+        <div class="container-fluid">
+  
+          <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
+            <div class="col mx-auto" style="flex-grow: 0.4;">
+              <div class="card mt-5 mt-lg-0">
+                <div class="card-body">
+                  <div class="border p-4 rounded">
+                    <div class="text-center">
+                      <h3 class="">Request Form</h3> 
+                    </div>
+                    <hr> 
+                    <div class="form-body">
+                      <form class="row g-3" [formGroup]="registrationForm" autocomplete="off">
+                        <div class="col-12 pb-2">
+                          <label for="inputChoosePassword" class="form-label">Ngo Name:</label>
+                          <div class="input-group">
+                            <select class="form-control" formControlName="ngo_email"
+                              (change)="selctngo($event.target.value)"
+                              [ngClass]="{ 'is-invalid': submitted && f.ngo_email.errors }">
+                              <option *ngFor="let ngo of list" [value]="ngo.email">{{ngo?.ngo_name}}</option>
+                            </select>
+                            <div *ngIf="submitted && f.ngo_email?.errors" class="invalid-feedback">
+                              <div *ngIf="f?.ngo_email?.errors?.required">Ngo Name is required</div>
+                            </div>
+                          </div>
+                        </div>
+  
+                        <div class="col-12 pb-2">
+                          <label for="inputEmailAddress" class="form-label">Medicine:</label>
+                          <select class="form-control"     (change)="seletedmedicine($event.target.value)"  [disabled]="disabled" >
+                            <option disabled>select medicine</option>
+                            <option *ngFor="let med of medicinelist;let i=index" [value]="i">{{med?.brand_name}}</option>
+                        </select>                        
+                        </div>
+
+                        <div class="col-12 pb-2">
+                          <label for="inputEmailAddress" class="form-label">Quantity:</label>
+                          <input type="number" class="form-control"   formControlName="quantity" placeholder="Enter quantity" id="pwd"  required (blur)="checkqwt($event.target.value)"  [readOnly]="disabled">
+                        </div>
+
+                        <div class="col-12 pt-2">
+                          <div class="d-grid">
+                            <button type="submit" class="btn btn-light" (click)="request()">Request</button>
+                          </div>
+                        </div>
+                      </form>
+                    </div>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+          <!--end row-->
+        </div>
+      </div>
+    </div>
   </div>
+  <app-pop-up  >
+  </app-pop-up>
   <div class="w-25 box-container"  >
     
       <div class="row mb-3">
@@ -79,3 +145,11 @@
      
     </div>
   </div>
+
+
+
+
+
+
+
+

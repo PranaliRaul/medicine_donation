@@ -27,7 +27,7 @@ export class RegisterComponent implements OnInit {
             address : ["", [Validators.required,Validators.minLength(15)]],
             year_establishment: ["", [ Validators.minLength(4)]],
             active_acc: [true, ''],
-            ngo_executor: ['','']
+            ngo_executor: ['',''] 
           });
   }
   public register():void{
@@ -37,14 +37,10 @@ export class RegisterComponent implements OnInit {
                 this.registrationForm.value.active_acc = false;
               }
             this.registerService.postdata('register', this.registrationForm.value).subscribe(data =>{
-              alert(data.msg);
-              this.router.navigate(['/login']);
+              this.modal(data.msg, true);
             },err =>{
-              console.log(err);
-
-              alert(err.error.err);
+              this.modal(err.error.err);
             })
-          
           }
   }
 
@@ -72,6 +68,16 @@ export class RegisterComponent implements OnInit {
     this.registrationForm.get('fullName').updateValueAndValidity();
     this.registrationForm.get('ngo_name').updateValueAndValidity();
     this.registrationForm.get('year_establishment').updateValueAndValidity() 
+  }
+
+  modal(msg,from?){
+    this.registrationForm.value.donation_date = this.registerService.getdate();
+      this.registerService.confirmThis(msg, () =>{  
+        if(from){
+          this.router.navigate(['/donator/my-donation'])
+
+        }
+      })  
   }
 
 }

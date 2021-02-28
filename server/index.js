@@ -44,13 +44,13 @@ try{
 const sql1 = "INSERT INTO register(personId,fullName, pass,email,roleId,ngo_name,mobile_no,address,year_establishment,ngo_executor,active_acc) VALUES ( null  ,'"+data.fullName+"','"+data.pass+"','"+data.email+"','"+data.roleId+"','"+data.ngo_name+"','"+data.mobile_no+"','"+data.address+"','"+data.year_establishment+"','"+data.ngo_executor+"','"+data.active_acc+"')";
   connection.query( sql1 ,function (err, result) {
     if (err) {
-        res.status(500).send({err:'email id already use'});
+        res.status(500).send({err:'Email id already use'});
         return;
     };
     if(data.active_acc){
-    res.send({msg:'register sucessfully'});
+    res.send({msg:'Registered Sucessfully'});
     }else{
-    res.send({msg:'your request has been recorded will notify with an e-mail'});
+    res.send({msg:'Your request has been recorded will notify with an e-mail'});
 
     }
     if(data.active_acc){
@@ -65,7 +65,7 @@ const sql1 = "INSERT INTO register(personId,fullName, pass,email,roleId,ngo_name
 
   });
 }catch{
-    res.status(500).send({err:'email id already use'});
+    res.status(500).send({err:'Email id already use'});
 }
 })
 

@@ -54,8 +54,8 @@ section::after {
 .welcome-wrap {
     padding: 96px 0;
 }
-.entry-content {
-    color: #929191;
+.text {
+    color:rgb(0, 81, 255) ;
 }
 .welcome-wrap img {
     display: block;
@@ -90,7 +90,9 @@ section::after {
     text-align: center;
 }
 
-
+.para{
+    color: #929191;
+}
  
 @media only screen and (max-width: 1400px) {
     .container2{

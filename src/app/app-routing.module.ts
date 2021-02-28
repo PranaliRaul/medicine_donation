@@ -10,6 +10,7 @@ import { RegisterComponent } from './register/register.component';
 import { ForgotPasswordComponent } from './forgot-password/forgot-password.component';
 import { AboutusComponent } from './share/aboutus/aboutus.component';
 import { FaqComponent } from './share/faq/faq.component';
+import { EventsComponent } from './share/events/events.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'login' , pathMatch:'full'},
@@ -77,7 +78,10 @@ const routes: Routes = [
     path:'faq',
     component: FaqComponent
   },
-  
+  {
+    path:'events',
+    component: EventsComponent
+  },
   {
     path:'**',
     component: LoginComponent

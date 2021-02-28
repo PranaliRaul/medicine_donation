@@ -22,8 +22,9 @@ import { PopUpComponent } from './components/pop-up/pop-up.component';
 @NgModule({
   declarations: [BtnComponent, CollectedstatusComponent, 
                 DeliveredstatusComponent, DateComponent, HomepageComponent,
-                MedicinetypeComponent,RecepientIndetailsComponent,RecepientNavigationComponent,
+                MedicinetypeComponent,RecepientIndetailsComponent,RecepientNavigationComponent, 
                 NavbarComponent, NgoTransationComponent, ExecutorAssignRequestComponent, NavigationComponent, FooterComponent, PopUpComponent,],
+ 
 
 
 

@@ -3,10 +3,12 @@ import { Router } from '@angular/router';
 import { FormGroup, FormBuilder, Validators } from '@angular/forms';
 import { RegisterService } from 'src/app/register/register.service';
 import { DatePipe } from '@angular/common'
+
 @Component({
   selector: 'app-donate',
   templateUrl: './donate.component.html',
-  styleUrls: ['./donate.component.scss']
+  styleUrls: ['./donate.component.scss'],
+  
 })
 export class DonateComponent implements OnInit {
   registrationForm: FormGroup;
@@ -14,7 +16,8 @@ export class DonateComponent implements OnInit {
   userId:any;
   name: any;
   mindate
-  tipButtons
+  tipButtons;
+  showDialog = false;
   submitted = false;
   constructor(private router:Router,private formBuilder: FormBuilder, public datepipe: DatePipe,
     private registerService:RegisterService) {
@@ -61,21 +64,14 @@ export class DonateComponent implements OnInit {
   donate(){
     this.registrationForm.value.ngo_name = this.name;
     this.submitted = true;
-    this.registrationForm.value.donation_date = this.registerService.getdate();
-      this.registerService.confirmThis('', function () {  
-        alert("Yes clicked");  
-      }, function () {  
-        alert("No clicked");  
-      }) 
+  
     if(this.registrationForm.valid){
       const value = this.registrationForm.value.quantity;
-      
+      this.registrationForm.value.donation_date = this.registerService.getdate();
     this.registerService.postdata('donator',this.registrationForm.value).subscribe(data =>{
-       
-     
-      this.router.navigate(['/donator/my-donation'])
+      this.modal(data.msg, true);
     },err =>{
-      alert(err.error.err);
+      this.modal(err.error.err);
     })}
 
   }
@@ -91,6 +87,16 @@ export class DonateComponent implements OnInit {
     if (event.keyCode != 8 && !pattern.test(inputChar)) {
       event.preventDefault();
     }
+  }
+
+  modal(msg,from?){
+    this.registrationForm.value.donation_date = this.registerService.getdate();
+      this.registerService.confirmThis(msg, () =>{  
+        if(from){
+          this.router.navigate(['/donator/my-donation'])
+
+        }
+      })  
   }
 }
 

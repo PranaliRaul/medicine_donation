@@ -1,0 +1,26 @@
+.bg-img{background-image: url('../../../assets/events.jpg');
+background-attachment: fixed;
+background-size: cover;
+background-position: center 30%;
+background-repeat:no-repeat;
+height: 100vh;
+} 
+
+.events-msg{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: center;
+    height: 100vh;
+    font-size: 25px;
+    color: #297fca;
+}
+h2,h4{
+    text-align: center;
+}
+
+
+.events-msg >div{
+padding: 50px;
+border: 1px solid;
+}

@@ -14,13 +14,14 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AboutusComponent } from './share/aboutus/aboutus.component';
 import { FaqComponent } from './share/faq/faq.component';
 import { SharemoduleModule } from './share/sharemodule.module';
+import { EventsComponent } from './share/events/events.component';
  
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent, 
     RegisterComponent, ForgotPasswordComponent,  
-    AboutusComponent, FaqComponent
+    AboutusComponent, FaqComponent, EventsComponent
      
   ],
   imports: [

@@ -115,4 +115,14 @@ export class NgoMedicineRequestComponent implements OnInit {
       alert('quantity should not be greater than selected medicine  available quantity')
     }
   }
+
+  modal(msg,from?){
+    this.registrationForm.value.donation_date = this.registerService.getdate();
+      this.registerService.confirmThis(msg, () =>{  
+        if(from){
+          this.router.navigate(['/donator/my-donation'])
+
+        }
+      })  
+  }
 }

@@ -12,11 +12,11 @@ router.post('/donator',  async function (req, res) {
          res.status(500).send({err:'donation fail'});
          return;
      };
-     res.send({msg:'donation sucessfull'});
+     res.send({msg:'Donation Sucessfull !!! Thank you for donating '});
      // sendemail(data);
    });
   }catch{
-    res.status(500).send({err:'donation fail'});
+    res.status(500).send({err:'Donation Fail... Please try again'});
   
   }
   })

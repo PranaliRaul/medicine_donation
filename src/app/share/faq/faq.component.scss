@@ -6,13 +6,15 @@
     width: 48rem;
    
   }
-  .wrapper{
+  .bg-image{
     background-image: url('../../../assets/faq6.jpg');
     background-attachment: fixed;
     background-size: cover;
     background-position: center 30%;
     background-repeat:no-repeat;
     height: 100vh;
+    filter: blur(1px);
+    -webkit-filter: blur(3px);
   }
 
   h3 {
@@ -42,13 +44,13 @@
   .accordion a:hover,
   .accordion a:hover::after {
     cursor: pointer;
-    color: #ff5353;
+    color:orange;
   }
   .accordion a:hover::after {
     border: 1px solid #ff5353;
   }
   .accordion a.active {
-    color: #ff5353;
+    color: yellow;
     border-bottom: 1px solid #ff5353;
   }
   .accordion a::after {
@@ -97,7 +99,7 @@
     transition: all 0.35s ease 0.15s;
   }
 h2{
-  color: #5bfb85;;
+  color: rgb(96, 199, 212);;
   text-align: center;
   margin-bottom: 22px;
 }

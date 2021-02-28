@@ -4,10 +4,12 @@ import { FormBuilder, FormGroup, Validators } from '@angular/forms';
 
 import { RegisterService } from 'src/app/register/register.service';
 
+
 @Component({
   selector: 'app-medicine-request',
   templateUrl: './medicine-request.component.html',
-  styleUrls: ['./medicine-request.component.scss']
+  styleUrls: ['./medicine-request.component.scss'],
+
 })
 export class MedicineRequestComponent implements OnInit {
   public registrationForm:FormGroup
@@ -71,14 +73,11 @@ export class MedicineRequestComponent implements OnInit {
     if(this.registrationForm.valid){
       this.registrationForm.value.request_date = this.registerService.getdate()
     this.registerService.postdata('recepient',this.registrationForm.value).subscribe(data =>{
-     //  alert('Your medicine request has been sucessfully recorded');
-      setTimeout(() =>{
-        this.router.navigate(['/Recepient/my-request']) 
-      },1000)
+      this.modal(data.msg, true);
     },err =>{
-      // alert(err.error.err);
-    })
-  } 
+      this.modal(err.error.err);
+    })}
+  
   }
   selctngo(value){
     const ngo = this.list.find(ele =>ele.email === value);
@@ -87,7 +86,15 @@ export class MedicineRequestComponent implements OnInit {
 
   }
 
+  modal(msg,from?){
+    this.registrationForm.value.donation_date = this.registerService.getdate();
+      this.registerService.confirmThis(msg, () =>{  
+        if(from){
+          this.router.navigate(['/donator/my-donation'])
 
+        }
+      })  
+  }
  
 }
 
