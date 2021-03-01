@@ -13,3 +13,17 @@
     align-items: center;
     justify-content: center;
 }  
+
+.bg-theme1 {
+    background-image: url('../../../assets/login1.png');
+    background-size: 100% 100%;
+    background-attachment: fixed;
+    background-position: center;
+    background-repeat: no-repeat;
+    transition: background .2s;
+    height:100vh;
+  }
+
+//   .bg-theme {
+    
+//   }
