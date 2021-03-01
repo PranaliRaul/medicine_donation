@@ -123,7 +123,7 @@ app.get('/ngolist',    (req, res) =>{
       try{
       if (err) {
           res.status(500).send({err:'fail to load ngo list'});
-      };
+      };  
       res.send(result);
 
   }catch{
