@@ -38,41 +38,131 @@ export const environment = {
       exact_match: false
     }
   ],
+
+
   NGO_NAVIGATION :[
     {
-      path :'',
-      text:'',
+      path :'/home',
+      text:'Home',
+      exact_match: true
+    },
+    {
+      path :'/ngo/Add-executor',
+      text:'Add Executive',
+      exact_match: true
+    },
+    {
+      path :'/ngo/medicine-donation',
+      text:'Donations',
+      exact_match: true
+    },
+    {
+      path :'/ngo/medicine-request',
+      text:'Requests',
+      exact_match: true
+    },
+    {
+      path :'/ngo/ngo-executive-list',
+      text:'Executive',
       exact_match: true
     }
   ],
   
+  
   DONATOR_NAVIGATION :[
     {
-      path :'',
-      text:'',
+      path :'/home',
+      text:'Home',
       exact_match: true
+    },
+    {
+      path :'/donator/donation',
+      text:'Donate',
+      exact_match: false
+    },
+    {
+      path :'/donator/my-donation',
+      text:'My Donations',
+      exact_match: false 
     }
   ],
+
+
   RECEPIENT_NAVIGATION :[
     {
-      path :'',
-      text:'',
+      path :'/home',
+      text:'Home',
+      exact_match: true
+    },
+    {
+      path :'/Recepient/medicine-request',
+      text:'Request',
+      exact_match: true
+    },
+    {
+      path :'/Recepient/my-request',
+      text:'My Requests',
+      exact_match: true
+    },
+    {
+      path :'/Recepient/ngo-medicine-request',
+      text:'NGO',
       exact_match: true
     }
   ],
+
+
   EXECUTOR_NAVIGATION :[
     {
-      path :'',
-      text:'',
+      path :'/home',
+      text:'Home',
+      exact_match: true
+    },
+    {
+      path :'/executor/assign-donation',
+      text:'Assign Donations',
+      exact_match: true
+    },
+    {
+      path :'/executor/assign-request',
+      text:'Assign Requests',
+      exact_match: true
+    },
+    {
+      path :'/executor/transaction',
+      text:'Transaction',
+      exact_match: true
+    },
+    {
+      path :'/executor/request-transation',
+      text:'Request Transaction',
       exact_match: true
     }
   ],
+
+
   LOGIN_NAVIGATION :[
     {
-      path :'',
-      text:'',
+      path :'/home',
+      text:'Home',
+      exact_match: true
+    },
+    {
+      path :'/about-us',
+      text:'About Us',
+      exact_match: true
+    },
+    {
+      path :'/login',
+      text:'Login',
+      exact_match: true
+    },
+    {
+      path :'/register',
+      text:'Register',
       exact_match: true
     }
+
   ],
 
 
@@ -82,11 +172,4 @@ export const environment = {
 
 };
 
-/*
- * For easier debugging in development mode, you can import the following file
- * to ignore zone related error stack frames such as `zone.run`, `zoneDelegate.invokeTask`.
- *
- * This import should be commented out in production mode because it will have a negative impact
- * on performance if an error is thrown.
- */
-// import 'zone.js/dist/zone-error';  // Included with Angular CLI.
+

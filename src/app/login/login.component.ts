@@ -29,7 +29,7 @@ export class LoginComponent implements OnInit {
     const data =  JSON.parse(localStorage.getItem('userdata'));
     if(data){
        this.islogin(data);
-       
+        
     }
   }
   public Login():void{

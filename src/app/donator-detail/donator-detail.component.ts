@@ -41,7 +41,7 @@ export class DonatorDetailComponent implements OnInit {
         cellRendererParams: {
           onClick: this.onBtnClick1.bind(this),
           label: 'details'
-
+ 
         }   
       }
       ]; 

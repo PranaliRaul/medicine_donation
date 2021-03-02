@@ -11,6 +11,7 @@ import { ForgotPasswordComponent } from './forgot-password/forgot-password.compo
 import { AboutusComponent } from './share/aboutus/aboutus.component';
 import { FaqComponent } from './share/faq/faq.component';
 import { EventsComponent } from './share/events/events.component';
+import { HomepageComponent } from './share/homepage/homepage.component';
 
 const routes: Routes = [
   {path:'',redirectTo:'login' , pathMatch:'full'},
@@ -29,11 +30,12 @@ const routes: Routes = [
   },
   {
     path:'home',
-    loadChildren:'./dash-board/dash-board.module#DashBoardModule',
-    canActivate:[AuthGuard],
-    data:{
-      roleId :1
-    }
+    // loadChildren:'./dash-board/dash-board.module#DashBoardModule',
+    // canActivate:[AuthGuard],
+    // data:{
+    //   roleId :1
+    // }
+    component:HomepageComponent
   },
   {
     path:'Recepient',

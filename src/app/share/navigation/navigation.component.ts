@@ -15,17 +15,17 @@ public userdata = []
   ngOnInit() {
     this.userdata = JSON.parse(localStorage.getItem('userdata'));
     if(!this.userdata){
-      this.navigation = [];
+      this.navigation = environment.LOGIN_NAVIGATION;
     } else if(this.userdata[0].roleId === 1){
       this.navigation = environment.ADMIN_NAVIGATION
     } else if(this.userdata[0].roleId === 2){
       this.navigation = environment.NGO_NAVIGATION
     }else if(this.userdata[0].roleId === 3){
-      this.navigation = environment.ADMIN_NAVIGATION
+      this.navigation = environment.DONATOR_NAVIGATION
     }else if(this.userdata[0].roleId === 4){
-      this.navigation = environment.ADMIN_NAVIGATION
+      this.navigation = environment.RECEPIENT_NAVIGATION
     }else if(this.userdata[0].roleId === 5){
-      this.navigation = environment.ADMIN_NAVIGATION
+      this.navigation = environment.EXECUTOR_NAVIGATION 
     }
   }
   public logout(){
