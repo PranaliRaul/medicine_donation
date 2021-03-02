@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { AgGridModule } from "ag-grid-angular";
 
 import { DashBoardRoutingModule } from './dash-board-routing.module';
-import { DashBoardComponent } from './dash-board.component';
 import { NavbarComponent } from '../navbar/navbar.component';
 import { AddNgoComponent } from '../add-ngo/add-ngo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
@@ -26,7 +25,7 @@ import { BtnComponent } from '../share/components/btn/btn.component';
  
 
 @NgModule({
-  declarations: [DashBoardComponent,AddNgoComponent,NgoRequestComponent,NgoDetailComponent,DonatorDetailComponent,RecepientDetailComponent, NgoIndetailsComponent, DonatorIndetailsComponent,  ExecutiveListComponent, NgoDonationComponent, NgoMedRequestComponent, BefPersonComponent, DonationMadeComponent, RequestMadeComponent],
+  declarations: [AddNgoComponent,NgoRequestComponent,NgoDetailComponent,DonatorDetailComponent,RecepientDetailComponent, NgoIndetailsComponent, DonatorIndetailsComponent,  ExecutiveListComponent, NgoDonationComponent, NgoMedRequestComponent, BefPersonComponent, DonationMadeComponent, RequestMadeComponent],
   imports: [
     CommonModule,
     DashBoardRoutingModule,

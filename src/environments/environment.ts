@@ -7,7 +7,7 @@ export const environment = {
   API_URL:'http://localhost:8081/',
   ADMIN_NAVIGATION :[
     {
-      path :'/home',
+      path :'/homepage',
       text:'Home',
       exact_match: true
     },
@@ -42,7 +42,7 @@ export const environment = {
 
   NGO_NAVIGATION :[
     {
-      path :'/home',
+      path :'/homepage',
       text:'Home',
       exact_match: true
     },
@@ -71,7 +71,7 @@ export const environment = {
   
   DONATOR_NAVIGATION :[
     {
-      path :'/home',
+      path :'/homepage',
       text:'Home',
       exact_match: true
     },
@@ -90,7 +90,7 @@ export const environment = {
 
   RECEPIENT_NAVIGATION :[
     {
-      path :'/home',
+      path :'/homepage',
       text:'Home',
       exact_match: true
     },
@@ -114,7 +114,7 @@ export const environment = {
 
   EXECUTOR_NAVIGATION :[
     {
-      path :'/home',
+      path :'/homepage',
       text:'Home',
       exact_match: true
     },
@@ -143,7 +143,7 @@ export const environment = {
 
   LOGIN_NAVIGATION :[
     {
-      path :'/home',
+      path :'/homepage',
       text:'Home',
       exact_match: true
     },

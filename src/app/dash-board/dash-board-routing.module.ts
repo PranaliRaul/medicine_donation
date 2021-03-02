@@ -21,8 +21,8 @@ import { ExectorAssignRequestComponent } from './exector-assign-request/exector-
 
 const routes: Routes = [
   {
-    path:'',
-    component:DashBoardComponent
+    path:' ',
+    component:AddNgoComponent
   },
   {
     path:'addngo',

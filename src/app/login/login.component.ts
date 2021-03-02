@@ -48,7 +48,7 @@ export class LoginComponent implements OnInit {
 
   public islogin(data){
     if(data[0].roleId === 1){
-      this.router.navigate(['/home']);
+      this.router.navigate(['/homepage']);
       }else if (data[0].roleId === 2){
         this.router.navigate(['/ngo/medicine-donation']);
       }else if(data[0].roleId === 3){

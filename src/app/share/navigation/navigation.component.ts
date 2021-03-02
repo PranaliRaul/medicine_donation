@@ -8,8 +8,8 @@ import { RegisterService } from 'src/app/register/register.service';
   styleUrls: ['./navigation.component.scss']
 })
 export class NavigationComponent implements OnInit {
-public navigation = []
-public userdata = []
+public navigation = [];
+public userdata = [];
   constructor(private service:RegisterService) { }
 
   ngOnInit() {
@@ -27,6 +27,7 @@ public userdata = []
     }else if(this.userdata[0].roleId === 5){
       this.navigation = environment.EXECUTOR_NAVIGATION 
     }
+    console.log( this.navigation)
   }
   public logout(){
     this.service.logout();

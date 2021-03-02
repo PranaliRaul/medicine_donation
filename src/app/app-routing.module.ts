@@ -12,9 +12,10 @@ import { AboutusComponent } from './share/aboutus/aboutus.component';
 import { FaqComponent } from './share/faq/faq.component';
 import { EventsComponent } from './share/events/events.component';
 import { HomepageComponent } from './share/homepage/homepage.component';
+import { DashBoardComponent } from './dash-board/dash-board.component';
 
 const routes: Routes = [
-  {path:'',redirectTo:'login' , pathMatch:'full'},
+ {path:'',redirectTo:'homepage' , pathMatch:'full'},
   {
     path:'register',
     component:RegisterComponent
@@ -30,11 +31,11 @@ const routes: Routes = [
   },
   {
     path:'home',
-    // loadChildren:'./dash-board/dash-board.module#DashBoardModule',
-    // canActivate:[AuthGuard],
-    // data:{
-    //   roleId :1
-    // }
+    loadChildren:'./dash-board/dash-board.module#DashBoardModule',
+    canActivate:[AuthGuard],
+    data:{
+      roleId :1
+    },
     component:HomepageComponent
   },
   {
@@ -84,6 +85,10 @@ const routes: Routes = [
     path:'events',
     component: EventsComponent
   },
+  // {
+  //   path:'homepage',
+  //   component:DashBoardComponent
+  // },
   {
     path:'**',
     component: LoginComponent

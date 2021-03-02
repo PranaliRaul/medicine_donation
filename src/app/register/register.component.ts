@@ -10,7 +10,7 @@ import { RegisterService } from './register.service';
 })
 export class RegisterComponent implements OnInit {
   role = '3';
-  registrationForm: FormGroup;
+  registrationForm: FormGroup; 
   submitted = false
   get f() { return this.registrationForm.controls; }
 

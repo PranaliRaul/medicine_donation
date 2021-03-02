@@ -12,7 +12,7 @@
        <a class="nav-link" [routerLink]="nav.path" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: nav.exact_match }">{{nav?.text}}</a>
      </li>
    </ul>
-   <div class="ml-auto" *ngIf="userdata.length">
+   <div class="ml-auto" *ngIf="userdata && userdata.length">
      <button type="button" class="btn btn-danger"  (click)="logout()">logout</button>
    </div>
  </div>
