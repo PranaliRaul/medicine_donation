@@ -1,50 +1,18 @@
-
-
-<div class="container-fluid p-0" >
+<div class="container-fluid p-0">
   <app-navigation></app-navigation>
-
-
-    <!-- <div class="w-50 box-container">
-
-  <form  autocomplete="off"  [formGroup]="registrationForm">
-    <div class="form-group">
-      <label for="sel1">Ngo Name:</label>
-      <select class="form-control"    formControlName="ngo_email"  (change)="selctngo($event.target.value)">
-          <option *ngFor="let ngo of list" [value]="ngo.email">{{ngo?.ngo_name}}</option>
-      </select>
-    </div>
-    <div class="form-group">
-      <label for="sel1">Medicine:</label>
-      <select class="form-control"     (change)="seletedmedicine($event.target.value)"  [disabled]="disabled" >
-          <option disabled>select medicine</option>
-          <option *ngFor="let med of medicinelist;let i=index" [value]="i">{{med?.brand_name}}</option>
-      </select>
-    </div>  
-    <div class="form-group">
-        <label for="pwd">Quantity:</label>
-        <input type="number" class="form-control"   formControlName="quantity" placeholder="Enter quantity" id="pwd"  required (blur)="checkqwt($event.target.value)"  [readOnly]="disabled">
-      </div>
-    <button type="submit" class="btn btn-primary login" (click)="request()">Request</button>
-
-  </form>
-  </div> -->
-  
-  <div>
-  
-    <div class="wrapper" class="bg-theme bg-theme1  pace-done container1"   >
-
-        <div class="container1"> 
-
-      <div class="section-authentication-signin d-flex align-items-center justify-content-center  ">
+  <div> 
+    <div class="wrapper" class="bg-theme bg-theme1  pace-done container1"> 
+      <div class="container1"> 
+        <div class="section-authentication-signin d-flex align-items-center justify-content-center  ">
           <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
             <div class="col mx-auto" style="flex-grow: 0.8;">
               <div class="card mt-5 mt-lg-0">
                 <div class="card-body">
                   <div class="border p-4 rounded">
                     <div class="text-center">
-                      <h3 class="">Request Form</h3> 
+                      <h3 class="">Request Form</h3>
                     </div>
-                    <hr> 
+                    <hr>
                     <div class="form-body">
                       <form class="row g-3" [formGroup]="registrationForm" autocomplete="off">
                         <div class="col-12 pb-2">
@@ -62,23 +30,29 @@
                         </div>
                         <div class="col-12 pb-2">
                           <label for="inputEmailAddress" class="form-label">Medicine:</label>
-                          <select class="form-control"     formControlName="generic_name" (change)="seletedmedicine($event.target.value)"  [disabled]="disabled"    [ngClass]="{ 'is-invalid': submitted && f.generic_name.errors }">
+                          <select class="form-control" formControlName="generic_name"
+                            (change)="seletedmedicine($event.target.value)" [disabled]="disabled"
+                            [ngClass]="{ 'is-invalid': submitted && f.generic_name.errors }">
                             <option disabled>select medicine</option>
-                            <option *ngFor="let med of medicinelist;let i=index" [value]="i">{{med?.brand_name}}</option>
-                        </select>  
-                        <div *ngIf="submitted && f.generic_name?.errors" class="invalid-feedback">
+                            <option *ngFor="let med of medicinelist;let i=index" [value]="i">{{med?.brand_name}}
+                            </option>
+                          </select>
+                          <div *ngIf="submitted && f.generic_name?.errors" class="invalid-feedback">
                             <div *ngIf="f?.generic_name?.errors?.required">Brand Name is required</div>
-                          </div>                      
+                          </div>
                         </div>
 
                         <div class="col-12 pb-2">
                           <label for="inputEmailAddress" class="form-label">Quantity:</label>
-                          <input type="text" class="form-control"   formControlName="quantity" placeholder="Enter quantity" id="pwd"  required (blur)="checkqwt($event.target.value)"  [readOnly]="disabled"  [ngClass]="{ 'is-invalid': submitted && f.quantity.errors }">
-                          <div *ngIf="submitted && f.quantity?.errors" class="invalid-feedback" (keypress)="keyPress($event)" maxlength="9">
-                              <div *ngIf="f?.quantity?.errors?.required">Quantity is required</div>
-                              <div *ngIf="f?.quantity?.errors?.min">Quantity should be greater than zero</div>
+                          <input type="text" class="form-control" formControlName="quantity"
+                            placeholder="Enter quantity" id="pwd" required (blur)="checkqwt($event.target.value)"
+                            [readOnly]="disabled" [ngClass]="{ 'is-invalid': submitted && f.quantity.errors }">
+                          <div *ngIf="submitted && f.quantity?.errors" class="invalid-feedback"
+                            (keypress)="keyPress($event)" maxlength="9">
+                            <div *ngIf="f?.quantity?.errors?.required">Quantity is required</div>
+                            <div *ngIf="f?.quantity?.errors?.min">Quantity should be greater than zero</div>
 
-                            </div>
+                          </div>
                         </div>
 
                         <div class="col-12 pt-2">
@@ -95,71 +69,63 @@
           </div>
           <!--end row-->
         </div>
-        <div class="w-25 box-container"  >
-    
-            <div class="row mb-3">
-              <div class="col-6">
-                Brand Name:
-              </div>
-              <div class="col">
-                {{selecedmedicine?.brand_name}}
-              </div>
+        <div class="w-25 box-container">
+
+          <div class="row mb-3">
+            <div class="col-6">
+              Brand Name:
             </div>
-            <div class="row mb-3">
-              <div class="col-6">
-                Generic Name:
-              </div>
-              <div class="col">
-                {{selecedmedicine?.generic_name}}
-              </div>
+            <div class="col">
+              {{selecedmedicine?.brand_name}}
             </div>
-            <div class="row mb-3">
-              <div class="col-6">
-               Medicine Type:
-              </div>
-              <div class="col">
-                {{type[selecedmedicine?.medicine_type]}}
-              </div>
-            </div>
-            <div class="row mb-3" >
-              <div class="col-6">
-                Quantity:
-              </div>
-              <div class="col">
-                {{selecedmedicine?.quantity}}
-              </div>
-            </div>
-            <div class="row mb-3">
-              <div class="col-6 ">
-                Expiry Date:
-              </div>
-              <div class="col">
-                {{selecedmedicine?.exp_date | date}}
-              </div>
-            </div>
-            <div class="row mb-3">
-              <div class="col-6 ">
-                Donator Name:
-              </div>
-              <div class="col">
-                {{selecedmedicine?.donator_name}}
-              </div>
-            </div>
-         
-           
           </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              Generic Name:
+            </div>
+            <div class="col">
+              {{selecedmedicine?.generic_name}}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              Medicine Type:
+            </div>
+            <div class="col">
+              {{type[selecedmedicine?.medicine_type]}}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6">
+              Quantity:
+            </div>
+            <div class="col">
+              {{selecedmedicine?.quantity}}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6 ">
+              Expiry Date:
+            </div>
+            <div class="col">
+              {{selecedmedicine?.exp_date | date}}
+            </div>
+          </div>
+          <div class="row mb-3">
+            <div class="col-6 ">
+              Donator Name:
+            </div>
+            <div class="col">
+              {{selecedmedicine?.donator_name}}
+            </div>
+          </div>
+
+
+        </div>
       </div>
     </div>
   </div>
-  <app-pop-up  >
+  <app-pop-up>
   </app-pop-up>
-  
-  </div>
 
-
-
-
-
-
-
-
+</div>

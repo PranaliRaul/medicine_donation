@@ -3,9 +3,9 @@
     }
 
     ag-grid-angular{
-        width: 1219px;
-        height: 70vh;
-        margin: autoc
+        width: 1266px;
+        height: 75vh;
+        margin: auto
     }
      
 .inner{
@@ -21,4 +21,10 @@
     background-repeat: no-repeat;
     transition: background .2s;
     height:100vh;
+  }
+  .flex-container{
+    height: 85vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
   }

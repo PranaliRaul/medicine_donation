@@ -81,7 +81,7 @@ const routes: Routes = [
     path:'faq',
     component: FaqComponent
   },
-  {
+  { 
     path:'events',
     component: EventsComponent
   },

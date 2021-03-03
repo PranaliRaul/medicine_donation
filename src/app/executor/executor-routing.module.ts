@@ -21,11 +21,19 @@ const routes: Routes = [
     component:  TransationComponent
   },
   {
-    path:'donation-details',
+    path:'assign-donation/donation-details',
     component:DonateDetailsComponent
   },
   {
-    path:'request-details',
+    path:'assign-request/request-details',
+    component:RequestDetailsComponent
+  },
+  {
+    path:'transaction/donation-details',
+    component:DonateDetailsComponent
+  },
+  {
+    path:'request-transation/request-details',
     component:RequestDetailsComponent
   },
   {

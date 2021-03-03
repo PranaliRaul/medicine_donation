@@ -59,7 +59,7 @@ export class ExecutorAssignRequestComponent implements OnInit {
    onBtnClick1(e) {
     this.rowDataClicked1 = e.rowData;
     this.registerService.request_details =  this.rowDataClicked1;
-    this.route.navigate(['/executor/request-details'])
+    this.route.navigate(['/executor/request-transation/request-details'])
   }
   rowDataClicked1
   defaultColDef = { 

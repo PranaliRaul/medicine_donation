@@ -75,7 +75,7 @@ export class NgoTransationComponent implements OnInit {
   onBtnClick1(e) {
     this.rowDataClicked1 = e.rowData;
     this.registerService.donator_details =  this.rowDataClicked1;
-    this.route.navigate(['/executor/donation-details'])
+    this.route.navigate(['/executor/transaction/donation-details'])
   }
   rowDataClicked1
   defaultColDef = { 
@@ -105,11 +105,7 @@ export class NgoTransationComponent implements OnInit {
 
 
 }
-details(data){
-  this.registerService.donator_details = data;
-  this.route.navigate(['/executor/donation-details'])
-
-}
+ 
 onGridReady(params) {
   this.gridApi = params.api;
   this.gridColumnApi = params.columnApi;

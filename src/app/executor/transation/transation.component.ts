@@ -70,7 +70,7 @@ export class TransationComponent implements OnInit {
   onBtnClick1(e) {
     this.rowDataClicked1 = e.rowData;
     this.registerService.donator_details =  this.rowDataClicked1;
-    this.route.navigate(['/executor/donation-details'])
+    this.route.navigate(['/executor/transaction/donation-details'])
   }
   rowDataClicked1
   defaultColDef = { 

@@ -1,3 +1,5 @@
+<div class="container-fluid bg-theme1 p-0">
+
 <app-navigation></app-navigation>
 
 <div class="container">
@@ -43,6 +45,22 @@
   </div>
   <div class="row">
     <div class="col-2">
+      Donated Quantity:
+    </div>
+    <div class="col">
+      {{donation_details?.quantity}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
+       Remaining Quantity:
+    </div>
+    <div class="col">
+      {{donation_details?.remaining_quantity}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
       Mobile Number:
     </div>
     <div class="col">
@@ -68,4 +86,5 @@
      
   </div>
    
+</div>
 </div>

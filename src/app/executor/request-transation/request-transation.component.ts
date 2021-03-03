@@ -16,7 +16,7 @@ export class RequestTransationComponent implements OnInit {
    }
    onBtnClick1(e) {
     this.registerService.request_details =  e.rowData;
-    this.route.navigate(['/executor/request-details'])
+    this.route.navigateByUrl('/executor/request-transation/request-details')
   }
    
 
@@ -25,10 +25,6 @@ export class RequestTransationComponent implements OnInit {
   }
   
 
-  details(data){
-    this.registerService.request_details = data;
-    this.route.navigate(['/executor/request-details'])
-
-  }
+  
 
 }

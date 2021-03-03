@@ -49,22 +49,22 @@ export const environment = {
     {
       path :'/ngo/Add-executor',
       text:'Add Executive',
-      exact_match: true
+      exact_match: false
     },
     {
       path :'/ngo/medicine-donation',
       text:'Donations',
-      exact_match: true
+      exact_match: false
     },
     {
       path :'/ngo/medicine-request',
       text:'Requests',
-      exact_match: true
+      exact_match: false
     },
     {
       path :'/ngo/ngo-executive-list',
       text:'Executive',
-      exact_match: true
+      exact_match: false
     }
   ],
   
@@ -97,17 +97,17 @@ export const environment = {
     {
       path :'/Recepient/medicine-request',
       text:'Request',
-      exact_match: true
+      exact_match: false
     },
     {
       path :'/Recepient/my-request',
       text:'My Requests',
-      exact_match: true
+      exact_match: false
     },
     {
       path :'/Recepient/ngo-medicine-request',
       text:'NGO',
-      exact_match: true
+      exact_match: false
     }
   ],
 
@@ -121,22 +121,22 @@ export const environment = {
     {
       path :'/executor/assign-donation',
       text:'Assign Donations',
-      exact_match: true
+      exact_match: false
     },
     {
       path :'/executor/assign-request',
       text:'Assign Requests',
-      exact_match: true
+      exact_match: false
     },
     {
       path :'/executor/transaction',
       text:'Transaction',
-      exact_match: true
+      exact_match: false
     },
     {
       path :'/executor/request-transation',
       text:'Request Transaction',
-      exact_match: true
+      exact_match: false
     }
   ],
 

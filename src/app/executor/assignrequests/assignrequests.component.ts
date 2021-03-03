@@ -62,7 +62,7 @@ export class AssignrequestsComponent implements OnInit {
    onBtnClick1(e) {
     this.rowDataClicked1 = e.rowData;
     this.registerService.request_details =  this.rowDataClicked1;
-    this.route.navigate(['/executor/request-details'])
+    this.route.navigate(['/executor/assign-request/request-details'])
   }
   rowDataClicked1
   defaultColDef = { 
@@ -89,11 +89,7 @@ export class AssignrequestsComponent implements OnInit {
     })
   }
 
-  details(data){
-    this.registerService.request_details = data;
-    this.route.navigate(['/executor/request-details'])
-
-  }
+  
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;
