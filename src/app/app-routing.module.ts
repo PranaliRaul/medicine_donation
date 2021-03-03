@@ -36,7 +36,7 @@ const routes: Routes = [
     data:{
       roleId :1
     },
-    component:HomepageComponent
+   
   },
   {
     path:'Recepient',
@@ -85,10 +85,10 @@ const routes: Routes = [
     path:'events',
     component: EventsComponent
   },
-  // {
-  //   path:'homepage',
-  //   component:DashBoardComponent
-  // },
+  {
+    path:'homepage',
+    component:DashBoardComponent
+  },
   {
     path:'**',
     component: LoginComponent

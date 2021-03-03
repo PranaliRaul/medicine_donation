@@ -20,10 +20,7 @@ import { ExecutorassignComponent } from './executorassign/executorassign.compone
 import { ExectorAssignRequestComponent } from './exector-assign-request/exector-assign-request.component';
 
 const routes: Routes = [
-  {
-    path:' ',
-    component:AddNgoComponent
-  },
+  
   {
     path:'addngo',
     component:AddNgoComponent

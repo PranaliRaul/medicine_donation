@@ -43,7 +43,7 @@ export class NgoMedicineRequestComponent implements OnInit {
           is_deliver:[0,''],
           excutor_email:['','']
            });
-
+ 
            this.getngolist();
           }
  

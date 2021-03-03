@@ -31,6 +31,7 @@ export class HomepageComponent implements OnInit,OnDestroy {
 
   ngOnInit() {
     this.carousel();
+    
   }
  
   
