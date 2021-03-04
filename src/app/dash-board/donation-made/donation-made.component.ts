@@ -50,12 +50,7 @@ export class DonationMadeComponent implements OnInit {
       suppressSizeToFit: true, width:120},
       { headerName: 'Status', field: 'is_collected', sortable: true, filter: true , 
       suppressSizeToFit: true,cellRenderer:'status' ,width:130},
-      { headerName: '', field: ' ', width:150,sortable: false,
-      filter: false,cellRenderer: 'buttonRenderer',
-      cellRendererParams: {
-        onClick: this.onBtnClick1.bind(this),
-        label: 'details'
-      }},
+      
       ];
   }
   defaultColDef = { 
