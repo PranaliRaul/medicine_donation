@@ -18,10 +18,10 @@ export class ExecutiveDeatilsComponent implements OnInit {
 
   ngOnInit() {
     this.ngo_details = this.servive.donator_details;
-    if(this.route.url === '/ngo/ngo-executive-deatails'){
+    if(this.route.url === '/ngo/ngo-executive-list/ngo-executive-deatails'){
       this.app_navbar = true;
-      this.url2 ='/ngo/ngo-executive-assign-donation';
-      this.url = '/ngo/ngo-executive-assign-request';
+      this.url2 ='/ngo/ngo-executive-list/ngo-executive-assign-donation';
+      this.url = '/ngo/ngo-executive-list/ngo-executive-assign-request';
     }  else{
       this.url ='/home/ngo/executive-assign-donation';
       this.url2 = '/home/ngo/executive-donation'

@@ -76,7 +76,7 @@ export class DonationComponent implements OnInit {
 onBtnClick1(e) {
   this.rowDataClicked1 = e.rowData;
   this.registerService.donator_details =  this.rowDataClicked1;
-  this.route.navigate(['/ngo/medicine-donation-details'])
+  this.route.navigate(['/ngo/medicine-donation/medicine-donation-details'])
 }
 rowDataClicked1
 defaultColDef = { 

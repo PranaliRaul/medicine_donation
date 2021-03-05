@@ -38,11 +38,11 @@ const routes: Routes = [
     component: UnsucessfullDonationComponent
   },
   {
-    path:'medicine-donation-details',
+    path:'medicine-donation/medicine-donation-details',
     component: MedicineDonationDetailComponent
   },
   {
-    path:'medicine-request-detail',
+    path:'medicine-request/medicine-request-detail',
     component: MedicineRequestDetailComponent
   },
   {
@@ -50,15 +50,15 @@ const routes: Routes = [
     component: NgoExecutiveListComponent
   },
   {
-    path:'ngo-executive-deatails',
+    path:'ngo-executive-list/ngo-executive-deatails',
     component: ExecutiveDeatilsComponent
   },
   {
-    path:'ngo-executive-assign-donation',
+    path:'ngo-executive-list/ngo-executive-assign-donation',
     component: ExecutorassignComponent
   },
   {
-    path:'ngo-executive-assign-request',
+    path:'ngo-executive-list/ngo-executive-assign-request',
     component: ExectorAssignRequestComponent
   }
   

@@ -55,7 +55,7 @@ export class RequestComponent implements OnInit {
   onBtnClick1(e) {
     this.rowDataClicked1 = e.rowData;
     this.registerService.request_details =  this.rowDataClicked1;
-    this.route.navigate(['/ngo/medicine-request-detail'])
+    this.route.navigate(['/ngo/medicine-request/medicine-request-detail'])
   }
   rowDataClicked1
   defaultColDef = { 

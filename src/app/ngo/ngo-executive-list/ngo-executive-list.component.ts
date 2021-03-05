@@ -54,7 +54,7 @@ export class NgoExecutiveListComponent implements OnInit {
   onBtnClick1(e) {
     this.rowDataClicked1 = e.rowData;
     this.servive.donator_details =  this.rowDataClicked1;
-    this.route.navigate(['/ngo/ngo-executive-deatails'])
+    this.route.navigate(['/ngo/ngo-executive-list/ngo-executive-deatails'])
   }
   rowDataClicked1
   defaultColDef = { 
