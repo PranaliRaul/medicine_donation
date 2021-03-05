@@ -25,7 +25,7 @@ export class AssignrequestsComponent implements OnInit {
   rowData = [];
   rowHeight = 50;  
   headerHeight = 50;
-  frameworkComponents: any;
+  frameworkComponents: any; 
 
   constructor(private registerService:RegisterService,private route:Router) {
     this.frameworkComponents = {

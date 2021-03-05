@@ -13,21 +13,24 @@
 }
 
 .bg-theme1 {
-    background-image: url('../../../assets/login1.png');
-  }
-  
-  .wrapper {
-    width: 100%;
-    position: relative;
-  }
-  .bg-theme {
-    background-size: 100% 100%;
-    background-attachment: fixed;
-    background-position: center;
-    background-repeat: no-repeat;
-    transition: background .2s;
-  }
-  
+  background-image: url('../../../assets/login1.png');
+}
+.section-authentication-signin {
+  height: 100vh;
+}
+
+.wrapper {
+  width: 100%;
+  position: relative;
+}
+.bg-theme {
+  background-size: 100% 100%;
+  background-attachment: fixed;
+  background-position: center;
+  background-repeat: no-repeat;
+  transition: background .2s;
+}
+
   
   .btn.btn-light{
     background-color: transparent;
