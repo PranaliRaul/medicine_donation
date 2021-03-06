@@ -31,7 +31,7 @@ const routes: Routes = [
   },
   {
     path:'home',
-    loadChildren:'./dash-board/dash-board.module#DashBoardModule',
+    loadChildren:() => import('./dash-board/dash-board.module').then(m => m.DashBoardModule),
     canActivate:[AuthGuard],
     data:{
       roleId :1
@@ -40,7 +40,7 @@ const routes: Routes = [
   },
   {
     path:'Recepient',
-    loadChildren:'./recepient/recepient.module#RecepientModule',
+    loadChildren:() => import('./recepient/recepient.module').then(m => m.RecepientModule),
     canActivate:[RecepientGuard],
     data:{
       roleId :4
@@ -48,7 +48,7 @@ const routes: Routes = [
   },
   {
     path:'donator',
-    loadChildren:'./donator/donator.module#DonatorModule',
+    loadChildren:() => import('./donator/donator.module').then(m => m.DonatorModule),
     canActivate:[DonatorGuard],
 
     data:{
@@ -57,7 +57,7 @@ const routes: Routes = [
   },
   {
     path:'ngo',
-    loadChildren:'./ngo/ngo.module#NgoModule',
+    loadChildren:() => import('./ngo/ngo.module').then(m => m.NgoModule),
     canActivate:[NgoGuard],
 
     data:{
@@ -66,7 +66,7 @@ const routes: Routes = [
   },
   {
     path:'executor',
-    loadChildren:'./executor/executor.module#ExecutorModule',
+    loadChildren:() => import('./executor/executor.module').then(m => m.ExecutorModule),
     canActivate:[ExecutorGuard],
 
     data:{

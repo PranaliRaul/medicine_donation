@@ -23,7 +23,7 @@ import { RegisterService } from 'src/app/register/register.service';
 export class PopUpComponent implements OnInit {
   message:any;
   
-@ViewChild('content') content:ElementRef
+@ViewChild('content', { static: false }) content:ElementRef
   constructor(config: NgbModalConfig, private modalService: NgbModal, private registerService:RegisterService) {
     config.backdrop =  'static';
     config.keyboard = false;
