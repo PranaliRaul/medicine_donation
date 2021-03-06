@@ -43,7 +43,7 @@ export class RecepientIndetailsComponent implements OnInit {
     },err =>{
       alert(err.error.err);
     })
-  }
+  } 
   }
 public navigate(url){
   this.route.navigate([url])

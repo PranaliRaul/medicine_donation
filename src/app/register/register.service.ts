@@ -29,6 +29,7 @@ export class RegisterService {
     if(confirm('Are you sure')){
     localStorage.clear();
     this.route.navigate(['/login']);
+    location.reload();
     }
   }
   public getdate(){

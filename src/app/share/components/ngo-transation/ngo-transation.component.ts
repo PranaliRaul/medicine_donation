@@ -50,7 +50,7 @@ export class NgoTransationComponent implements OnInit {
 
      
     this.columnDefs = [  
-      { headerName: 'Name', field: 'donator_name', sortable: true ,
+      { headerName: 'Donor Name', field: 'donator_name', sortable: true ,
        }, 
       { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
        },  

@@ -27,7 +27,6 @@ public userdata = [];
     }else if(this.userdata[0].roleId === 5){
       this.navigation = environment.EXECUTOR_NAVIGATION 
     }
-    console.log( this.navigation)
   }
   public logout(){
     this.service.logout();

@@ -40,6 +40,7 @@ const routes: Routes = [
   {
     path:'recepient',
     component:RecepientDetailComponent
+    
   },
   {
     path:'ngo/ngo-detail',

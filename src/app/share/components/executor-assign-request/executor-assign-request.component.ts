@@ -40,7 +40,7 @@ export class ExecutorAssignRequestComponent implements OnInit {
       buttonRenderer:BtnComponent
     }
     this.columnDefs = [  
-      { headerName: 'Name', field: 'recepient_name', sortable: true ,
+      { headerName: ' Recepient Name', field: 'recepient_name', sortable: true ,
        }, 
       { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
        },  
