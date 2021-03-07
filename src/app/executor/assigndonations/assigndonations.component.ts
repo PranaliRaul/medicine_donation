@@ -40,20 +40,16 @@ export class AssigndonationsComponent implements OnInit {
        }, 
       { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
        },  
-      // { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 
-      // suppressSizeToFit: true},   
-      { headerName: 'Medicine Type', field: 'medicine_type', sortable: true, filter: true , 
-      suppressSizeToFit: true,cellRenderer:'medtype'},
+    
+     
       { headerName: 'Expiry Date', field: 'exp_date', sortable: true, filter: true , 
       suppressSizeToFit: true,cellRenderer:'date'},
       { headerName: 'Quantity', field: 'quantity', sortable: true, filter: true , 
       suppressSizeToFit: true,},
-      { headerName: 'Mobile Number', field: 'mobile_no', sortable: true, filter: true , 
-      suppressSizeToFit: true,},
+      
       { headerName: 'Status', field: 'is_collected', sortable: true, filter: true , 
       suppressSizeToFit: true, cellRenderer:'status'},
-      // { headerName: 'Address', field: 'donator_address', sortable: true, filter: true , 
-      // suppressSizeToFit: true,},
+    
       {
         headerName: '',
         cellRenderer: 'buttonRenderer',

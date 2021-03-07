@@ -38,7 +38,9 @@ donation_id int   NOT NULL  PRIMARY KEY AUTO_INCREMENT,
 exp_date date ,
 ngo_email varchar(40),
 donator_email varchar(40),
-request_id INT
+request_id INT,
+remaining_quantity int,
+donation_date date
 );
  
                 
@@ -60,7 +62,8 @@ request_id int   NOT NULL PRIMARY KEY AUTO_INCREMENT,
 ngo_email varchar(40),
 recepient_email varchar(40),
 donation_id int,
-is_deliver boolean
+is_deliver boolean,
+request_date date
 );
 
  

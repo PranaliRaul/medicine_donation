@@ -44,11 +44,6 @@ export class DonationComponent implements OnInit {
     { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
     width:150
      },  
-    { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 
-    width:150,
-    suppressSizeToFit: true},  
-    { headerName: 'Medicine Type', field: 'medicine_type', sortable: true, filter: true , 
-    width:150, suppressSizeToFit: true,cellRenderer:'medtype'}, 
     { headerName: 'Expiry Date', field: 'exp_date', sortable: true, filter: true , 
     cellRenderer: 'datepipe', width:150, suppressSizeToFit: true,},
     { headerName: 'Quantity', field: 'quantity', sortable: true, filter: true , 

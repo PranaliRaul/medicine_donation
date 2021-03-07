@@ -50,8 +50,6 @@ export class ExecutorAssignRequestComponent implements OnInit {
       suppressSizeToFit: true,},
       { headerName: 'Status', field: 'is_deliver', sortable: true, filter: true , 
       suppressSizeToFit: true,cellRenderer:'status'},
-      { headerName: 'Address', field: 'recepient_adress', sortable: true, filter: true , 
-      suppressSizeToFit: true,}
       
      
       ]; 
