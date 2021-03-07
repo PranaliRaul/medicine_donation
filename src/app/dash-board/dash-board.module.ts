@@ -3,7 +3,6 @@ import { CommonModule } from '@angular/common';
 import { AgGridModule } from "ag-grid-angular";
 
 import { DashBoardRoutingModule } from './dash-board-routing.module';
-import { NavbarComponent } from '../navbar/navbar.component';
 import { AddNgoComponent } from '../add-ngo/add-ngo.component';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { NgoRequestComponent } from '../ngo-request/ngo-request.component';
