@@ -18,7 +18,6 @@ export class RecepientIndetailsComponent implements OnInit {
   ngOnInit() {
     this.user = JSON.parse(localStorage.getItem('userdata'));
     this.ngo_details = this.servive.donator_details;
-    console.log(  this.route.url);
     if(this.route.url === '/ngo/ngo-executive-deatails'){
       this.app_navbar = true;
     }

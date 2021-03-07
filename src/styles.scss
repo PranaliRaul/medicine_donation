@@ -85,3 +85,9 @@ ul >li >a:hover{
 .color{
   color:white;
 }
+
+@media only screen and (max-width: 768px) {
+  .loginbox{
+    flex-grow: 1 !important;
+  }
+}

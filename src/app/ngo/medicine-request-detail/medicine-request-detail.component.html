@@ -37,10 +37,18 @@
   </div>
   <div class="row">
     <div class="col-3">
-      Quantity:
+     Requested Quantity:
     </div>
     <div class="col-3">
       {{donation_details?.quantity}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-3">
+     Obtained Quantity:
+    </div>
+    <div class="col-3">
+      {{donation_details?.obtain_quantity}}
     </div>
   </div>
   <div class="row">
@@ -116,8 +124,9 @@
           </div>
         </div>
         <div class="row mb-3" >
-          <div class="col-6">
-            Quantity:
+          <div  style="    width: 50%;
+          padding-left: 15px;">
+           Remaining Quantity:
           </div>
           <div class="col">
             {{selected_medicineshow?.remaining_quantity}}

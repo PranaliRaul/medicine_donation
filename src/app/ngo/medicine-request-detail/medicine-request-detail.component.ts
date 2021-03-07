@@ -64,6 +64,7 @@ export class MedicineRequestDetailComponent implements OnInit {
       this.donation_details.is_deliver = 0;
       
       qwt > 0 ? this.donation_details.remaining_quantity = qwt : this.donation_details.remaining_quantity = 0;
+      this.donation_details.obtain_quantity = this.donation_details.quantity > this.assignmedicine.remaining_quantity ?this.assignmedicine.remaining_quantity: this.donation_details.quantity;
     }
     if (!this.assignmedicine && !this.donation_details.donation_id) {
       alert('Please select medicine ')

@@ -33,7 +33,6 @@ export class PopUpComponent implements OnInit {
     this.registerService.getMessage().subscribe(message => {  
     //  this.modalService.open(this.content,{ centered: true }); 
       this.message = message;
-      console.log(this.message)
   }); 
   }
   @Input() closable = true;

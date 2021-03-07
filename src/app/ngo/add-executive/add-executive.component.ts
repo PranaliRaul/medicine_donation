@@ -36,7 +36,6 @@ export class AddExecutiveComponent implements OnInit {
   this.submitted = true;
     if (this.registrationForm.valid) { 
             this.registerService.postdata('register', this.registrationForm.value).subscribe(data =>{
-              console.log(data);
              
              alert(data.msg)
             },err =>{

@@ -1,18 +1,21 @@
 <nav class="navbar navbar-expand-lg navbar-light navigation-bg">
-  <a class="navbar-brand foot-logo" [routerLink]="['/home']">
+  <a class="navbar-brand foot-logo" [routerLink]="['/homepage']">
    <img src="../../../assets/icon.PNG" alt="">
  </a> 
  
- <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation">
+ <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarNavDropdown" aria-controls="navbarNavDropdown" aria-expanded="false" aria-label="Toggle navigation" (click)="toggle()">
    <span class="navbar-toggler-icon"></span>
  </button>
  <div class="collapse navbar-collapse" id="navbarNavDropdown">
+   <div class="collapsebtn">
+  <a   class="closebtn"   (click)="toggle()" style="  padding-right: 25px; font-size: 30px;">&times;</a>
+  </div>
    <ul class="navbar-nav" *ngFor="let nav of navigation">
      <li class="nav-item active">
        <a class="nav-link" [routerLink]="nav.path" routerLinkActive="active-link" [routerLinkActiveOptions]="{exact: nav.exact_match }">{{nav?.text}}</a>
      </li>
    </ul>
-   <div class="ml-auto" *ngIf="userdata && userdata.length">
+   <div class="ml-auto log" *ngIf="userdata && userdata.length">
      <button type="button" class="btn btn-danger"  (click)="logout()">logout</button>
    </div>
  </div>

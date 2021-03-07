@@ -99,3 +99,29 @@ section::after {
         width: 60%
     }
   }
+
+  @media only screen and (max-width: 768px) {
+    .container2{
+        width: 100%;
+        top: 35%;
+        font-size: 18px;
+
+    }
+    .d-flex{
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+    }
+    .box{
+        text-align: center;
+    }
+    .container2 > p{
+        text-align: center;
+        font-size: 18px;
+        color: #fff;
+    }
+    .para ,.text {
+       
+        font-size: 20px;
+    }
+  }

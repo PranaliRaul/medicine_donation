@@ -63,7 +63,8 @@ ngo_email varchar(40),
 recepient_email varchar(40),
 donation_id int,
 is_deliver boolean,
-request_date date
+request_date date,
+obtain_quantity int
 );
 
  

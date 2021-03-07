@@ -25,11 +25,10 @@ export class DonateComponent implements OnInit {
   }
   ngOnInit() {
     const date = new Date();
-    const months = date.getMonth() >= 9 ? date.getMonth() + 1:`0${date.getMonth() +1}`;
+    const months = date.getMonth() >= 9 ? date.getMonth() + 3:`0${date.getMonth() +3}`;
     const day =  date.getDate() >= 9 ? date.getDate() + 1:`0${date.getDate() +1}`;
     this.mindate = `${date.getFullYear()}-${months}-${day}`;
 
-    console.log(this.mindate)
     this.registrationForm = this.formBuilder.group({
           brand_name: ["", Validators.required],
           generic_name: ["",Validators.required],

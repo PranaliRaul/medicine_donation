@@ -12,11 +12,9 @@
     padding: 5px 50px
 }
 
-.bg-theme1 {
-  background-image: url('../../../assets/login1.png');
-}
+ 
 .section-authentication-signin {
-  height: 100vh;
+ margin-top: 30px;
 }
 
 .wrapper {
@@ -24,11 +22,15 @@
   position: relative;
 }
 .bg-theme {
+  background-image: url('../../../assets/login1.png');
+
   background-size: 100% 100%;
   background-attachment: fixed;
   background-position: center;
   background-repeat: no-repeat;
   transition: background .2s;
+  height: 100vh;
+  overflow: auto;
 }
 
   

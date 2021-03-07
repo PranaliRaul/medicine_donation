@@ -346,8 +346,7 @@ app.post('/assign-executor',    (req, res) =>{
 // })
 
 app.post('/assign-executor-request',    (req, res) =>{
-  console.log(req.body)
-  const sql4 = 'UPDATE request SET excutor_email = "'+req.body.excutor_email+'" , assign_executor="'+req.body.assign_executor+'" , is_deliver="'+req.body.is_deliver+'", assign="'+req.body.assign+'", donation_id="'+req.body.donation_id+'",allow_status="'+req.body.allow_status+'" WHERE request_id="'+req.body.request_id+'" ';
+  const sql4 = 'UPDATE request SET excutor_email = "'+req.body.excutor_email+'" , assign_executor="'+req.body.assign_executor+'" , is_deliver="'+req.body.is_deliver+'", assign="'+req.body.assign+'", donation_id="'+req.body.donation_id+'",allow_status="'+req.body.allow_status+'" ,obtain_quantity="'+req.body.obtain_quantity+'" WHERE request_id="'+req.body.request_id+'" ';
   const sql5 = 'UPDATE donator SET remaining_quantity = "'+req.body.remaining_quantity+'" , assign="'+req.body.recepient_name+'" , request_id="'+req.body.request_id+'" WHERE donation_id="'+req.body.donation_id+'" ';
 
   connection.query( sql4 ,  function (err, result) {

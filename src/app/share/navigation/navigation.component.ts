@@ -31,4 +31,8 @@ public userdata = [];
   public logout(){
     this.service.logout();
   }
+  public toggle() {
+    var element = document.getElementById("navbarNavDropdown");
+    element.classList.toggle("collapse");
+  }
 }

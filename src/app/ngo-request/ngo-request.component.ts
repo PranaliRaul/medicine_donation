@@ -68,7 +68,6 @@ export class NgoRequestComponent implements OnInit {
   getNgoList(){
     const url = `ngo-requestactivate?id=2`;
     this.service.getData(url).subscribe(data =>{
-      console.log(data);
       this.list = data;
       this.rowData = data
     })

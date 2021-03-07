@@ -125,3 +125,14 @@ h2{
 app-navigation {
   width: 100vw;
 }
+@media only screen and (max-width: 1024px) {
+  .faq{
+    width: 100%;
+  }
+  .accordion-item{
+    text-align: center;
+  }
+}
+
+
+

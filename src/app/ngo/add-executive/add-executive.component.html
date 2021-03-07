@@ -1,60 +1,9 @@
-<!-- 
-   <app-ngonavigation></app-ngonavigation>
-<div class="container mt-5" >
- 
-  <div class="w-50 box-container">
-    <h5 class="text-center">Registration Form</h5>
-<form  autocomplete="off"  [formGroup]="registrationForm">
-    <div class="form-group">
-        <label for="sel1">Role:</label>
-        <select class="form-control"    formControlName="role"  [(ngModel)]="role" >
-           
-            <option [value]="5">Executor</option>
-         
-        </select>
-      </div>
-    <div class="form-group" >
-        <label for="email">Full Name:</label>
-        <input type="text" class="form-control"  formControlName="fullName" placeholder="Enter Full Name" id="email" required>
-      </div>
-      
-  <div class="form-group">
-    <label for="email">Email address:</label>
-    <input type="email" class="form-control"  formControlName="email" placeholder="Enter email" id="email" required>
-  </div>
-  <div class="form-group">
-    <label for="pwd">Password:</label>
-    <input type="password" class="form-control"  formControlName="password" placeholder="Enter password" id="pwd" required>
-  </div>
-  <div class="form-group">
-      <label for="pwd">Mobile Number:</label>
-      <input type="text" class="form-control"   formControlName="mobile_no" placeholder="Enter Mobile Number" id="pwd" maxlength="10" required>
-    </div>
-    <div class="form-group">
-        <label for="comment">Address:</label>
-        <textarea class="form-control" rows="3" id="comment"  formControlName="address"></textarea>
-      </div>
-       
-         
-  <button type="submit" class="btn btn-primary login" (click)="register()">Register</button>
-   
-</form>
-</div>
-</div>
+<div class="bg-theme">
 
- -->
-
-
-
-
-
-
-<div>
- 
   <app-navigation></app-navigation>
 
-  <div class="wrapper" class="bg-theme bg-theme1  pace-done">
-  <div class="section-authentication-signin d-flex align-items-center justify-content-center  ">
+  <div class="wrapper" class=" pace-done">
+    <div class="section-authentication-signin d-flex align-items-center justify-content-center  ">
       <div class="container-fluid">
 
         <div class="row row-cols-1 row-cols-lg-2 row-cols-xl-3">
@@ -64,61 +13,69 @@
                 <div class="border p-4 rounded">
                   <div class="text-center">
                     <h3 class="">Registration Form</h3>
-                    
-                  </div> 
-                    <hr>
-                   
+
+                  </div>
+                  <hr>
+
                   <div class="form-body">
                     <form class="row g-3" [formGroup]="registrationForm" autocomplete="off">
                       <div class="col-12 pb-2">
                         <label for="inputEmailAddress" class="form-label">Role:</label>
-                        <select class="form-control"    formControlName="role"  [(ngModel)]="role" required  [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
+                        <select class="form-control" formControlName="role" [(ngModel)]="role" required
+                          [ngClass]="{ 'is-invalid': submitted && f.role.errors }">
                           <option [value]="5">Executor</option>
-                          </select>
-                        </div>
-                        <div class="col-12 pb-2">
-                          <label for="inputEmailAddress" class="form-label">Full Name:</label>
-                          <input type="text" class="form-control"  formControlName="fullName" placeholder="Enter Full Name" id="email"  required  [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }">
-                             <div *ngIf="submitted && f.fullName?.errors" class="invalid-feedback">
-                               <div *ngIf="f?.fullName?.errors?.required">Full Name is required</div>
-                               </div>
-                           </div>
+                        </select>
+                      </div>
                       <div class="col-12 pb-2">
-                        <label for="inputChoosePassword" class="form-label">Email address:</label>
-                        <div class="input-group"  >
-                          <input type="email" class="form-control" placeholder="Enter email" id="email" required formControlName="email" required  [ngClass]="{ 'is-invalid': submitted && f.email.errors }"> 
-                          <div *ngIf="submitted && f.email?.errors" class="invalid-feedback">
-                            <div *ngIf="f?.email?.errors?.required">Email is required</div> 
-                            <div *ngIf="f?.email?.errors?.email">Email must be a valid email address</div>
-                        </div>
+                        <label for="inputEmailAddress" class="form-label">Full Name:</label>
+                        <input type="text" class="form-control" formControlName="fullName" placeholder="Enter Full Name"
+                          id="email" required [ngClass]="{ 'is-invalid': submitted && f.fullName.errors }">
+                        <div *ngIf="submitted && f.fullName?.errors" class="invalid-feedback">
+                          <div *ngIf="f?.fullName?.errors?.required">Full Name is required</div>
                         </div>
                       </div>
-                     
-                    <div class="col-12 pb-2">
-                     <label for="inputEmailAddress" class="form-label">Password:</label>
-                     <input type="password" class="form-control" placeholder="Enter password" id="pwd" required formControlName="password" required  [ngClass]="{ 'is-invalid': submitted && f.password.errors }">                              
+                      <div class="col-12 pb-2">
+                        <label for="inputChoosePassword" class="form-label">Email address:</label>
+                        <div class="input-group">
+                          <input type="email" class="form-control" placeholder="Enter email" id="email" required
+                            formControlName="email" required [ngClass]="{ 'is-invalid': submitted && f.email.errors }">
+                          <div *ngIf="submitted && f.email?.errors" class="invalid-feedback">
+                            <div *ngIf="f?.email?.errors?.required">Email is required</div>
+                            <div *ngIf="f?.email?.errors?.email">Email must be a valid email address</div>
+                          </div>
+                        </div>
+                      </div>
+
+                      <div class="col-12 pb-2">
+                        <label for="inputEmailAddress" class="form-label">Password:</label>
+                        <input type="password" class="form-control" placeholder="Enter password" id="pwd" required
+                          formControlName="password" required
+                          [ngClass]="{ 'is-invalid': submitted && f.password.errors }">
                         <div *ngIf="submitted && f.password?.errors" class="invalid-feedback">
                           <div *ngIf="f?.password?.errors?.required">Password is required</div>
-                          </div>
+                        </div>
                       </div>
                       <div class="col-12 pb-2">
                         <label for="inputEmailAddress" class="form-label">Contact Number:</label>
-                        <input type="text" class="form-control" placeholder="Enter Mobile Number" id="pwd" maxlength="10" required formControlName="mobile_no" required  [ngClass]="{ 'is-invalid': submitted && f.mobile_no.errors }">
+                        <input type="text" class="form-control" placeholder="Enter Mobile Number" id="pwd"
+                          maxlength="10" required formControlName="mobile_no" required
+                          [ngClass]="{ 'is-invalid': submitted && f.mobile_no.errors }">
                         <div *ngIf="submitted && f.mobile_no?.errors" class="invalid-feedback">
-                        <div *ngIf="f?.mobile_no?.errors?.required">Contact Number is required</div>
-                             </div>
-                         </div>
-                         <div class="col-12 pb-2">
-                          <label for="inputEmailAddress" class="form-label">Address:</label>
-                          <textarea class="form-control" rows="3" id="comment" formControlName="address" required  [ngClass]="{ 'is-invalid': submitted && f.address.errors }"></textarea>                              
-                             <div *ngIf="submitted && f.address?.errors" class="invalid-feedback">
-                               <div *ngIf="f?.address?.errors?.required">Address is required</div>
-                               </div>
-                           </div>
+                          <div *ngIf="f?.mobile_no?.errors?.required">Contact Number is required</div>
+                        </div>
+                      </div>
+                      <div class="col-12 pb-2">
+                        <label for="inputEmailAddress" class="form-label">Address:</label>
+                        <textarea class="form-control" rows="3" id="comment" formControlName="address" required
+                          [ngClass]="{ 'is-invalid': submitted && f.address.errors }"></textarea>
+                        <div *ngIf="submitted && f.address?.errors" class="invalid-feedback">
+                          <div *ngIf="f?.address?.errors?.required">Address is required</div>
+                        </div>
+                      </div>
 
                       <div class="col-12 pt-2">
                         <div class="d-grid">
-                          <button type="submit" class="btn btn-light"  (click)="register()">Register</button>
+                          <button type="submit" class="btn btn-light" (click)="register()">Register</button>
                         </div>
                       </div>
                     </form>
@@ -131,6 +88,5 @@
         <!--end row-->
       </div>
     </div>
-    </div>
-    </div>
-    
+  </div>
+</div>

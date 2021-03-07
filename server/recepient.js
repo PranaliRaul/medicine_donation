@@ -13,7 +13,7 @@ router.post('/recepient',  async function (req, res) {
                res.status(500).send({err:'Request Fail... Please try again'});
                return;
            };
-           console.log("Number of records inserted: " + result.affectedRows);
+           ("Number of records inserted: " + result.affectedRows);
            res.send({msg:'Your medicine request has been sucessfully recorded'});
            // sendemail(data);
          });

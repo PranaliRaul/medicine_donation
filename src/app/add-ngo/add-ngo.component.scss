@@ -18,10 +18,12 @@
     background-position: center;
     background-repeat: no-repeat;
     transition: background .2s;
+    overflow: auto;
+    height: 100vh;
   }
 
   .section-authentication-signin {
-    height: 90vh;
+   margin-top: 10px;
   }
   
   .wrapper {

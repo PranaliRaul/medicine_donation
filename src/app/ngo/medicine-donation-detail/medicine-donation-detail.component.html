@@ -18,23 +18,14 @@
     </div>
   
   </div>
-  <div class="row">
-    <div class="col-2">
-      Brand Name:
-    </div>
-    <div class="col">
-      {{donation_details?.brand_name}}
-    </div>
-  </div>
+   
   <div class="row">
     <div class="col-2">
       Generic Name:
     </div>
-    <div class="col">
+    <div class="col-4">
       {{donation_details?.generic_name}}
     </div>
-  </div>
-  <div class="row">
     <div class="col-2">
       Donation Date:
     </div>
@@ -42,15 +33,14 @@
       {{donation_details?.donation_date | date}}
     </div>
   </div>
+  
   <div class="row">
     <div class="col-2">
       Expiry Date:
     </div>
-    <div class="col">
+    <div class="col-4">
       {{donation_details?.exp_date | date}}
     </div>
-  </div>
-  <div class="row">
     <div class="col-2">
       Medicine Type:
     </div>
@@ -58,22 +48,22 @@
       {{type[donation_details?.medicine_type]}}
     </div>
   </div>
+ 
   <div class="row">
     <div class="col-2">
       Donated Quantity:
     </div>
-    <div class="col">
+    <div class="col-4">
       {{donation_details?.quantity}}
     </div>
-  </div>
-  <div class="row">
     <div class="col-2">
-       Remaining Quantity:
-    </div>
-    <div class="col">
-      {{donation_details?.remaining_quantity}}
-    </div>
+      Remaining Quantity:
+   </div>
+   <div class="col">
+     {{donation_details?.remaining_quantity}}
+   </div>
   </div>
+   
   <div class="row">
     <div class="col-2">
       Mobile Number:
