@@ -43,7 +43,7 @@ export class MyRequestsComponent implements OnInit {
       suppressSizeToFit: true,},
       { headerName: 'Obtained Quantity', field: 'obtain_quantity', sortable: true, filter: true , 
       suppressSizeToFit: true,},
-      { headerName: 'Benefited Person', field: 'assign', sortable: true, filter: true , 
+      { headerName: 'Donor Name', field: 'assign', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       { headerName: 'Status', field: 'is_deliver', sortable: true, filter: true , 
       suppressSizeToFit: true,cellRenderer:'status'},

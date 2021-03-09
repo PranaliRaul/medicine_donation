@@ -23,10 +23,10 @@ export class AddExecutiveComponent implements OnInit {
             role: ["", Validators.required], 
             fullName: ["",''], 
             email: ["", [Validators.required, Validators.email]], 
-            password: ["", [Validators.required]],
+            password: ["", [Validators.required,Validators.minLength(6)]],
            ngo_name : ["",  ],
-            mobile_no : ["", [Validators.required, Validators.minLength(4)]],
-            address : ["", [Validators.required]],
+            mobile_no : ["", [Validators.required, Validators.minLength(4),Validators.pattern('[7-9]\\d{9}')]],
+            address : ["", [Validators.required ,Validators.minLength(15)]],
             year_establishment: ["", [ Validators.minLength(4)]],
             active_acc: [true, ],
             ngo_executor: [this.userId,'']
