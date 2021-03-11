@@ -58,15 +58,13 @@
                       </div>
                       <div class="col-12 pb-2">
                         <label for="inputEmailAddress" class="form-label">Mobile Number:</label>
-                        <input type="text" class="form-control" placeholder="Enter Mobile Number" id="pwd"
-                          maxlength="10" required formControlName="mobile_no" required
-                          [ngClass]="{ 'is-invalid': submitted && f.mobile_no.errors }">
+                        <input type="text" class="form-control" placeholder="Enter Mobile Number" id="pwd" maxlength="10" required formControlName="mobile_no" required  [ngClass]="{ 'is-invalid': submitted && f.mobile_no.errors }" (keypress)="keyPress($event)">
                         <div *ngIf="submitted && f.mobile_no?.errors" class="invalid-feedback">
-                          <div *ngIf="f?.mobile_no?.errors?.required">Mobile Number is required</div>
-                          <div *ngIf="f?.mobile_no?.errors?.pattern ">Invalid Phone Number</div>
+                        <div *ngIf="f?.mobile_no?.errors?.required">Mobile Number is required</div>
+                          <div *ngIf="f?.mobile_no?.errors?.pattern " >Invalid Phone Number</div>
 
-                        </div>
-                      </div>
+                             </div>
+                         </div>
                       <div class="col-12 pb-2">
                         <label for="inputEmailAddress" class="form-label">Address:</label>
                         <textarea class="form-control" rows="3" id="comment" formControlName="address" required

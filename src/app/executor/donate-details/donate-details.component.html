@@ -37,6 +37,14 @@
   </div>
   <div class="row">
     <div class="col-2">
+      Quantity:
+    </div>
+    <div class="col">
+      {{donation_details?.quantity}}
+    </div>
+  </div>
+  <div class="row">
+    <div class="col-2">
       Remaining Quantity:
     </div>
     <div class="col">
@@ -74,7 +82,7 @@
     </div>
     <div class="col-3">
       <button type="button" class="btn btn-primary " (click)="collecte()" *ngIf="!donation_details?.is_collected">Yes</button>
-      <div  *ngIf="donation_details?.is_collected">yes</div>
+      <div  *ngIf="donation_details?.is_collected">Yes</div>
     </div>
   </div>
   <div class="row" *ngIf="!donation_details?.is_collected">

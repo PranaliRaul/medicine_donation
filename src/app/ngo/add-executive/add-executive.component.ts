@@ -25,7 +25,7 @@ export class AddExecutiveComponent implements OnInit {
             email: ["", [Validators.required, Validators.email]], 
             password: ["", [Validators.required,Validators.minLength(6)]],
            ngo_name : ["",  ],
-            mobile_no : ["", [Validators.required, Validators.minLength(4),Validators.pattern('[7-9]\\d{9}')]],
+           mobile_no : ["", [Validators.required,Validators.pattern('[7-9]\\d{9}')]],
             address : ["", [Validators.required ,Validators.minLength(15)]],
             year_establishment: ["", [ Validators.minLength(4)]],
             active_acc: [true, ],
@@ -44,5 +44,14 @@ export class AddExecutiveComponent implements OnInit {
             })
           
           }
+  }
+
+  public keyPress(event: any) {
+    const pattern = /[0-9\+\-\ ]/;
+
+    let inputChar = String.fromCharCode(event.charCode);
+    if (event.keyCode != 8 && !pattern.test(inputChar)) {
+      event.preventDefault();
+    }
   }
 }

@@ -67,7 +67,7 @@ export class NgoMedicineRequestComponent implements OnInit {
       return ;
     }
     if(this.registrationForm.valid){
-      const qwt= this.selecedmedicine.quantity - this.registrationForm.value.quantity 
+      const qwt= this.selecedmedicine.remaining_quantity - this.registrationForm.value.quantity 
       const data = {
         ...this.registrationForm.value,
         donation_id:this.selecedmedicine.donation_id,

@@ -37,9 +37,7 @@ app.post('/register',  async function (req, res) {
     active_acc:response.active_acc ? 1:0
 
 }
-//const haspass = await bycrt.hash(data.pass,10)
-//const d =Object.values(data);
-// console.log(d);
+
 try{
 const sql1 = "INSERT INTO register(personId,fullName, pass,email,roleId,ngo_name,mobile_no,address,year_establishment,ngo_executor,active_acc) VALUES ( null  ,'"+data.fullName+"','"+data.pass+"','"+data.email+"','"+data.roleId+"','"+data.ngo_name+"','"+data.mobile_no+"','"+data.address+"','"+data.year_establishment+"','"+data.ngo_executor+"','"+data.active_acc+"')";
   connection.query( sql1 ,function (err, result) {
@@ -348,7 +346,7 @@ app.post('/assign-executor',    (req, res) =>{
 app.post('/assign-executor-request',    (req, res) =>{
   const sql4 = 'UPDATE request SET excutor_email = "'+req.body.excutor_email+'" , assign_executor="'+req.body.assign_executor+'" , is_deliver="'+req.body.is_deliver+'", assign="'+req.body.assign+'", donation_id="'+req.body.donation_id+'",allow_status="'+req.body.allow_status+'" ,obtain_quantity="'+req.body.obtain_quantity+'" WHERE request_id="'+req.body.request_id+'" ';
   const sql5 = 'UPDATE donator SET remaining_quantity = "'+req.body.remaining_quantity+'" , assign="'+req.body.recepient_name+'" , request_id="'+req.body.request_id+'" WHERE donation_id="'+req.body.donation_id+'" ';
-
+  const response = req.body
   connection.query( sql4 ,  function (err, result) {
       try{
       if (err) {
@@ -360,7 +358,7 @@ app.post('/assign-executor-request',    (req, res) =>{
 
       };
       })
-      if(req.body.is_deliver ){
+      if(response.is_deliver ){
        const text =  `<h4>Hi ${ req.body.recepient_name }</h4>
                     <p>Greeting from ${req.body.ngo_name}, Your requested medicine has been sucessfully delivered by our executor ${req.body.assign_executor}</p>
                     <p>Thanks & Regards</p>
@@ -462,3 +460,43 @@ app.post('/forgot-password',    (req, res) =>{
     });
 })
 
+app.post('/executor-inactive',    (req, res) =>{
+  response = req.body;
+
+    const sql = 'SELECT * FROM request WHERE excutor_email="'+response.email+'" and is_deliver=0 ';
+    const sql2 = 'SELECT * FROM donator WHERE excutor_email="'+response.email+'" and is_collected=0 ';
+    const sql3 = "UPDATE register SET active_acc= 0  WHERE personId= '"+response.personId+"' "
+
+    connection.query( sql ,async function (err, result1) {
+        try{
+        if(result1.length){
+            res.status(200).send({msg:'Cannot deactive this account cause it has assigned requests '});
+            return;
+        }
+        connection.query( sql2 ,async function (err, result2) {
+            if(result2.length){
+                res.status(200).send({msg:'Cannot deactive this account cause it has assigned donations '});
+                return;
+            }
+            connection.query( sql3 ,async function (err, result3) {
+                        if(err){
+                            res.status(500).send({msg:'failed'}); 
+                        }
+                        subject =  'Online Donation account has been deactivated';
+                        html2 =    `<h1>Hi ${response.fullName }</h1>
+                                       <p>Your Account has been  deactivated by Admin/Ngo</p>
+                                       <p>Please conatct Admin for further details</p>`
+                       
+                         sendemail(response.email,subject,html2)
+                    res.status(200).send({msg:'Executor Deactivated Successfully'});
+                    
+            })
+           
+        })
+       
+    }catch{
+        res.status(500).send({err:'Server error'});
+    }
+  
+      });
+  })

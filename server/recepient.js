@@ -66,14 +66,7 @@ router.post('/recepient',  async function (req, res) {
        
            res.send({msg:'Your medicine request has been sucessfully recorded'});
            })
-           // if(req.body.is_deliver ){
-           //  const text =  `<h4>Hi ${ req.body.recepient_name }</h4>
-           //               <p>Greeting from ${req.body.ngo_name}, Your requested medicine has been sucessfully delivered by our executor ${req.body.assign_executor}</p>
-           //               <p>Thanks & Regards</p>
-           //               <p>Email: ${req.body.ngo_email}</p>`
-           //   sendemail(req.body.recepient_email,'Medicine donation',text)
-           // }
-     
+         
        }catch{
            res.status(500).send({err:'Server error'});
        }

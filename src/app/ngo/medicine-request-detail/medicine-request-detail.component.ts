@@ -56,6 +56,7 @@ export class MedicineRequestDetailComponent implements OnInit {
       this.donation_details.excutor_email = this.assignexecutive.email;
       this.donation_details.assign_executor = this.assignexecutive.fullName;
     }
+    this.donation_details.obtain_quantity  =  this.donation_details.quantity;
     if (this.assignmedicine) {
       this.donation_details.assign = this.assignmedicine.donator_name;
       this.donation_details.donation_id = this.assignmedicine.donation_id;
@@ -95,7 +96,8 @@ export class MedicineRequestDetailComponent implements OnInit {
     this.selected_medicineshow = data.find(ele => ele.donation_id == this.selected_medicine)
       if(this.donation_details.is_deliver || this.donation_details.excutor_email ||  this.selected_medicine){
         this.disabled =true;
-      this.medicinelist = data;
+        this.medicinelist = data;
+
       return;
       }
       this.medicinelist = data.filter(ele => ele.is_collected && ele.remaining_quantity > 0);
