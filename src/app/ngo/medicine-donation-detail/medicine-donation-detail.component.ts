@@ -42,7 +42,7 @@ export class MedicineDonationDetailComponent implements OnInit {
     this.donation_details.assign_executor =this.assignexecutive.fullName;
     }
     this.servive.postdata(`assign-executor`, this.donation_details).subscribe(data =>{
-       // this.list = data;
+       
        this.route.navigate(['/ngo/medicine-donation']);
        alert(data.msg);
     },err =>{ 

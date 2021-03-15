@@ -433,12 +433,11 @@ app.post('/assign-executor-request',    (req, res) =>{
 
 app.post('/forgot-password',    (req, res) =>{
   const body = req.body;
-  const sql = 'UPDATE register SET  pass="'+body.password + '" WHERE  email= "'+body.email+'" and active_acc=1';
-
+  const sql = 'UPDATE register SET  pass="'+body.password + '" WHERE  email= "'+body.email+'" and active_acc=1 ';
   connection.query( sql ,  function (err, result) {
       try{
       if (err) {
-          res.status(500).send({err:'fail to load ngo list'});
+          res.status(500).send({err:'fail to Change Password'});
       };
       if(result.affectedRows){
       res.send({msg:'Password changed successfully '});
@@ -459,6 +458,58 @@ app.post('/forgot-password',    (req, res) =>{
 
     });
 })
+app.post('/otp',    (req, res) =>{
+  const body = req.body;
+
+  const otp = Math.floor(100000 + Math.random() * 900000)
+  const sql = 'UPDATE register SET  otp="'+otp + '" WHERE  email= "'+body.email+'"';
+  connection.query( sql ,  function (err, result) {
+      try{
+      if (err) {
+          res.status(500).send({err:'Failed to send OTP'});
+      };
+      if(result.affectedRows){
+        const text =  `<h4> Your One Time Password (OTP) is  ${otp}</h4> `
+        sendemail(req.body.email,'OTP',text);  
+        res.send({msg:'OTP sent successfully'});
+      }else{
+      res.status(500).send({msg:'Email Id does not exists'});
+      }
+      
+       
+
+  }catch{
+      res.status(500).send({err:'Server error'});
+  }
+
+    });
+})
+app.post('/validate-otp',    (req, res) =>{
+  const body = req.body;
+
+  const otp = Math.floor(100000 + Math.random() * 900000)
+  const sql = 'select * from  register   WHERE  email= "'+body.email+'" and  otp= "'+body.otp+'"';
+  connection.query( sql ,  function (err, result) {
+      try{
+      if (err) {
+          res.status(500).send({err:'Failed to send OTP'});
+      };
+      if(result.affectedRows){
+        res.send({msg:'Valid OTP'});
+      }else{
+      res.status(500).send({msg:'InValid OTP'});
+      }
+      
+       
+
+  }catch{
+      res.status(500).send({err:'Failed to send OTP'});
+  }
+
+    });
+})
+
+
 
 app.post('/executor-inactive',    (req, res) =>{
   response = req.body;

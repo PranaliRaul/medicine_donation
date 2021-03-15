@@ -82,10 +82,6 @@ export class RequestComponent implements OnInit {
     })
 
   }
-  details(data){
-    this.registerService.request_details = data;
-    this.route.navigate(['/ngo/medicine-request-detail'])
-  }
   onGridReady(params) {
     this.gridApi = params.api;
     this.gridColumnApi = params.columnApi;

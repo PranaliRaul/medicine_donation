@@ -14,12 +14,16 @@ export class ForgotPasswordComponent implements OnInit {
   loginForm: FormGroup;
   fieldTextType:boolean;
   fieldTextType2:boolean;
+  public sentotp = true;
+  public validotp = false;
+  public changepass = false
   get f() { return this.loginForm.controls; }
 
   ngOnInit() {
     this.loginForm = this.formBuilder.group({  
       email: ["", [Validators.required, Validators.email]], 
       password: ["", [Validators.required,Validators.minLength(6)]],
+      otp: ["", [Validators.required,Validators.minLength(6)]],
       confirm_password: ["", [Validators.required]],
 
     },{ validators: this.checkPasswords })
@@ -29,7 +33,7 @@ export class ForgotPasswordComponent implements OnInit {
     }
   }
   
-  checkPasswords(group: FormGroup) { // here we have the 'passwords' group
+  checkPasswords(group: FormGroup) { 
   const password = group.get('password').value;
   const confirmPassword = group.get('confirm_password').value; 
   return password === confirmPassword ? null : { notSame: true }     
@@ -48,11 +52,49 @@ export class ForgotPasswordComponent implements OnInit {
    })
   }
 }
-toggleFieldTextType(){
+
+public toggleFieldTextType(){
 this.fieldTextType = !this.fieldTextType 
 }
-toggleFieldTextType2(){
-this.fieldTextType2 = !this.fieldTextType2;
-  
+public toggleFieldTextType2(){
+this.fieldTextType2 = !this.fieldTextType2; 
+}
+
+public keyPress(event: any) {
+  const pattern = /[0-9\+\-\ ]/;
+
+  let inputChar = String.fromCharCode(event.charCode);
+  if (event.keyCode != 8 && !pattern.test(inputChar)) {
+    event.preventDefault();
+  }
+}
+
+public sendotp(){ 
+  this.submitted = true;
+  if(!this.loginForm.controls['email'].errors){
+    this.registerService.postdata('otp', {email:this.loginForm.value.email}).subscribe(data =>{
+    this.loginForm.controls['email'].disable();
+    alert('OTP sent on your email. Please check your mail')
+    this.validotp = true;
+    this.sentotp = false;
+     
+    },err =>{
+     alert(err.error.msg);
+    })
+   }
+}
+
+public validateotp(){
+  if(!this.loginForm.controls['otp'].errors){
+    this.registerService.postdata('otp',  {email:this.f.email.value,otp:this.f.otp.value }).subscribe(data =>{
+    this.validotp = false;
+    this.changepass = true;
+    alert('OTP Validation Successfull')
+    this.loginForm.controls['email'].enable();
+     
+    },err =>{
+     alert(err.error.msg);
+    })
+   }
 }
 }

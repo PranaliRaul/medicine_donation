@@ -2,35 +2,7 @@
 <app-navigation></app-navigation>
 
 <div class="container-fluid mt-4" class="flex-container">
-<!-- <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th scope="col">Sr No.</th>
-        <th scope="col">Name</th>
-        <th scope="col">Brand Name</th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Donor name</th>
-        <th scope="col">Status</th>
-        <th scope="col">Assigned Executor</th>
-        <th scope="col"> </th>
-
-
-      </tr>
-    </thead>
-    <tbody>
-      <tr *ngFor="let receipt of list; let i = index">
-        <th scope="row">{{i+1 }}</th>
-        <td>{{receipt?.recepient_name}}</td>
-        <td>{{receipt?.brand_name}}</td> 
-        <td>{{receipt?.quantity}}</td>
-        <td>{{receipt?.assign}}</td>
-        <td>{{receipt?.is_deliver ? "Delivered":"Not Delivered"}}</td>
-        <td>{{receipt?.assign_executor}}</td>
-        <th scope="col"><button type="button" class="btn btn-primary" (click)="details(receipt)">Details</button> </th>
-      </tr>
-
-    </tbody>
-  </table> -->
+ 
   <div class="inner">
     <ag-grid-angular
           #agGrid

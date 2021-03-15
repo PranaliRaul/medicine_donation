@@ -97,10 +97,7 @@ defaultColDef = {
   
   
 }
-details(data){
-  this.registerService.donator_details = data;
-  this.route.navigate(['/ngo/medicine-donation-details'])
-}
+
 onGridReady(params) {
   this.gridApi = params.api;
   this.gridColumnApi = params.columnApi;
