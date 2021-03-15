@@ -9,8 +9,8 @@ import { RegisterService } from '../register/register.service';
   styleUrls: ['./add-ngo.component.scss']
 })
 export class AddNgoComponent implements OnInit {
-  registrationForm: FormGroup;
-  submitted = false;
+ public registrationForm: FormGroup;
+ public submitted = false;
   get f() { return this.registrationForm.controls; }
 
   constructor(private router:Router,private formBuilder: FormBuilder, private registerService:RegisterService) { }
@@ -42,14 +42,7 @@ export class AddNgoComponent implements OnInit {
           
           }
   }
-    validateForm(value){ 
-    //   value = +value
-    // if(!/^[0-9]+$/.test(value)){
-    //   return false
-    // }
-    // return true;
-  
-  }
+   
   public keyPress(event: any) {
     const pattern = /[0-9\+\-\ ]/;
 

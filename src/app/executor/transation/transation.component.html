@@ -1,58 +1,8 @@
 <div class="container-fluid p-0" class="bg-theme1">
-
   <app-navigation></app-navigation>
-  
-  <div class="container-fluid mt-4" >
-  <!--  <table class="table table-bordered">
-    <thead>
-      <tr>
-        <th scope="col">Sr No.</th>
-        <th scope="col"> Name</th>
-        <th scope="col">Brand Name</th>
-        <th scope="col">Generic Name</th>
-        <th scope="col">Medicine Type</th>
-        <th scope="col">Expiry Date </th>
-        <th scope="col">Quantity</th>
-        <th scope="col">Mobile Number</th>
-        <th scope="col">Status</th>
-        <th scope="col">Address</th>
-        <th scope="col"></th>
-      </tr>
-    </thead>
-    <tbody>
-      <ng-container *ngFor="let receipt of list; let i = index" >
-      <tr *ngIf="receipt?.is_collected">
-        <th scope="row">{{i+1 }}</th>
-        <td>{{receipt?.donator_name}}</td>
-
-        <td>{{receipt?.brand_name}}</td>
-        <td>{{receipt?.generic_name}}</td>
-        <td>{{type[receipt.medicine_type] }}</td>
-        <td>{{receipt?.exp_date | date}}</td>
-        <td>{{receipt?.quantity}}</td>
-        <td>{{receipt?.mobile_no}}</td>
-        <td>Collected</td>
-        <td>{{receipt?.donator_address}}</td>
-        <th ><button type="button" class="btn btn-primary" (click)="details(receipt)">Details</button></th>
-
-      </tr>
-      </ng-container>
-
-    </tbody>
-  </table> -->
-  <div class="inner">
-    <!-- <ag-grid-angular
-          #agGrid
-          class="ag-theme-balham"
-          [columnDefs]="columnDefs"
-          [rowData]="rowData"
-          [defaultColDef]="defaultColDef"
-          [rowHeight]="rowHeight"
-          [headerHeight]="headerHeight"
-          [frameworkComponents]="frameworkComponents"
-          [rowDragManaged]="true"
-        ></ag-grid-angular>   -->
-        <app-ngo-transation [email]='userId' [column]="true"></app-ngo-transation>
+  <div class="container-fluid mt-4">
+    <div class="inner">
+      <app-ngo-transation [email]='userId' [column]="true"></app-ngo-transation>
     </div>
-</div>
+  </div>
 </div>

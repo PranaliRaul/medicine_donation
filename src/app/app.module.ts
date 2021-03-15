@@ -16,13 +16,14 @@ import { FaqComponent } from './share/faq/faq.component';
 import { SharemoduleModule } from './share/sharemodule.module';
 import { EventsComponent } from './share/events/events.component';
 import { DashBoardComponent } from './dash-board/dash-board.component';
+import { ActivateuserComponent } from './activateuser/activateuser.component';
  
 @NgModule({
   declarations: [
     AppComponent,
     LoginComponent, 
     RegisterComponent, ForgotPasswordComponent,  
-    AboutusComponent, FaqComponent, EventsComponent,DashBoardComponent
+    AboutusComponent, FaqComponent, EventsComponent,DashBoardComponent, ActivateuserComponent
      
   ],
   imports: [

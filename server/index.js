@@ -23,6 +23,8 @@ app.use(executor);
 app.post('/register',  async function (req, res) {
    // Prepare output in JSON format
    response = req.body; 
+   let token = bycrt.hashSync(response.password, 10).toString('hex');
+   token = token.replace('/','');
   const  data = {
     personId: Math.floor(Math.random() * 10000),
     fullName: response.fullName,
@@ -34,32 +36,30 @@ app.post('/register',  async function (req, res) {
     address: response.address,
     year_establishment: +response.year_establishment,
     ngo_executor:response.ngo_executor,
-    active_acc:response.active_acc ? 1:0
-
+    active_acc: 0,
+    token:token
 }
 
 try{
-const sql1 = "INSERT INTO register(personId,fullName, pass,email,roleId,ngo_name,mobile_no,address,year_establishment,ngo_executor,active_acc) VALUES ( null  ,'"+data.fullName+"','"+data.pass+"','"+data.email+"','"+data.roleId+"','"+data.ngo_name+"','"+data.mobile_no+"','"+data.address+"','"+data.year_establishment+"','"+data.ngo_executor+"','"+data.active_acc+"')";
+const sql1 = "INSERT INTO register(personId,fullName, pass,email,roleId,ngo_name,mobile_no,address,year_establishment,ngo_executor,active_acc,token) VALUES ( null  ,'"+data.fullName+"','"+data.pass+"','"+data.email+"','"+data.roleId+"','"+data.ngo_name+"','"+data.mobile_no+"','"+data.address+"','"+data.year_establishment+"','"+data.ngo_executor+"','"+data.active_acc+"','"+data.token+"')";
   connection.query( sql1 ,function (err, result) {
     if (err) {
         res.status(500).send({err:'Email id already use'});
         return;
     };
-    if(data.active_acc){
-    res.send({msg:'Registered Sucessfully'});
-    }else{
-    res.send({msg:'Your request has been recorded will notify with an e-mail'});
-
-    }
-    if(data.active_acc){
-      const subject =  'Registered sucessfully';
-      const html1 =    `<h1>Welcome ${data.fullName ? data.fullName:data.ngo_name}</h1>
-      <p>Registered sucessfully on online donation app</p>
-      <p>Here is user credential to login into app</p>
+    if(response.active_acc){
+      const subject =  'Online donation Verification Link';
+      const html1 =    `<h1>Hi ${data.fullName ? data.fullName:data.ngo_name}</h1>
+      <p>Please create below link to Accotivate your Account</p>
+      <p> <a href="http://localhost:4200/activate/${token}">http://localhost:4200/activate/${token}</a></p>
       <h3>Email: ${data.email}</h3>
       <h3>Password: ${data.pass}</h3>`
       sendemail(data.email,subject,html1 );
+    res.send({msg:'please check your email to activate your account'});
+    }else{
+    res.send({msg:'Your request has been recorded will notify with an e-mail'}); 
     }
+     
 
   });
 }catch{
@@ -85,6 +85,8 @@ const sql1 = "INSERT INTO register(personId,fullName, pass,email,roleId,ngo_name
 }
 app.post('/login',  function (req, res) {
     const response = req.body;
+    
+
     const sql4 = 'SELECT * FROM register WHERE email="'+response.email+'" ';
     connection.query( sql4 ,async function (err, result) {
         try{
@@ -98,7 +100,7 @@ app.post('/login',  function (req, res) {
                 delete result[0].pass;
                 res.send(result);
             }else{
-                res.status(500).send({errr:'Invalid Paswword'});
+                res.status(500).send({errr:'Invalid Password'});
             }
         }else{
           if(result.length){
@@ -222,50 +224,7 @@ app.post('/upload', urlencodedParser, function (req, res) {
     })
 })
 
-app.post('/update-ngo',  async function (req, res) {
-  // Prepare output in JSON format
-  response = req.body;
-  response.status = response.active_acc ? 1:0;
-//const haspass = await bycrt.hash(data.pass,10)
-//const d =Object.values(data);
-// console.log(d);
-try{
-const sql1 = "UPDATE register SET active_acc= '"+response.status+"'  WHERE email= '"+response.email+"' ";
-const sql2 = "UPDATE register SET active_acc= '"+response.status+"'  WHERE ngo_executor= '"+response.email+"' "
- connection.query( sql1 ,function (err, result) {
-   if (err) {
-       res.status(500).send({err:'email id already use'});
-       return;
-   };
 
-   res.send({msg:'Updated sucessfully'});
-   connection.query( sql2 ,function (err, result) {
-    if (err) {
-
-  };
-   })
-   let subject
-   let html2
-   if(response.active_acc ){
-     subject =  'Updated sucessfully';
-     html2 =    `<h1>Welcome ${response.fullName ? response.fullName:response.ngo_name}</h1>
-                    <p>Registered sucessfully on online donation app</p>
-                    <p>Here is user credential to login into app</p>
-                    <h3>Email: ${response.email}</h3>
-                    <h3>Password: ${response.pass}</h3>`
-   }else{
-    subject =  'Online Donation account has been deactivated';
-    html2 =    `<h1>Hi ${response.fullName ? response.fullName:response.ngo_name}</h1>
-                   <p>Your Account has been  deactivated by admin</p>
-                   <p>Please conatct Admin for further details</p>`
-   }
-     sendemail(response.email,subject,html2);
- });
-
-}catch{
-   res.status(500).send({err:'Internal server error'});
-}
-})
 app.get('/ngo-requestactivate',    (req, res) =>{
   const id = +req.query.id
   const status = 0;
@@ -550,4 +509,44 @@ app.post('/executor-inactive',    (req, res) =>{
     }
   
       });
+  })
+
+
+  app.post('/activate-user',  async function (req, res) {
+    // Prepare output in JSON format
+    response = req.body;
+    response.status =  1 ;
+  try{
+  const sql1 = "UPDATE register SET active_acc= '"+response.status+"'  WHERE token= '"+response.token+"' ";
+  const sql2 = "select * from register where token= '"+response.token+"'";
+   connection.query( sql1 ,function (err, result) {
+    //  if (err) {
+    //      res.status(500).send({err:'Someting went wrong please try again...'});
+    //      return;
+    //  };
+     connection.query( sql2 ,function (err, result) {
+    //   if (err) {
+    //     res.status(500).send({err:'Someting went wrong please try again...'});
+    //     return;
+    // };
+    if(result.length){
+      res.send({msg:'Updated sucessfully'}); 
+      const  subject =  'Account Activated Sucessfully';
+      const html2 =    `<h1>Welcome ${result[0].fullName ? result[0].fullName:result[0].ngo_name}</h1>
+                      <p>Your Account has been activated sucessfully</p>
+                      <p>Here is user credential to login into app</p>
+                      <h3>Email: ${result[0].email}</h3>
+                      <h3>Password: ${result[0].pass}</h3>`
+       sendemail(result[0].email,subject,html2);
+    }else{
+      res.send({msg:'Token expired or not valid token'}); 
+    }
+     })
+    
+    
+   }); 
+  
+  }catch{
+     res.status(500).send({err:'Internal server error'});
+  }
   })
