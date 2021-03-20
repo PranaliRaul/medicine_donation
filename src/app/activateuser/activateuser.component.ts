@@ -20,7 +20,7 @@ export class ActivateuserComponent implements OnInit {
 
   activateuser(){
     this.registerService.postdata('activate-user', {token:this.token}).subscribe(data =>{
-      setTimeout(()=> this.modal(data.msg),5000)
+      setTimeout(()=> this.modal(data.msg),1000)
      
     },err =>{
       this.modal(err.error.err);
