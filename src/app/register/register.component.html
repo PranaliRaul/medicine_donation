@@ -55,16 +55,22 @@
                           </div>
                           </div>
                         </div>
-                       
-                      <div class="col-12 pb-2">
-                       <label for="inputEmailAddress" class="form-label">Password:</label>
-                       <input type="password" class="form-control" placeholder="Enter password" id="pwd" required formControlName="password" required  [ngClass]="{ 'is-invalid': submitted && f.password.errors }">                              
-                          <div *ngIf="submitted && f.password?.errors" class="invalid-feedback">
-                          <div *ngIf="f?.password?.errors?.required">Password is required</div>
-                         <div *ngIf="f?.password?.errors?.minlength">Password should be atleast 6 characters</div>
-
+                        <div class="col-12"  >
+                          <label for="inputChoosePassword" class="form-label">Password</label>
+                          <div class="input-group" id="show_hide_password">
+                            <input  [type]="fieldTextType ? 'text' : 'password'"  formControlName="password" class="form-control border-end-0" id="inputChoosePassword"  placeholder="Password" [ngClass]="{ 'is-invalid': submitted && f?.password?.errors }">
+                             <a   class="input-group-text"><i  class="fa" [ngClass]="{
+                              'fa-eye-slash': !fieldTextType,
+                              'fa-eye': fieldTextType
+                            }"
+                            (click)="toggleFieldTextType()"></i></a>
+                            <div *ngIf="submitted && f?.password?.errors" class="invalid-feedback">
+                              <div *ngIf="f?.password?.errors?.required">Password is required</div>
+                              <div *ngIf="f?.password?.errors?.minlength">Password must be 6 characters</div>
+                    
                             </div>
-                        </div>
+                          </div>
+                        </div> 
                         <div class="col-12 pb-2">
                           <label for="inputEmailAddress" class="form-label">Mobile Number:</label>
                           <input type="text" class="form-control" placeholder="Enter Mobile Number" id="pwd" maxlength="10" required formControlName="mobile_no" required  [ngClass]="{ 'is-invalid': submitted && f.mobile_no.errors }" (keypress)="keyPress($event)">
@@ -95,7 +101,7 @@
 
                              <div class="col-12 pb-2" *ngIf="role == 2">
                               <label for="email">Registration certificate of NGO:</label>
-                              <input type="file" class="form-control" placeholder="Enter Full Name" id="email" required>
+                              <input type="file" class="form-control" placeholder="Enter Full Name" id="email" required (change)="uplaode($event)">
                            <!-- <div *ngIf="submitted && f.year_establishment?.errors" class="invalid-feedback">
                             <div *ngIf="f?.year_establishment?.errors?.required">Registration certificate is required</div>
                               </div> -->

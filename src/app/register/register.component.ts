@@ -11,13 +11,14 @@ import { RegisterService } from './register.service';
 export class RegisterComponent implements OnInit {
   role = '3';
   registrationForm: FormGroup; 
-  submitted = false
+  submitted = false;
+  fieldTextType:boolean;
   get f() { return this.registrationForm.controls; }
 
   constructor(private router:Router,private formBuilder: FormBuilder, private registerService:RegisterService) { }
   ngOnInit() {
      
-    this.registrationForm = this.formBuilder.group({
+          this.registrationForm = this.formBuilder.group({
             role: ["", Validators.required], 
             fullName: ["", Validators.required], 
             email: ["", [Validators.required, Validators.email]], 
@@ -27,7 +28,9 @@ export class RegisterComponent implements OnInit {
             address : ["", [Validators.required,Validators.minLength(15)]],
             year_establishment: ["", [ Validators.minLength(4)]],
             active_acc: [true, ''],
-            ngo_executor: ['',''] 
+            ngo_executor: ['',''] ,
+            filename: ['',''] 
+
           });
   }
   public register():void{
@@ -35,9 +38,12 @@ export class RegisterComponent implements OnInit {
     if (this.registrationForm.valid) {
             if(this.role == '2'){
                 this.registrationForm.value.active_acc = false;
+                let fileExtension:string =   this.image.name.split('?')[0].split('.').pop();
+                this.registrationForm.value.filename = this.registrationForm.value.email+'.'+fileExtension;
               }
             this.registerService.postdata('register', this.registrationForm.value).subscribe(data =>{
               this.modal(data.msg, true);
+              this.uploadefile()
             },err =>{
               this.modal(err.error.err);
             })
@@ -79,5 +85,24 @@ export class RegisterComponent implements OnInit {
         }
       })  
   }
-
+  image
+  uplaode(event){
+    if(event.target.files.length > 0){
+      const file = event.target.files[0];
+      this.image = file;
+    }
+  }
+  public toggleFieldTextType(){
+    this.fieldTextType = !this.fieldTextType;
+  }
+  public uploadefile(){
+      const formdata = new FormData();
+      let fileExtension:string =   this.image.name.split('?')[0].split('.').pop();
+      formdata.append('file', this.image, this.registrationForm.value.email+'.'+fileExtension);
+      this.registerService.postdata('upload',formdata).subscribe(data =>{
+      },err =>{
+      })
+    }
+   
+    
 }

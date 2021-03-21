@@ -55,6 +55,7 @@
                                 <option [value]="3">Syrup</option>
                           </select>
                             <div *ngIf="submitted && f.medicine_type?.errors" class="invalid-feedback">
+                              <div *ngIf="f?.medicine_type?.errors?.required">Please select Medicine Type  </div> 
                           </div>
                           </div>
                         </div>

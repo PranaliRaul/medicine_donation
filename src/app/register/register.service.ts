@@ -24,13 +24,19 @@ export class RegisterService {
     return this.http.get(url1);
   }
 
-
+  public downloade(url,data):any{
+    const url1 = `${environment.API_URL}${url}`;
+    return this.http.post(url1,data,{responseType:'blob'});
+  }
   public logout(){
     if(confirm('Are you sure')){
     localStorage.clear();
     this.route.navigate(['/login']);
     location.reload();
     }
+  }
+  public downloade2(url,data):any{
+    return this.http.get(url,{responseType:'blob'});
   }
   public getdate(){
     const date = new Date();

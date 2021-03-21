@@ -10,6 +10,8 @@ const recepient = require('./recepient');
 const ngolist = require('./ngolist');
 const executor = require('./executor');
 const urlencodedParser = bodyParser.urlencoded({ extended: false ,limit: '50mb'});
+const multer = require('multer');
+const path = require('path');
 
 app.use(bodyParser.json());
 // app.use(app.bodyParser({limit: '6mb'}))
@@ -20,6 +22,17 @@ app.use(donator);
 app.use(recepient);
 app.use(ngolist);
 app.use(executor);
+
+const storage = multer.diskStorage({
+  destination: (req,file,callback) =>{
+    callback(null,'uploads')
+  },
+  filename: (req,file,callback)=>{
+    callback(null,`${file.originalname}`)
+  }
+});
+
+const upload = multer({storage:storage})
 app.post('/register',  async function (req, res) {
    // Prepare output in JSON format
    response = req.body; 
@@ -37,11 +50,12 @@ app.post('/register',  async function (req, res) {
     year_establishment: +response.year_establishment,
     ngo_executor:response.ngo_executor,
     active_acc: 0,
-    token:token
+    token:token,
+    filename:response.filename? response.filename:''
 }
 
 try{
-const sql1 = "INSERT INTO register(personId,fullName, pass,email,roleId,ngo_name,mobile_no,address,year_establishment,ngo_executor,active_acc,token) VALUES ( null  ,'"+data.fullName+"','"+data.pass+"','"+data.email+"','"+data.roleId+"','"+data.ngo_name+"','"+data.mobile_no+"','"+data.address+"','"+data.year_establishment+"','"+data.ngo_executor+"','"+data.active_acc+"','"+data.token+"')";
+const sql1 = "INSERT INTO register(personId,fullName, pass,email,roleId,ngo_name,mobile_no,address,year_establishment,ngo_executor,active_acc,token,filename) VALUES ( null  ,'"+data.fullName+"','"+data.pass+"','"+data.email+"','"+data.roleId+"','"+data.ngo_name+"','"+data.mobile_no+"','"+data.address+"','"+data.year_establishment+"','"+data.ngo_executor+"','"+data.active_acc+"','"+data.token+"',,'"+data.filename+"')";
   connection.query( sql1 ,function (err, result) {
     if (err) {
         res.status(500).send({err:'Email id already use'});
@@ -260,16 +274,23 @@ var server = app.listen(8081, function () {
 //     });
 // })
 
-app.post('/upload', urlencodedParser, function (req, res) {
-  const response = req.body;
-  const sql1 = "INSERT INTO ngo_certificate (email,certificate,ngo_name) VALUES (  narendra ,'"+response+"','"+response.ngo_name+"')";
-  connection.query( sql1 ,async function (err, result) {
-      if (err) {
-          res.status(500).send({err:'uploade fail'});
-      };
-    })
-})
+app.post('/upload', upload.single('file'), function (req, res) {
+  const response = req.file;
+  // const sql1 = "INSERT INTO ngo_certificate (email,certificate,ngo_name) VALUES (  narendra ,'"+response+"','"+response.ngo_name+"')";
+  // connection.query( sql1 ,async function (err, result) {
+  //     if (err) {
+  //         res.status(500).send({err:'uploade fail'});
+  //     };
+  //   })
 
+    res.send({err:'Uploade Successfully'});
+
+})
+app.post('/downloade', function (req, res) {
+  const response = req.body.filename;
+  const filepath = path.join(__dirname,'./uploads')+ '/'+ response;
+  res.sendFile(filepath);
+})
 
 app.get('/ngo-requestactivate',    (req, res) =>{
   const id = +req.query.id

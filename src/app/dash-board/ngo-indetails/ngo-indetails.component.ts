@@ -1,7 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
 import { RegisterService } from 'src/app/register/register.service';
-
+import {  
+    saveAs as importedSaveAs  
+} from "file-saver"; 
 @Component({
   selector: 'app-ngo-indetails',
   templateUrl: './ngo-indetails.component.html',
@@ -41,5 +43,21 @@ list = []
 public navigate(url){
   this.route.navigate([url]);
 }
-
+public downloadefile(){
+      
+    this.servive.downloade('downloade',{filename:this.ngo_details.filename}).subscribe(data =>{
+      console.log(data);
+      this.downLoadFile(data,data.type ,this.ngo_details.filename);
+    },err =>{
+    })
+ }
+ downLoadFile(data: any, type: string ,na) {
+  importedSaveAs(data, na); 
+  let blob = new Blob([data], { type: na});
+  let url = window.URL.createObjectURL(blob);
+  let pwa = window.open(url);
+  if (!pwa || pwa.closed || typeof pwa.closed == 'undefined') {
+      alert( 'Please disable your Pop-up blocker and try again.');
+  }
+}
 }
