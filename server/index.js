@@ -55,7 +55,7 @@ app.post('/register',  async function (req, res) {
 }
 
 try{
-const sql1 = "INSERT INTO register(personId,fullName, pass,email,roleId,ngo_name,mobile_no,address,year_establishment,ngo_executor,active_acc,token,filename) VALUES ( null  ,'"+data.fullName+"','"+data.pass+"','"+data.email+"','"+data.roleId+"','"+data.ngo_name+"','"+data.mobile_no+"','"+data.address+"','"+data.year_establishment+"','"+data.ngo_executor+"','"+data.active_acc+"','"+data.token+"',,'"+data.filename+"')";
+const sql1 = "INSERT INTO register(personId,fullName, pass,email,roleId,ngo_name,mobile_no,address,year_establishment,ngo_executor,active_acc,token,filename) VALUES ( null  ,'"+data.fullName+"','"+data.pass+"','"+data.email+"','"+data.roleId+"','"+data.ngo_name+"','"+data.mobile_no+"','"+data.address+"','"+data.year_establishment+"','"+data.ngo_executor+"','"+data.active_acc+"','"+data.token+"','"+data.filename+"')";
   connection.query( sql1 ,function (err, result) {
     if (err) {
         res.status(500).send({err:'Email id already use'});
@@ -275,15 +275,7 @@ var server = app.listen(8081, function () {
 // })
 
 app.post('/upload', upload.single('file'), function (req, res) {
-  const response = req.file;
-  // const sql1 = "INSERT INTO ngo_certificate (email,certificate,ngo_name) VALUES (  narendra ,'"+response+"','"+response.ngo_name+"')";
-  // connection.query( sql1 ,async function (err, result) {
-  //     if (err) {
-  //         res.status(500).send({err:'uploade fail'});
-  //     };
-  //   })
-
-    res.send({err:'Uploade Successfully'});
+    res.send({err:'Upload Successfully'});
 
 })
 app.post('/downloade', function (req, res) {
