@@ -6,6 +6,7 @@ import {
   animate,
   transition
 } from '@angular/animations';
+import { RegisterService } from 'src/app/register/register.service';
 @Component({
   selector: 'app-homepage',
   templateUrl: './homepage.component.html',
@@ -26,19 +27,21 @@ import {
 export class HomepageComponent implements OnInit,OnDestroy {
  
   private myIndex = 0;
-  private timeout:any
-  constructor() { }
+  private timeout;
+  public counts:any
+  
+  constructor(private service:RegisterService) { }
 
   ngOnInit() {
     this.carousel();
-    
+    this.getallcount();
   }
  
   
+ 
   
     private carousel() { 
     const x = document.getElementsByClassName("mySlides");
-    
     for (let i = 0; i < x.length; i++) {
       x[i]['style'].display = "none";
     }
@@ -47,9 +50,19 @@ export class HomepageComponent implements OnInit,OnDestroy {
     x[this.myIndex-1]['style'].display = "block";
     this.timeout = setTimeout( () =>this.carousel(), 3000);
   }
+
+
+
+  getallcount(){
+    this.service.getData('count').subscribe(data =>{
+      this.counts = data
+   },err =>{
+     alert(err.error.err);
+   })
+ }
+
+
   ngOnDestroy(): void {
     clearTimeout(this.timeout);
   } 
 }
-
- 

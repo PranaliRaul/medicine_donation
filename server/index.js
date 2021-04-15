@@ -62,7 +62,7 @@ const sql1 = "INSERT INTO register(personId,fullName, pass,email,roleId,ngo_name
         return;
     };
     if(response.active_acc){
-      const subject =  'Online donation Verification Link';
+      const subject =  'Online Donation Verification Link';
       const html1 =    `<h1>Hi ${data.fullName ? data.fullName:data.ngo_name}</h1>
       <p>Please click below link to Activate your Account</p>
       <p> <a href="http://localhost:4200/activate/${token}">http://localhost:4200/activate/${token}</a></p>
@@ -203,77 +203,11 @@ var server = app.listen(8081, function () {
 
 
 
-// app.post('/recepient',  async function (req, res) {
-//   // Prepare output in JSON format
-//   response = req.body;
-// try{
-// const sql1 = "INSERT INTO request (personId,brand_name, generic_name,ngo_name,mobile_no,quantity,assign,allow_status,assign_executor,recepient_adress,recepient_name,ngo_email,recepient_email) VALUES ( '"+response.personId+"' ,'"+response.brand_name+"','"+response.generic_name+"','"+response.ngo_name+"','"+response.mobile_no+"','"+response.quantity+"','"+response.assign+"','"+response.allow_status+"','"+response.assign_executor+"','"+response.recepient_adress+"','"+response.name +"' ,'"+response.ngo_email+"','"+response.recepient_email+"' )";
-//  connection.query( sql1 ,function (err, result) {
-//    if (err) {
-//        res.status(500).send({err:'donation fail'});
-//        return;
-//    };
-//    console.log("Number of records inserted: " + result.affectedRows);
-//    res.send({msg:'donation sucessfull'});
-//    // sendemail(data);
-//  });
-// }catch{
-//   res.status(500).send({err:'donation fail'});
+ 
 
-// }
-// })
-
-
-// app.get('/myrequest',    (req, res) =>{
-//   const id = +req.query.id
-//   const sql4 = 'SELECT * FROM request WHERE personId="'+id+'"';
-//   connection.query( sql4 ,async function (err, result) {
-//       try{
-//       if (err) {
-//           res.status(500).send({err:'fail to load your medicine request'});
-//       };
-//       res.send(result);
-
-//   }catch{
-//       res.status(500).send({err:'Server error'});
-//   }
-
-//     });
-// })
-
-// app.get('/ngo-request',    (req, res) =>{
-//   const name = req.query.name
-//   const sql4 = 'SELECT * FROM request WHERE ngo_email="'+name+'"';
-//   connection.query( sql4 ,async function (err, result) {
-//       try{
-//       if (err) {
-//           res.status(500).send({err:'fail to load your medicine request'});
-//       };
-//       res.send(result);
-
-//   }catch{
-//       res.status(500).send({err:'Server error'});
-//   }
-
-//     });
-// })
-// app.get('/ngo-donation',    (req, res) =>{
-//   const id = req.query.id
-//   const sql4 = 'SELECT * FROM  donator WHERE ngo_email="'+id+'"';
-//   connection.query( sql4 ,async function (err, result) {
-//       try{
-//       if (err) {
-//           res.status(500).send({err:'fail to load your medicine request'});
-//       };
-//       res.send(result);
-
-//   }catch{
-//       res.status(500).send({err:'Server error'});
-//   }
-
-//     });
-// })
-
+ 
+ 
+ 
 app.post('/upload', upload.single('file'), function (req, res) {
     res.send({err:'Upload Successfully'});
 
@@ -302,22 +236,7 @@ app.get('/ngo-requestactivate',    (req, res) =>{
     });
 })
 
-// app.get('/executor-list',    (req, res) =>{
-//   const id =  req.query.id
-//   const sql4 = 'SELECT * FROM register WHERE ngo_executor="'+id+'" ';
-//   connection.query( sql4 ,async function (err, result) {
-//       try{
-//       if (err) {
-//           res.status(500).send({err:'fail to load ngo list'});
-//       };
-//       res.send(result);
-
-//   }catch{
-//       res.status(500).send({err:'Server error'});
-//   }
-
-//     });
-// })
+ 
 app.post('/assign-executor',    (req, res) =>{
   const is_collected = req.body.is_collected ? 1:0;
   const sql4 = 'UPDATE donator SET excutor_email = "'+req.body.excutor_email+'" , assign_executor="'+req.body.assign_executor+'" , is_collected="'+is_collected+'" WHERE donation_id="'+req.body.donation_id+'" ';
@@ -326,11 +245,11 @@ app.post('/assign-executor',    (req, res) =>{
       if (err) {
           res.status(500).send({err:'fail to load ngo list'});
       };
-      res.send({msg:'executor assigned sucessfully'});
+      res.send({msg:'Executor Assigned Successfully'});
       if(req.body.is_collected ){
 
        const text =  `<h4>Hi ${ req.body.donator_name }</h4>
-                    <p>Greeting from ${req.body.ngo_name}, Your medicine donation has been sucessfully collected from our executor ${req.body.assign_executor}</p>
+                    <p>Greeting from ${req.body.ngo_name}, Your medicine donation has been successfully collected from our executor ${req.body.assign_executor}</p>
                     <p>Thanks & Regards</p>
                     <p>Email: ${req.body.ngo_email}</p>`
         sendemail(req.body.donator_email,'Medicine donation',text)
@@ -344,22 +263,7 @@ app.post('/assign-executor',    (req, res) =>{
 })
 
 
-// app.get('/assign-donation',    (req, res) =>{
-//   const id =  req.query.id
-//   const sql4 = 'SELECT * FROM donator WHERE excutor_email="'+id+'" ';
-//   connection.query( sql4 ,async function (err, result) {
-//       try{
-//       if (err) {
-//           res.status(500).send({err:'fail to load ngo list'});
-//       };
-//       res.send(result);
-
-//   }catch{
-//       res.status(500).send({err:'Server error'});
-//   }
-
-//     });
-// })
+ 
 
 app.post('/assign-executor-request',    (req, res) =>{
   const sql4 = 'UPDATE request SET excutor_email = "'+req.body.excutor_email+'" , assign_executor="'+req.body.assign_executor+'" , is_deliver="'+req.body.is_deliver+'", assign="'+req.body.assign+'", donation_id="'+req.body.donation_id+'",allow_status="'+req.body.allow_status+'" ,obtain_quantity="'+req.body.obtain_quantity+'" WHERE request_id="'+req.body.request_id+'" ';
@@ -370,15 +274,15 @@ app.post('/assign-executor-request',    (req, res) =>{
       if (err) {
           res.status(500).send({err:'fail to load ngo list'});
       };
-      res.send({msg:'executor assigned sucessfully'});
       connection.query( sql5 ,  function (err, result) {
         if (err) {
+          res.send({msg:'Executor Assigned Successfully'});
 
       };
       })
       if(response.is_deliver ){
        const text =  `<h4>Hi ${ req.body.recepient_name }</h4>
-                    <p>Greeting from ${req.body.ngo_name}, Your requested medicine has been sucessfully delivered by our executor ${req.body.assign_executor}</p>
+                    <p>Greeting from ${req.body.ngo_name}, Your requested medicine has been successfully delivered by our executor ${req.body.assign_executor}</p>
                     <p>Thanks & Regards</p>
                     <p>Email: ${req.body.ngo_email}</p>`
         sendemail(req.body.recepient_email,'Medicine donation',text)
@@ -391,63 +295,10 @@ app.post('/assign-executor-request',    (req, res) =>{
     });
 })
 
-// app.get('/assign-request',    (req, res) =>{
-//   const id =  req.query.id
-//   const sql4 = 'SELECT * FROM request WHERE excutor_email="'+id+'" ';
-//   connection.query( sql4 ,async function (err, result) {
-//       try{
-//       if (err) {
-//           res.status(500).send({err:'fail to load ngo list'});
-//       };
-//       res.send(result);
-
-//   }catch{
-//       res.status(500).send({err:'Server error'});
-//   }
-
-//     });
-// })
-
-
-
-// app.post('/recepient-request',    (req, res) =>{
-//    const response = req.body;
-// const sql1 = "INSERT INTO request (personId,brand_name, generic_name,ngo_name,mobile_no,quantity,assign,allow_status,assign_executor,recepient_adress,recepient_name,ngo_email,recepient_email,donation_id,excutor_email,is_deliver,request_date) VALUES ( '"+response.personId+"' ,'"+response.brand_name+"','"+response.generic_name+"','"+response.ngo_name+"','"+response.mobile_no+"','"+response.quantity+"','"+response.assign+"','"+response.allow_status+"','"+response.assign_executor+"','"+response.recepient_adress+"','"+response.recepient_name +"' ,'"+response.ngo_email+"','"+response.recepient_email+"' ,'"+response.donation_id+"','"+response.excutor_email+"','"+response.is_deliver+"','"+response.request_date+"')";
  
-//   const sql3 =  `SELECT  * FROM request ORDER BY request_id DESC LIMIT 1`
-//   connection.query( sql1 ,  function (err, result) {
-//       try{
-//       if (err) {
-//           res.status(500).send({err:'fail to load ngo list'});
-//       };
-//       connection.query( sql3 ,  function (err, sql3result) {
-//         if (err) {
 
-//         }
-//   const sql2 = 'UPDATE donator SET remaining_quantity = "'+response.remaining_quantity+'" , assign="'+response.recepient_name+'" , request_id="'+sql3result[0].request_id+'" WHERE donation_id="'+req.body.donation_id+'" ';
 
-//       connection.query( sql2 ,  function (err, result) {
-//         if (err) {
-//         }
-//     })
-  
-//       res.send({msg:'executor assigned sucessfully'});
-//       })
-//       // if(req.body.is_deliver ){
-//       //  const text =  `<h4>Hi ${ req.body.recepient_name }</h4>
-//       //               <p>Greeting from ${req.body.ngo_name}, Your requested medicine has been sucessfully delivered by our executor ${req.body.assign_executor}</p>
-//       //               <p>Thanks & Regards</p>
-//       //               <p>Email: ${req.body.ngo_email}</p>`
-//       //   sendemail(req.body.recepient_email,'Medicine donation',text)
-//       // }
-
-//   }catch{
-//       res.status(500).send({err:'Server error'});
-//   }
-
-//     });
-// })
-
+ 
 
 app.post('/forgot-password',    (req, res) =>{
   const body = req.body;
@@ -458,9 +309,9 @@ app.post('/forgot-password',    (req, res) =>{
           res.status(500).send({err:'fail to Change Password'});
       };
       if(result.affectedRows){
-      res.send({msg:'Password changed successfully '});
+      res.send({msg:'Password Changed Successfully '});
       }else{
-      res.status(500).send({msg:'Email Id does not exists'});
+      res.status(500).send({msg:'Email id does not exists'});
 
       }
       
@@ -579,15 +430,9 @@ app.post('/executor-inactive',    (req, res) =>{
   const sql1 = "UPDATE register SET active_acc= '"+response.status+"'  WHERE token= '"+response.token+"' ";
   const sql2 = "select * from register where token= '"+response.token+"'";
    connection.query( sql1 ,function (err, result) {
-    //  if (err) {
-    //      res.status(500).send({err:'Someting went wrong please try again...'});
-    //      return;
-    //  };
+    
      connection.query( sql2 ,function (err, result) {
-    //   if (err) {
-    //     res.status(500).send({err:'Someting went wrong please try again...'});
-    //     return;
-    // };
+    
     if(result.length){
       res.send({msg:'Registered Successfully'}); 
       const  subject =  'Account Activated Successfully';
@@ -608,4 +453,21 @@ app.post('/executor-inactive',    (req, res) =>{
   }catch{
      res.status(500).send({err:'Internal server error'});
   }
+  })
+
+  app.get('/count' ,(req, res) =>{
+    const sql = 'SELECT COUNT(*) as executor FROM medicine_donation.register where roleId=5';
+    const sql2 =  'SELECT COUNT(*)  as donation FROM medicine_donation.donator  where is_collected = 1';
+    const sql3 = 'SELECT COUNT(*) as requested FROM medicine_donation.request  where is_deliver = 1';
+    connection.query(  sql,  function(err, result1) {
+      connection.query(sql2,function(err, result2) {
+        connection.query(sql3,function(err, result3) {
+          res.send({executor:result1[0].executor,donation:result2[0].donation ,help:result3[0].requested})
+        })
+      })
+      
+    })
+
+
+
   })

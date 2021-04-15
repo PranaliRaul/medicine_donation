@@ -101,10 +101,10 @@
 
                              <div class="col-12 pb-2" *ngIf="role == 2">
                               <label for="email">Registration certificate of NGO:</label>
-                              <input type="file" class="form-control" placeholder="Enter Full Name" id="email" required (change)="uplaode($event)">
-                           <!-- <div *ngIf="submitted && f.year_establishment?.errors" class="invalid-feedback">
-                            <div *ngIf="f?.year_establishment?.errors?.required">Registration certificate is required</div>
-                              </div> -->
+                              <input type="file" class="form-control" placeholder="Enter Full Name" id="email" required (change)="uplaode($event)" formControlName="filename" [ngClass]="{ 'is-invalid': submitted && f.filename.errors }">
+                           <div *ngIf="submitted && f.filename?.errors" class="invalid-feedback">
+                            <div *ngIf="f?.filename?.errors">Registration certificate is required</div>
+                              </div>
                              </div>
 
                         <div class="col-12 pt-2">

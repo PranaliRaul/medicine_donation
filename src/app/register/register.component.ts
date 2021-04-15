@@ -63,8 +63,11 @@ export class RegisterComponent implements OnInit {
     this.registrationForm.get('fullName').clearValidators();
     this.registrationForm.get('year_establishment').clearValidators();
     this.registrationForm.get('ngo_name').clearValidators();
+    this.registrationForm.get('filename').clearValidators();
+
     if(this.role == '2'){
       this.registrationForm.get('ngo_name').setValidators([Validators.required]);
+      this.registrationForm.get('filename').setValidators([Validators.required]);
       this.registrationForm.get('year_establishment').setValidators([Validators.required,Validators.minLength(4),Validators.max(new Date().getFullYear())]);
 
     }else{

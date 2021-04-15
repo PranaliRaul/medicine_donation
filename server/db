@@ -13,6 +13,9 @@ CREATE TABLE register (
     year_establishment INT,
     ngo_executor varchar(40),
     active_acc boolean,
+    otp INT,
+    token VARCHAR(255),
+    filename VARCHAR(100),
      PRIMARY KEY (personId)
      )
 

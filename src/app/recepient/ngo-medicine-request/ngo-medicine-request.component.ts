@@ -100,7 +100,7 @@ export class NgoMedicineRequestComponent implements OnInit {
        this.medicinelist = data.filter(ele => ele.is_collected && ele.remaining_quantity > 0);
        if(this.medicinelist.length === 0) {
         this.disabled =true;
-        alert('selected ngo doesn\'t have any donated medicine')
+        alert('Selected ngo doesn\'t have any donated medicine')
        } 
     },err =>{
       alert(err.error.err);

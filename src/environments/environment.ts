@@ -130,12 +130,12 @@ export const environment = {
     },
     {
       path :'/executor/transaction',
-      text:'Sucsessful Transaction',
+      text:'Successful Transaction',
       exact_match: false
     },
     {
       path :'/executor/request-transation',
-      text:'Sucsessful Request Transaction',
+      text:'Successful Request Transaction',
       exact_match: false
     }
   ],

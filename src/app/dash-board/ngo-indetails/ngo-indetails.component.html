@@ -53,7 +53,7 @@
       <button type="button" class="btn btn-success" *ngIf="ngo_details?.active_acc" (click)="activeAcc(false)">Active</button>
     </div>
   </div>
-  <div class="row">
+  <div class="row" *ngIf="ngo_details.filename">
     <div class="col">
       <button type="button" class="btn btn-primary mr-2" (click)="downloadefile()">Download Document</button>
 
