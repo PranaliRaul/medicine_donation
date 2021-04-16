@@ -53,7 +53,7 @@ export class DonateComponent implements OnInit {
   public getngolist():void{
 
             this.registerService.getData('ngolist?id=2').subscribe(data =>{
-               this.list = data
+               this.list = data.filter(data => data.active_acc);
             },err =>{
               alert(err.error.err);
             })

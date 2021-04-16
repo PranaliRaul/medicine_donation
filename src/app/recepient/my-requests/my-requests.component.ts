@@ -70,7 +70,7 @@ export class MyRequestsComponent implements OnInit {
   public getngolist():void{
     this.userId = JSON.parse(localStorage.getItem('userdata'))[0].personId;
     this.registerService.getData(`myrequest?id=${this.userId}`).subscribe(data =>{
-        this.list = data//.filter(ele =>!ele.is_deliver);
+        this.list = data;
        this.rowData =  this.list;
     },err =>{ 
       alert(err.error.err);
