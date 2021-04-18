@@ -34,6 +34,8 @@ export class RequestMadeComponent implements OnInit {
     DateComponent: DateComponent,
   }
   this.columnDefs = [  
+    { headerName: 'Request Date', field: 'request_date', sortable: true, filter: true , 
+    cellRenderer: 'DateComponent',suppressSizeToFit: true, width:180},
     { headerName: 'Brand Name', field: 'brand_name', sortable: true, filter: true , 
     suppressSizeToFit: true},  
     { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 
@@ -48,8 +50,7 @@ export class RequestMadeComponent implements OnInit {
     suppressSizeToFit: true,cellRenderer:'status'},
     { headerName: 'Assigned Executor', field: 'assign_executor', sortable: true, filter: true , 
      suppressSizeToFit: true,},
-     { headerName: 'Request Date', field: 'request_date', sortable: true, filter: true , 
-     cellRenderer: 'DateComponent',suppressSizeToFit: true, width:180},
+   
     ];
 }
 defaultColDef = { 

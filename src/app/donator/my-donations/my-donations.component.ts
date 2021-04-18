@@ -36,12 +36,12 @@ export class MyDonationsComponent implements OnInit {
       medtype:MedicinetypeComponent
     }
     this.columnDefs = [  
+      { headerName: 'Donation Date', field: 'donation_date', sortable: true, filter: true , 
+      suppressSizeToFit: true,cellRenderer:'date'},  
       { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
-       },  
+       }, 
       { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 
       suppressSizeToFit: true},  
-      { headerName: 'Donation Date', field: 'donation_date', sortable: true, filter: true , 
-      suppressSizeToFit: true,cellRenderer:'date'}, 
       { headerName: 'Ngo Name', field: 'ngo_name', sortable: true, filter: true , 
       suppressSizeToFit: true}, 
       { headerName: 'Medicine Type', field: 'medicine_type', sortable: true, filter: true,cellRenderer:'medtype' ,

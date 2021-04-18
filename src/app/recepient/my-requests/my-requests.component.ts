@@ -31,14 +31,16 @@ export class MyRequestsComponent implements OnInit {
       date:DateComponent,
     }
     this.columnDefs = [  
+      { headerName: 'Request Date', field: 'request_date', sortable: true, filter: true , 
+      suppressSizeToFit: true,cellRenderer:'date'}, 
+     
       { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
        },  
+     
       { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 
       suppressSizeToFit: true},  
       { headerName: 'Ngo Name', field: 'ngo_name', sortable: true, filter: true , 
       suppressSizeToFit: true}, 
-      { headerName: 'Request Date', field: 'request_date', sortable: true, filter: true , 
-      suppressSizeToFit: true,cellRenderer:'date'}, 
       { headerName: 'Requested Quantity', field: 'quantity', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       { headerName: 'Obtained Quantity', field: 'obtain_quantity', sortable: true, filter: true , 

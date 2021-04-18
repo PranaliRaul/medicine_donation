@@ -35,6 +35,8 @@ export class DonationMadeComponent implements OnInit {
       buttonRenderer: BtnComponent
     }
     this.columnDefs = [  
+      { headerName: 'Donation Date', field: 'donation_date', sortable: true, filter: true , 
+      cellRenderer: 'DateComponent',suppressSizeToFit: true, width:180},
       { headerName: 'Brand Name', field: 'brand_name', sortable: true, filter: true , 
       suppressSizeToFit: true},  
       { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 
@@ -44,8 +46,6 @@ export class DonationMadeComponent implements OnInit {
       { headerName: 'Medicine Type', field: 'medicine_type', sortable: true, filter: true , 
       suppressSizeToFit: true, cellRenderer:'medicinetype',width:150},
       { headerName: 'Expiry Date', field: 'exp_date', sortable: true, filter: true , 
-      cellRenderer: 'DateComponent',suppressSizeToFit: true, width:180},
-      { headerName: 'Donation Date', field: 'donation_date', sortable: true, filter: true , 
       cellRenderer: 'DateComponent',suppressSizeToFit: true, width:180},
       { headerName: 'Quantity', field: 'quantity', sortable: true, filter: true , 
       suppressSizeToFit: true, width:120},
