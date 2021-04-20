@@ -14,6 +14,7 @@ import { EventsComponent } from './share/events/events.component';
 import { HomepageComponent } from './share/homepage/homepage.component';
 import { DashBoardComponent } from './dash-board/dash-board.component';
 import { ActivateuserComponent } from './activateuser/activateuser.component';
+import { RegisteredNgoComponent } from './share/registered-ngo/registered-ngo.component';
 
 const routes: Routes = [
  {path:'',redirectTo:'homepage' , pathMatch:'full'},
@@ -93,6 +94,10 @@ const routes: Routes = [
   {
     path:'activate/:token',
     component:ActivateuserComponent
+  },
+  {
+    path:'registered-ngo',
+    component:RegisteredNgoComponent
   },
   {
     path:'**',

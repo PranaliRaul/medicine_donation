@@ -20,12 +20,13 @@ import { PopUpComponent } from './components/pop-up/pop-up.component';
 import { ExecutiveDeatilsComponent } from '../dash-board/executive-deatils/executive-deatils.component';
 import { ExecutorassignComponent } from '../dash-board/executorassign/executorassign.component';
 import { ExectorAssignRequestComponent } from '../dash-board/exector-assign-request/exector-assign-request.component';
+import { RegisteredNgoComponent } from './registered-ngo/registered-ngo.component';
 @NgModule({
   declarations: [BtnComponent, CollectedstatusComponent,
     DeliveredstatusComponent, DateComponent, HomepageComponent,
     MedicinetypeComponent, RecepientIndetailsComponent,
      NgoTransationComponent, ExecutorAssignRequestComponent, NavigationComponent, FooterComponent,
-    PopUpComponent,ExecutiveDeatilsComponent,ExecutorassignComponent,ExectorAssignRequestComponent],
+    PopUpComponent,ExecutiveDeatilsComponent,ExecutorassignComponent,ExectorAssignRequestComponent, RegisteredNgoComponent],
 
   imports: [
     CommonModule,
@@ -51,7 +52,8 @@ import { ExectorAssignRequestComponent } from '../dash-board/exector-assign-requ
     PopUpComponent,
     ExecutiveDeatilsComponent,
     ExecutorassignComponent,
-    ExectorAssignRequestComponent
+    ExectorAssignRequestComponent,
+    RegisteredNgoComponent
   ]
 })
 export class SharemoduleModule {

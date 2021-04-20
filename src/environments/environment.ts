@@ -84,7 +84,13 @@ export const environment = {
       path :'/donator/my-donation',
       text:'My Donations',
       exact_match: false 
+    },
+    {
+      path :'/registered-ngo',
+      text:'Registered NGO\'s',
+      exact_match: false 
     }
+    
   ],
 
 
@@ -108,6 +114,11 @@ export const environment = {
       path :'/Recepient/ngo-medicine-request',
       text:'NGO',
       exact_match: false
+    },
+    {
+      path :'/registered-ngo',
+      text:'Registered NGO\'s',
+      exact_match: false 
     }
   ],
 

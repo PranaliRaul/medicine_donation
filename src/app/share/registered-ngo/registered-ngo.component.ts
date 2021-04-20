@@ -1,15 +1,13 @@
 import { Component, Input, OnInit } from '@angular/core';
 import { Router } from '@angular/router';
-import { RegisterService } from '../register/register.service';
-import { BtnComponent } from '../share/components/btn/btn.component';
-import 'ag-grid-enterprise';
+import { RegisterService } from 'src/app/register/register.service';
 
 @Component({
-  selector: 'app-ngo-detail',
-  templateUrl: './ngo-detail.component.html',
-  styleUrls: ['./ngo-detail.component.scss']
+  selector: 'app-registered-ngo',
+  templateUrl: './registered-ngo.component.html',
+  styleUrls: ['./registered-ngo.component.scss']
 })
-export class NgoDetailComponent implements OnInit {
+export class RegisteredNgoComponent implements OnInit {
   list = [];
   private gridApi;
   private gridColumnApi;
@@ -21,10 +19,8 @@ export class NgoDetailComponent implements OnInit {
   rowHeight = 50;  
   headerHeight = 50;
   frameworkComponents: any;
-  constructor(private service:RegisterService, private route:Router) { 
-    this.frameworkComponents = {
-      buttonRenderer: BtnComponent,
-    }
+
+  constructor(private service:RegisterService, private route:Router) {
     this.columnDefs = [  
       { headerName: 'Ngo Name', field: 'ngo_name', sortable: true ,
        },  
@@ -35,22 +31,8 @@ export class NgoDetailComponent implements OnInit {
       { headerName: 'Address', field: 'address', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       { headerName: 'Year of Establishment', field: 'year_establishment', sortable: true, filter: true , 
-      suppressSizeToFit: true,},
-      {
-        headerName: '',
-        cellRenderer: 'buttonRenderer',
-        cellRendererParams: {
-          onClick: this.onBtnClick1.bind(this),
-          label: 'details'
-
-        } 
-      }
+      suppressSizeToFit: true,}, 
       ]; 
-  }
-  onBtnClick1(e) {
-    this.rowDataClicked1 = e.rowData;
-    this.service.ngo_details =   this.rowDataClicked1;
-    this.route.navigate(['/home/ngo/ngo-detail'])
   }
   rowDataClicked1
   defaultColDef = { 
@@ -64,7 +46,6 @@ export class NgoDetailComponent implements OnInit {
   ngOnInit() {
     this.getngolist()
   }
-
   public getngolist():void{
 
     this.service.getData('ngolist?id=2').subscribe(data =>{
@@ -73,11 +54,6 @@ export class NgoDetailComponent implements OnInit {
     },err =>{
       alert(err.error.err);
     })
-}
-details(data){
-
-  this.service.ngo_details = data;
-  this.route.navigate(['/home/ngo/ngo-detail'])
 }
 onGridReady(params) {
   this.gridApi = params.api;
@@ -97,4 +73,5 @@ BindData(params) {
     this.gridApi.sizeColumnsToFit();  
   }  
 }  
+
 }
