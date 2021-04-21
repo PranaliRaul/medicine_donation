@@ -12,7 +12,9 @@ export class RecepientGuard implements CanActivate {
     next: ActivatedRouteSnapshot,
     state: RouterStateSnapshot): boolean  {
     const userdata = JSON.parse(localStorage.getItem('userdata')); 
-      if( userdata && userdata[0].roleId === 4){
+    const checkuser = state.url ==='/registered-ngo' &&  (userdata && userdata[0].roleId === 3 || userdata[0].roleId === 4 )
+
+      if( userdata && userdata[0].roleId === 4  || checkuser ){
         return true;
       }else{
         this.router.navigate(['/login'])

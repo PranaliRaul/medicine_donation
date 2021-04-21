@@ -97,7 +97,9 @@ const routes: Routes = [
   },
   {
     path:'registered-ngo',
-    component:RegisteredNgoComponent
+    component:RegisteredNgoComponent,
+    canActivate:[RecepientGuard, DonatorGuard],
+     
   },
   {
     path:'**',

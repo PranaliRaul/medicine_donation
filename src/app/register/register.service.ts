@@ -32,7 +32,9 @@ export class RegisterService {
     if(confirm('Are you sure')){
     localStorage.clear();
     this.route.navigate(['/login']);
-    location.reload();
+      setTimeout(() =>{
+        location.reload();
+      });
     }
   }
   public downloade2(url,data):any{
