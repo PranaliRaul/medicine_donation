@@ -4,6 +4,7 @@ import { RegisterService } from 'src/app/register/register.service';
 import 'ag-grid-enterprise';
 import { BtnComponent } from 'src/app/share/components/btn/btn.component';
 import { DeliveredstatusComponent } from 'src/app/share/components/deliveredstatus/deliveredstatus.component';
+import { DateComponent } from 'src/app/share/components/date/date.component';
 @Component({
   selector: 'app-ngo-med-request',
   templateUrl: './ngo-med-request.component.html',
@@ -28,12 +29,15 @@ export class NgoMedRequestComponent implements OnInit {
   constructor(public registerService:RegisterService, private route:Router) { 
     this.frameworkComponents = {
       buttonRenderer: BtnComponent,
-      status:DeliveredstatusComponent
+      status:DeliveredstatusComponent,
+      DateComponent: DateComponent,
 
     }
     this.columnDefs = [
       { headerName: 'Requestor Name', field: 'recepient_name', sortable: true ,
-    },    
+    },  
+    { headerName: 'Requested Date', field: 'request_date', sortable: true, filter: true , 
+    suppressSizeToFit: true,cellRenderer:'DateComponent'},  
       { headerName: 'Brand Name', field: 'brand_name', sortable: true ,
        },  
       { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 

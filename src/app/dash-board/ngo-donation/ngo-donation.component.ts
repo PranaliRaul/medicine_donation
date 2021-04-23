@@ -39,6 +39,8 @@ export class NgoDonationComponent implements OnInit {
     this.columnDefs = [  
       { headerName: 'Donor Name', field: 'donator_name', sortable: true ,
        },  
+       { headerName: 'Donation Date', field: 'donation_date', sortable: true, filter: true , 
+       cellRenderer: 'DateComponent',suppressSizeToFit: true,},
       { headerName: 'Brand Name', field: 'brand_name', sortable: true, filter: true , 
       suppressSizeToFit: true},  
       { headerName: 'Generic Name', field: 'generic_name', sortable: true, filter: true , 
@@ -46,8 +48,7 @@ export class NgoDonationComponent implements OnInit {
       { headerName: 'Medicine Type', field: 'medicine_type', sortable: true, filter: true , 
       suppressSizeToFit: true, cellRenderer:'medicinetype'},
       { headerName: 'Expiry Date', field: 'exp_date', sortable: true, filter: true , 
-      cellRenderer: 'DateComponent',
-      suppressSizeToFit: true,},
+      cellRenderer: 'DateComponent',suppressSizeToFit: true,},
       { headerName: 'Donated Quantity', field: 'quantity', sortable: true, filter: true , 
       suppressSizeToFit: true,},
       { headerName: 'Remaining Quantity', field: 'remaining_quantity', sortable: true, filter: true , 

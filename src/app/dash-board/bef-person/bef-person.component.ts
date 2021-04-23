@@ -75,8 +75,8 @@ export class BefPersonComponent implements OnInit {
   public getngolist():void{
     this.userId =  this.registerService.donator_details.personId;
     this.registerService.getData(`mydonator?id=${this.userId}`).subscribe(data =>{
-       this.list = data;
-       this.rowData = data;
+       this.list =  data;
+       this.rowData = data.filter(data => data.assign);
 
     },err =>{
       alert(err.error.err);
